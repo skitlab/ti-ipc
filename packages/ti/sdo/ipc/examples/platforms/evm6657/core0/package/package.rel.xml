@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/release.dtd -->
+<release name="ti_sdo_ipc_examples_platforms_evm6657_core0" label="default" date="1352322696558" buildCount="1" producerId="undefined">
+<package name="ti.sdo.ipc.examples.platforms.evm6657.core0"
+    version="1, 0, 0, 0"/>
+<imports>
+    <package name="ti.catalog.c6000"
+        version=""/>
+    <package name="xdc.platform"
+        version="1, 0, 1"/>
+</imports>
+<references>
+    <package name="xdc"
+        version="1, 1, 1, 1346714518658"
+        providerId="xdccore">
+        <file name="IPackage.xdc"/>
+        <file name="IPackage.xs"/>
+        <file name="om2.xs"/>
+        <file name="package.xs"/>
+        <file name="template.xs"/>
+        <file name="xdc.tci"/>
+        <file name="xmlgen.xs"/>
+        <file name="xmlgen2.xs"/>
+    </package>
+    <package name="xdc.services.global"
+        version="1, 0, 0, 1346714540007"
+        providerId="xdccore">
+        <file name="Clock.xs"/>
+        <file name="Trace.xs"/>
+        <file name="java/package.jar"/>
+    </package>
+    <package name="xdc.bld"
+        version="1, 0, 2, 1346714520566"
+        providerId="xdccore">
+        <file name="BuildEnvironment.xs"/>
+        <file name="Configuration.xs"/>
+        <file name="Executable.xs"/>
+        <file name="ITarget.xs"/>
+        <file name="ITarget2.xs"/>
+        <file name="ITargetFilter.xs"/>
+        <file name="Library.xs"/>
+        <file name="Manifest.xs"/>
+        <file name="PackageContents.xs"/>
+        <file name="Repository.xs"/>
+        <file name="Script.xs"/>
+        <file name="Utils.xs"/>
+        <file name="_gen.xs"/>
+        <file name="bld.js"/>
+        <file name="package.xs"/>
+    </package>
+    <package name="ti.targets"
+        version="1, 0, 3, 1347649825940"
+        providerId="xdccore">
+        <file name="C28_float.xs"/>
+        <file name="C28_large.xs"/>
+        <file name="ITarget.xs"/>
+        <file name="package.xs"/>
+    </package>
+    <package name="ti.targets.msp430"
+        version="1, 0, 0, 1347642747817"
+        providerId="xdccore">
+        <file name="Generic.xs"/>
+        <file name="MSP430.xs"/>
+        <file name="MSP430X.xs"/>
+        <file name="MSP430X_small.xs"/>
+        <file name="package.xs"/>
+    </package>
+    <package name="ti.targets.arp32.elf"
+        version="1, 0, 0, 1347649838030"
+        providerId="xdccore">
+        <file name="ARP32.xs"/>
+        <file name="ARP32_far.xs"/>
+        <file name="package.xs"/>
+    </package>
+    <package name="ti.targets.elf"
+        version="1, 0, 0, 1347649844072"
+        providerId="xdccore">
+        <file name="ITarget.xs"/>
+        <file name="TMS470.xs"/>
+        <file name="package.xs"/>
+    </package>
+    <package name="ti.targets.arm"
+        version="2, 0, 1, 0, 1347649829604"
+        providerId="xdccore">
+        <file name="IArm.xs"/>
+        <file name="package.xs"/>
+    </package>
+    <package name="ti.targets.arm.elf"
+        version="1, 0, 0, 1347649836529"
+        providerId="xdccore">
+        <file name="IArm.xs"/>
+        <file name="package.xs"/>
+    </package>
+    <package name="gnu.targets"
+        version="1, 0, 1, 1347649796669"
+        providerId="xdccore">
+        <file name="ITarget.xs"/>
+        <file name="Linux86.xs"/>
+        <file name="MVArm9.xs"/>
+        <file name="Mingw.xs"/>
+        <file name="UCArm9.xs"/>
+        <file name="package.xs"/>
+    </package>
+    <package name="tisb.coverity.filters"
+        version="1, 0, 0, 1351902150358"
+        providerId="/db/toolsrc/library/toolsE24/packages">
+        <file name="TisbDefaults.xs"/>
+    </package>
+    <package name="tisb.misra.filters"
+        version="1, 0, 0, 1351902150364"
+        providerId="/db/toolsrc/library/toolsE24/packages">
+        <file name="Misra.xs"/>
+        <file name="TisbDefaults.xs"/>
+    </package>
+    <package name="ti.sdo.ipc"
+        version="1, 0, 0, 0, 1352317236000"
+        providerId="/db/vtree/library/trees/ipc/ipc-i09/src">
+        <file name="reports/misra.xs"/>
+    </package>
+    <package name="xdc.platform"
+        version="1, 0, 1, 0, 1346714527327"
+        providerId="xdccore">
+        <file name="ICpuDataSheet.xdc"/>
+        <file name="IExeContext.xdc"/>
+        <file name="IPeripheral.xdc"/>
+        <file name="IPlatform.xdc"/>
+    </package>
+    <package name="xdc.shelf"
+        version="1, 0, 0, 1346714555407"
+        providerId="xdccore">
+        <file name="java/antlr.jar"/>
+        <file name="java/ecj.jar"/>
+        <file name="java/js.jar"/>
+        <file name="java/tar.jar"/>
+    </package>
+    <package name="xdc.services.intern.gen"
+        version="1, 0, 0, 0, 1346714542942"
+        providerId="xdccore">
+        <file name="java/package.jar"/>
+    </package>
+    <package name="xdc.services.intern.cmd"
+        version="1, 0, 0, 0, 1346714540855"
+        providerId="xdccore">
+        <file name="java/package.jar"/>
+    </package>
+    <package name="xdc.services.intern.xsr"
+        version="1, 0, 0, 1346714543024"
+        providerId="xdccore">
+        <file name="java/package.jar"/>
+    </package>
+    <package name="xdc.services.spec"
+        version="1, 0, 0, 0, 1346714546223"
+        providerId="xdccore">
+        <file name="java/package.jar"/>
+    </package>
+    <xdcRoot base="/db/rtree/library/trees/xdcprod/xdcprod-q30/product/Linux/xdctools_3_24_02_30/">
+        <file name="/packages/xdc/package.xdc"/>
+        <file name="include/utils.tci"/>
+        <xdcCorePkg version="16, 0, 2, 0, 1346714526385" producerId="/db/ztree/library/trees/xdc/xdc-y35x/src/packages" buildCount="374" releaseName="xdc_corevers" label="default" date="1346714526385"/>
+    </xdcRoot>
+</references>
+<orphans>
+    <file name="/db/vtree/library/trees/ipc/ipc-i09/src/config.bld"/>
+</orphans>
+</release>

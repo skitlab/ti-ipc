@@ -1,0 +1,83 @@
+\subsection{Name\-Server\-\_\-\-Params Struct Reference}
+\label{struct_name_server___params}\index{Name\-Server\-\_\-\-Params@{Name\-Server\-\_\-\-Params}}
+
+
+Name\-Server\-\_\-\-Handle type.  
+
+
+
+
+{\ttfamily \#include $<$Name\-Server.\-h$>$}
+
+\subsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+U\-Int \hyperlink{struct_name_server___params_a26ee68e20b559b4c238c1e5a8646191f}{max\-Runtime\-Entries}
+\item 
+Ptr \hyperlink{struct_name_server___params_ac9c03b5c29cfe0507d2015c08253f69d}{table\-Heap}
+\item 
+Bool \hyperlink{struct_name_server___params_ac1accae9db70ea330e40c8da8d311eab}{check\-Existing}
+\item 
+U\-Int \hyperlink{struct_name_server___params_afa31d4aaa38615278dd7d8b25603bf5d}{max\-Value\-Len}
+\item 
+U\-Int \hyperlink{struct_name_server___params_a8fcc951ae29abaa33f11360cc4fa6441}{max\-Name\-Len}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+Name\-Server\-\_\-\-Handle type. 
+
+\subsubsection{Field Documentation}
+\index{Name\-Server\-\_\-\-Params@{Name\-Server\-\_\-\-Params}!max\-Runtime\-Entries@{max\-Runtime\-Entries}}
+\index{max\-Runtime\-Entries@{max\-Runtime\-Entries}!NameServer_Params@{Name\-Server\-\_\-\-Params}}
+\paragraph[{max\-Runtime\-Entries}]{\setlength{\rightskip}{0pt plus 5cm}U\-Int Name\-Server\-\_\-\-Params\-::max\-Runtime\-Entries}\label{struct_name_server___params_a26ee68e20b559b4c238c1e5a8646191f}
+Maximum number of name/value pairs that can be dynamically created. \begin{DoxyVerb}   This parameter allows NameServer to pre-allocate memory. 
+   When NameServer_add() or NameServer_addUInt32() is
+   called, no memory allocation occurs.
+
+   If the number of pairs is not known at configuration time, set this
+   value to #NameServer_ALLOWGROWTH. This instructs NameServer 
+   to grow the table as needed. NameServer will allocate memory from the 
+   #NameServer_Params#tableHeap when a name/value pair is added.
+
+   The default is #NameServer_ALLOWGROWTH.\end{DoxyVerb}
+ \index{Name\-Server\-\_\-\-Params@{Name\-Server\-\_\-\-Params}!table\-Heap@{table\-Heap}}
+\index{table\-Heap@{table\-Heap}!NameServer_Params@{Name\-Server\-\_\-\-Params}}
+\paragraph[{table\-Heap}]{\setlength{\rightskip}{0pt plus 5cm}Ptr Name\-Server\-\_\-\-Params\-::table\-Heap}\label{struct_name_server___params_ac9c03b5c29cfe0507d2015c08253f69d}
+Name/value table is allocated from this heap. \begin{DoxyVerb}   The instance table and related buffers are allocated out of this heap
+   during the dynamic create. This heap is also used to allocate new
+   name/value pairs when #NameServer_ALLOWGROWTH for 
+   #NameServer_Params#maxRuntimeEntries
+
+   The default is to use the same heap that instances are allocated
+   from which can be configured via the 
+   NameServer.common$.instanceHeap configuration parameter.\end{DoxyVerb}
+ \index{Name\-Server\-\_\-\-Params@{Name\-Server\-\_\-\-Params}!check\-Existing@{check\-Existing}}
+\index{check\-Existing@{check\-Existing}!NameServer_Params@{Name\-Server\-\_\-\-Params}}
+\paragraph[{check\-Existing}]{\setlength{\rightskip}{0pt plus 5cm}Bool Name\-Server\-\_\-\-Params\-::check\-Existing}\label{struct_name_server___params_ac1accae9db70ea330e40c8da8d311eab}
+Check if a name already exists in the name/value table. \begin{DoxyVerb}   When a name/value pair is added during runtime, if this boolean is
+   true, the table is searched to see if the name already exists. If
+   it does, the name is not added and the 
+   #NameServer_E_ALREADYEXISTS error is returned.
+
+   If this flag is false, the table will not be checked to see if the
+   name already exists. It will simply be added. This mode has better
+   performance at the expense of potentially having non-unique names
+   in the table.
+
+   This flag is used for runtime adds only. Adding non-unique names during
+   configuration results in a build error.\end{DoxyVerb}
+ \index{Name\-Server\-\_\-\-Params@{Name\-Server\-\_\-\-Params}!max\-Value\-Len@{max\-Value\-Len}}
+\index{max\-Value\-Len@{max\-Value\-Len}!NameServer_Params@{Name\-Server\-\_\-\-Params}}
+\paragraph[{max\-Value\-Len}]{\setlength{\rightskip}{0pt plus 5cm}U\-Int Name\-Server\-\_\-\-Params\-::max\-Value\-Len}\label{struct_name_server___params_afa31d4aaa38615278dd7d8b25603bf5d}
+Length, in M\-A\-Us, of the value field in the table. \begin{DoxyVerb}   Any value less than sizeof(UInt32) will be rounded up to sizeof(UInt32)\end{DoxyVerb}
+ \index{Name\-Server\-\_\-\-Params@{Name\-Server\-\_\-\-Params}!max\-Name\-Len@{max\-Name\-Len}}
+\index{max\-Name\-Len@{max\-Name\-Len}!NameServer_Params@{Name\-Server\-\_\-\-Params}}
+\paragraph[{max\-Name\-Len}]{\setlength{\rightskip}{0pt plus 5cm}U\-Int Name\-Server\-\_\-\-Params\-::max\-Name\-Len}\label{struct_name_server___params_a8fcc951ae29abaa33f11360cc4fa6441}
+Length, in M\-A\-Us, of the name field in the table. \begin{DoxyVerb}   The maximum length of the name portion of the name/value
+   pair.  The length includes the null terminator ('\\0').\end{DoxyVerb}
+ 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_name_server_8h}{Name\-Server.\-h}\end{DoxyCompactItemize}

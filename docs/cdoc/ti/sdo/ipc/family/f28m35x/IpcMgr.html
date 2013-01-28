@@ -1,0 +1,1272 @@
+<html>
+<head>
+<title>module ti.sdo.ipc.family.f28m35x.IpcMgr</title>
+<meta name="description" content="IPC Manager">
+<link rel="stylesheet" type="text/css" href="../../../../../xdoc.css" />
+</head>
+<body><div id="xdocWrapper"><div id="xdocContent">
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">module</span> <span class="xdoc-id">ti.sdo.ipc.family.f28m35x.</span><span class="xdoc-id">IpcMgr</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/package.html" title="package ti.sdo.ipc.family.f28m35x"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/NotifyDriverCirc.html" title="module NotifyDriverCirc"><img class="xdocHdrArrow" src="../../../../../Arrow_right.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html">index URL</a></div>
+<p class="xdocHdrSummary">IPC Manager</p>
+<ul class="xdocToc">
+<li class="xdocToc"><a class="xdocToc" href="#targ-synop">C synopsis</a></li>
+<li class="xdocToc2"><a class="xdocToc" href="#xdocElems">Individual elements</a></li>
+<li class="xdocToc"><a class="xdocToc" href="#meta-synop">XDCscript usage</a></li>
+<li class="xdocToc2"><a class="xdocToc" href="#xdocMetaElems">Individual elements</a></li>
+</ul>
+<div class="xdocBrief">
+This modules is used only for F28M35x devices.  Users can statically
+  configure which shared memory segments to enable, the owner processor
+  and the owner's write access.  This module used for specifying shared
+  memory for IPC between the M3 and C28 processors.
+[&nbsp;<a class="xdocBrief" href="#xdoc-desc">more</a>&nbsp;...&nbsp;]
+</div>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2">C</span></tt> synopsis</td>
+<td class="xdocLabelCenter">target-domain</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr-src.html"><span class="xdocLabelFile">ti/sdo/ipc/family/f28m35x/IpcMgr.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynT">
+<div class="xdocSynCode">
+<tt></tt><span class="xdoc-kw3">#include</span> <span class="xdoc-id">&lt;ti/sdo/ipc/family/f28m35x/IpcMgr.h&gt;</span>
+</div>
+<table cellspacing="0" cellpadding="0" border="0">
+<tr><td class="xdocSynFxnCat" colspan="2"><div class="xdocSynFxnCat">Functions common to all target modules</div></td></tr>
+
+<tr>
+<td></td>
+<td>
+<div class="xdocSynTblPack">
+<a class="xdocSynGo" href="#module-wide_built-ins"><span class="xdoc-id">IpcMgr_Module_getMask</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Returns the diagnostics mask for this module</span></span></a>,
+<a class="xdocSynGo" href="#module-wide_built-ins"><span class="xdoc-id">IpcMgr_Module_hasMask</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Test whether this module has a diagnostics mask</span></span></a>,
+<a class="xdocSynGo" href="#module-wide_built-ins"><span class="xdoc-id">IpcMgr_Module_heap</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;The heap from which this module allocates memory</span></span></a>,
+<a class="xdocSynGo" href="#module-wide_built-ins"><span class="xdoc-id">IpcMgr_Module_id</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Get this module's unique id</span></span></a>,
+<a class="xdocSynGo" href="#module-wide_built-ins"><span class="xdoc-id">IpcMgr_Module_setMask</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Set the diagnostics mask for this module</span></span></a>,
+<a class="xdocSynGo" href="#module-wide_built-ins"><span class="xdoc-id">IpcMgr_Module_startupDone</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Test if this module has completed startup</span></span></a>
+</div>
+</td>
+</tr>
+<tr><td colspan='2'><div class='xdocSynTblHdr'>Defines</div></td></tr>
+
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw3">#define</span> </div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#.N.O.C.P.U.W.R.I.T.E"><span class="xdoc-id">IpcMgr_NOCPUWRITE</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;This value is used for setting <span class="xdoc-link" href="IpcMgr.html#shared.Memory.Access" title="sharedMemoryAccess">sharedMemoryAccess</span>.
+  If value specified, CPU writes are not allowed by owner</span></span></a>  (<i><span class="xdoc-kw2">Bits32</span></i>)4</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw3">#define</span> </div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#.N.O.D.M.A.W.R.I.T.E"><span class="xdoc-id">IpcMgr_NODMAWRITE</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;This value is used for setting <span class="xdoc-link" href="IpcMgr.html#shared.Memory.Access" title="sharedMemoryAccess">sharedMemoryAccess</span>.
+  If value specified, DMA writes are not allowed by owner</span></span></a>  (<i><span class="xdoc-kw2">Bits32</span></i>)2</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw3">#define</span> </div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#.N.O.F.E.T.C.H"><span class="xdoc-id">IpcMgr_NOFETCH</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;This value is used for setting <span class="xdoc-link" href="IpcMgr.html#shared.Memory.Access" title="sharedMemoryAccess">sharedMemoryAccess</span>.
+  If value specified, fetch is not allowed by owner</span></span></a>  (<i><span class="xdoc-kw2">Bits32</span></i>)1</div></td></tr>
+<tr><td colspan='2'><div class='xdocSynTblHdr'>Constants</div></td></tr>
+
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw1">extern const</span> <a class="xdoc-link" href="../../../../../xdc/runtime/Assert.html#.Id" title="xdc.runtime.Assert.Id">Assert_Id</a>&nbsp;</div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#.A_internal"><span class="xdoc-id">IpcMgr_A_internal</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Assert raised when an internal error is encountered</span></span></a>;</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw1">extern const</span> <a class="xdoc-link" href="../../../../../xdc/runtime/Assert.html#.Id" title="xdc.runtime.Assert.Id">Assert_Id</a>&nbsp;</div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#.A_inv.Param"><span class="xdoc-id">IpcMgr_A_invParam</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Assert raised when a parameter is invalid</span></span></a>;</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw1">extern const</span> <a class="xdoc-link" href="../../../../../xdc/runtime/Assert.html#.Id" title="xdc.runtime.Assert.Id">Assert_Id</a>&nbsp;</div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#.A_not.Enough.Memory"><span class="xdoc-id">IpcMgr_A_notEnoughMemory</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Assert raised when there's not enough memory for creating instances</span></span></a>;</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw1">extern const</span> <a class="xdoc-link" href="../../../../../xdc/runtime/Assert.html#.Id" title="xdc.runtime.Assert.Id">Assert_Id</a>&nbsp;</div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#.A_null.Argument"><span class="xdoc-id">IpcMgr_A_nullArgument</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Assert raised when a required argument is null</span></span></a>;</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw1">extern const</span> <a class="xdoc-link" href="../../../../../xdc/runtime/Error.html#.Id" title="xdc.runtime.Error.Id">Error_Id</a>&nbsp;</div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#.E_internal"><span class="xdoc-id">IpcMgr_E_internal</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Error raised when an internal error occured</span></span></a>;</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw1">extern const</span> <span class="xdoc-kw2">UInt32</span>&nbsp;</div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#ipc.Set.Flag"><span class="xdoc-id">IpcMgr_ipcSetFlag</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;The IPC set flag used for generating IPC interrupt</span></span></a>;</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw1">extern const</span> <span class="xdoc-kw2">UInt16</span>&nbsp;</div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#message.Q.Event.Id"><span class="xdoc-id">IpcMgr_messageQEventId</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Notify event ID for MessageQ transport</span></span></a>;</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw1">extern const</span> <span class="xdoc-kw2">UInt32</span>&nbsp;</div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#message.Q.Size"><span class="xdoc-id">IpcMgr_messageQSize</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;The largest MessageQ size (in bytes) supported by the transport</span></span></a>;</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw1">extern const</span> <span class="xdoc-kw2">UInt16</span>&nbsp;</div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#name.Server.Event.Id"><span class="xdoc-id">IpcMgr_nameServerEventId</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Notify event ID for NameServer</span></span></a>;</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw1">extern const</span> <span class="xdoc-kw2">UInt32</span>&nbsp;</div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#num.Message.Q.Msgs"><span class="xdoc-id">IpcMgr_numMessageQMsgs</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;The number of messages for the MessageQ transport's circular buffer</span></span></a>;</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw1">extern const</span> <span class="xdoc-kw2">UInt32</span>&nbsp;</div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#num.Notify.Msgs"><span class="xdoc-id">IpcMgr_numNotifyMsgs</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;The number of messages for the Notify driver's circular buffer</span></span></a>;</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw1">extern const</span> <span class="xdoc-kw2">Ptr</span>&nbsp;</div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#read.Addr"><span class="xdoc-id">IpcMgr_readAddr</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;The base address of read-only shared memory</span></span></a>;</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw1">extern const</span> <span class="xdoc-kw2">Bits32</span>&nbsp;</div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#shared.Memory.Access"><span class="xdoc-id">IpcMgr_sharedMemoryAccess</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Shared RAM write configuration</span></span></a>[8];</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw1">extern const</span> <span class="xdoc-kw2">Bits32</span>&nbsp;</div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#shared.Memory.Enable"><span class="xdoc-id">IpcMgr_sharedMemoryEnable</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Shared RAM memory configuration</span></span></a>;</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw1">extern const</span> <span class="xdoc-kw2">Bits32</span>&nbsp;</div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#shared.Memory.Owner.Mask"><span class="xdoc-id">IpcMgr_sharedMemoryOwnerMask</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Shared RAM owner select configuration</span></span></a>;</div></td></tr>
+<tr valign="top"><td class="xdocSynDecl" nowrap><div class="xdocSynTblType"><tt></tt><span class="xdoc-kw1">extern const</span> <span class="xdoc-kw2">Ptr</span>&nbsp;</div></td><td class="xdocSynDecl"><div class="xdocSynTblDecl"><a class="xdocSynGo" href="#write.Addr"><span class="xdoc-id">IpcMgr_writeAddr</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;The base address of read/write shared memory</span></span></a>;</div></td></tr>
+</table>
+<div class="xdocSynSpacer">&nbsp;</div>
+</div>
+<span id="xdoc-desc"></span>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">This modules is used only for F28M35x devices.  Users can statically
+  configure which shared memory segments to enable, the owner processor
+  and the owner's write access.  This module used for specifying shared
+  memory for IPC between the M3 and C28 processors.</div>
+<div class="xdocText">There are no API's that need to be called.  The necessary drivers for
+  IPC are all created within this module's startup function.  The shared
+  memory is also programmed within this function.  There is handshake
+  between the processors.  The M3 releases the C28 and both processors
+  will synchronize at this point.</div>
+<div class="xdocText">The <a class="xdoc-link" href="IpcMgr.html#read.Addr" title="readAddr">readAddr</a> must point to shared memory which is writeable
+  by the remote core while the <a class="xdoc-link" href="IpcMgr.html#write.Addr" title="writeAddr">writeAddr</a> must point to shared
+  memory which is writeable by the local core.  The <a class="xdoc-link" href="IpcMgr.html#read.Addr" title="readAddr">readAddr</a>
+  and <a class="xdoc-link" href="IpcMgr.html#write.Addr" title="writeAddr">writeAddr</a> pointers must point to different shared memory
+  blocks.  Memory addresses must be specified in the local core's
+  memory space.</div>
+<div class="xdocText">For example on the M3:</div>
+<div class="xdocText"><PRE class="Example">  var IpcMgr = xdc.useModule('ti.sdo.ipc.family.f28m35x.IpcMgr');
+  IpcMgr.readAddr  = 0x20016000;
+  IpcMgr.writeAddr = 0x20014000;
+  IpcMgr.sharedMemoryOwnerMask = 0x80;
+</PRE></div>
+<div class="xdocText">On the C28:</div>
+<div class="xdocText"><PRE class="Example">  var IpcMgr = xdc.useModule('ti.sdo.ipc.family.f28m35x.IpcMgr');
+  IpcMgr.readAddr  = 0x12000;
+  IpcMgr.writeAddr = 0x13000;
+</PRE></div>
+<div id="xdocSep">
+</div>
+<div id="xdocElems">
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".N.O.C.P.U.W.R.I.T.E"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IpcMgr_</span><span class="xdoc-id">NOCPUWRITE</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#.N.O.C.P.U.W.R.I.T.E">index URL</a></div>
+<p class="xdocHdrSummaryDcl">This value is used for setting <a class="xdoc-link" href="IpcMgr.html#shared.Memory.Access" title="sharedMemoryAccess">sharedMemoryAccess</a>.
+  If value specified, CPU writes are not allowed by owner</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw3">#define</span> <span class="xdoc-id">IpcMgr_NOCPUWRITE</span>  (<i><span class="xdoc-kw2">Bits32</span></i>)4
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".N.O.D.M.A.W.R.I.T.E"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IpcMgr_</span><span class="xdoc-id">NODMAWRITE</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#.N.O.D.M.A.W.R.I.T.E">index URL</a></div>
+<p class="xdocHdrSummaryDcl">This value is used for setting <a class="xdoc-link" href="IpcMgr.html#shared.Memory.Access" title="sharedMemoryAccess">sharedMemoryAccess</a>.
+  If value specified, DMA writes are not allowed by owner</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw3">#define</span> <span class="xdoc-id">IpcMgr_NODMAWRITE</span>  (<i><span class="xdoc-kw2">Bits32</span></i>)2
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".N.O.F.E.T.C.H"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IpcMgr_</span><span class="xdoc-id">NOFETCH</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#.N.O.F.E.T.C.H">index URL</a></div>
+<p class="xdocHdrSummaryDcl">This value is used for setting <a class="xdoc-link" href="IpcMgr.html#shared.Memory.Access" title="sharedMemoryAccess">sharedMemoryAccess</a>.
+  If value specified, fetch is not allowed by owner</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw3">#define</span> <span class="xdoc-id">IpcMgr_NOFETCH</span>  (<i><span class="xdoc-kw2">Bits32</span></i>)1
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".A_internal"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr_</span><span class="xdoc-id">A_internal</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#.A_internal">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Assert raised when an internal error is encountered</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">extern const</span> <a class="xdoc-link" href="../../../../../xdc/runtime/Assert.html#.Id" title="xdc.runtime.Assert.Id">Assert_Id</a>&nbsp;<span class="xdoc-id">IpcMgr_A_internal</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".A_inv.Param"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr_</span><span class="xdoc-id">A_invParam</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#.A_inv.Param">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Assert raised when a parameter is invalid</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">extern const</span> <a class="xdoc-link" href="../../../../../xdc/runtime/Assert.html#.Id" title="xdc.runtime.Assert.Id">Assert_Id</a>&nbsp;<span class="xdoc-id">IpcMgr_A_invParam</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".A_not.Enough.Memory"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr_</span><span class="xdoc-id">A_notEnoughMemory</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#.A_not.Enough.Memory">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Assert raised when there's not enough memory for creating instances</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">extern const</span> <a class="xdoc-link" href="../../../../../xdc/runtime/Assert.html#.Id" title="xdc.runtime.Assert.Id">Assert_Id</a>&nbsp;<span class="xdoc-id">IpcMgr_A_notEnoughMemory</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".A_null.Argument"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr_</span><span class="xdoc-id">A_nullArgument</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#.A_null.Argument">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Assert raised when a required argument is null</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">extern const</span> <a class="xdoc-link" href="../../../../../xdc/runtime/Assert.html#.Id" title="xdc.runtime.Assert.Id">Assert_Id</a>&nbsp;<span class="xdoc-id">IpcMgr_A_nullArgument</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id=".E_internal"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr_</span><span class="xdoc-id">E_internal</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#.E_internal">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Error raised when an internal error occured</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">extern const</span> <a class="xdoc-link" href="../../../../../xdc/runtime/Error.html#.Id" title="xdc.runtime.Error.Id">Error_Id</a>&nbsp;<span class="xdoc-id">IpcMgr_E_internal</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="ipc.Set.Flag"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr_</span><span class="xdoc-id">ipcSetFlag</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#ipc.Set.Flag">index URL</a></div>
+<p class="xdocHdrSummaryDcl">The IPC set flag used for generating IPC interrupt</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">extern const</span> <span class="xdoc-kw2">UInt32</span>&nbsp;<span class="xdoc-id">IpcMgr_ipcSetFlag</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">Only a value of 0, 1, 2, or 3 are valid since only those flags
+  have an interrupt associated with them. This value must be the
+  same on both processors.</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="message.Q.Event.Id"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr_</span><span class="xdoc-id">messageQEventId</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#message.Q.Event.Id">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Notify event ID for MessageQ transport</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">extern const</span> <span class="xdoc-kw2">UInt16</span>&nbsp;<span class="xdoc-id">IpcMgr_messageQEventId</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="message.Q.Size"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr_</span><span class="xdoc-id">messageQSize</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#message.Q.Size">index URL</a></div>
+<p class="xdocHdrSummaryDcl">The largest MessageQ size (in bytes) supported by the transport</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">extern const</span> <span class="xdoc-kw2">UInt32</span>&nbsp;<span class="xdoc-id">IpcMgr_messageQSize</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">This value must be large enough to handle the largest message.
+  The size must be specified in bytes.</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="name.Server.Event.Id"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr_</span><span class="xdoc-id">nameServerEventId</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#name.Server.Event.Id">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Notify event ID for NameServer</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">extern const</span> <span class="xdoc-kw2">UInt16</span>&nbsp;<span class="xdoc-id">IpcMgr_nameServerEventId</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="num.Message.Q.Msgs"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr_</span><span class="xdoc-id">numMessageQMsgs</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#num.Message.Q.Msgs">index URL</a></div>
+<p class="xdocHdrSummaryDcl">The number of messages for the MessageQ transport's circular buffer</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">extern const</span> <span class="xdoc-kw2">UInt32</span>&nbsp;<span class="xdoc-id">IpcMgr_numMessageQMsgs</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">This is use to determine the size of the put and get buffers.
+  This value must be a power of 2.  A value of 'N' allows 'N-1'
+  outstanding notifications.</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="num.Notify.Msgs"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr_</span><span class="xdoc-id">numNotifyMsgs</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#num.Notify.Msgs">index URL</a></div>
+<p class="xdocHdrSummaryDcl">The number of messages for the Notify driver's circular buffer</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">extern const</span> <span class="xdoc-kw2">UInt32</span>&nbsp;<span class="xdoc-id">IpcMgr_numNotifyMsgs</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">This is use to determine the size of the put and get buffers.
+  This value must be a power of 2.  A value of 'N' allows 'N-1'
+  outstanding notifications.</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="read.Addr"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr_</span><span class="xdoc-id">readAddr</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#read.Addr">index URL</a></div>
+<p class="xdocHdrSummaryDcl">The base address of read-only shared memory</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">extern const</span> <span class="xdoc-kw2">Ptr</span>&nbsp;<span class="xdoc-id">IpcMgr_readAddr</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">The address must be specified in the local core's memory space.
+  It must point to the same physical address as the writeAddr for
+  the remote processor.</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="shared.Memory.Access"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr_</span><span class="xdoc-id">sharedMemoryAccess</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#shared.Memory.Access">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Shared RAM write configuration</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">extern const</span> <span class="xdoc-kw2">Bits32</span>&nbsp;<span class="xdoc-id">IpcMgr_sharedMemoryAccess</span>[8];
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">This parameter is only applicable to the M3 processor.  It is
+  used for writing the MSxSRCR register from the M3.
+  It determines the owner write access to each shared RAM segment.
+  By default, the owner is allowed to fetch, DMA write, and CPU write.</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="shared.Memory.Enable"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr_</span><span class="xdoc-id">sharedMemoryEnable</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#shared.Memory.Enable">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Shared RAM memory configuration</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">extern const</span> <span class="xdoc-kw2">Bits32</span>&nbsp;<span class="xdoc-id">IpcMgr_sharedMemoryEnable</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">This parameter is only applicable to the M3 processor.  It is
+  used for writing the MEMCNF register from the M3.
+  By default, all shared RAM segments will be enabled at runtime.
+  To disable a shared RAM segment, set the corresponding bit to 0.
+  If any data is loaded to a shared RAM segment, the segment must
+  be enabled prior to loading the program through other means.</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="shared.Memory.Owner.Mask"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr_</span><span class="xdoc-id">sharedMemoryOwnerMask</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#shared.Memory.Owner.Mask">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Shared RAM owner select configuration</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">extern const</span> <span class="xdoc-kw2">Bits32</span>&nbsp;<span class="xdoc-id">IpcMgr_sharedMemoryOwnerMask</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">This parameter is only applicable to the M3 processor.  It is
+  used for writing the MSxMSEL register from the M3.
+  By default, each value of each shared RAM select bit is '0'.
+  This means the M3 is the owner and has write access based upon
+  the sharedMemoryAccess bits.  Setting a '1' in any bit position
+  makes the C28 the owner of that shared RAM segment.</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="write.Addr"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr_</span><span class="xdoc-id">writeAddr</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#write.Addr">index URL</a></div>
+<p class="xdocHdrSummaryDcl">The base address of read/write shared memory</p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">extern const</span> <span class="xdoc-kw2">Ptr</span>&nbsp;<span class="xdoc-id">IpcMgr_writeAddr</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">The address must be specified in the local core's memory space.
+  It must point to the same physical address as the readAddr for
+  the remote processor.</div>
+<a class="xdocAnchor" id="module-wide_built-ins"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdocSynSum">Module-Wide Built-Ins</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#module-wide_built-ins">index URL</a></div>
+<p class="xdocHdrSummary"></p>
+<span id='targ-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-targ2dcl">C</span></tt> synopsis</td>
+<td class="xdocLabelRight">target-domain</td>
+</tr></table>
+<div class="xdocSynTdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><a class="xdoc-link" href="../../../../../xdc/runtime/Types.html#.Module.Id" title="xdc.runtime.Types.ModuleId">Types_ModuleId</a> <span class="xdoc-id">IpcMgr_Module_id</span>();
+</div>
+<div class='xdocSynSum'><tt></tt><tt></tt>//&nbsp;Get this module's unique id</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Bool</span> <span class="xdoc-id">IpcMgr_Module_startupDone</span>();
+</div>
+<div class='xdocSynSum'><tt></tt><tt></tt>//&nbsp;Test if this module has completed startup</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt><a class="xdoc-link" href="../../../../../xdc/runtime/IHeap.html#per-instance_object_types" title="xdc.runtime.IHeap.Handle">IHeap_Handle</a> <span class="xdoc-id">IpcMgr_Module_heap</span>();
+</div>
+<div class='xdocSynSum'><tt></tt><tt></tt>//&nbsp;The heap from which this module allocates memory</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Bool</span> <span class="xdoc-id">IpcMgr_Module_hasMask</span>();
+</div>
+<div class='xdocSynSum'><tt></tt><tt></tt>//&nbsp;Test whether this module has a diagnostics mask</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Bits16</span> <span class="xdoc-id">IpcMgr_Module_getMask</span>();
+</div>
+<div class='xdocSynSum'><tt></tt><tt></tt>//&nbsp;Returns the diagnostics mask for this module</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw2">Void</span> <span class="xdoc-id">IpcMgr_Module_setMask</span>(<span class="xdoc-kw2">Bits16</span> <span class="xdoc-id">mask</span>);
+</div>
+<div class='xdocSynSum'><tt></tt><tt></tt>//&nbsp;Set the diagnostics mask for this module</div>
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2">XDCscript</span></tt> usage</td>
+<td class="xdocLabelCenter">meta-domain</td>
+<td class="xdocLabelRight">sourced in <a class="xdocLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr-src.html"><span class="xdocLabelFile">ti/sdo/ipc/family/f28m35x/IpcMgr.xdc</span></a></td>
+</tr></table>
+<div class="xdocSynM">
+<div class="xdocSynCode">
+<tt></tt><span class="xdoc-kw1">var</span> IpcMgr = <span class="xdoc-kw3">xdc.useModule</span>(<span class="xdoc-id">'ti.sdo.ipc.family.f28m35x.IpcMgr'</span>);
+</div>
+<div class='xdocSynHdr'>module-wide constants & types</div>
+
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">const</span> <a class="xdocSynGo" href="#meta.N.O.C.P.U.W.R.I.T.E">IpcMgr.<span class="xdoc-id">NOCPUWRITE</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;This value is used for setting <span class="xdoc-link" href="IpcMgr.html#shared.Memory.Access" title="sharedMemoryAccess">sharedMemoryAccess</span>.
+  If value specified, CPU writes are not allowed by owner</span></span></a> = 4;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">const</span> <a class="xdocSynGo" href="#meta.N.O.D.M.A.W.R.I.T.E">IpcMgr.<span class="xdoc-id">NODMAWRITE</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;This value is used for setting <span class="xdoc-link" href="IpcMgr.html#shared.Memory.Access" title="sharedMemoryAccess">sharedMemoryAccess</span>.
+  If value specified, DMA writes are not allowed by owner</span></span></a> = 2;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><span class="xdoc-kw1">const</span> <a class="xdocSynGo" href="#meta.N.O.F.E.T.C.H">IpcMgr.<span class="xdoc-id">NOFETCH</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;This value is used for setting <span class="xdoc-link" href="IpcMgr.html#shared.Memory.Access" title="sharedMemoryAccess">sharedMemoryAccess</span>.
+  If value specified, fetch is not allowed by owner</span></span></a> = 1;
+</div>
+<div class='xdocSynHdr'>module-wide config parameters</div>
+
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#meta.A_internal">IpcMgr.<span class="xdoc-id">A_internal</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Assert raised when an internal error is encountered</span></span></a> = <i><a class="xdoc-link" href="../../../../../xdc/runtime/Assert.html#.Desc" title="xdc.runtime.Assert.Desc">Assert.Desc</a></i> {
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>msg: "A_internal: An internal error has occurred"
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt>};
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#meta.A_inv.Param">IpcMgr.<span class="xdoc-id">A_invParam</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Assert raised when a parameter is invalid</span></span></a> = <i><a class="xdoc-link" href="../../../../../xdc/runtime/Assert.html#.Desc" title="xdc.runtime.Assert.Desc">Assert.Desc</a></i> {
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>msg: "A_invParam: Invalid configuration parameter supplied"
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt>};
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#meta.A_not.Enough.Memory">IpcMgr.<span class="xdoc-id">A_notEnoughMemory</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Assert raised when there's not enough memory for creating instances</span></span></a> = <i><a class="xdoc-link" href="../../../../../xdc/runtime/Assert.html#.Desc" title="xdc.runtime.Assert.Desc">Assert.Desc</a></i> {
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>msg: "A_notEnoughMemory: There is not enough memory for operation"
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt>};
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#meta.A_null.Argument">IpcMgr.<span class="xdoc-id">A_nullArgument</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Assert raised when a required argument is null</span></span></a> = <i><a class="xdoc-link" href="../../../../../xdc/runtime/Assert.html#.Desc" title="xdc.runtime.Assert.Desc">Assert.Desc</a></i> {
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>msg: "A_nullArgument: Required argument is null"
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt>};
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#meta.E_internal">IpcMgr.<span class="xdoc-id">E_internal</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Error raised when an internal error occured</span></span></a> = <i><a class="xdoc-link" href="../../../../../xdc/runtime/Error.html#.Desc" title="xdc.runtime.Error.Desc">Error.Desc</a></i> {
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>msg: "E_internal: An internal error occurred"
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt>};
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#metaipc.Set.Flag">IpcMgr.<span class="xdoc-id">ipcSetFlag</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;The IPC set flag used for generating IPC interrupt</span></span></a> = <i><span class="xdoc-kw2">UInt32</span></i> 3;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#metamessage.Q.Event.Id">IpcMgr.<span class="xdoc-id">messageQEventId</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Notify event ID for MessageQ transport</span></span></a> = <i><span class="xdoc-kw2">UInt16</span></i> 2;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#metamessage.Q.Size">IpcMgr.<span class="xdoc-id">messageQSize</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;The largest MessageQ size (in bytes) supported by the transport</span></span></a> = <i><span class="xdoc-kw2">UInt32</span></i> 128;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#metaname.Server.Event.Id">IpcMgr.<span class="xdoc-id">nameServerEventId</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Notify event ID for NameServer</span></span></a> = <i><span class="xdoc-kw2">UInt16</span></i> 4;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#metanum.Message.Q.Msgs">IpcMgr.<span class="xdoc-id">numMessageQMsgs</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;The number of messages for the MessageQ transport's circular buffer</span></span></a> = <i><span class="xdoc-kw2">UInt32</span></i> 4;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#metanum.Notify.Msgs">IpcMgr.<span class="xdoc-id">numNotifyMsgs</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;The number of messages for the Notify driver's circular buffer</span></span></a> = <i><span class="xdoc-kw2">UInt32</span></i> 32;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#metaread.Addr">IpcMgr.<span class="xdoc-id">readAddr</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;The base address of read-only shared memory</span></span></a> = <i><span class="xdoc-kw2">Ptr</span></i> <span class="xdoc-kw2">undefined</span>;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#metashared.Memory.Access">IpcMgr.<span class="xdoc-id">sharedMemoryAccess</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Shared RAM write configuration</span></span></a> = <i><span class="xdoc-kw2">Bits32</span>[8]</i> <span class="xdoc-kw2">undefined</span>;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#metashared.Memory.Enable">IpcMgr.<span class="xdoc-id">sharedMemoryEnable</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Shared RAM memory configuration</span></span></a> = <i><span class="xdoc-kw2">Bits32</span></i> 0xffffffff;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#metashared.Memory.Owner.Mask">IpcMgr.<span class="xdoc-id">sharedMemoryOwnerMask</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Shared RAM owner select configuration</span></span></a> = <i><span class="xdoc-kw2">Bits32</span></i> 0;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#metawrite.Addr">IpcMgr.<span class="xdoc-id">writeAddr</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;The base address of read/write shared memory</span></span></a> = <i><span class="xdoc-kw2">Ptr</span></i> <span class="xdoc-kw2">undefined</span>;
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#common$">IpcMgr.<span class="xdoc-id">common$</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;Common module configuration parameters</span></span></a> = <i><a class="xdoc-link" href="../../../../../xdc/runtime/Types.html#.Common$" title="xdc.runtime.Types.Common$">Types.Common$</a></i> <span class="xdoc-kw2">undefined</span>;
+</div>
+<div class="xdocSynCode">
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt><tt></tt><a class="xdocSynGo" href="#gen.Linker.Sections">IpcMgr.<span class="xdoc-id">genLinkerSections</span><span class="xdocSynHoverShadow"><span class="xdocSynHover">//&nbsp;For generating or not generating the linker sections</span></span></a> = <i><span class="xdoc-kw2">Bool</span></i> <span class="xdoc-kw2">true</span>;
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+</div>
+<div id="xdocSep">
+</div>
+<div id="xdocMetaElems">
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="meta.N.O.C.P.U.W.R.I.T.E"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IpcMgr.</span><span class="xdoc-id">NOCPUWRITE</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#.N.O.C.P.U.W.R.I.T.E">index URL</a></div>
+<p class="xdocHdrSummaryDcl">This value is used for setting <a class="xdoc-link" href="IpcMgr.html#shared.Memory.Access" title="sharedMemoryAccess">sharedMemoryAccess</a>.
+  If value specified, CPU writes are not allowed by owner</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">const</span> IpcMgr.<span class="xdoc-id">NOCPUWRITE</span> = 4;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#.N.O.C.P.U.W.R.I.T.E" title="IpcMgr_NOCPUWRITE">IpcMgr_NOCPUWRITE</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="meta.N.O.D.M.A.W.R.I.T.E"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IpcMgr.</span><span class="xdoc-id">NODMAWRITE</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#.N.O.D.M.A.W.R.I.T.E">index URL</a></div>
+<p class="xdocHdrSummaryDcl">This value is used for setting <a class="xdoc-link" href="IpcMgr.html#shared.Memory.Access" title="sharedMemoryAccess">sharedMemoryAccess</a>.
+  If value specified, DMA writes are not allowed by owner</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">const</span> IpcMgr.<span class="xdoc-id">NODMAWRITE</span> = 2;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#.N.O.D.M.A.W.R.I.T.E" title="IpcMgr_NODMAWRITE">IpcMgr_NODMAWRITE</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="meta.N.O.F.E.T.C.H"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">const</span> <span class="xdoc-id">IpcMgr.</span><span class="xdoc-id">NOFETCH</span></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#.N.O.F.E.T.C.H">index URL</a></div>
+<p class="xdocHdrSummaryDcl">This value is used for setting <a class="xdoc-link" href="IpcMgr.html#shared.Memory.Access" title="sharedMemoryAccess">sharedMemoryAccess</a>.
+  If value specified, fetch is not allowed by owner</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt><span class="xdoc-kw1">const</span> IpcMgr.<span class="xdoc-id">NOFETCH</span> = 1;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#.N.O.F.E.T.C.H" title="IpcMgr_NOFETCH">IpcMgr_NOFETCH</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="meta.A_internal"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr.</span><span class="xdoc-id">A_internal</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#.A_internal">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Assert raised when an internal error is encountered</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>IpcMgr.<span class="xdoc-id">A_internal</span> = <i><a class="xdoc-link" href="../../../../../xdc/runtime/Assert.html#.Desc" title="xdc.runtime.Assert.Desc">Assert.Desc</a></i> {
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>msg: "A_internal: An internal error has occurred"
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt>};
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#.A_internal" title="IpcMgr_A_internal">IpcMgr_A_internal</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="meta.A_inv.Param"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr.</span><span class="xdoc-id">A_invParam</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#.A_inv.Param">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Assert raised when a parameter is invalid</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>IpcMgr.<span class="xdoc-id">A_invParam</span> = <i><a class="xdoc-link" href="../../../../../xdc/runtime/Assert.html#.Desc" title="xdc.runtime.Assert.Desc">Assert.Desc</a></i> {
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>msg: "A_invParam: Invalid configuration parameter supplied"
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt>};
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#.A_inv.Param" title="IpcMgr_A_invParam">IpcMgr_A_invParam</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="meta.A_not.Enough.Memory"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr.</span><span class="xdoc-id">A_notEnoughMemory</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#.A_not.Enough.Memory">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Assert raised when there's not enough memory for creating instances</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>IpcMgr.<span class="xdoc-id">A_notEnoughMemory</span> = <i><a class="xdoc-link" href="../../../../../xdc/runtime/Assert.html#.Desc" title="xdc.runtime.Assert.Desc">Assert.Desc</a></i> {
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>msg: "A_notEnoughMemory: There is not enough memory for operation"
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt>};
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#.A_not.Enough.Memory" title="IpcMgr_A_notEnoughMemory">IpcMgr_A_notEnoughMemory</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="meta.A_null.Argument"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr.</span><span class="xdoc-id">A_nullArgument</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#.A_null.Argument">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Assert raised when a required argument is null</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>IpcMgr.<span class="xdoc-id">A_nullArgument</span> = <i><a class="xdoc-link" href="../../../../../xdc/runtime/Assert.html#.Desc" title="xdc.runtime.Assert.Desc">Assert.Desc</a></i> {
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>msg: "A_nullArgument: Required argument is null"
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt>};
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#.A_null.Argument" title="IpcMgr_A_nullArgument">IpcMgr_A_nullArgument</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="meta.E_internal"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr.</span><span class="xdoc-id">E_internal</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#.E_internal">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Error raised when an internal error occured</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>IpcMgr.<span class="xdoc-id">E_internal</span> = <i><a class="xdoc-link" href="../../../../../xdc/runtime/Error.html#.Desc" title="xdc.runtime.Error.Desc">Error.Desc</a></i> {
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt>&nbsp;&nbsp;&nbsp;&nbsp;</tt>msg: "E_internal: An internal error occurred"
+</div>
+<div class="xdocSynCode">
+<tt></tt><tt></tt>};
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#.E_internal" title="IpcMgr_E_internal">IpcMgr_E_internal</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="metaipc.Set.Flag"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr.</span><span class="xdoc-id">ipcSetFlag</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#ipc.Set.Flag">index URL</a></div>
+<p class="xdocHdrSummaryDcl">The IPC set flag used for generating IPC interrupt</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>IpcMgr.<span class="xdoc-id">ipcSetFlag</span> = <i><span class="xdoc-kw2">UInt32</span></i> 3;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">Only a value of 0, 1, 2, or 3 are valid since only those flags
+  have an interrupt associated with them. This value must be the
+  same on both processors.</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#ipc.Set.Flag" title="IpcMgr_ipcSetFlag">IpcMgr_ipcSetFlag</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="metamessage.Q.Event.Id"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr.</span><span class="xdoc-id">messageQEventId</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#message.Q.Event.Id">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Notify event ID for MessageQ transport</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>IpcMgr.<span class="xdoc-id">messageQEventId</span> = <i><span class="xdoc-kw2">UInt16</span></i> 2;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#message.Q.Event.Id" title="IpcMgr_messageQEventId">IpcMgr_messageQEventId</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="metamessage.Q.Size"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr.</span><span class="xdoc-id">messageQSize</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#message.Q.Size">index URL</a></div>
+<p class="xdocHdrSummaryDcl">The largest MessageQ size (in bytes) supported by the transport</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>IpcMgr.<span class="xdoc-id">messageQSize</span> = <i><span class="xdoc-kw2">UInt32</span></i> 128;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">This value must be large enough to handle the largest message.
+  The size must be specified in bytes.</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#message.Q.Size" title="IpcMgr_messageQSize">IpcMgr_messageQSize</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="metaname.Server.Event.Id"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr.</span><span class="xdoc-id">nameServerEventId</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#name.Server.Event.Id">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Notify event ID for NameServer</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>IpcMgr.<span class="xdoc-id">nameServerEventId</span> = <i><span class="xdoc-kw2">UInt16</span></i> 4;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#name.Server.Event.Id" title="IpcMgr_nameServerEventId">IpcMgr_nameServerEventId</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="metanum.Message.Q.Msgs"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr.</span><span class="xdoc-id">numMessageQMsgs</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#num.Message.Q.Msgs">index URL</a></div>
+<p class="xdocHdrSummaryDcl">The number of messages for the MessageQ transport's circular buffer</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>IpcMgr.<span class="xdoc-id">numMessageQMsgs</span> = <i><span class="xdoc-kw2">UInt32</span></i> 4;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">This is use to determine the size of the put and get buffers.
+  This value must be a power of 2.  A value of 'N' allows 'N-1'
+  outstanding notifications.</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#num.Message.Q.Msgs" title="IpcMgr_numMessageQMsgs">IpcMgr_numMessageQMsgs</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="metanum.Notify.Msgs"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr.</span><span class="xdoc-id">numNotifyMsgs</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#num.Notify.Msgs">index URL</a></div>
+<p class="xdocHdrSummaryDcl">The number of messages for the Notify driver's circular buffer</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>IpcMgr.<span class="xdoc-id">numNotifyMsgs</span> = <i><span class="xdoc-kw2">UInt32</span></i> 32;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">This is use to determine the size of the put and get buffers.
+  This value must be a power of 2.  A value of 'N' allows 'N-1'
+  outstanding notifications.</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#num.Notify.Msgs" title="IpcMgr_numNotifyMsgs">IpcMgr_numNotifyMsgs</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="metaread.Addr"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr.</span><span class="xdoc-id">readAddr</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#read.Addr">index URL</a></div>
+<p class="xdocHdrSummaryDcl">The base address of read-only shared memory</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>IpcMgr.<span class="xdoc-id">readAddr</span> = <i><span class="xdoc-kw2">Ptr</span></i> <span class="xdoc-kw2">undefined</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">The address must be specified in the local core's memory space.
+  It must point to the same physical address as the writeAddr for
+  the remote processor.</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#read.Addr" title="IpcMgr_readAddr">IpcMgr_readAddr</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="metashared.Memory.Access"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr.</span><span class="xdoc-id">sharedMemoryAccess</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#shared.Memory.Access">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Shared RAM write configuration</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>IpcMgr.<span class="xdoc-id">sharedMemoryAccess</span> = <i><span class="xdoc-kw2">Bits32</span>[8]</i> <span class="xdoc-kw2">undefined</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">This parameter is only applicable to the M3 processor.  It is
+  used for writing the MSxSRCR register from the M3.
+  It determines the owner write access to each shared RAM segment.
+  By default, the owner is allowed to fetch, DMA write, and CPU write.</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#shared.Memory.Access" title="IpcMgr_sharedMemoryAccess">IpcMgr_sharedMemoryAccess</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="metashared.Memory.Enable"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr.</span><span class="xdoc-id">sharedMemoryEnable</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#shared.Memory.Enable">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Shared RAM memory configuration</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>IpcMgr.<span class="xdoc-id">sharedMemoryEnable</span> = <i><span class="xdoc-kw2">Bits32</span></i> 0xffffffff;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">This parameter is only applicable to the M3 processor.  It is
+  used for writing the MEMCNF register from the M3.
+  By default, all shared RAM segments will be enabled at runtime.
+  To disable a shared RAM segment, set the corresponding bit to 0.
+  If any data is loaded to a shared RAM segment, the segment must
+  be enabled prior to loading the program through other means.</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#shared.Memory.Enable" title="IpcMgr_sharedMemoryEnable">IpcMgr_sharedMemoryEnable</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="metashared.Memory.Owner.Mask"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr.</span><span class="xdoc-id">sharedMemoryOwnerMask</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#shared.Memory.Owner.Mask">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Shared RAM owner select configuration</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>IpcMgr.<span class="xdoc-id">sharedMemoryOwnerMask</span> = <i><span class="xdoc-kw2">Bits32</span></i> 0;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">This parameter is only applicable to the M3 processor.  It is
+  used for writing the MSxMSEL register from the M3.
+  By default, each value of each shared RAM select bit is '0'.
+  This means the M3 is the owner and has write access based upon
+  the sharedMemoryAccess bits.  Setting a '1' in any bit position
+  makes the C28 the owner of that shared RAM segment.</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#shared.Memory.Owner.Mask" title="IpcMgr_sharedMemoryOwnerMask">IpcMgr_sharedMemoryOwnerMask</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="metawrite.Addr"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr.</span><span class="xdoc-id">writeAddr</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#write.Addr">index URL</a></div>
+<p class="xdocHdrSummaryDcl">The base address of read/write shared memory</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>IpcMgr.<span class="xdoc-id">writeAddr</span> = <i><span class="xdoc-kw2">Ptr</span></i> <span class="xdoc-kw2">undefined</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">The address must be specified in the local core's memory space.
+  It must point to the same physical address as the readAddr for
+  the remote processor.</div>
+<div class="xdocSect">C SYNOPSIS</div>
+<div class="xdocText"><a class="xdoc-link" href="#write.Addr" title="IpcMgr_writeAddr">IpcMgr_writeAddr</a></div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="common$"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">metaonly </span><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr.</span><span class="xdoc-id">common$</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#common$">index URL</a></div>
+<p class="xdocHdrSummaryDcl">Common module configuration parameters</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>IpcMgr.<span class="xdoc-id">common$</span> = <i><a class="xdoc-link" href="../../../../../xdc/runtime/Types.html#.Common$" title="xdc.runtime.Types.Common$">Types.Common$</a></i> <span class="xdoc-kw2">undefined</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">All modules have this configuration parameter.  Its name
+  contains the '$' character to ensure it does not conflict with
+  configuration parameters declared by the module.  This allows
+  new configuration parameters to be added in the future without
+  any chance of breaking existing modules.</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<a class="xdocAnchor" id="gen.Linker.Sections"></a>
+<table class="xdocHdr"><tr>
+<td class="xdocHdrTitle"><span class="xdoc-kw1">metaonly </span><span class="xdoc-kw1">config</span> <span class="xdoc-id">IpcMgr.</span><span class="xdoc-id">genLinkerSections</span>&nbsp;&nbsp;<small><span class="xdocSynSum">//&nbsp;module-wide</span></small></td>
+<td class="xdocHdrArrow">
+<a class="xdocHdrLink" href="../../../../../ti/sdo/ipc/family/f28m35x/IpcMgr.html" title="module IpcMgr"><img class="xdocHdrArrow" src="../../../../../Arrow_up.png"/></a></td>
+</table>
+<div class=xdocHdrIndex><a class=xdocHdrIndex title="right-click to capture" href="../../../../../index.html#ti/sdo/ipc/family/f28m35x/IpcMgr.html#gen.Linker.Sections">index URL</a></div>
+<p class="xdocHdrSummaryDcl">For generating or not generating the linker sections</p>
+<span id='meta-synop'></span>
+<table class="xdocLabel"><tr>
+<td class="xdocLabelLeft"><tt><span class="xdoc-id-meta2dcl">XDCscript</span></tt> usage</td>
+<td class="xdocLabelRight">meta-domain</td>
+</tr></table>
+<div class="xdocSynMdcl">
+<div class="xdocSynCode">
+<tt></tt><tt></tt>IpcMgr.<span class="xdoc-id">genLinkerSections</span> = <i><span class="xdoc-kw2">Bool</span></i> <span class="xdoc-kw2">true</span>;
+</div>
+</div>
+<div class="xdocSynSpacer">&nbsp;</div>
+<span id="xdoc-sect-1"></span>
+<div class="xdocSect">DETAILS</div>
+<div class="xdocText">By default this is set to 'true' so the following linker sections
+  are generated for the amount of memory used for IPC. For the
+  read address - "ti.sdo.ipc.family.f28m35x.IpcMgr.readSect" and for
+  the write address - "ti.sdo.ipc.family.f28m35x.IpcMgr.writeSect".
+  To disable generation, set this to 'false'.</div>
+</div>
+<div id="xdocDate">generated on Wed, 07 Nov 2012 21:17:58 GMT</div>
+</div></div></body>
+</html>

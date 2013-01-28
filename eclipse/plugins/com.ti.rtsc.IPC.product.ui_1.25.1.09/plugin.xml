@@ -1,0 +1,2942 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin
+    name="IPC (Multicore and I/O) IDE Support"
+    id="com.ti.rtsc.IPC.product.ui"
+    version="1.25.1.09"
+    provider-name="Texas Instruments">
+
+    <extension point="org.eclipse.help.toc">
+        <toc file="toc_top.xml" primary="true"/>
+        <toc file="eclipse_cdoc_toc.xml"/>
+    </extension>
+
+    <extension point="org.eclipse.help.contentProducer">
+        <contentProducer>
+            <producer class="org.eclipse.rtsc.xdctools.ui.help.HelpContentProducer"/>
+        </contentProducer>
+    </extension>
+
+    <extension
+         point="org.eclipse.core.variables.dynamicVariables">
+     <variable 
+        name="COM_TI_RTSC_IPC_INSTALL_DIR"
+        resolver="org.eclipse.rtsc.xdctools.ui.macros.MacroResolver"
+        description="Installation directory for IPC (Multicore and I/O)">
+     </variable>
+   </extension>
+
+    <extension point="com.ti.common.project.core.projectTemplates">
+        <templateGroup
+            id="ti.sdo.ipc.examples.root"
+            description="IPC and I/O Examples"
+            name="IPC and I/O Examples">
+            <property name="productType" value="com.ti.rtsc.IPC"/>
+        </templateGroup>
+        <templateGroup
+            id="ti.sdo.ipc.examples.root.generic"
+            description="Generic IPC and I/O Examples"
+            name="Generic IPC and I/O Examples">
+            <property name="productType" value="com.ti.rtsc.IPC"/>
+            <group id="ti.sdo.ipc.examples.root"/>
+        </templateGroup>
+        <templateGroup
+            id="ti.sdo.ipc.examples.root.c6472"
+            description="C6472-specific IPC Examples"
+            name="C6472 Examples">
+            <property name="productType" value="com.ti.rtsc.IPC"/>
+            <group id="ti.sdo.ipc.examples.root"/>
+        </templateGroup>
+        <templateGroup
+            id="ti.sdo.ipc.examples.root.c6474"
+            description="C6474-specific IPC Examples"
+            name="C6474 Examples">
+            <property name="productType" value="com.ti.rtsc.IPC"/>
+            <group id="ti.sdo.ipc.examples.root"/>
+        </templateGroup>
+        <templateGroup
+            id="ti.sdo.ipc.examples.root.c6670"
+            description="C6670-specific IPC Examples"
+            name="C6670 Examples">
+            <property name="productType" value="com.ti.rtsc.IPC"/>
+            <group id="ti.sdo.ipc.examples.root"/>
+        </templateGroup>
+        <templateGroup
+            id="ti.sdo.ipc.examples.root.c6678"
+            description="C6678-specific IPC Examples"
+            name="C6678 Examples">
+            <property name="productType" value="com.ti.rtsc.IPC"/>
+            <group id="ti.sdo.ipc.examples.root"/>
+        </templateGroup>
+        <templateGroup
+            id="ti.sdo.ipc.examples.root.c6657"
+            description="C6657-specific IPC Examples"
+            name="C6657 Examples">
+            <property name="productType" value="com.ti.rtsc.IPC"/>
+            <group id="ti.sdo.ipc.examples.root"/>
+        </templateGroup>
+        <templateGroup
+            id="ti.sdo.ipc.examples.root.dm6446"
+            description="DM6446-specific IPC Examples"
+            name="DM6446 Examples">
+            <property name="productType" value="com.ti.rtsc.IPC"/>
+            <group id="ti.sdo.ipc.examples.root"/>
+        </templateGroup>
+        <templateGroup
+            id="ti.sdo.ipc.examples.root.f28m35x"
+            description="F28M35x-specific IPC Examples"
+            name="F28M35x Examples">
+            <property name="productType" value="com.ti.rtsc.IPC"/>
+            <group id="ti.sdo.ipc.examples.root"/>
+        </templateGroup>
+        <templateGroup
+            id="ti.sdo.ipc.examples.root.ti81xx"
+            description="TI81XX-specific IPC Examples"
+            name="TI81XX Examples">
+            <property name="productType" value="com.ti.rtsc.IPC"/>
+            <group id="ti.sdo.ipc.examples.root"/>
+        </templateGroup>
+        <templateGroup
+            id="ti.sdo.ipc.examples.root.da830"
+            description="DA830/OMAPL137-specific IPC Examples"
+            name="DA830/OMAPL137 Examples">
+            <property name="productType" value="com.ti.rtsc.IPC"/>
+            <group id="ti.sdo.ipc.examples.root"/>
+        </templateGroup>
+        <templateGroup
+            id="ti.sdo.ipc.examples.root.omapl138"
+            description="OMAPL138-specific IPC Examples"
+            name="OMAPL138 Examples">
+            <property name="productType" value="com.ti.rtsc.IPC"/>
+            <group id="ti.sdo.ipc.examples.root"/>
+        </templateGroup>
+        <templateGroup
+            id="ti.sdo.ipc.examples.root.omap3530"
+            description="OMAP3530-specific IPC Examples"
+            name="OMAP3530 Examples">
+            <property name="productType" value="com.ti.rtsc.IPC"/>
+            <group id="ti.sdo.ipc.examples.root"/>
+        </templateGroup>
+        <templateGroup
+            id="ti.sdo.ipc.examples.root.omap4430"
+            description="OMAP4430-specific IPC Examples"
+            name="OMAP4430 Examples">
+            <property name="productType" value="com.ti.rtsc.IPC"/>
+            <group id="ti.sdo.ipc.examples.root"/>
+        </templateGroup>
+        <templateGroup
+            id="ti.sdo.ipc.examples.root.simArctic"
+            description="simArctic-specific IPC Examples"
+            name="simArctic Examples">
+            <property name="productType" value="com.ti.rtsc.IPC"/>
+            <group id="ti.sdo.ipc.examples.root"/>
+        </templateGroup>
+        <templateGroup
+            id="ti.sdo.ipc.examples.root.c6a8149"
+            description="C6A8149-specific IPC Examples"
+            name="C6A8149 Examples">
+            <property name="productType" value="com.ti.rtsc.IPC"/>
+            <group id="ti.sdo.ipc.examples.root"/>
+        </templateGroup>
+        <templateGroup
+            id="ti.sdo.ipc.examples.root.benchmarks"
+            description="Sample IPC applications that can be used to measure the performance of IPC components"
+            name="IPC Benchmarks">
+            <property name="productType" value="com.ti.rtsc.IPC"/>
+            <group id="ti.sdo.ipc.examples.root"/>
+        </templateGroup>
+
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARP32"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C2000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_0_title"
+                 id="com.ti.rtsc.IPC.example_0"
+                 linkerCommandFile=""
+                 description="%example_0_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root"/>
+                 <file path="resources/./io/stream.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./io/stream.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARP32"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C2000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_1_title"
+                 id="com.ti.rtsc.IPC.example_1"
+                 linkerCommandFile=""
+                 description="%example_1_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root"/>
+                 <file path="resources/./singlecore/notify_loopback.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./singlecore/notify_loopback.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARP32"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C2000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_2_title"
+                 id="com.ti.rtsc.IPC.example_2"
+                 linkerCommandFile=""
+                 description="%example_2_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root"/>
+                 <file path="resources/./singlecore/message.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./singlecore/message.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_3_title"
+                 id="com.ti.rtsc.IPC.example_3"
+                 linkerCommandFile=""
+                 description="%example_3_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="target" value="ti.targets.C64P"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evm6472.core0"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.c6472"/>
+                 <file path="resources/./multicore/evm647x/notify_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evm647x/notify_multicore.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_4_title"
+                 id="com.ti.rtsc.IPC.example_4"
+                 linkerCommandFile=""
+                 description="%example_4_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="target" value="ti.targets.C64P"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evm6472.core0"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.c6472"/>
+                 <file path="resources/./multicore/evm647x/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evm647x/message_multicore.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_5_title"
+                 id="com.ti.rtsc.IPC.example_5"
+                 linkerCommandFile=""
+                 description="%example_5_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="target" value="ti.targets.C64P"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evm6474.core0"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.c6474"/>
+                 <file path="resources/./multicore/evm647x/notify_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evm647x/notify_multicore.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_6_title"
+                 id="com.ti.rtsc.IPC.example_6"
+                 linkerCommandFile=""
+                 description="%example_6_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="target" value="ti.targets.C64P"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evm6474.core0"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.c6474"/>
+                 <file path="resources/./multicore/evm647x/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evm647x/message_multicore.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_7_title"
+                 id="com.ti.rtsc.IPC.example_7"
+                 linkerCommandFile=""
+                 description="%example_7_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="target" value="ti.targets.elf.C66"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evm6670.core0"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.c6670"/>
+                 <file path="resources/./multicore/evm667x/notify_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evm667x/notify_multicore.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_8_title"
+                 id="com.ti.rtsc.IPC.example_8"
+                 linkerCommandFile=""
+                 description="%example_8_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="target" value="ti.targets.elf.C66"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evm6670.core0"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.c6670"/>
+                 <file path="resources/./multicore/evm667x/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evm667x/message_multicore.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_9_title"
+                 id="com.ti.rtsc.IPC.example_9"
+                 linkerCommandFile=""
+                 description="%example_9_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="target" value="ti.targets.elf.C66"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evm6678.core0"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.c6678"/>
+                 <file path="resources/./multicore/evm667x/notify_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evm667x/notify_multicore.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_10_title"
+                 id="com.ti.rtsc.IPC.example_10"
+                 linkerCommandFile=""
+                 description="%example_10_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="target" value="ti.targets.elf.C66"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evm6678.core0"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.c6678"/>
+                 <file path="resources/./multicore/evm667x/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evm667x/message_multicore.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_11_title"
+                 id="com.ti.rtsc.IPC.example_11"
+                 linkerCommandFile=""
+                 description="%example_11_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="target" value="ti.targets.elf.C66"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evm6657.core0"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.c6657"/>
+                 <file path="resources/./multicore/evm667x/notify_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evm667x/notify_multicore.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_12_title"
+                 id="com.ti.rtsc.IPC.example_12"
+                 linkerCommandFile=""
+                 description="%example_12_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="target" value="ti.targets.elf.C66"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evm6657.core0"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.c6657"/>
+                 <file path="resources/./multicore/evm667x/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evm667x/message_multicore.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       deviceId=".*DM6446"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_13_title"
+                 id="com.ti.rtsc.IPC.example_13"
+                 linkerCommandFile=""
+                 description="%example_13_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmDM6446.arm"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.dm6446"/>
+                 <file path="resources/./multicore/evmDM6446/notify_arm.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmDM6446/notify_arm.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmDM6446/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       deviceId=".*DM6446"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_14_title"
+                 id="com.ti.rtsc.IPC.example_14"
+                 linkerCommandFile=""
+                 description="%example_14_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmDM6446.dsp"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.dm6446"/>
+                 <file path="resources/./multicore/evmDM6446/notify_dsp.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmDM6446/notify_dsp.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmDM6446/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       deviceId=".*DM6446"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_15_title"
+                 id="com.ti.rtsc.IPC.example_15"
+                 linkerCommandFile=""
+                 description="%example_15_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmDM6446.arm"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.dm6446"/>
+                 <file path="resources/./multicore/evmDM6446/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmDM6446/message_arm.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmDM6446/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       deviceId=".*DM6446"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_16_title"
+                 id="com.ti.rtsc.IPC.example_16"
+                 linkerCommandFile=""
+                 description="%example_16_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmDM6446.dsp"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.dm6446"/>
+                 <file path="resources/./multicore/evmDM6446/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmDM6446/message_dsp.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmDM6446/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       deviceId=".*F28M35.*"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_17_title"
+                 id="com.ti.rtsc.IPC.example_17"
+                 linkerCommandFile="ti/platforms/concertoM3/include/$DeviceId$.cmd"
+                 description="%example_17_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="target" value="ti.targets.arm.elf.M3"/>
+                 <property name="platform" value="ti.platforms.concertoM3:$DeviceId$"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.f28m35x"/>
+                 <file path="resources/./multicore/evmF28M35x/message_f28m35x.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmF28M35x/message_m3.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C2000"
+                       deviceId=".*F28M35.*"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_18_title"
+                 id="com.ti.rtsc.IPC.example_18"
+                 linkerCommandFile="ti/platforms/concertoC28/include/$DeviceId$.cmd"
+                 description="%example_18_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="target" value="ti.targets.C28_float"/>
+                 <property name="platform" value="ti.platforms.concertoC28:$DeviceId$"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.f28m35x"/>
+                 <file path="resources/./multicore/evmF28M35x/message_f28m35x.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmF28M35x/message_c28.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       deviceId=".*F28M35.*"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_19_title"
+                 id="com.ti.rtsc.IPC.example_19"
+                 linkerCommandFile="ti/platforms/concertoM3/include/$DeviceId$.cmd"
+                 description="%example_19_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="target" value="ti.targets.arm.elf.M3"/>
+                 <property name="platform" value="ti.platforms.concertoM3:$DeviceId$"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.f28m35x"/>
+                 <file path="resources/./multicore/evmF28M35x/notify_f28m35x.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmF28M35x/notify_m3.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C2000"
+                       deviceId=".*F28M35.*"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_20_title"
+                 id="com.ti.rtsc.IPC.example_20"
+                 linkerCommandFile="ti/platforms/concertoC28/include/$DeviceId$.cmd"
+                 description="%example_20_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="target" value="ti.targets.C28_float"/>
+                 <property name="platform" value="ti.platforms.concertoC28:$DeviceId$"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.f28m35x"/>
+                 <file path="resources/./multicore/evmF28M35x/notify_f28m35x.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmF28M35x/notify_c28.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_21_title"
+                 id="com.ti.rtsc.IPC.example_21"
+                 linkerCommandFile=""
+                 description="%example_21_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmTI811X.video"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.ti81xx"/>
+                 <file path="resources/./multicore/evmTI81XX/notify_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/notify_video.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_22_title"
+                 id="com.ti.rtsc.IPC.example_22"
+                 linkerCommandFile=""
+                 description="%example_22_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmTI811X.vpss"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.ti81xx"/>
+                 <file path="resources/./multicore/evmTI81XX/notify_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/notify_vpss.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_23_title"
+                 id="com.ti.rtsc.IPC.example_23"
+                 linkerCommandFile=""
+                 description="%example_23_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmTI811X.dsp"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.ti81xx"/>
+                 <file path="resources/./multicore/evmTI81XX/notify_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/notify_dsp.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+                <except>
+                    <context 
+                       deviceId=".*LM3.*"
+                    />
+               </except>
+            </applicability>
+             <template
+                 title="%example_24_title"
+                 id="com.ti.rtsc.IPC.example_24"
+                 linkerCommandFile=""
+                 description="%example_24_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmTI811X.host"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.ti81xx"/>
+                 <file path="resources/./multicore/evmTI81XX/notify_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/notify_host.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_25_title"
+                 id="com.ti.rtsc.IPC.example_25"
+                 linkerCommandFile=""
+                 description="%example_25_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmTI813X.video"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.ti81xx"/>
+                 <file path="resources/./multicore/evmTI81XX/notify_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/notify_video.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_26_title"
+                 id="com.ti.rtsc.IPC.example_26"
+                 linkerCommandFile=""
+                 description="%example_26_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmTI813X.vpss"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.ti81xx"/>
+                 <file path="resources/./multicore/evmTI81XX/notify_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/notify_vpss.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+                <except>
+                    <context 
+                       deviceId=".*LM3.*"
+                    />
+               </except>
+            </applicability>
+             <template
+                 title="%example_27_title"
+                 id="com.ti.rtsc.IPC.example_27"
+                 linkerCommandFile=""
+                 description="%example_27_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmTI813X.host"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.ti81xx"/>
+                 <file path="resources/./multicore/evmTI81XX/notify_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/notify_host.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_28_title"
+                 id="com.ti.rtsc.IPC.example_28"
+                 linkerCommandFile=""
+                 description="%example_28_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmTI816X.video"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.ti81xx"/>
+                 <file path="resources/./multicore/evmTI81XX/notify_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/notify_video.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_29_title"
+                 id="com.ti.rtsc.IPC.example_29"
+                 linkerCommandFile=""
+                 description="%example_29_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmTI816X.vpss"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.ti81xx"/>
+                 <file path="resources/./multicore/evmTI81XX/notify_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/notify_vpss.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_30_title"
+                 id="com.ti.rtsc.IPC.example_30"
+                 linkerCommandFile=""
+                 description="%example_30_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmTI816X.dsp"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.ti81xx"/>
+                 <file path="resources/./multicore/evmTI81XX/notify_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/notify_dsp.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+                <except>
+                    <context 
+                       deviceId=".*LM3.*"
+                    />
+               </except>
+            </applicability>
+             <template
+                 title="%example_31_title"
+                 id="com.ti.rtsc.IPC.example_31"
+                 linkerCommandFile=""
+                 description="%example_31_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmTI816X.host"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.ti81xx"/>
+                 <file path="resources/./multicore/evmTI81XX/notify_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/notify_host.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_32_title"
+                 id="com.ti.rtsc.IPC.example_32"
+                 linkerCommandFile=""
+                 description="%example_32_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmTI814X.video"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.ti81xx"/>
+                 <file path="resources/./multicore/evmTI81XX/notify_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/notify_video.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_33_title"
+                 id="com.ti.rtsc.IPC.example_33"
+                 linkerCommandFile=""
+                 description="%example_33_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmTI814X.vpss"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.ti81xx"/>
+                 <file path="resources/./multicore/evmTI81XX/notify_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/notify_vpss.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_34_title"
+                 id="com.ti.rtsc.IPC.example_34"
+                 linkerCommandFile=""
+                 description="%example_34_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmTI814X.dsp"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.ti81xx"/>
+                 <file path="resources/./multicore/evmTI81XX/notify_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/notify_dsp.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+                <except>
+                    <context 
+                       deviceId=".*LM3.*"
+                    />
+               </except>
+            </applicability>
+             <template
+                 title="%example_35_title"
+                 id="com.ti.rtsc.IPC.example_35"
+                 linkerCommandFile=""
+                 description="%example_35_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmTI814X.host"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.ti81xx"/>
+                 <file path="resources/./multicore/evmTI81XX/notify_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/notify_host.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_36_title"
+                 id="com.ti.rtsc.IPC.example_36"
+                 linkerCommandFile=""
+                 description="%example_36_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmTI811X.video"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.ti81xx"/>
+                 <file path="resources/./multicore/evmTI81XX/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/message_video.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_37_title"
+                 id="com.ti.rtsc.IPC.example_37"
+                 linkerCommandFile=""
+                 description="%example_37_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmTI811X.vpss"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.ti81xx"/>
+                 <file path="resources/./multicore/evmTI81XX/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/message_vpss.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_38_title"
+                 id="com.ti.rtsc.IPC.example_38"
+                 linkerCommandFile=""
+                 description="%example_38_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmTI811X.dsp"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.ti81xx"/>
+                 <file path="resources/./multicore/evmTI81XX/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/message_dsp.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+                <except>
+                    <context 
+                       deviceId=".*LM3.*"
+                    />
+               </except>
+            </applicability>
+             <template
+                 title="%example_39_title"
+                 id="com.ti.rtsc.IPC.example_39"
+                 linkerCommandFile=""
+                 description="%example_39_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmTI811X.host"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.ti81xx"/>
+                 <file path="resources/./multicore/evmTI81XX/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/message_host.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_40_title"
+                 id="com.ti.rtsc.IPC.example_40"
+                 linkerCommandFile=""
+                 description="%example_40_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmTI813X.video"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.ti81xx"/>
+                 <file path="resources/./multicore/evmTI81XX/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/message_video.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_41_title"
+                 id="com.ti.rtsc.IPC.example_41"
+                 linkerCommandFile=""
+                 description="%example_41_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmTI813X.vpss"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.ti81xx"/>
+                 <file path="resources/./multicore/evmTI81XX/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/message_vpss.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+                <except>
+                    <context 
+                       deviceId=".*LM3.*"
+                    />
+               </except>
+            </applicability>
+             <template
+                 title="%example_42_title"
+                 id="com.ti.rtsc.IPC.example_42"
+                 linkerCommandFile=""
+                 description="%example_42_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmTI813X.host"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.ti81xx"/>
+                 <file path="resources/./multicore/evmTI81XX/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/message_host.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_43_title"
+                 id="com.ti.rtsc.IPC.example_43"
+                 linkerCommandFile=""
+                 description="%example_43_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmTI816X.video"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.ti81xx"/>
+                 <file path="resources/./multicore/evmTI81XX/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/message_video.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_44_title"
+                 id="com.ti.rtsc.IPC.example_44"
+                 linkerCommandFile=""
+                 description="%example_44_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmTI816X.vpss"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.ti81xx"/>
+                 <file path="resources/./multicore/evmTI81XX/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/message_vpss.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_45_title"
+                 id="com.ti.rtsc.IPC.example_45"
+                 linkerCommandFile=""
+                 description="%example_45_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmTI816X.dsp"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.ti81xx"/>
+                 <file path="resources/./multicore/evmTI81XX/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/message_dsp.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+                <except>
+                    <context 
+                       deviceId=".*LM3.*"
+                    />
+               </except>
+            </applicability>
+             <template
+                 title="%example_46_title"
+                 id="com.ti.rtsc.IPC.example_46"
+                 linkerCommandFile=""
+                 description="%example_46_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmTI816X.host"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.ti81xx"/>
+                 <file path="resources/./multicore/evmTI81XX/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/message_host.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_47_title"
+                 id="com.ti.rtsc.IPC.example_47"
+                 linkerCommandFile=""
+                 description="%example_47_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmTI814X.video"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.ti81xx"/>
+                 <file path="resources/./multicore/evmTI81XX/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/message_video.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_48_title"
+                 id="com.ti.rtsc.IPC.example_48"
+                 linkerCommandFile=""
+                 description="%example_48_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmTI814X.vpss"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.ti81xx"/>
+                 <file path="resources/./multicore/evmTI81XX/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/message_vpss.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_49_title"
+                 id="com.ti.rtsc.IPC.example_49"
+                 linkerCommandFile=""
+                 description="%example_49_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmTI814X.dsp"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.ti81xx"/>
+                 <file path="resources/./multicore/evmTI81XX/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/message_dsp.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+                <except>
+                    <context 
+                       deviceId=".*LM3.*"
+                    />
+               </except>
+            </applicability>
+             <template
+                 title="%example_50_title"
+                 id="com.ti.rtsc.IPC.example_50"
+                 linkerCommandFile=""
+                 description="%example_50_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmTI814X.host"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.ti81xx"/>
+                 <file path="resources/./multicore/evmTI81XX/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/message_host.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmTI81XX/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_51_title"
+                 id="com.ti.rtsc.IPC.example_51"
+                 linkerCommandFile=""
+                 description="%example_51_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmDA830.arm"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.da830"/>
+                 <file path="resources/./multicore/evmOMAPL138/notify_arm.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmOMAPL138/notify_arm.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmOMAPL138/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_52_title"
+                 id="com.ti.rtsc.IPC.example_52"
+                 linkerCommandFile=""
+                 description="%example_52_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmDA830.dsp"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.da830"/>
+                 <file path="resources/./multicore/evmOMAPL138/notify_dsp.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmOMAPL138/notify_dsp.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmOMAPL138/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_53_title"
+                 id="com.ti.rtsc.IPC.example_53"
+                 linkerCommandFile=""
+                 description="%example_53_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmOMAPL138.arm"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.omapl138"/>
+                 <file path="resources/./multicore/evmOMAPL138/notify_arm.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmOMAPL138/notify_arm.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmOMAPL138/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_54_title"
+                 id="com.ti.rtsc.IPC.example_54"
+                 linkerCommandFile=""
+                 description="%example_54_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmOMAPL138.dsp"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.omapl138"/>
+                 <file path="resources/./multicore/evmOMAPL138/notify_dsp.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmOMAPL138/notify_dsp.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmOMAPL138/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_55_title"
+                 id="com.ti.rtsc.IPC.example_55"
+                 linkerCommandFile=""
+                 description="%example_55_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmDA830.arm"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.da830"/>
+                 <file path="resources/./multicore/evmOMAPL138/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmOMAPL138/message_arm.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmOMAPL138/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_56_title"
+                 id="com.ti.rtsc.IPC.example_56"
+                 linkerCommandFile=""
+                 description="%example_56_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmDA830.dsp"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.da830"/>
+                 <file path="resources/./multicore/evmOMAPL138/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmOMAPL138/message_dsp.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmOMAPL138/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_57_title"
+                 id="com.ti.rtsc.IPC.example_57"
+                 linkerCommandFile=""
+                 description="%example_57_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmOMAPL138.arm"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.omapl138"/>
+                 <file path="resources/./multicore/evmOMAPL138/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmOMAPL138/message_arm.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmOMAPL138/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_58_title"
+                 id="com.ti.rtsc.IPC.example_58"
+                 linkerCommandFile=""
+                 description="%example_58_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmOMAPL138.dsp"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.omapl138"/>
+                 <file path="resources/./multicore/evmOMAPL138/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmOMAPL138/message_dsp.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmOMAPL138/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+                <except>
+                    <context 
+                       deviceId=".*LM3.*"
+                    />
+               </except>
+            </applicability>
+             <template
+                 title="%example_59_title"
+                 id="com.ti.rtsc.IPC.example_59"
+                 linkerCommandFile=""
+                 description="%example_59_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.omap3530.host"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.omap3530"/>
+                 <file path="resources/./multicore/omap3530/notify_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/omap3530/notify_host.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/omap3530/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_60_title"
+                 id="com.ti.rtsc.IPC.example_60"
+                 linkerCommandFile=""
+                 description="%example_60_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.omap3530.dsp"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.omap3530"/>
+                 <file path="resources/./multicore/omap3530/notify_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/omap3530/notify_dsp.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/omap3530/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+                <except>
+                    <context 
+                       deviceId=".*LM3.*"
+                    />
+               </except>
+            </applicability>
+             <template
+                 title="%example_61_title"
+                 id="com.ti.rtsc.IPC.example_61"
+                 linkerCommandFile=""
+                 description="%example_61_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.omap3530.host"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.omap3530"/>
+                 <file path="resources/./multicore/omap3530/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/omap3530/message_host.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/omap3530/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_62_title"
+                 id="com.ti.rtsc.IPC.example_62"
+                 linkerCommandFile=""
+                 description="%example_62_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.omap3530.dsp"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.omap3530"/>
+                 <file path="resources/./multicore/omap3530/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/omap3530/message_dsp.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/omap3530/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_63_title"
+                 id="com.ti.rtsc.IPC.example_63"
+                 linkerCommandFile=""
+                 description="%example_63_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.omap4430.core0"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.omap4430"/>
+                 <file path="resources/./multicore/omap4430/notify_core0.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/omap4430/notify_core0.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/omap4430/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_64_title"
+                 id="com.ti.rtsc.IPC.example_64"
+                 linkerCommandFile=""
+                 description="%example_64_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.omap4430.core1"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.omap4430"/>
+                 <file path="resources/./multicore/omap4430/notify_core1.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/omap4430/notify_core1.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/omap4430/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_65_title"
+                 id="com.ti.rtsc.IPC.example_65"
+                 linkerCommandFile=""
+                 description="%example_65_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="target" value="ti.targets.elf.C64T"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.omap4430.dsp"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.omap4430"/>
+                 <file path="resources/./multicore/omap4430/notify_dsp.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/omap4430/notify_dsp.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/omap4430/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_66_title"
+                 id="com.ti.rtsc.IPC.example_66"
+                 linkerCommandFile=""
+                 description="%example_66_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.omap4430.core0"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.omap4430"/>
+                 <file path="resources/./multicore/omap4430/message_core0.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/omap4430/message_core0.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/omap4430/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_67_title"
+                 id="com.ti.rtsc.IPC.example_67"
+                 linkerCommandFile=""
+                 description="%example_67_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.omap4430.core1"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.omap4430"/>
+                 <file path="resources/./multicore/omap4430/message_core1.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/omap4430/message_core1.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/omap4430/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_68_title"
+                 id="com.ti.rtsc.IPC.example_68"
+                 linkerCommandFile=""
+                 description="%example_68_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="target" value="ti.targets.elf.C64T"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.omap4430.dsp"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.omap4430"/>
+                 <file path="resources/./multicore/omap4430/message_dsp.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/omap4430/message_dsp.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/omap4430/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="EVE"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_69_title"
+                 id="com.ti.rtsc.IPC.example_69"
+                 linkerCommandFile=""
+                 description="%example_69_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.simArctic.arp32"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.simArctic"/>
+                 <file path="resources/./multicore/simArctic/notify_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/simArctic/notify_arp32.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/simArctic/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_70_title"
+                 id="com.ti.rtsc.IPC.example_70"
+                 linkerCommandFile=""
+                 description="%example_70_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.simArctic.dsp"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.simArctic"/>
+                 <file path="resources/./multicore/simArctic/notify_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/simArctic/notify_dsp.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/simArctic/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="EVE"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_71_title"
+                 id="com.ti.rtsc.IPC.example_71"
+                 linkerCommandFile=""
+                 description="%example_71_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.simArctic.arp32"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.simArctic"/>
+                 <file path="resources/./multicore/simArctic/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/simArctic/message_arp32.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/simArctic/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_72_title"
+                 id="com.ti.rtsc.IPC.example_72"
+                 linkerCommandFile=""
+                 description="%example_72_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.simArctic.dsp"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.simArctic"/>
+                 <file path="resources/./multicore/simArctic/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/simArctic/message_dsp.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/simArctic/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_73_title"
+                 id="com.ti.rtsc.IPC.example_73"
+                 linkerCommandFile=""
+                 description="%example_73_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmC6A8149.dsp"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.c6a8149"/>
+                 <file path="resources/./multicore/evmC6A8149/notify_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmC6A8149/notify_dsp.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmC6A8149/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="EVE"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_74_title"
+                 id="com.ti.rtsc.IPC.example_74"
+                 linkerCommandFile=""
+                 description="%example_74_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmC6A8149.eve"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.c6a8149"/>
+                 <file path="resources/./multicore/evmC6A8149/notify_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmC6A8149/notify_eve.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmC6A8149/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_75_title"
+                 id="com.ti.rtsc.IPC.example_75"
+                 linkerCommandFile=""
+                 description="%example_75_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmC6A8149.video"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.c6a8149"/>
+                 <file path="resources/./multicore/evmC6A8149/notify_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmC6A8149/notify_video.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmC6A8149/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_76_title"
+                 id="com.ti.rtsc.IPC.example_76"
+                 linkerCommandFile=""
+                 description="%example_76_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmC6A8149.vpss"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.c6a8149"/>
+                 <file path="resources/./multicore/evmC6A8149/notify_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmC6A8149/notify_vpss.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmC6A8149/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+                <except>
+                    <context 
+                       deviceId=".*LM3.*"
+                    />
+               </except>
+            </applicability>
+             <template
+                 title="%example_77_title"
+                 id="com.ti.rtsc.IPC.example_77"
+                 linkerCommandFile=""
+                 description="%example_77_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmC6A8149.host"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.c6a8149"/>
+                 <file path="resources/./multicore/evmC6A8149/notify_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmC6A8149/notify_host.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmC6A8149/notify_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_78_title"
+                 id="com.ti.rtsc.IPC.example_78"
+                 linkerCommandFile=""
+                 description="%example_78_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmC6A8149.dsp"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.c6a8149"/>
+                 <file path="resources/./multicore/evmC6A8149/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmC6A8149/message_dsp.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmC6A8149/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="EVE"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_79_title"
+                 id="com.ti.rtsc.IPC.example_79"
+                 linkerCommandFile=""
+                 description="%example_79_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmC6A8149.eve"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.c6a8149"/>
+                 <file path="resources/./multicore/evmC6A8149/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmC6A8149/message_eve.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmC6A8149/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_80_title"
+                 id="com.ti.rtsc.IPC.example_80"
+                 linkerCommandFile=""
+                 description="%example_80_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmC6A8149.video"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.c6a8149"/>
+                 <file path="resources/./multicore/evmC6A8149/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmC6A8149/message_video.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmC6A8149/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_81_title"
+                 id="com.ti.rtsc.IPC.example_81"
+                 linkerCommandFile=""
+                 description="%example_81_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmC6A8149.vpss"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.c6a8149"/>
+                 <file path="resources/./multicore/evmC6A8149/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmC6A8149/message_vpss.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmC6A8149/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+                <except>
+                    <context 
+                       deviceId=".*LM3.*"
+                    />
+               </except>
+            </applicability>
+             <template
+                 title="%example_82_title"
+                 id="com.ti.rtsc.IPC.example_82"
+                 linkerCommandFile=""
+                 description="%example_82_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="platform" value="ti.sdo.ipc.examples.platforms.evmC6A8149.host"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.c6a8149"/>
+                 <file path="resources/./multicore/evmC6A8149/message_multicore.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmC6A8149/message_host.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./multicore/evmC6A8149/message_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+                <except>
+                    <context 
+                       deviceId=".*F28M35.*"
+                    />
+               </except>
+            </applicability>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_83_title"
+                 id="com.ti.rtsc.IPC.example_83"
+                 linkerCommandFile=""
+                 description="%example_83_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.benchmarks"/>
+                 <file path="resources/./benchmarks/messageq_latency.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./benchmarks/messageq_latency.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./benchmarks/bench_common.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./benchmarks/bench_common.h" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./benchmarks/bench_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./benchmarks/readme.txt" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+        <templateSet>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="ARM"
+                       toolChain="TI"
+                    />
+               </when>
+                <except>
+                    <context 
+                       deviceId=".*F28M35.*"
+                    />
+               </except>
+            </applicability>
+            <applicability>
+                <when>
+                    <context
+                       deviceFamily="C6000"
+                       toolChain="TI"
+                    />
+               </when>
+            </applicability>
+             <template
+                 title="%example_84_title"
+                 id="com.ti.rtsc.IPC.example_84"
+                 linkerCommandFile=""
+                 description="%example_84_description">
+                 <property name="type" value="rtsc"/>
+                 <property name="products" value="com.ti.rtsc.IPC;com.ti.rtsc.SYSBIOS;com.ti.rtsc.IPC"/>
+                 <property name="buildProfile" value="release"/>
+                 <property name="isHybrid" value="true"/>
+                 <property name="configuroOptions" value="--compileOptions &quot;-g --optimize_with_debug&quot;"/>
+                 <group id="ti.sdo.ipc.examples.root.benchmarks"/>
+                 <file path="resources/./benchmarks/notify_latency.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./benchmarks/notify_latency.cfg" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./benchmarks/bench_common.c" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./benchmarks/bench_common.h" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./benchmarks/bench_common.cfg.xs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./benchmarks/readme.txt" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+                 <file path="resources/./makefile.defs" openOnCreation="false" excludeFromBuild="false">
+                 </file>
+             </template>
+        </templateSet>
+    </extension>
+
+
+</plugin>

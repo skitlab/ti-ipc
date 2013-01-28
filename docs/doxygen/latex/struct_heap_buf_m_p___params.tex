@@ -1,0 +1,86 @@
+\subsection{Heap\-Buf\-M\-P\-\_\-\-Params Struct Reference}
+\label{struct_heap_buf_m_p___params}\index{Heap\-Buf\-M\-P\-\_\-\-Params@{Heap\-Buf\-M\-P\-\_\-\-Params}}
+
+
+Structure defining parameters for the Heap\-Buf\-M\-P module.  
+
+
+
+
+{\ttfamily \#include $<$Heap\-Buf\-M\-P.\-h$>$}
+
+\subsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+String \hyperlink{struct_heap_buf_m_p___params_aaefdf87660dc3b0a57d33f10791dcc02}{name}
+\item 
+U\-Int16 \hyperlink{struct_heap_buf_m_p___params_a22f33c326f94898613b8d40335be4eee}{region\-Id}
+\item 
+Size\-T \hyperlink{struct_heap_buf_m_p___params_afc5038de12c1e9bf75d642c1081b74ac}{block\-Size}
+\item 
+U\-Int \hyperlink{struct_heap_buf_m_p___params_a4e85da751892052ed1fddc3376f64d9d}{num\-Blocks}
+\item 
+Size\-T \hyperlink{struct_heap_buf_m_p___params_a0b16778e64598aca34ee44c746374203}{align}
+\item 
+Bool \hyperlink{struct_heap_buf_m_p___params_a1ebbb52b6985282c23f534da4ac27eaa}{exact}
+\item 
+\hyperlink{_gate_m_p_8h_ad5bb259f928a14e98d973334bc60ebb3}{Gate\-M\-P\-\_\-\-Handle} \hyperlink{struct_heap_buf_m_p___params_a3b1ef95defb6c91953bd53050489644e}{gate}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+Structure defining parameters for the Heap\-Buf\-M\-P module. 
+
+\subsubsection{Field Documentation}
+\index{Heap\-Buf\-M\-P\-\_\-\-Params@{Heap\-Buf\-M\-P\-\_\-\-Params}!name@{name}}
+\index{name@{name}!HeapBufMP_Params@{Heap\-Buf\-M\-P\-\_\-\-Params}}
+\paragraph[{name}]{\setlength{\rightskip}{0pt plus 5cm}String Heap\-Buf\-M\-P\-\_\-\-Params\-::name}\label{struct_heap_buf_m_p___params_aaefdf87660dc3b0a57d33f10791dcc02}
+Name of this instance. \begin{DoxyVerb}   The name (if not NULL) must be unique among all HeapBufMP
+   instances in the entire system.  When creating a new
+   heap, it is necessary to supply an instance name.
+
+   The name does not have to be persistent.  The supplied string is copied
+   into persistent memory.\end{DoxyVerb}
+ \index{Heap\-Buf\-M\-P\-\_\-\-Params@{Heap\-Buf\-M\-P\-\_\-\-Params}!region\-Id@{region\-Id}}
+\index{region\-Id@{region\-Id}!HeapBufMP_Params@{Heap\-Buf\-M\-P\-\_\-\-Params}}
+\paragraph[{region\-Id}]{\setlength{\rightskip}{0pt plus 5cm}U\-Int16 Heap\-Buf\-M\-P\-\_\-\-Params\-::region\-Id}\label{struct_heap_buf_m_p___params_a22f33c326f94898613b8d40335be4eee}
+Shared region I\-D \begin{DoxyVerb}   The index corresponding to the shared region from which shared memory
+   will be allocated.\end{DoxyVerb}
+ \index{Heap\-Buf\-M\-P\-\_\-\-Params@{Heap\-Buf\-M\-P\-\_\-\-Params}!block\-Size@{block\-Size}}
+\index{block\-Size@{block\-Size}!HeapBufMP_Params@{Heap\-Buf\-M\-P\-\_\-\-Params}}
+\paragraph[{block\-Size}]{\setlength{\rightskip}{0pt plus 5cm}Size\-T Heap\-Buf\-M\-P\-\_\-\-Params\-::block\-Size}\label{struct_heap_buf_m_p___params_afc5038de12c1e9bf75d642c1081b74ac}
+Size (in M\-A\-Us) of each block.
+
+Heap\-Buf\-M\-P will round the block\-Size up to the nearest multiple of the alignment, so the actual block\-Size may be larger. When creating a Heap\-Buf\-M\-P dynamically, this needs to be taken into account to determine the proper buffer size to pass in.
+
+Required parameter.
+
+The default size of the blocks is 0 M\-A\-Us. \index{Heap\-Buf\-M\-P\-\_\-\-Params@{Heap\-Buf\-M\-P\-\_\-\-Params}!num\-Blocks@{num\-Blocks}}
+\index{num\-Blocks@{num\-Blocks}!HeapBufMP_Params@{Heap\-Buf\-M\-P\-\_\-\-Params}}
+\paragraph[{num\-Blocks}]{\setlength{\rightskip}{0pt plus 5cm}U\-Int Heap\-Buf\-M\-P\-\_\-\-Params\-::num\-Blocks}\label{struct_heap_buf_m_p___params_a4e85da751892052ed1fddc3376f64d9d}
+Number of fixed-\/size blocks. \begin{DoxyVerb}    This is a required parameter for all new HeapBufMP instances.\end{DoxyVerb}
+ \index{Heap\-Buf\-M\-P\-\_\-\-Params@{Heap\-Buf\-M\-P\-\_\-\-Params}!align@{align}}
+\index{align@{align}!HeapBufMP_Params@{Heap\-Buf\-M\-P\-\_\-\-Params}}
+\paragraph[{align}]{\setlength{\rightskip}{0pt plus 5cm}Size\-T Heap\-Buf\-M\-P\-\_\-\-Params\-::align}\label{struct_heap_buf_m_p___params_a0b16778e64598aca34ee44c746374203}
+Alignment (in M\-A\-Us) of each block. \begin{DoxyVerb}   The alignment must be a power of 2. If the value 0 is specified,
+   the value will be changed to meet minimum structure alignment 
+   requirements and the cache alignment size of the region in which the
+   heap will be placed.  Therefore, the actual alignment may be larger.
+
+   The default alignment is 0.\end{DoxyVerb}
+ \index{Heap\-Buf\-M\-P\-\_\-\-Params@{Heap\-Buf\-M\-P\-\_\-\-Params}!exact@{exact}}
+\index{exact@{exact}!HeapBufMP_Params@{Heap\-Buf\-M\-P\-\_\-\-Params}}
+\paragraph[{exact}]{\setlength{\rightskip}{0pt plus 5cm}Bool Heap\-Buf\-M\-P\-\_\-\-Params\-::exact}\label{struct_heap_buf_m_p___params_a1ebbb52b6985282c23f534da4ac27eaa}
+Use exact matching \begin{DoxyVerb}   Setting this flag will allow allocation only if the requested size
+   is equal to (rather than less than or equal to) the buffer's block
+   size.\end{DoxyVerb}
+ \index{Heap\-Buf\-M\-P\-\_\-\-Params@{Heap\-Buf\-M\-P\-\_\-\-Params}!gate@{gate}}
+\index{gate@{gate}!HeapBufMP_Params@{Heap\-Buf\-M\-P\-\_\-\-Params}}
+\paragraph[{gate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Gate\-M\-P\-\_\-\-Handle} Heap\-Buf\-M\-P\-\_\-\-Params\-::gate}\label{struct_heap_buf_m_p___params_a3b1ef95defb6c91953bd53050489644e}
+Gate\-M\-P used for critical region management of the shared memory \begin{DoxyVerb}   Using the default value of NULL will result in use of the GateMP
+   system gate for context protection.\end{DoxyVerb}
+ 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_heap_buf_m_p_8h}{Heap\-Buf\-M\-P.\-h}\end{DoxyCompactItemize}

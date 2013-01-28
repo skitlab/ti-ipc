@@ -1,0 +1,42 @@
+\subsection{Heap\-Multi\-Buf\-M\-P\-\_\-\-Bucket Struct Reference}
+\label{struct_heap_multi_buf_m_p___bucket}\index{Heap\-Multi\-Buf\-M\-P\-\_\-\-Bucket@{Heap\-Multi\-Buf\-M\-P\-\_\-\-Bucket}}
+
+
+Structure for bucket configuration.  
+
+
+
+
+{\ttfamily \#include $<$Heap\-Multi\-Buf\-M\-P.\-h$>$}
+
+\subsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+Size\-T \hyperlink{struct_heap_multi_buf_m_p___bucket_a9da93c2ee9285ee0c68781f1f31d5097}{block\-Size}
+\item 
+U\-Int \hyperlink{struct_heap_multi_buf_m_p___bucket_aae58960c7220dbf07d8eb41f09083b1c}{num\-Blocks}
+\item 
+Size\-T \hyperlink{struct_heap_multi_buf_m_p___bucket_a0ca1421d9f65451f797e07811cefd80a}{align}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+Structure for bucket configuration. 
+
+An array of buckets is a required parameter to create any Heap\-Multi\-Buf\-M\-P instance. The fields of each bucket correspond to the attributes of each buffer in the Heap\-Multi\-Buf\-M\-P. The actual block sizes and alignments may be adjusted per the process described at \hyperlink{struct_heap_multi_buf_m_p___params_ac130e0ad7fad30d9c759af90984dee8b}{Heap\-Multi\-Buf\-M\-P\-\_\-\-Params\-::bucket\-Entries}. 
+
+\subsubsection{Field Documentation}
+\index{Heap\-Multi\-Buf\-M\-P\-\_\-\-Bucket@{Heap\-Multi\-Buf\-M\-P\-\_\-\-Bucket}!block\-Size@{block\-Size}}
+\index{block\-Size@{block\-Size}!HeapMultiBufMP_Bucket@{Heap\-Multi\-Buf\-M\-P\-\_\-\-Bucket}}
+\paragraph[{block\-Size}]{\setlength{\rightskip}{0pt plus 5cm}Size\-T Heap\-Multi\-Buf\-M\-P\-\_\-\-Bucket\-::block\-Size}\label{struct_heap_multi_buf_m_p___bucket_a9da93c2ee9285ee0c68781f1f31d5097}
+Size of each block in this bucket (in M\-A\-D\-Us) \index{Heap\-Multi\-Buf\-M\-P\-\_\-\-Bucket@{Heap\-Multi\-Buf\-M\-P\-\_\-\-Bucket}!num\-Blocks@{num\-Blocks}}
+\index{num\-Blocks@{num\-Blocks}!HeapMultiBufMP_Bucket@{Heap\-Multi\-Buf\-M\-P\-\_\-\-Bucket}}
+\paragraph[{num\-Blocks}]{\setlength{\rightskip}{0pt plus 5cm}U\-Int Heap\-Multi\-Buf\-M\-P\-\_\-\-Bucket\-::num\-Blocks}\label{struct_heap_multi_buf_m_p___bucket_aae58960c7220dbf07d8eb41f09083b1c}
+Number of blocks of this size \index{Heap\-Multi\-Buf\-M\-P\-\_\-\-Bucket@{Heap\-Multi\-Buf\-M\-P\-\_\-\-Bucket}!align@{align}}
+\index{align@{align}!HeapMultiBufMP_Bucket@{Heap\-Multi\-Buf\-M\-P\-\_\-\-Bucket}}
+\paragraph[{align}]{\setlength{\rightskip}{0pt plus 5cm}Size\-T Heap\-Multi\-Buf\-M\-P\-\_\-\-Bucket\-::align}\label{struct_heap_multi_buf_m_p___bucket_a0ca1421d9f65451f797e07811cefd80a}
+Alignment of each block (in M\-A\-D\-Us) 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_heap_multi_buf_m_p_8h}{Heap\-Multi\-Buf\-M\-P.\-h}\end{DoxyCompactItemize}

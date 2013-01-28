@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>module ti.sdo.ipc.gates.GateHWSpinlock</title>
+<meta name="googlebot" content="noindex,nofollow">
+<link rel="stylesheet" type="text/css" href="../../../../src.css"/>
+</head>
+<body>
+<pre class=src>
+     1    <span class="comment">/* --COPYRIGHT--,BSD
+</span>     2    <span class="comment"> * Copyright (c) $(CPYYEAR), Texas Instruments Incorporated
+</span>     3    <span class="comment"> * All rights reserved.
+</span>     4    <span class="comment"> *
+</span>     5    <span class="comment"> * Redistribution and use in source and binary forms, with or without
+</span>     6    <span class="comment"> * modification, are permitted provided that the following conditions
+</span>     7    <span class="comment"> * are met:
+</span>     8    <span class="comment"> *
+</span>     9    <span class="comment"> * *  Redistributions of source code must retain the above copyright
+</span>    10    <span class="comment"> *    notice, this list of conditions and the following disclaimer.
+</span>    11    <span class="comment"> *
+</span>    12    <span class="comment"> * *  Redistributions in binary form must reproduce the above copyright
+</span>    13    <span class="comment"> *    notice, this list of conditions and the following disclaimer in the
+</span>    14    <span class="comment"> *    documentation and/or other materials provided with the distribution.
+</span>    15    <span class="comment"> *
+</span>    16    <span class="comment"> * *  Neither the name of Texas Instruments Incorporated nor the names of
+</span>    17    <span class="comment"> *    its contributors may be used to endorse or promote products derived
+</span>    18    <span class="comment"> *    from this software without specific prior written permission.
+</span>    19    <span class="comment"> *
+</span>    20    <span class="comment"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+</span>    21    <span class="comment"> * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+</span>    22    <span class="comment"> * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+</span>    23    <span class="comment"> * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+</span>    24    <span class="comment"> * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+</span>    25    <span class="comment"> * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+</span>    26    <span class="comment"> * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+</span>    27    <span class="comment"> * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+</span>    28    <span class="comment"> * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+</span>    29    <span class="comment"> * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+</span>    30    <span class="comment"> * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</span>    31    <span class="comment"> * --/COPYRIGHT--*/</span>
+    32    <span class="comment">/*
+</span>    33    <span class="comment"> *  ======== GateHWSpinlock.xdc ========
+</span>    34    <span class="comment"> *
+</span>    35    <span class="comment"> *! Revision History
+</span>    36    <span class="comment"> *! ================
+</span>    37    <span class="comment"> *! 25-Apr-2010 skp     locks are released during Module_startup
+</span>    38    <span class="comment"> *! 28-Jun-2009 skp     Delegates collapsed into frontend
+</span>    39    <span class="comment"> *! 17-Jun-2009 skp     ROV views added
+</span>    40    <span class="comment"> *! 06-May-2009 skp     created from GateHWSem
+</span>    41    <span class="comment"> */</span>
+    42    
+    43    <span class=key>package</span> ti.sdo.ipc.gates;
+    44    
+    45    import xdc.runtime.Error;
+    46    import xdc.runtime.Assert;
+    47    import xdc.runtime.IGateProvider;
+    48    import xdc.runtime.Diags;
+    49    import xdc.runtime.Log;
+    50    
+    51    import ti.sdo.ipc.interfaces.IGateMPSupport;
+    52    
+    53    <span class="xdoc">/*!
+</span>    54    <span class="xdoc"> *  ======== GateHWSpinlock ========
+</span>    55    <span class="xdoc"> *  Multiprocessor gate that utilizes a hardware spinlock
+</span>    56    <span class="xdoc"> */</span>
+    57    @ModuleStartup
+    58    
+    59    <span class=key>module</span> GateHWSpinlock <span class=key>inherits</span> IGateMPSupport
+    60    {
+    61        <span class="xdoc">/*!
+</span>    62    <span class="xdoc">     *  ======== BasicView ========
+</span>    63    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>    64    <span class="xdoc">     */</span>
+    65        <span class=key>metaonly</span> <span class=key>struct</span> BasicView {
+    66            UInt    lockNum;
+    67            UInt    nested;        
+    68        }
+    69    
+    70        <span class="xdoc">/*!
+</span>    71    <span class="xdoc">     *  ======== rovViewInfo ========
+</span>    72    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>    73    <span class="xdoc">     */</span>
+    74        @Facet
+    75        <span class=key>metaonly</span> <span class=key>config</span> xdc.rov.ViewInfo.Instance rovViewInfo = 
+    76            xdc.rov.ViewInfo.create({
+    77                viewMap: [
+    78                    [<span class="string">'Basic'</span>, 
+    79                        {
+    80                            type: xdc.rov.ViewInfo.INSTANCE,
+    81                            viewInitFxn: <span class="string">'viewInitBasic'</span>,
+    82                            structName: <span class="string">'BasicView'</span>
+    83                        }
+    84                    ],
+    85                ]
+    86            });
+    87    
+    88        <span class="xdoc">/*!
+</span>    89    <span class="xdoc">     *  ======== LM_enter ========
+</span>    90    <span class="xdoc">     *  Logged on gate enter
+</span>    91    <span class="xdoc">     */</span>
+    92        <span class=key>config</span> Log.Event LM_enter = {
+    93            mask: Diags.USER1,
+    94            msg: <span class="string">"LM_enter: Gate (lockNum = %d) entered, returning key = %d"</span>
+    95        };
+    96    
+    97        <span class="xdoc">/*!
+</span>    98    <span class="xdoc">     *  ======== LM_leave ========
+</span>    99    <span class="xdoc">     *  Logged on gate leave
+</span>   100    <span class="xdoc">     */</span>
+   101        <span class=key>config</span> Log.Event LM_leave = {
+   102            mask: Diags.USER1,
+   103            msg: <span class="string">"LM_leave: Gate (lockNum = %d) left using key = %d"</span>
+   104        };
+   105    
+   106        <span class="xdoc">/*!
+</span>   107    <span class="xdoc">     *  ======== LM_create ========
+</span>   108    <span class="xdoc">     *  Logged on gate create
+</span>   109    <span class="xdoc">     */</span>
+   110        <span class=key>config</span> Log.Event LM_create = {
+   111            mask: Diags.USER1,
+   112            msg: <span class="string">"LM_create: Gate (lockNum = %d) created"</span>
+   113        };
+   114    
+   115        <span class="xdoc">/*!
+</span>   116    <span class="xdoc">     *  ======== LM_open ========
+</span>   117    <span class="xdoc">     *  Logged on gate open
+</span>   118    <span class="xdoc">     */</span>
+   119        <span class=key>config</span> Log.Event LM_open = {
+   120            mask: Diags.USER1,
+   121            msg: <span class="string">"LM_open: Remote gate (lockNum = %d) opened"</span>
+   122        };
+   123    
+   124        <span class="xdoc">/*!
+</span>   125    <span class="xdoc">     *  ======== LM_delete ========
+</span>   126    <span class="xdoc">     *  Logged on gate deletion
+</span>   127    <span class="xdoc">     */</span>
+   128        <span class=key>config</span> Log.Event LM_delete = {
+   129            mask: Diags.USER1,
+   130            msg: <span class="string">"LM_delete: Gate (lockNum = %d) deleted"</span>
+   131        };
+   132    
+   133        <span class="xdoc">/*!
+</span>   134    <span class="xdoc">     *  ======== LM_close ========
+</span>   135    <span class="xdoc">     *  Logged on gate close
+</span>   136    <span class="xdoc">     */</span>
+   137        <span class=key>config</span> Log.Event LM_close = {
+   138            mask: Diags.USER1,
+   139            msg: <span class="string">"LM_close: Gate (lockNum = %d) closed"</span>
+   140        };
+   141        
+   142        <span class="xdoc">/*!
+</span>   143    <span class="xdoc">     *  ======== A_invSpinLockNum ========
+</span>   144    <span class="xdoc">     *  Assert raised when provided lockNum is invalid for the relevant device
+</span>   145    <span class="xdoc">     */</span>
+   146        <span class=key>config</span> Assert.Id A_invSpinLockNum  = {
+   147            msg: <span class="string">"A_invSpinLockNum: Invalid hardware spinlock number"</span>
+   148        };
+   149        
+   150        <span class="xdoc">/*! Device-specific base address for HW Semaphore subsystem */</span>
+   151        <span class=key>config</span> Ptr baseAddr = <span class=key>null</span>;
+   152        
+   153        <span class="xdoc">/*!
+</span>   154    <span class="xdoc">     *  ======== setReserved ========
+</span>   155    <span class="xdoc">     *  Reserve a HW spinlock for use outside of IPC.
+</span>   156    <span class="xdoc">     * 
+</span>   157    <span class="xdoc">     *  GateMP will, by default, manage all HW spinlocks on the device unless
+</span>   158    <span class="xdoc">     *  this API is used to set aside specific spinlocks for use outside
+</span>   159    <span class="xdoc">     *  of IPC.
+</span>   160    <span class="xdoc">     *
+</span>   161    <span class="xdoc">     *  <b>@param(lockNum)</b>      HW spinlock number to reserve
+</span>   162    <span class="xdoc">     */</span>
+   163        <span class=key>metaonly</span> Void setReserved(UInt lockNum);
+   164        
+   165        
+   166    
+   167    <span class=key>instance</span>:    
+   168    
+   169        <span class="xdoc">/*!
+</span>   170    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   171    <span class="xdoc">     *  ======== enter ========
+</span>   172    <span class="xdoc">     *  Enter this gate
+</span>   173    <span class="xdoc">     */</span>
+   174        @DirectCall
+   175        <span class=key>override</span> IArg enter();
+   176    
+   177        <span class="xdoc">/*!
+</span>   178    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   179    <span class="xdoc">     *  ======== leave ========
+</span>   180    <span class="xdoc">     *  Leave this gate
+</span>   181    <span class="xdoc">     */</span>
+   182        @DirectCall
+   183        <span class=key>override</span> Void leave(IArg key);
+   184    
+   185    <span class=key>internal</span>:
+   186       
+   187        <span class="xdoc">/*! Device-specific number of semphores in the HW Semaphore subsystem */</span>
+   188        <span class=key>config</span> UInt numLocks;
+   189        
+   190        <span class="xdoc">/*! Mask of reserved HW spinlocks */</span>
+   191        <span class=key>config</span> Bits32 reservedMaskArr[];
+   192    
+   193        <span class=key>struct</span> Instance_State {
+   194            UInt            lockNum;   <span class="comment">/* The lock number being used */</span>
+   195            UInt            nested;    <span class="comment">/* For nesting */</span>
+   196            IGateProvider.Handle     localGate;
+   197        };
+   198    }
+</pre>
+</body></html>

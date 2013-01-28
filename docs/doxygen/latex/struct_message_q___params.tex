@@ -1,0 +1,34 @@
+\subsection{Message\-Q\-\_\-\-Params Struct Reference}
+\label{struct_message_q___params}\index{Message\-Q\-\_\-\-Params@{Message\-Q\-\_\-\-Params}}
+
+
+Structure defining parameters for the Message\-Q module.  
+
+
+
+
+{\ttfamily \#include $<$Message\-Q.\-h$>$}
+
+\subsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+Void $\ast$ \hyperlink{struct_message_q___params_a6f428033e1aa39162fd51a6d8ade1c9d}{synchronizer}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+Structure defining parameters for the Message\-Q module. 
+
+\subsubsection{Field Documentation}
+\index{Message\-Q\-\_\-\-Params@{Message\-Q\-\_\-\-Params}!synchronizer@{synchronizer}}
+\index{synchronizer@{synchronizer}!MessageQ_Params@{Message\-Q\-\_\-\-Params}}
+\paragraph[{synchronizer}]{\setlength{\rightskip}{0pt plus 5cm}Void$\ast$ Message\-Q\-\_\-\-Params\-::synchronizer}\label{struct_message_q___params_a6f428033e1aa39162fd51a6d8ade1c9d}
+Synchronizer instance used to signal I\-O completion \begin{DoxyVerb}   The synchronizer is used in MessageQ_put() and MessageQ_get().
+   The synchronizer signal is called as part of MessageQ_put().
+   The synchronizer waits in MessageQ_get() if there are no messages
+   present.\end{DoxyVerb}
+ 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_message_q_8h}{Message\-Q.\-h}\end{DoxyCompactItemize}

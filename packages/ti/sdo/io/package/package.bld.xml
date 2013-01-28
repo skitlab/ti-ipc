@@ -1,0 +1,1213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="ti.sdo.io" version="1, 0, 0, 0" producerId="undefined">
+    <units>
+        <interface name="IDriver"/>
+        <interface name="IConverter"/>
+        <module name="Build"/>
+        <module name="DriverTypes"/>
+        <module name="DriverTable"/>
+        <module name="Stream"/>
+    </units>
+    <sources>
+        <srcFile name="package/package_ti.sdo.io.c"/>
+        <srcFile name="DriverTable.c"/>
+        <srcFile name="Stream.c"/>
+        <srcFile name="package/cfg/instrumented_p28L.c"/>
+        <srcFile name="package/cfg/nonInstrumented_p28L.c"/>
+        <srcFile name="package/cfg/instrumented_p28FP.c"/>
+        <srcFile name="package/cfg/nonInstrumented_p28FP.c"/>
+        <srcFile name="package/cfg/instrumented_p64P.c"/>
+        <srcFile name="package/cfg/nonInstrumented_p64P.c"/>
+        <srcFile name="package/cfg/instrumented_p64Pe.c"/>
+        <srcFile name="package/cfg/nonInstrumented_p64Pe.c"/>
+        <srcFile name="package/cfg/instrumented_p674.c"/>
+        <srcFile name="package/cfg/nonInstrumented_p674.c"/>
+        <srcFile name="package/cfg/instrumented_pe64P.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe64P.c"/>
+        <srcFile name="package/cfg/instrumented_pe64Pe.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe64Pe.c"/>
+        <srcFile name="package/cfg/instrumented_pe674.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe674.c"/>
+        <srcFile name="package/cfg/instrumented_pe64T.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe64T.c"/>
+        <srcFile name="package/cfg/instrumented_pe66.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe66.c"/>
+        <srcFile name="package/cfg/instrumented_pe66e.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe66e.c"/>
+        <srcFile name="package/cfg/instrumented_pe9.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe9.c"/>
+        <srcFile name="package/cfg/instrumented_pea8f.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pea8f.c"/>
+        <srcFile name="package/cfg/instrumented_pea8fnv.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pea8fnv.c"/>
+        <srcFile name="package/cfg/instrumented_pem3.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pem3.c"/>
+        <srcFile name="package/cfg/instrumented_pem4.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pem4.c"/>
+        <srcFile name="package/cfg/instrumented_pem4f.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pem4f.c"/>
+        <srcFile name="package/cfg/instrumented_pearp32.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pearp32.c"/>
+        <srcFile name="package/cfg/instrumented_pearp32F.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pearp32F.c"/>
+        <srcFile name="package/cfg/instrumented_per4te.c"/>
+        <srcFile name="package/cfg/nonInstrumented_per4te.c"/>
+        <srcFile name="package/cfg/instrumented_per4fte.c"/>
+        <srcFile name="package/cfg/nonInstrumented_per4fte.c"/>
+        <srcFile name="package/cfg/smpInstrumented_pem3.c"/>
+        <srcFile name="package/cfg/smpNonInstrumented_pem3.c"/>
+        <srcFile name="package/cfg/smpInstrumented_pem4.c"/>
+        <srcFile name="package/cfg/smpNonInstrumented_pem4.c"/>
+    </sources>
+    <configscripts>
+        <srcFile name="instrumented.cfg"/>
+        <srcFile name="nonInstrumented.cfg"/>
+        <srcFile name="smpInstrumented.cfg"/>
+        <srcFile name="smpNonInstrumented.cfg"/>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.a28L.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/package/package_ti.sdo.io.o28L.dep" src="package/package_ti.sdo.io.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/DriverTable.o28L.dep" src="DriverTable.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/Stream.o28L.dep" src="Stream.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.a28FP.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/package/package_ti.sdo.io.o28FP.dep" src="package/package_ti.sdo.io.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/DriverTable.o28FP.dep" src="DriverTable.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/Stream.o28FP.dep" src="Stream.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.a64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/package/package_ti.sdo.io.o64P.dep" src="package/package_ti.sdo.io.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/DriverTable.o64P.dep" src="DriverTable.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/Stream.o64P.dep" src="Stream.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.a64Pe.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/package/package_ti.sdo.io.o64Pe.dep" src="package/package_ti.sdo.io.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/DriverTable.o64Pe.dep" src="DriverTable.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/Stream.o64Pe.dep" src="Stream.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.a674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/package/package_ti.sdo.io.o674.dep" src="package/package_ti.sdo.io.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/DriverTable.o674.dep" src="DriverTable.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/Stream.o674.dep" src="Stream.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.ae64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/package/package_ti.sdo.io.oe64P.dep" src="package/package_ti.sdo.io.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/DriverTable.oe64P.dep" src="DriverTable.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/Stream.oe64P.dep" src="Stream.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.ae64Pe.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/package/package_ti.sdo.io.oe64Pe.dep" src="package/package_ti.sdo.io.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/DriverTable.oe64Pe.dep" src="DriverTable.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/Stream.oe64Pe.dep" src="Stream.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.ae674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/package/package_ti.sdo.io.oe674.dep" src="package/package_ti.sdo.io.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/DriverTable.oe674.dep" src="DriverTable.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/Stream.oe674.dep" src="Stream.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.ae64T.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/package/package_ti.sdo.io.oe64T.dep" src="package/package_ti.sdo.io.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/DriverTable.oe64T.dep" src="DriverTable.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/Stream.oe64T.dep" src="Stream.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.ae66.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/package/package_ti.sdo.io.oe66.dep" src="package/package_ti.sdo.io.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/DriverTable.oe66.dep" src="DriverTable.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/Stream.oe66.dep" src="Stream.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.ae66e.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/package/package_ti.sdo.io.oe66e.dep" src="package/package_ti.sdo.io.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/DriverTable.oe66e.dep" src="DriverTable.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/Stream.oe66e.dep" src="Stream.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.ae9.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/package/package_ti.sdo.io.oe9.dep" src="package/package_ti.sdo.io.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/DriverTable.oe9.dep" src="DriverTable.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/Stream.oe9.dep" src="Stream.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.aea8f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/package/package_ti.sdo.io.oea8f.dep" src="package/package_ti.sdo.io.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/DriverTable.oea8f.dep" src="DriverTable.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/Stream.oea8f.dep" src="Stream.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.aea8fnv.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/package/package_ti.sdo.io.oea8fnv.dep" src="package/package_ti.sdo.io.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/DriverTable.oea8fnv.dep" src="DriverTable.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/Stream.oea8fnv.dep" src="Stream.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.aem3.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/package/package_ti.sdo.io.oem3.dep" src="package/package_ti.sdo.io.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/DriverTable.oem3.dep" src="DriverTable.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/Stream.oem3.dep" src="Stream.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.aem4.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/package/package_ti.sdo.io.oem4.dep" src="package/package_ti.sdo.io.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/DriverTable.oem4.dep" src="DriverTable.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/Stream.oem4.dep" src="Stream.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.aem4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/package/package_ti.sdo.io.oem4f.dep" src="package/package_ti.sdo.io.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/DriverTable.oem4f.dep" src="DriverTable.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/Stream.oem4f.dep" src="Stream.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.aearp32.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/package/package_ti.sdo.io.oearp32.dep" src="package/package_ti.sdo.io.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/DriverTable.oearp32.dep" src="DriverTable.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/Stream.oearp32.dep" src="Stream.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.aearp32F.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/package/package_ti.sdo.io.oearp32F.dep" src="package/package_ti.sdo.io.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/DriverTable.oearp32F.dep" src="DriverTable.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/Stream.oearp32F.dep" src="Stream.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.aer4te.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/package/package_ti.sdo.io.oer4te.dep" src="package/package_ti.sdo.io.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/DriverTable.oer4te.dep" src="DriverTable.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/Stream.oer4te.dep" src="Stream.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.aer4fte.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/package/package_ti.sdo.io.oer4fte.dep" src="package/package_ti.sdo.io.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/DriverTable.oer4fte.dep" src="DriverTable.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io/Stream.oer4fte.dep" src="Stream.c"/>
+        <srcFile name="lib/smpio/debug/ti.sdo.io.aem3.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/smpio/debug/ti.sdo.io/package/package_ti.sdo.io.oem3.dep" src="package/package_ti.sdo.io.c"/>
+        <srcFile name="package/lib/lib/smpio/debug/ti.sdo.io/DriverTable.oem3.dep" src="DriverTable.c"/>
+        <srcFile name="package/lib/lib/smpio/debug/ti.sdo.io/Stream.oem3.dep" src="Stream.c"/>
+        <srcFile name="lib/smpio/debug/ti.sdo.io.aem4.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/smpio/debug/ti.sdo.io/package/package_ti.sdo.io.oem4.dep" src="package/package_ti.sdo.io.c"/>
+        <srcFile name="package/lib/lib/smpio/debug/ti.sdo.io/DriverTable.oem4.dep" src="DriverTable.c"/>
+        <srcFile name="package/lib/lib/smpio/debug/ti.sdo.io/Stream.oem4.dep" src="Stream.c"/>
+        <srcFile name="package/cfg/instrumented_p28L.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_p28L.o28L.dep" src="package/cfg/instrumented_p28L.c"/>
+        <srcFile name="package/cfg/instrumented_p28L.dep" src="package/cfg/instrumented_p28L.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_p28L.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_p28L.o28L.dep" src="package/cfg/nonInstrumented_p28L.c"/>
+        <srcFile name="package/cfg/nonInstrumented_p28L.dep" src="package/cfg/nonInstrumented_p28L.cfg"/>
+        <srcFile name="package/cfg/instrumented_p28FP.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_p28FP.o28FP.dep" src="package/cfg/instrumented_p28FP.c"/>
+        <srcFile name="package/cfg/instrumented_p28FP.dep" src="package/cfg/instrumented_p28FP.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_p28FP.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_p28FP.o28FP.dep" src="package/cfg/nonInstrumented_p28FP.c"/>
+        <srcFile name="package/cfg/nonInstrumented_p28FP.dep" src="package/cfg/nonInstrumented_p28FP.cfg"/>
+        <srcFile name="package/cfg/instrumented_p64P.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_p64P.o64P.dep" src="package/cfg/instrumented_p64P.c"/>
+        <srcFile name="package/cfg/instrumented_p64P.dep" src="package/cfg/instrumented_p64P.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_p64P.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_p64P.o64P.dep" src="package/cfg/nonInstrumented_p64P.c"/>
+        <srcFile name="package/cfg/nonInstrumented_p64P.dep" src="package/cfg/nonInstrumented_p64P.cfg"/>
+        <srcFile name="package/cfg/instrumented_p64Pe.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_p64Pe.o64Pe.dep" src="package/cfg/instrumented_p64Pe.c"/>
+        <srcFile name="package/cfg/instrumented_p64Pe.dep" src="package/cfg/instrumented_p64Pe.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_p64Pe.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_p64Pe.o64Pe.dep" src="package/cfg/nonInstrumented_p64Pe.c"/>
+        <srcFile name="package/cfg/nonInstrumented_p64Pe.dep" src="package/cfg/nonInstrumented_p64Pe.cfg"/>
+        <srcFile name="package/cfg/instrumented_p674.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_p674.o674.dep" src="package/cfg/instrumented_p674.c"/>
+        <srcFile name="package/cfg/instrumented_p674.dep" src="package/cfg/instrumented_p674.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_p674.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_p674.o674.dep" src="package/cfg/nonInstrumented_p674.c"/>
+        <srcFile name="package/cfg/nonInstrumented_p674.dep" src="package/cfg/nonInstrumented_p674.cfg"/>
+        <srcFile name="package/cfg/instrumented_pe64P.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pe64P.oe64P.dep" src="package/cfg/instrumented_pe64P.c"/>
+        <srcFile name="package/cfg/instrumented_pe64P.dep" src="package/cfg/instrumented_pe64P.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pe64P.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pe64P.oe64P.dep" src="package/cfg/nonInstrumented_pe64P.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe64P.dep" src="package/cfg/nonInstrumented_pe64P.cfg"/>
+        <srcFile name="package/cfg/instrumented_pe64Pe.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pe64Pe.oe64Pe.dep" src="package/cfg/instrumented_pe64Pe.c"/>
+        <srcFile name="package/cfg/instrumented_pe64Pe.dep" src="package/cfg/instrumented_pe64Pe.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pe64Pe.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pe64Pe.oe64Pe.dep" src="package/cfg/nonInstrumented_pe64Pe.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe64Pe.dep" src="package/cfg/nonInstrumented_pe64Pe.cfg"/>
+        <srcFile name="package/cfg/instrumented_pe674.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pe674.oe674.dep" src="package/cfg/instrumented_pe674.c"/>
+        <srcFile name="package/cfg/instrumented_pe674.dep" src="package/cfg/instrumented_pe674.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pe674.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pe674.oe674.dep" src="package/cfg/nonInstrumented_pe674.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe674.dep" src="package/cfg/nonInstrumented_pe674.cfg"/>
+        <srcFile name="package/cfg/instrumented_pe64T.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pe64T.oe64T.dep" src="package/cfg/instrumented_pe64T.c"/>
+        <srcFile name="package/cfg/instrumented_pe64T.dep" src="package/cfg/instrumented_pe64T.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pe64T.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pe64T.oe64T.dep" src="package/cfg/nonInstrumented_pe64T.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe64T.dep" src="package/cfg/nonInstrumented_pe64T.cfg"/>
+        <srcFile name="package/cfg/instrumented_pe66.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pe66.oe66.dep" src="package/cfg/instrumented_pe66.c"/>
+        <srcFile name="package/cfg/instrumented_pe66.dep" src="package/cfg/instrumented_pe66.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pe66.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pe66.oe66.dep" src="package/cfg/nonInstrumented_pe66.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe66.dep" src="package/cfg/nonInstrumented_pe66.cfg"/>
+        <srcFile name="package/cfg/instrumented_pe66e.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pe66e.oe66e.dep" src="package/cfg/instrumented_pe66e.c"/>
+        <srcFile name="package/cfg/instrumented_pe66e.dep" src="package/cfg/instrumented_pe66e.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pe66e.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pe66e.oe66e.dep" src="package/cfg/nonInstrumented_pe66e.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe66e.dep" src="package/cfg/nonInstrumented_pe66e.cfg"/>
+        <srcFile name="package/cfg/instrumented_pe9.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pe9.oe9.dep" src="package/cfg/instrumented_pe9.c"/>
+        <srcFile name="package/cfg/instrumented_pe9.dep" src="package/cfg/instrumented_pe9.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pe9.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pe9.oe9.dep" src="package/cfg/nonInstrumented_pe9.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pe9.dep" src="package/cfg/nonInstrumented_pe9.cfg"/>
+        <srcFile name="package/cfg/instrumented_pea8f.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pea8f.oea8f.dep" src="package/cfg/instrumented_pea8f.c"/>
+        <srcFile name="package/cfg/instrumented_pea8f.dep" src="package/cfg/instrumented_pea8f.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pea8f.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pea8f.oea8f.dep" src="package/cfg/nonInstrumented_pea8f.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pea8f.dep" src="package/cfg/nonInstrumented_pea8f.cfg"/>
+        <srcFile name="package/cfg/instrumented_pea8fnv.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pea8fnv.oea8fnv.dep" src="package/cfg/instrumented_pea8fnv.c"/>
+        <srcFile name="package/cfg/instrumented_pea8fnv.dep" src="package/cfg/instrumented_pea8fnv.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pea8fnv.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pea8fnv.oea8fnv.dep" src="package/cfg/nonInstrumented_pea8fnv.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pea8fnv.dep" src="package/cfg/nonInstrumented_pea8fnv.cfg"/>
+        <srcFile name="package/cfg/instrumented_pem3.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pem3.oem3.dep" src="package/cfg/instrumented_pem3.c"/>
+        <srcFile name="package/cfg/instrumented_pem3.dep" src="package/cfg/instrumented_pem3.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pem3.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pem3.oem3.dep" src="package/cfg/nonInstrumented_pem3.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pem3.dep" src="package/cfg/nonInstrumented_pem3.cfg"/>
+        <srcFile name="package/cfg/instrumented_pem4.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pem4.oem4.dep" src="package/cfg/instrumented_pem4.c"/>
+        <srcFile name="package/cfg/instrumented_pem4.dep" src="package/cfg/instrumented_pem4.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pem4.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pem4.oem4.dep" src="package/cfg/nonInstrumented_pem4.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pem4.dep" src="package/cfg/nonInstrumented_pem4.cfg"/>
+        <srcFile name="package/cfg/instrumented_pem4f.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pem4f.oem4f.dep" src="package/cfg/instrumented_pem4f.c"/>
+        <srcFile name="package/cfg/instrumented_pem4f.dep" src="package/cfg/instrumented_pem4f.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pem4f.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pem4f.oem4f.dep" src="package/cfg/nonInstrumented_pem4f.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pem4f.dep" src="package/cfg/nonInstrumented_pem4f.cfg"/>
+        <srcFile name="package/cfg/instrumented_pearp32.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pearp32.oearp32.dep" src="package/cfg/instrumented_pearp32.c"/>
+        <srcFile name="package/cfg/instrumented_pearp32.dep" src="package/cfg/instrumented_pearp32.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pearp32.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pearp32.oearp32.dep" src="package/cfg/nonInstrumented_pearp32.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pearp32.dep" src="package/cfg/nonInstrumented_pearp32.cfg"/>
+        <srcFile name="package/cfg/instrumented_pearp32F.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_pearp32F.oearp32F.dep" src="package/cfg/instrumented_pearp32F.c"/>
+        <srcFile name="package/cfg/instrumented_pearp32F.dep" src="package/cfg/instrumented_pearp32F.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_pearp32F.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_pearp32F.oearp32F.dep" src="package/cfg/nonInstrumented_pearp32F.c"/>
+        <srcFile name="package/cfg/nonInstrumented_pearp32F.dep" src="package/cfg/nonInstrumented_pearp32F.cfg"/>
+        <srcFile name="package/cfg/instrumented_per4te.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_per4te.oer4te.dep" src="package/cfg/instrumented_per4te.c"/>
+        <srcFile name="package/cfg/instrumented_per4te.dep" src="package/cfg/instrumented_per4te.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_per4te.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_per4te.oer4te.dep" src="package/cfg/nonInstrumented_per4te.c"/>
+        <srcFile name="package/cfg/nonInstrumented_per4te.dep" src="package/cfg/nonInstrumented_per4te.cfg"/>
+        <srcFile name="package/cfg/instrumented_per4fte.mak" src="package.bld"/>
+        <srcFile name="package/cfg/instrumented_per4fte.oer4fte.dep" src="package/cfg/instrumented_per4fte.c"/>
+        <srcFile name="package/cfg/instrumented_per4fte.dep" src="package/cfg/instrumented_per4fte.cfg"/>
+        <srcFile name="package/cfg/nonInstrumented_per4fte.mak" src="package.bld"/>
+        <srcFile name="package/cfg/nonInstrumented_per4fte.oer4fte.dep" src="package/cfg/nonInstrumented_per4fte.c"/>
+        <srcFile name="package/cfg/nonInstrumented_per4fte.dep" src="package/cfg/nonInstrumented_per4fte.cfg"/>
+        <srcFile name="package/cfg/smpInstrumented_pem3.mak" src="package.bld"/>
+        <srcFile name="package/cfg/smpInstrumented_pem3.oem3.dep" src="package/cfg/smpInstrumented_pem3.c"/>
+        <srcFile name="package/cfg/smpInstrumented_pem3.dep" src="package/cfg/smpInstrumented_pem3.cfg"/>
+        <srcFile name="package/cfg/smpNonInstrumented_pem3.mak" src="package.bld"/>
+        <srcFile name="package/cfg/smpNonInstrumented_pem3.oem3.dep" src="package/cfg/smpNonInstrumented_pem3.c"/>
+        <srcFile name="package/cfg/smpNonInstrumented_pem3.dep" src="package/cfg/smpNonInstrumented_pem3.cfg"/>
+        <srcFile name="package/cfg/smpInstrumented_pem4.mak" src="package.bld"/>
+        <srcFile name="package/cfg/smpInstrumented_pem4.oem4.dep" src="package/cfg/smpInstrumented_pem4.c"/>
+        <srcFile name="package/cfg/smpInstrumented_pem4.dep" src="package/cfg/smpInstrumented_pem4.cfg"/>
+        <srcFile name="package/cfg/smpNonInstrumented_pem4.mak" src="package.bld"/>
+        <srcFile name="package/cfg/smpNonInstrumented_pem4.oem4.dep" src="package/cfg/smpNonInstrumented_pem4.c"/>
+        <srcFile name="package/cfg/smpNonInstrumented_pem4.dep" src="package/cfg/smpNonInstrumented_pem4.cfg"/>
+        <srcFile name="package/rel/ti_sdo_io.tar.gz.dep" src="package/rel/ti_sdo_io.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="ti.targets.C28_large"
+            version="ti.targets.C28_large{1,0,5.2,3"
+            platform="ti.platforms.ezdsp28235"
+            isa="28"
+            suffix="28L"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c28/5.2.3/Linux"
+            os="undefined"
+            rts="ti.targets.rts2800">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="large"/>
+        </target>
+        <target name="ti.targets.C28_float"
+            version="ti.targets.C28_float{1,0,5.2,3"
+            platform="ti.platforms.concertoC28:F28M35H52C1:1"
+            isa="28FP"
+            suffix="28FP"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c28/5.2.3/Linux"
+            os="undefined"
+            rts="ti.targets.rts2800">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="large"/>
+        </target>
+        <target name="ti.targets.C64P"
+            version="ti.targets.C64P{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+            isa="64P"
+            suffix="64P"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.C64P_big_endian"
+            version="ti.targets.C64P_big_endian{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+            isa="64P"
+            suffix="64Pe"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.C674"
+            version="ti.targets.C674{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evmOMAPL138.dsp"
+            isa="674"
+            suffix="674"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64P"
+            version="ti.targets.elf.C64P{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+            isa="64P"
+            suffix="e64P"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64P_big_endian"
+            version="ti.targets.elf.C64P_big_endian{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+            isa="64P"
+            suffix="e64Pe"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C674"
+            version="ti.targets.elf.C674{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evmOMAPL138.dsp"
+            isa="674"
+            suffix="e674"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64T"
+            version="ti.targets.elf.C64T{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.omap4430.dsp"
+            isa="64T"
+            suffix="e64T"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C66"
+            version="ti.targets.elf.C66{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6678.core0"
+            isa="66"
+            suffix="e66"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C66_big_endian"
+            version="ti.targets.elf.C66_big_endian{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6678.core0"
+            isa="66"
+            suffix="e66e"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.Arm9"
+            version="ti.targets.arm.elf.Arm9{1,0,5.0,1"
+            platform="ti.sdo.ipc.examples.platforms.evmOMAPL138.arm"
+            isa="v5T"
+            suffix="e9"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.A8F"
+            version="ti.targets.arm.elf.A8F{1,0,5.0,1"
+            platform="ti.sdo.ipc.examples.platforms.evmTI816X.host"
+            isa="v7A"
+            suffix="ea8f"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.A8Fnv"
+            version="ti.targets.arm.elf.A8Fnv{1,0,5.0,1"
+            platform="ti.sdo.ipc.examples.platforms.evmTI816X.host"
+            isa="v7A"
+            suffix="ea8fnv"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.M3"
+            version="ti.targets.arm.elf.M3{1,0,5.0,1"
+            platform="ti.sdo.ipc.examples.platforms.evmC6A8149.vpss"
+            isa="v7M"
+            suffix="em3"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.M4"
+            version="ti.targets.arm.elf.M4{1,0,5.0,1"
+            platform="ti.platforms.stellaris:LM4FSXLH5BB:1"
+            isa="v7M4"
+            suffix="em4"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.M4F"
+            version="ti.targets.arm.elf.M4F{1,0,5.0,1"
+            platform="ti.platforms.stellaris:LM4FSXLH5BB:1"
+            isa="v7M4"
+            suffix="em4f"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arp32.elf.ARP32"
+            version="ti.targets.arp32.elf.ARP32{1,0,1.0,0,5"
+            platform="ti.sdo.ipc.examples.platforms.simArctic.arp32"
+            isa="arp32"
+            suffix="earp32"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arp32/1.0.0B5/Linux"
+            os="undefined"
+            rts="ti.targets.arp32.rts">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arp32.elf.ARP32_far"
+            version="ti.targets.arp32.elf.ARP32_far{1,0,1.0,0,5"
+            platform="ti.sdo.ipc.examples.platforms.simArctic.arp32"
+            isa="arp32"
+            suffix="earp32F"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arp32/1.0.0B5/Linux"
+            os="undefined"
+            rts="ti.targets.arp32.rts">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.R4t_big_endian"
+            version="ti.targets.arm.elf.R4t_big_endian{1,0,5.0,1"
+            platform="ti.platforms.evmTMS570LS20216:testInst"
+            isa="v7R"
+            suffix="er4te"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="big"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.R4Ft_big_endian"
+            version="ti.targets.arm.elf.R4Ft_big_endian{1,0,5.0,1"
+            platform="ti.platforms.evmTMS570LS20216:testInst"
+            isa="v7R"
+            suffix="er4fte"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="big"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+    </targets>
+    <libraries>
+    <library name="lib/io/debug/ti.sdo.io"
+        pname="lib/io/debug/ti.sdo.io.a28L"
+        profile="debug"
+        target="ti.targets.C28_large"/>
+    <library name="lib/io/debug/ti.sdo.io"
+        pname="lib/io/debug/ti.sdo.io.a28FP"
+        profile="debug"
+        target="ti.targets.C28_float"/>
+    <library name="lib/io/debug/ti.sdo.io"
+        pname="lib/io/debug/ti.sdo.io.a64P"
+        profile="debug"
+        target="ti.targets.C64P"/>
+    <library name="lib/io/debug/ti.sdo.io"
+        pname="lib/io/debug/ti.sdo.io.a64Pe"
+        profile="debug"
+        target="ti.targets.C64P_big_endian"/>
+    <library name="lib/io/debug/ti.sdo.io"
+        pname="lib/io/debug/ti.sdo.io.a674"
+        profile="debug"
+        target="ti.targets.C674"/>
+    <library name="lib/io/debug/ti.sdo.io"
+        pname="lib/io/debug/ti.sdo.io.ae64P"
+        profile="debug"
+        target="ti.targets.elf.C64P"/>
+    <library name="lib/io/debug/ti.sdo.io"
+        pname="lib/io/debug/ti.sdo.io.ae64Pe"
+        profile="debug"
+        target="ti.targets.elf.C64P_big_endian"/>
+    <library name="lib/io/debug/ti.sdo.io"
+        pname="lib/io/debug/ti.sdo.io.ae674"
+        profile="debug"
+        target="ti.targets.elf.C674"/>
+    <library name="lib/io/debug/ti.sdo.io"
+        pname="lib/io/debug/ti.sdo.io.ae64T"
+        profile="debug"
+        target="ti.targets.elf.C64T"/>
+    <library name="lib/io/debug/ti.sdo.io"
+        pname="lib/io/debug/ti.sdo.io.ae66"
+        profile="debug"
+        target="ti.targets.elf.C66"/>
+    <library name="lib/io/debug/ti.sdo.io"
+        pname="lib/io/debug/ti.sdo.io.ae66e"
+        profile="debug"
+        target="ti.targets.elf.C66_big_endian"/>
+    <library name="lib/io/debug/ti.sdo.io"
+        pname="lib/io/debug/ti.sdo.io.ae9"
+        profile="debug"
+        target="ti.targets.arm.elf.Arm9"/>
+    <library name="lib/io/debug/ti.sdo.io"
+        pname="lib/io/debug/ti.sdo.io.aea8f"
+        profile="debug"
+        target="ti.targets.arm.elf.A8F"/>
+    <library name="lib/io/debug/ti.sdo.io"
+        pname="lib/io/debug/ti.sdo.io.aea8fnv"
+        profile="debug"
+        target="ti.targets.arm.elf.A8Fnv"/>
+    <library name="lib/io/debug/ti.sdo.io"
+        pname="lib/io/debug/ti.sdo.io.aem3"
+        profile="debug"
+        target="ti.targets.arm.elf.M3"/>
+    <library name="lib/io/debug/ti.sdo.io"
+        pname="lib/io/debug/ti.sdo.io.aem4"
+        profile="debug"
+        target="ti.targets.arm.elf.M4"/>
+    <library name="lib/io/debug/ti.sdo.io"
+        pname="lib/io/debug/ti.sdo.io.aem4f"
+        profile="debug"
+        target="ti.targets.arm.elf.M4F"/>
+    <library name="lib/io/debug/ti.sdo.io"
+        pname="lib/io/debug/ti.sdo.io.aearp32"
+        profile="debug"
+        target="ti.targets.arp32.elf.ARP32"/>
+    <library name="lib/io/debug/ti.sdo.io"
+        pname="lib/io/debug/ti.sdo.io.aearp32F"
+        profile="debug"
+        target="ti.targets.arp32.elf.ARP32_far"/>
+    <library name="lib/io/debug/ti.sdo.io"
+        pname="lib/io/debug/ti.sdo.io.aer4te"
+        profile="debug"
+        target="ti.targets.arm.elf.R4t_big_endian"/>
+    <library name="lib/io/debug/ti.sdo.io"
+        pname="lib/io/debug/ti.sdo.io.aer4fte"
+        profile="debug"
+        target="ti.targets.arm.elf.R4Ft_big_endian"/>
+    <library name="lib/smpio/debug/ti.sdo.io"
+        pname="lib/smpio/debug/ti.sdo.io.aem3"
+        profile="smp"
+        target="ti.targets.arm.elf.M3"/>
+    <library name="lib/smpio/debug/ti.sdo.io"
+        pname="lib/smpio/debug/ti.sdo.io.aem4"
+        profile="smp"
+        target="ti.targets.arm.elf.M4"/>
+    </libraries>
+    <configurations>
+    <configuration name="instrumented"
+        pname="instrumented.p28L"
+        target="ti.targets.C28_large"
+        platform="ti.platforms.ezdsp28235"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_p28L.cfg"
+        xCfgPrefix="package/cfg/instrumented_p28L"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.p28L"
+        target="ti.targets.C28_large"
+        platform="ti.platforms.ezdsp28235"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_p28L.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_p28L"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.p28FP"
+        target="ti.targets.C28_float"
+        platform="ti.platforms.concertoC28:F28M35H52C1:1"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_p28FP.cfg"
+        xCfgPrefix="package/cfg/instrumented_p28FP"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.p28FP"
+        target="ti.targets.C28_float"
+        platform="ti.platforms.concertoC28:F28M35H52C1:1"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_p28FP.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_p28FP"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.p64P"
+        target="ti.targets.C64P"
+        platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_p64P.cfg"
+        xCfgPrefix="package/cfg/instrumented_p64P"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.p64P"
+        target="ti.targets.C64P"
+        platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_p64P.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_p64P"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.p64Pe"
+        target="ti.targets.C64P_big_endian"
+        platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_p64Pe.cfg"
+        xCfgPrefix="package/cfg/instrumented_p64Pe"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.p64Pe"
+        target="ti.targets.C64P_big_endian"
+        platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_p64Pe.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_p64Pe"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.p674"
+        target="ti.targets.C674"
+        platform="ti.sdo.ipc.examples.platforms.evmOMAPL138.dsp"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_p674.cfg"
+        xCfgPrefix="package/cfg/instrumented_p674"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.p674"
+        target="ti.targets.C674"
+        platform="ti.sdo.ipc.examples.platforms.evmOMAPL138.dsp"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_p674.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_p674"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pe64P"
+        target="ti.targets.elf.C64P"
+        platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pe64P.cfg"
+        xCfgPrefix="package/cfg/instrumented_pe64P"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pe64P"
+        target="ti.targets.elf.C64P"
+        platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pe64P.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pe64P"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pe64Pe"
+        target="ti.targets.elf.C64P_big_endian"
+        platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pe64Pe.cfg"
+        xCfgPrefix="package/cfg/instrumented_pe64Pe"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pe64Pe"
+        target="ti.targets.elf.C64P_big_endian"
+        platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pe64Pe.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pe64Pe"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pe674"
+        target="ti.targets.elf.C674"
+        platform="ti.sdo.ipc.examples.platforms.evmOMAPL138.dsp"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pe674.cfg"
+        xCfgPrefix="package/cfg/instrumented_pe674"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pe674"
+        target="ti.targets.elf.C674"
+        platform="ti.sdo.ipc.examples.platforms.evmOMAPL138.dsp"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pe674.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pe674"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pe64T"
+        target="ti.targets.elf.C64T"
+        platform="ti.sdo.ipc.examples.platforms.omap4430.dsp"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pe64T.cfg"
+        xCfgPrefix="package/cfg/instrumented_pe64T"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pe64T"
+        target="ti.targets.elf.C64T"
+        platform="ti.sdo.ipc.examples.platforms.omap4430.dsp"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pe64T.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pe64T"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pe66"
+        target="ti.targets.elf.C66"
+        platform="ti.sdo.ipc.examples.platforms.evm6678.core0"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pe66.cfg"
+        xCfgPrefix="package/cfg/instrumented_pe66"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pe66"
+        target="ti.targets.elf.C66"
+        platform="ti.sdo.ipc.examples.platforms.evm6678.core0"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pe66.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pe66"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pe66e"
+        target="ti.targets.elf.C66_big_endian"
+        platform="ti.sdo.ipc.examples.platforms.evm6678.core0"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pe66e.cfg"
+        xCfgPrefix="package/cfg/instrumented_pe66e"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pe66e"
+        target="ti.targets.elf.C66_big_endian"
+        platform="ti.sdo.ipc.examples.platforms.evm6678.core0"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pe66e.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pe66e"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pe9"
+        target="ti.targets.arm.elf.Arm9"
+        platform="ti.sdo.ipc.examples.platforms.evmOMAPL138.arm"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pe9.cfg"
+        xCfgPrefix="package/cfg/instrumented_pe9"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pe9"
+        target="ti.targets.arm.elf.Arm9"
+        platform="ti.sdo.ipc.examples.platforms.evmOMAPL138.arm"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pe9.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pe9"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pea8f"
+        target="ti.targets.arm.elf.A8F"
+        platform="ti.sdo.ipc.examples.platforms.evmTI816X.host"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pea8f.cfg"
+        xCfgPrefix="package/cfg/instrumented_pea8f"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pea8f"
+        target="ti.targets.arm.elf.A8F"
+        platform="ti.sdo.ipc.examples.platforms.evmTI816X.host"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pea8f.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pea8f"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pea8fnv"
+        target="ti.targets.arm.elf.A8Fnv"
+        platform="ti.sdo.ipc.examples.platforms.evmTI816X.host"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pea8fnv.cfg"
+        xCfgPrefix="package/cfg/instrumented_pea8fnv"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pea8fnv"
+        target="ti.targets.arm.elf.A8Fnv"
+        platform="ti.sdo.ipc.examples.platforms.evmTI816X.host"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pea8fnv.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pea8fnv"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pem3"
+        target="ti.targets.arm.elf.M3"
+        platform="ti.sdo.ipc.examples.platforms.evmC6A8149.vpss"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pem3.cfg"
+        xCfgPrefix="package/cfg/instrumented_pem3"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pem3"
+        target="ti.targets.arm.elf.M3"
+        platform="ti.sdo.ipc.examples.platforms.evmC6A8149.vpss"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pem3.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pem3"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pem4"
+        target="ti.targets.arm.elf.M4"
+        platform="ti.platforms.stellaris:LM4FSXLH5BB:1"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pem4.cfg"
+        xCfgPrefix="package/cfg/instrumented_pem4"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pem4"
+        target="ti.targets.arm.elf.M4"
+        platform="ti.platforms.stellaris:LM4FSXLH5BB:1"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pem4.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pem4"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pem4f"
+        target="ti.targets.arm.elf.M4F"
+        platform="ti.platforms.stellaris:LM4FSXLH5BB:1"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pem4f.cfg"
+        xCfgPrefix="package/cfg/instrumented_pem4f"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pem4f"
+        target="ti.targets.arm.elf.M4F"
+        platform="ti.platforms.stellaris:LM4FSXLH5BB:1"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pem4f.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pem4f"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pearp32"
+        target="ti.targets.arp32.elf.ARP32"
+        platform="ti.sdo.ipc.examples.platforms.simArctic.arp32"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pearp32.cfg"
+        xCfgPrefix="package/cfg/instrumented_pearp32"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pearp32"
+        target="ti.targets.arp32.elf.ARP32"
+        platform="ti.sdo.ipc.examples.platforms.simArctic.arp32"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pearp32.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pearp32"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.pearp32F"
+        target="ti.targets.arp32.elf.ARP32_far"
+        platform="ti.sdo.ipc.examples.platforms.simArctic.arp32"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_pearp32F.cfg"
+        xCfgPrefix="package/cfg/instrumented_pearp32F"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.pearp32F"
+        target="ti.targets.arp32.elf.ARP32_far"
+        platform="ti.sdo.ipc.examples.platforms.simArctic.arp32"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_pearp32F.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_pearp32F"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.per4te"
+        target="ti.targets.arm.elf.R4t_big_endian"
+        platform="ti.platforms.evmTMS570LS20216:testInst"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_per4te.cfg"
+        xCfgPrefix="package/cfg/instrumented_per4te"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.per4te"
+        target="ti.targets.arm.elf.R4t_big_endian"
+        platform="ti.platforms.evmTMS570LS20216:testInst"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_per4te.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_per4te"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="instrumented"
+        pname="instrumented.per4fte"
+        target="ti.targets.arm.elf.R4Ft_big_endian"
+        platform="ti.platforms.evmTMS570LS20216:testInst"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/instrumented_per4fte.cfg"
+        xCfgPrefix="package/cfg/instrumented_per4fte"
+        cfgScript="instrumented.cfg"
+        />
+    <configuration name="nonInstrumented"
+        pname="nonInstrumented.per4fte"
+        target="ti.targets.arm.elf.R4Ft_big_endian"
+        platform="ti.platforms.evmTMS570LS20216:testInst"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/nonInstrumented_per4fte.cfg"
+        xCfgPrefix="package/cfg/nonInstrumented_per4fte"
+        cfgScript="nonInstrumented.cfg"
+        />
+    <configuration name="smpInstrumented"
+        pname="smpInstrumented.pem3"
+        target="ti.targets.arm.elf.M3"
+        platform="ti.sdo.ipc.examples.platforms.evmC6A8149.vpss"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/smpInstrumented_pem3.cfg"
+        xCfgPrefix="package/cfg/smpInstrumented_pem3"
+        cfgScript="smpInstrumented.cfg"
+        />
+    <configuration name="smpNonInstrumented"
+        pname="smpNonInstrumented.pem3"
+        target="ti.targets.arm.elf.M3"
+        platform="ti.sdo.ipc.examples.platforms.evmC6A8149.vpss"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/smpNonInstrumented_pem3.cfg"
+        xCfgPrefix="package/cfg/smpNonInstrumented_pem3"
+        cfgScript="smpNonInstrumented.cfg"
+        />
+    <configuration name="smpInstrumented"
+        pname="smpInstrumented.pem4"
+        target="ti.targets.arm.elf.M4"
+        platform="ti.platforms.stellaris:LM4FSXLH5BB:1"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/smpInstrumented_pem4.cfg"
+        xCfgPrefix="package/cfg/smpInstrumented_pem4"
+        cfgScript="smpInstrumented.cfg"
+        />
+    <configuration name="smpNonInstrumented"
+        pname="smpNonInstrumented.pem4"
+        target="ti.targets.arm.elf.M4"
+        platform="ti.platforms.stellaris:LM4FSXLH5BB:1"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/smpNonInstrumented_pem4.cfg"
+        xCfgPrefix="package/cfg/smpNonInstrumented_pem4"
+        cfgScript="smpNonInstrumented.cfg"
+        />
+    </configurations>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="ti_sdo_io"
+        pname="../../../../exports/ti_sdo_io.tar.gz"
+        label="default"
+        relScript="tisb/release/filters/copyright.rel">
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package.bld"/>
+        <file name="IO.c"/>
+        <file name="makefile.xdt"/>
+        <file name="instrumented.cfg.xs"/>
+        <file name="nonInstrumented.cfg.xs"/>
+        <file name="instrumented.cfg"/>
+        <file name="nonInstrumented.cfg"/>
+        <file name="smpInstrumented.cfg"/>
+        <file name="smpNonInstrumented.cfg"/>
+        <file name="lib/io/instrumented/io.a28L"/>
+        <file name="lib/io/nonInstrumented/io.a28L"/>
+        <file name="lib/io/instrumented/io.a28FP"/>
+        <file name="lib/io/nonInstrumented/io.a28FP"/>
+        <file name="lib/io/instrumented/io.a64P"/>
+        <file name="lib/io/nonInstrumented/io.a64P"/>
+        <file name="lib/io/instrumented/io.a64Pe"/>
+        <file name="lib/io/nonInstrumented/io.a64Pe"/>
+        <file name="lib/io/instrumented/io.a674"/>
+        <file name="lib/io/nonInstrumented/io.a674"/>
+        <file name="lib/io/instrumented/io.ae64P"/>
+        <file name="lib/io/nonInstrumented/io.ae64P"/>
+        <file name="lib/io/instrumented/io.ae64Pe"/>
+        <file name="lib/io/nonInstrumented/io.ae64Pe"/>
+        <file name="lib/io/instrumented/io.ae674"/>
+        <file name="lib/io/nonInstrumented/io.ae674"/>
+        <file name="lib/io/instrumented/io.ae64T"/>
+        <file name="lib/io/nonInstrumented/io.ae64T"/>
+        <file name="lib/io/instrumented/io.ae66"/>
+        <file name="lib/io/nonInstrumented/io.ae66"/>
+        <file name="lib/io/instrumented/io.ae66e"/>
+        <file name="lib/io/nonInstrumented/io.ae66e"/>
+        <file name="lib/io/instrumented/io.ae9"/>
+        <file name="lib/io/nonInstrumented/io.ae9"/>
+        <file name="lib/io/instrumented/io.aea8f"/>
+        <file name="lib/io/nonInstrumented/io.aea8f"/>
+        <file name="lib/io/instrumented/io.aea8fnv"/>
+        <file name="lib/io/nonInstrumented/io.aea8fnv"/>
+        <file name="lib/io/instrumented/io.aem3"/>
+        <file name="lib/io/nonInstrumented/io.aem3"/>
+        <file name="lib/io/instrumented/io.aem4"/>
+        <file name="lib/io/nonInstrumented/io.aem4"/>
+        <file name="lib/io/instrumented/io.aem4f"/>
+        <file name="lib/io/nonInstrumented/io.aem4f"/>
+        <file name="lib/io/instrumented/io.aearp32"/>
+        <file name="lib/io/nonInstrumented/io.aearp32"/>
+        <file name="lib/io/instrumented/io.aearp32F"/>
+        <file name="lib/io/nonInstrumented/io.aearp32F"/>
+        <file name="lib/io/instrumented/io.aer4te"/>
+        <file name="lib/io/nonInstrumented/io.aer4te"/>
+        <file name="lib/io/instrumented/io.aer4fte"/>
+        <file name="lib/io/nonInstrumented/io.aer4fte"/>
+        <file name="lib/smpio/instrumented/io.aem3"/>
+        <file name="lib/smpio/nonInstrumented/io.aem3"/>
+        <file name="lib/smpio/instrumented/io.aem4"/>
+        <file name="lib/smpio/nonInstrumented/io.aem4"/>
+        <file name="package/package.cfg.xdc.inc"/>
+        <file name="lib/io/debug/ti.sdo.io.a28L"/>
+        <file name="package/package_ti.sdo.io.c"/>
+        <file name="DriverTable.c"/>
+        <file name="Stream.c"/>
+        <file name="lib/io/debug/ti.sdo.io.a28FP"/>
+        <file name="lib/io/debug/ti.sdo.io.a64P"/>
+        <file name="lib/io/debug/ti.sdo.io.a64Pe"/>
+        <file name="lib/io/debug/ti.sdo.io.a674"/>
+        <file name="lib/io/debug/ti.sdo.io.ae64P"/>
+        <file name="lib/io/debug/ti.sdo.io.ae64Pe"/>
+        <file name="lib/io/debug/ti.sdo.io.ae674"/>
+        <file name="lib/io/debug/ti.sdo.io.ae64T"/>
+        <file name="lib/io/debug/ti.sdo.io.ae66"/>
+        <file name="lib/io/debug/ti.sdo.io.ae66e"/>
+        <file name="lib/io/debug/ti.sdo.io.ae9"/>
+        <file name="lib/io/debug/ti.sdo.io.aea8f"/>
+        <file name="lib/io/debug/ti.sdo.io.aea8fnv"/>
+        <file name="lib/io/debug/ti.sdo.io.aem3"/>
+        <file name="lib/io/debug/ti.sdo.io.aem4"/>
+        <file name="lib/io/debug/ti.sdo.io.aem4f"/>
+        <file name="lib/io/debug/ti.sdo.io.aearp32"/>
+        <file name="lib/io/debug/ti.sdo.io.aearp32F"/>
+        <file name="lib/io/debug/ti.sdo.io.aer4te"/>
+        <file name="lib/io/debug/ti.sdo.io.aer4fte"/>
+        <file name="lib/smpio/debug/ti.sdo.io.aem3"/>
+        <file name="lib/smpio/debug/ti.sdo.io.aem4"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

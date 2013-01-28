@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="ti.sdo.ipc.family.f28m35x" version="1, 0, 0, 0" producerId="undefined">
+    <units>
+        <module name="IpcMgr"/>
+        <module name="NameServerBlock"/>
+        <module name="NotifyDriverCirc"/>
+        <module name="TransportCirc"/>
+    </units>
+    <sources>
+        <srcFile name="package/package_ti.sdo.ipc.family.f28m35x.c"/>
+        <srcFile name="IpcMgr.c"/>
+        <srcFile name="NotifyDriverCirc.c"/>
+        <srcFile name="NameServerBlock.c"/>
+        <srcFile name="TransportCirc.c"/>
+    </sources>
+    <configscripts>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.f28m35x.a28FP.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.f28m35x/package/package_ti.sdo.ipc.family.f28m35x.o28FP.dep" src="package/package_ti.sdo.ipc.family.f28m35x.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.f28m35x/IpcMgr.o28FP.dep" src="IpcMgr.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.f28m35x/NotifyDriverCirc.o28FP.dep" src="NotifyDriverCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.f28m35x/NameServerBlock.o28FP.dep" src="NameServerBlock.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.f28m35x/TransportCirc.o28FP.dep" src="TransportCirc.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.f28m35x.aem3.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.f28m35x/package/package_ti.sdo.ipc.family.f28m35x.oem3.dep" src="package/package_ti.sdo.ipc.family.f28m35x.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.f28m35x/IpcMgr.oem3.dep" src="IpcMgr.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.f28m35x/NotifyDriverCirc.oem3.dep" src="NotifyDriverCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.f28m35x/NameServerBlock.oem3.dep" src="NameServerBlock.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.f28m35x/TransportCirc.oem3.dep" src="TransportCirc.c"/>
+        <srcFile name="lib/smpipc/debug/ti.sdo.ipc.family.f28m35x.aem3.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.family.f28m35x/package/package_ti.sdo.ipc.family.f28m35x.oem3.dep" src="package/package_ti.sdo.ipc.family.f28m35x.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.family.f28m35x/IpcMgr.oem3.dep" src="IpcMgr.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.family.f28m35x/NotifyDriverCirc.oem3.dep" src="NotifyDriverCirc.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.family.f28m35x/NameServerBlock.oem3.dep" src="NameServerBlock.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.family.f28m35x/TransportCirc.oem3.dep" src="TransportCirc.c"/>
+        <srcFile name="package/rel/ti_sdo_ipc_family_f28m35x.tar.gz.dep" src="package/rel/ti_sdo_ipc_family_f28m35x.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="ti.targets.C28_float"
+            version="ti.targets.C28_float{1,0,5.2,3"
+            platform="ti.platforms.concertoC28:F28M35H52C1:1"
+            isa="28FP"
+            suffix="28FP"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c28/5.2.3/Linux"
+            os="undefined"
+            rts="ti.targets.rts2800">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="large"/>
+        </target>
+        <target name="ti.targets.arm.elf.M3"
+            version="ti.targets.arm.elf.M3{1,0,5.0,1"
+            platform="ti.sdo.ipc.examples.platforms.evmC6A8149.vpss"
+            isa="v7M"
+            suffix="em3"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+    </targets>
+    <libraries>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family.f28m35x"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.f28m35x.a28FP"
+        profile="debug"
+        target="ti.targets.C28_float"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family.f28m35x"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.f28m35x.aem3"
+        profile="debug"
+        target="ti.targets.arm.elf.M3"/>
+    <library name="lib/smpipc/debug/ti.sdo.ipc.family.f28m35x"
+        pname="lib/smpipc/debug/ti.sdo.ipc.family.f28m35x.aem3"
+        profile="smp"
+        target="ti.targets.arm.elf.M3"/>
+    </libraries>
+    <configurations>
+    </configurations>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="ti_sdo_ipc_family_f28m35x"
+        pname="../../../../../../exports/ti_sdo_ipc_family_f28m35x.tar.gz"
+        label="default"
+        relScript="tisb/release/filters/copyright.rel">
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package.bld"/>
+        <file name="linkcmd.xdt"/>
+        <file name="package/package.cfg.xdc.inc"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.f28m35x.a28FP"/>
+        <file name="package/package_ti.sdo.ipc.family.f28m35x.c"/>
+        <file name="IpcMgr.c"/>
+        <file name="NotifyDriverCirc.c"/>
+        <file name="NameServerBlock.c"/>
+        <file name="TransportCirc.c"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.f28m35x.aem3"/>
+        <file name="lib/smpipc/debug/ti.sdo.ipc.family.f28m35x.aem3"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

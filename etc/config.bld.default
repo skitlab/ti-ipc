@@ -1,0 +1,177 @@
+/*
+ *  ======== config.bld ========
+ *  Sample Build configuration script
+ */
+
+// define location of TI Code Generation Tools
+var rootDirPre = "C:/ti/ccs/ccsv5/tools/compiler/";
+var rootDirPost = "";
+
+// load all targets supported by SYS/BIOS
+var tiTargets = xdc.loadPackage('ti.targets');
+var elfTargets = xdc.loadPackage('ti.targets.elf');
+var armElfTargets = xdc.loadPackage('ti.targets.arm.elf');
+var arp32Targets = xdc.loadPackage('ti.targets.arp32.elf');
+
+// Setup for c28_large target
+tiTargets.C28_large.rootDir = rootDirPre + "c2000" + rootDirPost;
+tiTargets.C28_large.ccOpts.suffix += " -mi -mo ";
+tiTargets.C28_large.platform = "ti.platforms.ezdsp28235";
+
+// Setup for c28_float target
+tiTargets.C28_float.rootDir = rootDirPre + "c2000" + rootDirPost;
+tiTargets.C28_float.ccOpts.suffix += " -mi -mo ";
+tiTargets.C28_float.platform = "ti.platforms.ezdsp28335";
+
+/* Common ccopts suffix used for all C6x targets */
+var c6xSuffix = "-mi10 -mo -pdr -pden -pds=238 -pds=880 -pds1110 ";
+
+// Setup for C64P target
+tiTargets.C64P.rootDir = rootDirPre + "c6000" + rootDirPost;
+tiTargets.C64P.ccOpts.suffix += c6xSuffix;
+//set default platform and list of all interested platforms for C64P
+tiTargets.C64P.platforms = [
+    "ti.sdo.ipc.examples.platforms.evmDM6446.dsp",
+    "ti.sdo.ipc.examples.platforms.evm6472.core0",
+    "ti.sdo.ipc.examples.platforms.evm6474.core0",
+    "ti.sdo.ipc.examples.platforms.omap3530.dsp",
+];
+tiTargets.C64P.platform = tiTargets.C64P.platforms[0];
+
+// Setup for C64P big endian
+tiTargets.C64P_big_endian.rootDir = rootDirPre + "c6000" + rootDirPost;
+tiTargets.C64P_big_endian.ccOpts.suffix += c6xSuffix;
+tiTargets.C64P_big_endian.platforms = tiTargets.C64P.platforms;
+tiTargets.C64P_big_endian.platform = tiTargets.C64P_big_endian.platforms[0];
+
+// Setup for C674 target
+tiTargets.C674.rootDir = rootDirPre + "c6000" + rootDirPost;
+tiTargets.C674.ccOpts.suffix += " -mi10 -mo " + c6xSuffix;
+//set default platform and list of all interested platforms for c674
+tiTargets.C674.platforms = [
+    "ti.sdo.ipc.examples.platforms.evmTI816X.dsp",
+    "ti.sdo.ipc.examples.platforms.evmTI814X.dsp",
+    "ti.sdo.ipc.examples.platforms.evmDA830.dsp",
+    "ti.sdo.ipc.examples.platforms.evmOMAPL138.dsp",
+];
+tiTargets.C674.platform = tiTargets.C674.platforms[0];
+
+/* ELF targets */
+
+// Setup for C64P ELF target
+elfTargets.C64P.rootDir = rootDirPre + "c6000" + rootDirPost;
+elfTargets.C64P.ccOpts.suffix += c6xSuffix + "--embed_inline_assembly ";
+elfTargets.C64P.platforms = tiTargets.C64P.platforms;
+elfTargets.C64P.platform = elfTargets.C64P.platforms[0];
+
+// Setup for C64P big endian ELF target
+elfTargets.C64P_big_endian.rootDir = rootDirPre + "c6000" + rootDirPost;
+elfTargets.C64P_big_endian.ccOpts.suffix += c6xSuffix + "--embed_inline_assembly ";
+elfTargets.C64P_big_endian.platforms = tiTargets.C64P.platforms;
+elfTargets.C64P_big_endian.platform = tiTargets.C64P_big_endian.platforms[0];
+
+// Setup for C64T ELF target
+elfTargets.C64T.rootDir = rootDirPre + "c6000" + rootDirPost;
+elfTargets.C64T.ccOpts.suffix += c6xSuffix + "--embed_inline_assembly ";
+//set default platform and list of all interested platforms for c64T
+elfTargets.C64T.platforms = [
+    "ti.sdo.ipc.examples.platforms.omap4430.dsp",
+];
+elfTargets.C64T.platform = elfTargets.C64T.platforms[0];
+
+// Setup for C674 ELF target
+elfTargets.C674.rootDir = rootDirPre + "c6000" + rootDirPost;
+elfTargets.C674.ccOpts.suffix += c6xSuffix + "--embed_inline_assembly ";
+elfTargets.C674.platforms = tiTargets.C674.platforms;
+elfTargets.C674.platform = elfTargets.C674.platforms[0];
+
+//Setup for C66 target
+elfTargets.C66.rootDir = rootDirPre + "c6000" + rootDirPost;
+elfTargets.C66.ccOpts.suffix += c6xSuffix + "--embed_inline_assembly ";
+elfTargets.C66.platforms = [
+    "ti.sdo.ipc.examples.platforms.evm6670.core0",
+    "ti.sdo.ipc.examples.platforms.evm6678.core0",
+];
+elfTargets.C66.platform = elfTargets.C66.platforms[0];
+
+// Setup for C66 big endian ELF target
+elfTargets.C66_big_endian.rootDir = rootDirPre + "c6000" + rootDirPost;
+elfTargets.C66_big_endian.ccOpts.suffix += c6xSuffix + "--embed_inline_assembly ";
+elfTargets.C66_big_endian.platforms = elfTargets.C66.platforms;
+elfTargets.C66_big_endian.platform = elfTargets.C66_big_endian.platforms[0];
+
+/* ARM ELF targets */
+
+// Setup for ARM9 ELF target
+armElfTargets.Arm9.rootDir = rootDirPre + "tms470" + rootDirPost;
+armElfTargets.Arm9.ccOpts.suffix += " -ms ";
+armElfTargets.Arm9.platforms = [
+    "ti.sdo.ipc.examples.platforms.evmDM6446.arm",
+    "ti.sdo.ipc.examples.platforms.evmDA830.arm",
+    "ti.sdo.ipc.examples.platforms.evmOMAPL138.arm",
+];
+armElfTargets.Arm9.platform = armElfTargets.Arm9.platforms[0];
+
+// Setup for A8F ELF target
+armElfTargets.A8F.rootDir = rootDirPre + "tms470" + rootDirPost;
+armElfTargets.A8F.ccOpts.suffix += " -ms --embed_inline_assembly ";
+armElfTargets.A8F.platforms = [
+    "ti.sdo.ipc.examples.platforms.evmTI816X.host",
+    "ti.sdo.ipc.examples.platforms.evmTI814X.host",
+    "ti.sdo.ipc.examples.platforms.omap3530.host",
+];
+armElfTargets.A8F.platform = armElfTargets.A8F.platforms[0];
+
+// Setup for M3 ELF target
+armElfTargets.M3.rootDir =  rootDirPre + "tms470" + rootDirPost;
+armElfTargets.M3.ccOpts.suffix += " -ms ";
+armElfTargets.M3.platforms = [
+    "ti.sdo.ipc.examples.platforms.evmTI816X.video",
+    "ti.sdo.ipc.examples.platforms.evmTI816X.vpss",
+    "ti.sdo.ipc.examples.platforms.evmTI814X.video",
+    "ti.sdo.ipc.examples.platforms.evmTI814X.vpss",
+    "ti.sdo.ipc.examples.platforms.omap4430.core0",
+    "ti.sdo.ipc.examples.platforms.omap4430.core1",
+];
+armElfTargets.M3.platform = armElfTargets.M3.platforms[0];
+
+/* ARP32 ELF targets */
+
+// Setup for ARP32 ELF target
+arp32Targets.ARP32.rootDir =  rootDirPre + "arp32" + rootDirPost;
+arp32Targets.ARP32.ccOpts.suffix += " ";
+arp32Targets.ARP32.platforms = [
+    "ti.sdo.ipc.examples.platforms.simArctic.arp32",
+    "ti.sdo.ipc.examples.platforms.evmC6A8149.eve",
+    "ti.sdo.ipc.examples.platforms.simVayu.eve1",
+    "ti.sdo.ipc.examples.platforms.simVayu.eve2",
+    "ti.sdo.ipc.examples.platforms.simVayu.eve3",
+    "ti.sdo.ipc.examples.platforms.simVayu.eve4",
+],
+arp32Targets.ARP32.platform = arp32Targets.ARP32.platforms[0];
+
+// Setup for ARP32 ELF far target
+arp32Targets.ARP32_far.rootDir = rootDirPre + "arp32" + rootDirPost;
+arp32Targets.ARP32_far.ccOpts.suffix += " ";
+arp32Targets.ARP32_far.platforms = arp32Targets.ARP32.platforms;
+arp32Targets.ARP32_far.platform = arp32Targets.ARP32_far.platforms[0];
+
+// list interested targets in Build.targets array
+Build.targets = [
+    // tiTargets.C28_large,
+    // tiTargets.C28_float,
+    // tiTargets.C64P,
+    // tiTargets.C64P_big_endian,
+    // tiTargets.C674,
+    // elfTargets.C64P,
+    // elfTargets.C64P_big_endian,
+    // elfTargets.C674,
+    // elfTargets.C64T,
+    // elfTargets.C66,
+    // elfTargets.C66_big_endian,
+    // armElfTargets.Arm9,
+    // armElfTargets.A8F,
+    // armElfTargets.M3,
+    // arp32Targets.ARP32,
+    // arp32Targets.ARP32_far,
+];

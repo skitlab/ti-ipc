@@ -1,0 +1,106 @@
+/* 
+ * Copyright (c) 2012, Texas Instruments Incorporated
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * *  Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *
+ * *  Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * *  Neither the name of Texas Instruments Incorporated nor the names of
+ *    its contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * */
+/*
+ *  ======== package.bld ========
+ */
+
+var testBld = xdc.loadCapsule("ti/sdo/ipc/build/test.bld");
+
+/*
+ *  ======== testArray ========
+ */
+var testArray = [
+    {name: 'notify_core0',
+        sources: ['notify_core0'], config: "notify_core0",
+        buildPlatforms: ["ti.sdo.ipc.examples.platforms.omap4430.core0"],
+    },
+    {name: 'notify_core1',
+        sources: ['notify_core1'], config: "notify_core1",
+        buildPlatforms: ["ti.sdo.ipc.examples.platforms.omap4430.core1"],
+    },
+    {name: 'notify_dsp',
+        sources: ['notify_dsp'], config: "notify_dsp",
+        buildPlatforms: ["ti.sdo.ipc.examples.platforms.omap4430.dsp"],
+    },
+    {name: 'message_core0',
+        sources: ['message_core0'], config: "message_core0",
+        buildPlatforms: ["ti.sdo.ipc.examples.platforms.omap4430.core0"],
+    },
+    {name: 'message_core1',
+        sources: ['message_core1'], config: "message_core1",
+        buildPlatforms: ["ti.sdo.ipc.examples.platforms.omap4430.core1"],
+    },
+    {name: 'message_dsp',
+        sources: ['message_dsp'], config: "message_dsp",
+        buildPlatforms: ["ti.sdo.ipc.examples.platforms.omap4430.dsp"],
+    },
+];
+
+Pkg.otherFiles = [
+    "package.bld",
+    "readme.txt",
+    "message_core0.c",
+    "message_core1.c",
+    "message_dsp.c",
+    "message_core0.cfg",
+    "message_core1.cfg",
+    "message_dsp.cfg",
+    "message_common.cfg.xs",
+    "message_core0.k",
+    "message_core1.k",
+    "message_dsp.k",
+    "notify_core0.c",
+    "notify_core1.c",
+    "notify_dsp.c",
+    "notify_core0.cfg",
+    "notify_core1.cfg",
+    "notify_dsp.cfg",
+    "notify_common.cfg.xs",
+    "notify_core0.k",
+    "notify_core1.k",
+    "notify_dsp.k",
+];
+
+/* include source/config/image files in the release package */
+Pkg.attrs.exportSrc = true;
+Pkg.attrs.exportCfg = true;
+
+/* Make sure all cores are built */
+arguments = ["profile=release", "platform=all"];
+
+/* Generate the makefile goals. 'arguments' is XDCARGS */
+testBld.buildTests(testArray, arguments);
+/*
+ *  @(#) ti.sdo.ipc.examples.multicore.omap4430; 1, 0, 0, 0,; 11-7-2012 13:13:36; /db/vtree/library/trees/ipc/ipc-i09/src/ xlibrary
+
+ */
+

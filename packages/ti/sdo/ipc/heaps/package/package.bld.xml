@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="ti.sdo.ipc.heaps" version="1, 0, 0, 0" producerId="undefined">
+    <units>
+        <module name="HeapBufMP"/>
+        <module name="HeapMultiBufMP"/>
+        <module name="HeapMemMP"/>
+    </units>
+    <sources>
+        <srcFile name="package/package_ti.sdo.ipc.heaps.c"/>
+        <srcFile name="HeapMemMP.c"/>
+        <srcFile name="HeapBufMP.c"/>
+        <srcFile name="HeapMultiBufMP.c"/>
+    </sources>
+    <configscripts>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.heaps.a28L.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/package/package_ti.sdo.ipc.heaps.o28L.dep" src="package/package_ti.sdo.ipc.heaps.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMemMP.o28L.dep" src="HeapMemMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapBufMP.o28L.dep" src="HeapBufMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMultiBufMP.o28L.dep" src="HeapMultiBufMP.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.heaps.a28FP.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/package/package_ti.sdo.ipc.heaps.o28FP.dep" src="package/package_ti.sdo.ipc.heaps.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMemMP.o28FP.dep" src="HeapMemMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapBufMP.o28FP.dep" src="HeapBufMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMultiBufMP.o28FP.dep" src="HeapMultiBufMP.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.heaps.a64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/package/package_ti.sdo.ipc.heaps.o64P.dep" src="package/package_ti.sdo.ipc.heaps.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMemMP.o64P.dep" src="HeapMemMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapBufMP.o64P.dep" src="HeapBufMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMultiBufMP.o64P.dep" src="HeapMultiBufMP.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.heaps.a64Pe.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/package/package_ti.sdo.ipc.heaps.o64Pe.dep" src="package/package_ti.sdo.ipc.heaps.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMemMP.o64Pe.dep" src="HeapMemMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapBufMP.o64Pe.dep" src="HeapBufMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMultiBufMP.o64Pe.dep" src="HeapMultiBufMP.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.heaps.a674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/package/package_ti.sdo.ipc.heaps.o674.dep" src="package/package_ti.sdo.ipc.heaps.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMemMP.o674.dep" src="HeapMemMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapBufMP.o674.dep" src="HeapBufMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMultiBufMP.o674.dep" src="HeapMultiBufMP.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.heaps.ae64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/package/package_ti.sdo.ipc.heaps.oe64P.dep" src="package/package_ti.sdo.ipc.heaps.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMemMP.oe64P.dep" src="HeapMemMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapBufMP.oe64P.dep" src="HeapBufMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMultiBufMP.oe64P.dep" src="HeapMultiBufMP.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.heaps.ae64Pe.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/package/package_ti.sdo.ipc.heaps.oe64Pe.dep" src="package/package_ti.sdo.ipc.heaps.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMemMP.oe64Pe.dep" src="HeapMemMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapBufMP.oe64Pe.dep" src="HeapBufMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMultiBufMP.oe64Pe.dep" src="HeapMultiBufMP.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.heaps.ae674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/package/package_ti.sdo.ipc.heaps.oe674.dep" src="package/package_ti.sdo.ipc.heaps.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMemMP.oe674.dep" src="HeapMemMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapBufMP.oe674.dep" src="HeapBufMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMultiBufMP.oe674.dep" src="HeapMultiBufMP.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.heaps.ae64T.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/package/package_ti.sdo.ipc.heaps.oe64T.dep" src="package/package_ti.sdo.ipc.heaps.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMemMP.oe64T.dep" src="HeapMemMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapBufMP.oe64T.dep" src="HeapBufMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMultiBufMP.oe64T.dep" src="HeapMultiBufMP.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.heaps.ae66.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/package/package_ti.sdo.ipc.heaps.oe66.dep" src="package/package_ti.sdo.ipc.heaps.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMemMP.oe66.dep" src="HeapMemMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapBufMP.oe66.dep" src="HeapBufMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMultiBufMP.oe66.dep" src="HeapMultiBufMP.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.heaps.ae66e.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/package/package_ti.sdo.ipc.heaps.oe66e.dep" src="package/package_ti.sdo.ipc.heaps.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMemMP.oe66e.dep" src="HeapMemMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapBufMP.oe66e.dep" src="HeapBufMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMultiBufMP.oe66e.dep" src="HeapMultiBufMP.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.heaps.ae9.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/package/package_ti.sdo.ipc.heaps.oe9.dep" src="package/package_ti.sdo.ipc.heaps.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMemMP.oe9.dep" src="HeapMemMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapBufMP.oe9.dep" src="HeapBufMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMultiBufMP.oe9.dep" src="HeapMultiBufMP.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.heaps.aea8f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/package/package_ti.sdo.ipc.heaps.oea8f.dep" src="package/package_ti.sdo.ipc.heaps.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMemMP.oea8f.dep" src="HeapMemMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapBufMP.oea8f.dep" src="HeapBufMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMultiBufMP.oea8f.dep" src="HeapMultiBufMP.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.heaps.aea8fnv.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/package/package_ti.sdo.ipc.heaps.oea8fnv.dep" src="package/package_ti.sdo.ipc.heaps.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMemMP.oea8fnv.dep" src="HeapMemMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapBufMP.oea8fnv.dep" src="HeapBufMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMultiBufMP.oea8fnv.dep" src="HeapMultiBufMP.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.heaps.aem3.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/package/package_ti.sdo.ipc.heaps.oem3.dep" src="package/package_ti.sdo.ipc.heaps.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMemMP.oem3.dep" src="HeapMemMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapBufMP.oem3.dep" src="HeapBufMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMultiBufMP.oem3.dep" src="HeapMultiBufMP.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.heaps.aem4.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/package/package_ti.sdo.ipc.heaps.oem4.dep" src="package/package_ti.sdo.ipc.heaps.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMemMP.oem4.dep" src="HeapMemMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapBufMP.oem4.dep" src="HeapBufMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMultiBufMP.oem4.dep" src="HeapMultiBufMP.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.heaps.aem4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/package/package_ti.sdo.ipc.heaps.oem4f.dep" src="package/package_ti.sdo.ipc.heaps.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMemMP.oem4f.dep" src="HeapMemMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapBufMP.oem4f.dep" src="HeapBufMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMultiBufMP.oem4f.dep" src="HeapMultiBufMP.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.heaps.aearp32.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/package/package_ti.sdo.ipc.heaps.oearp32.dep" src="package/package_ti.sdo.ipc.heaps.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMemMP.oearp32.dep" src="HeapMemMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapBufMP.oearp32.dep" src="HeapBufMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMultiBufMP.oearp32.dep" src="HeapMultiBufMP.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.heaps.aearp32F.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/package/package_ti.sdo.ipc.heaps.oearp32F.dep" src="package/package_ti.sdo.ipc.heaps.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMemMP.oearp32F.dep" src="HeapMemMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapBufMP.oearp32F.dep" src="HeapBufMP.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.heaps/HeapMultiBufMP.oearp32F.dep" src="HeapMultiBufMP.c"/>
+        <srcFile name="lib/smpipc/debug/ti.sdo.ipc.heaps.aem3.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.heaps/package/package_ti.sdo.ipc.heaps.oem3.dep" src="package/package_ti.sdo.ipc.heaps.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.heaps/HeapMemMP.oem3.dep" src="HeapMemMP.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.heaps/HeapBufMP.oem3.dep" src="HeapBufMP.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.heaps/HeapMultiBufMP.oem3.dep" src="HeapMultiBufMP.c"/>
+        <srcFile name="lib/smpipc/debug/ti.sdo.ipc.heaps.aem4.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.heaps/package/package_ti.sdo.ipc.heaps.oem4.dep" src="package/package_ti.sdo.ipc.heaps.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.heaps/HeapMemMP.oem4.dep" src="HeapMemMP.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.heaps/HeapBufMP.oem4.dep" src="HeapBufMP.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.heaps/HeapMultiBufMP.oem4.dep" src="HeapMultiBufMP.c"/>
+        <srcFile name="package/rel/ti_sdo_ipc_heaps.tar.gz.dep" src="package/rel/ti_sdo_ipc_heaps.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="ti.targets.C28_large"
+            version="ti.targets.C28_large{1,0,5.2,3"
+            platform="ti.platforms.ezdsp28235"
+            isa="28"
+            suffix="28L"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c28/5.2.3/Linux"
+            os="undefined"
+            rts="ti.targets.rts2800">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="large"/>
+        </target>
+        <target name="ti.targets.C28_float"
+            version="ti.targets.C28_float{1,0,5.2,3"
+            platform="ti.platforms.concertoC28:F28M35H52C1:1"
+            isa="28FP"
+            suffix="28FP"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c28/5.2.3/Linux"
+            os="undefined"
+            rts="ti.targets.rts2800">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="large"/>
+        </target>
+        <target name="ti.targets.C64P"
+            version="ti.targets.C64P{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+            isa="64P"
+            suffix="64P"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.C64P_big_endian"
+            version="ti.targets.C64P_big_endian{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+            isa="64P"
+            suffix="64Pe"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.C674"
+            version="ti.targets.C674{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evmOMAPL138.dsp"
+            isa="674"
+            suffix="674"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64P"
+            version="ti.targets.elf.C64P{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+            isa="64P"
+            suffix="e64P"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64P_big_endian"
+            version="ti.targets.elf.C64P_big_endian{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+            isa="64P"
+            suffix="e64Pe"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C674"
+            version="ti.targets.elf.C674{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evmOMAPL138.dsp"
+            isa="674"
+            suffix="e674"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64T"
+            version="ti.targets.elf.C64T{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.omap4430.dsp"
+            isa="64T"
+            suffix="e64T"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C66"
+            version="ti.targets.elf.C66{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6678.core0"
+            isa="66"
+            suffix="e66"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C66_big_endian"
+            version="ti.targets.elf.C66_big_endian{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6678.core0"
+            isa="66"
+            suffix="e66e"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.Arm9"
+            version="ti.targets.arm.elf.Arm9{1,0,5.0,1"
+            platform="ti.sdo.ipc.examples.platforms.evmOMAPL138.arm"
+            isa="v5T"
+            suffix="e9"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.A8F"
+            version="ti.targets.arm.elf.A8F{1,0,5.0,1"
+            platform="ti.sdo.ipc.examples.platforms.evmTI816X.host"
+            isa="v7A"
+            suffix="ea8f"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.A8Fnv"
+            version="ti.targets.arm.elf.A8Fnv{1,0,5.0,1"
+            platform="ti.sdo.ipc.examples.platforms.evmTI816X.host"
+            isa="v7A"
+            suffix="ea8fnv"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.M3"
+            version="ti.targets.arm.elf.M3{1,0,5.0,1"
+            platform="ti.sdo.ipc.examples.platforms.evmC6A8149.vpss"
+            isa="v7M"
+            suffix="em3"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.M4"
+            version="ti.targets.arm.elf.M4{1,0,5.0,1"
+            platform="ti.platforms.stellaris:LM4FSXLH5BB:1"
+            isa="v7M4"
+            suffix="em4"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.M4F"
+            version="ti.targets.arm.elf.M4F{1,0,5.0,1"
+            platform="ti.platforms.stellaris:LM4FSXLH5BB:1"
+            isa="v7M4"
+            suffix="em4f"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arp32.elf.ARP32"
+            version="ti.targets.arp32.elf.ARP32{1,0,1.0,0,5"
+            platform="ti.sdo.ipc.examples.platforms.simArctic.arp32"
+            isa="arp32"
+            suffix="earp32"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arp32/1.0.0B5/Linux"
+            os="undefined"
+            rts="ti.targets.arp32.rts">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arp32.elf.ARP32_far"
+            version="ti.targets.arp32.elf.ARP32_far{1,0,1.0,0,5"
+            platform="ti.sdo.ipc.examples.platforms.simArctic.arp32"
+            isa="arp32"
+            suffix="earp32F"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arp32/1.0.0B5/Linux"
+            os="undefined"
+            rts="ti.targets.arp32.rts">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+    </targets>
+    <libraries>
+    <library name="lib/ipc/debug/ti.sdo.ipc.heaps"
+        pname="lib/ipc/debug/ti.sdo.ipc.heaps.a28L"
+        profile="debug"
+        target="ti.targets.C28_large"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.heaps"
+        pname="lib/ipc/debug/ti.sdo.ipc.heaps.a28FP"
+        profile="debug"
+        target="ti.targets.C28_float"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.heaps"
+        pname="lib/ipc/debug/ti.sdo.ipc.heaps.a64P"
+        profile="debug"
+        target="ti.targets.C64P"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.heaps"
+        pname="lib/ipc/debug/ti.sdo.ipc.heaps.a64Pe"
+        profile="debug"
+        target="ti.targets.C64P_big_endian"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.heaps"
+        pname="lib/ipc/debug/ti.sdo.ipc.heaps.a674"
+        profile="debug"
+        target="ti.targets.C674"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.heaps"
+        pname="lib/ipc/debug/ti.sdo.ipc.heaps.ae64P"
+        profile="debug"
+        target="ti.targets.elf.C64P"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.heaps"
+        pname="lib/ipc/debug/ti.sdo.ipc.heaps.ae64Pe"
+        profile="debug"
+        target="ti.targets.elf.C64P_big_endian"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.heaps"
+        pname="lib/ipc/debug/ti.sdo.ipc.heaps.ae674"
+        profile="debug"
+        target="ti.targets.elf.C674"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.heaps"
+        pname="lib/ipc/debug/ti.sdo.ipc.heaps.ae64T"
+        profile="debug"
+        target="ti.targets.elf.C64T"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.heaps"
+        pname="lib/ipc/debug/ti.sdo.ipc.heaps.ae66"
+        profile="debug"
+        target="ti.targets.elf.C66"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.heaps"
+        pname="lib/ipc/debug/ti.sdo.ipc.heaps.ae66e"
+        profile="debug"
+        target="ti.targets.elf.C66_big_endian"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.heaps"
+        pname="lib/ipc/debug/ti.sdo.ipc.heaps.ae9"
+        profile="debug"
+        target="ti.targets.arm.elf.Arm9"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.heaps"
+        pname="lib/ipc/debug/ti.sdo.ipc.heaps.aea8f"
+        profile="debug"
+        target="ti.targets.arm.elf.A8F"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.heaps"
+        pname="lib/ipc/debug/ti.sdo.ipc.heaps.aea8fnv"
+        profile="debug"
+        target="ti.targets.arm.elf.A8Fnv"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.heaps"
+        pname="lib/ipc/debug/ti.sdo.ipc.heaps.aem3"
+        profile="debug"
+        target="ti.targets.arm.elf.M3"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.heaps"
+        pname="lib/ipc/debug/ti.sdo.ipc.heaps.aem4"
+        profile="debug"
+        target="ti.targets.arm.elf.M4"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.heaps"
+        pname="lib/ipc/debug/ti.sdo.ipc.heaps.aem4f"
+        profile="debug"
+        target="ti.targets.arm.elf.M4F"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.heaps"
+        pname="lib/ipc/debug/ti.sdo.ipc.heaps.aearp32"
+        profile="debug"
+        target="ti.targets.arp32.elf.ARP32"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.heaps"
+        pname="lib/ipc/debug/ti.sdo.ipc.heaps.aearp32F"
+        profile="debug"
+        target="ti.targets.arp32.elf.ARP32_far"/>
+    <library name="lib/smpipc/debug/ti.sdo.ipc.heaps"
+        pname="lib/smpipc/debug/ti.sdo.ipc.heaps.aem3"
+        profile="smp"
+        target="ti.targets.arm.elf.M3"/>
+    <library name="lib/smpipc/debug/ti.sdo.ipc.heaps"
+        pname="lib/smpipc/debug/ti.sdo.ipc.heaps.aem4"
+        profile="smp"
+        target="ti.targets.arm.elf.M4"/>
+    </libraries>
+    <configurations>
+    </configurations>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="ti_sdo_ipc_heaps"
+        pname="../../../../../exports/ti_sdo_ipc_heaps.tar.gz"
+        label="default"
+        relScript="tisb/release/filters/copyright.rel">
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package.bld"/>
+        <file name="_HeapBufMP.h"/>
+        <file name="_HeapMemMP.h"/>
+        <file name="_HeapMultiBufMP.h"/>
+        <file name="package/package.cfg.xdc.inc"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.heaps.a28L"/>
+        <file name="package/package_ti.sdo.ipc.heaps.c"/>
+        <file name="HeapMemMP.c"/>
+        <file name="HeapBufMP.c"/>
+        <file name="HeapMultiBufMP.c"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.heaps.a28FP"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.heaps.a64P"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.heaps.a64Pe"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.heaps.a674"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.heaps.ae64P"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.heaps.ae64Pe"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.heaps.ae674"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.heaps.ae64T"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.heaps.ae66"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.heaps.ae66e"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.heaps.ae9"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.heaps.aea8f"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.heaps.aea8fnv"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.heaps.aem3"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.heaps.aem4"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.heaps.aem4f"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.heaps.aearp32"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.heaps.aearp32F"/>
+        <file name="lib/smpipc/debug/ti.sdo.ipc.heaps.aem3"/>
+        <file name="lib/smpipc/debug/ti.sdo.ipc.heaps.aem4"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

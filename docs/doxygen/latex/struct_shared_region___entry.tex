@@ -1,0 +1,82 @@
+\subsection{Shared\-Region\-\_\-\-Entry Struct Reference}
+\label{struct_shared_region___entry}\index{Shared\-Region\-\_\-\-Entry@{Shared\-Region\-\_\-\-Entry}}
+
+
+Structure defining a region.  
+
+
+
+
+{\ttfamily \#include $<$Shared\-Region.\-h$>$}
+
+\subsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+Ptr \hyperlink{struct_shared_region___entry_a29bb9c93b43c2dd955f9fecbeb311987}{base}
+\item 
+Size\-T \hyperlink{struct_shared_region___entry_ae71dcd036cf9b3dbfd8be2541322f64e}{len}
+\item 
+U\-Int16 \hyperlink{struct_shared_region___entry_a5b14dd19f62a192f1aa843063d1cbbda}{owner\-Proc\-Id}
+\item 
+Bool \hyperlink{struct_shared_region___entry_ac2de956bb1b21e1372ba61a50c012ef5}{is\-Valid}
+\item 
+Bool \hyperlink{struct_shared_region___entry_a3aeb47b20eb18950a8ae1fb09d1ebade}{cache\-Enable}
+\item 
+Size\-T \hyperlink{struct_shared_region___entry_ad083825edd4d4a99389328d87976e4c5}{cache\-Line\-Size}
+\item 
+Bool \hyperlink{struct_shared_region___entry_a5db88d5d170d041d872527e9b5b71020}{create\-Heap}
+\item 
+String \hyperlink{struct_shared_region___entry_a1e87b924f55373c770d8d5add58b9267}{name}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+Structure defining a region. 
+
+\subsubsection{Field Documentation}
+\index{Shared\-Region\-\_\-\-Entry@{Shared\-Region\-\_\-\-Entry}!base@{base}}
+\index{base@{base}!SharedRegion_Entry@{Shared\-Region\-\_\-\-Entry}}
+\paragraph[{base}]{\setlength{\rightskip}{0pt plus 5cm}Ptr Shared\-Region\-\_\-\-Entry\-::base}\label{struct_shared_region___entry_a29bb9c93b43c2dd955f9fecbeb311987}
+The base address of the region \index{Shared\-Region\-\_\-\-Entry@{Shared\-Region\-\_\-\-Entry}!len@{len}}
+\index{len@{len}!SharedRegion_Entry@{Shared\-Region\-\_\-\-Entry}}
+\paragraph[{len}]{\setlength{\rightskip}{0pt plus 5cm}Size\-T Shared\-Region\-\_\-\-Entry\-::len}\label{struct_shared_region___entry_ae71dcd036cf9b3dbfd8be2541322f64e}
+The length of the region \begin{DoxyVerb}   Ths length of a region must be the same across all
+   processors in the system.\end{DoxyVerb}
+ \index{Shared\-Region\-\_\-\-Entry@{Shared\-Region\-\_\-\-Entry}!owner\-Proc\-Id@{owner\-Proc\-Id}}
+\index{owner\-Proc\-Id@{owner\-Proc\-Id}!SharedRegion_Entry@{Shared\-Region\-\_\-\-Entry}}
+\paragraph[{owner\-Proc\-Id}]{\setlength{\rightskip}{0pt plus 5cm}U\-Int16 Shared\-Region\-\_\-\-Entry\-::owner\-Proc\-Id}\label{struct_shared_region___entry_a5b14dd19f62a192f1aa843063d1cbbda}
+The Multi\-Proc id of the owner of the region \begin{DoxyVerb}   The owner id for a shared region must be the same across
+   all processors in the system.\end{DoxyVerb}
+ \index{Shared\-Region\-\_\-\-Entry@{Shared\-Region\-\_\-\-Entry}!is\-Valid@{is\-Valid}}
+\index{is\-Valid@{is\-Valid}!SharedRegion_Entry@{Shared\-Region\-\_\-\-Entry}}
+\paragraph[{is\-Valid}]{\setlength{\rightskip}{0pt plus 5cm}Bool Shared\-Region\-\_\-\-Entry\-::is\-Valid}\label{struct_shared_region___entry_ac2de956bb1b21e1372ba61a50c012ef5}
+Whether the region is valid \index{Shared\-Region\-\_\-\-Entry@{Shared\-Region\-\_\-\-Entry}!cache\-Enable@{cache\-Enable}}
+\index{cache\-Enable@{cache\-Enable}!SharedRegion_Entry@{Shared\-Region\-\_\-\-Entry}}
+\paragraph[{cache\-Enable}]{\setlength{\rightskip}{0pt plus 5cm}Bool Shared\-Region\-\_\-\-Entry\-::cache\-Enable}\label{struct_shared_region___entry_a3aeb47b20eb18950a8ae1fb09d1ebade}
+Whether to perform cache operations for the region \begin{DoxyVerb}   If 'TRUE', a cache invalidate is performed before any read
+   and a cache write back invalidate is performed after any
+   write for the shared region.  The cache operations are done
+   for all caches.  If 'FALSE', no cache operations are performed.\end{DoxyVerb}
+ \index{Shared\-Region\-\_\-\-Entry@{Shared\-Region\-\_\-\-Entry}!cache\-Line\-Size@{cache\-Line\-Size}}
+\index{cache\-Line\-Size@{cache\-Line\-Size}!SharedRegion_Entry@{Shared\-Region\-\_\-\-Entry}}
+\paragraph[{cache\-Line\-Size}]{\setlength{\rightskip}{0pt plus 5cm}Size\-T Shared\-Region\-\_\-\-Entry\-::cache\-Line\-Size}\label{struct_shared_region___entry_ad083825edd4d4a99389328d87976e4c5}
+The cache line size of the region \begin{DoxyVerb}   The cache line size for a region must be the same across
+   all processors in the system.  It is used for structure
+   alignment and padding.\end{DoxyVerb}
+ \index{Shared\-Region\-\_\-\-Entry@{Shared\-Region\-\_\-\-Entry}!create\-Heap@{create\-Heap}}
+\index{create\-Heap@{create\-Heap}!SharedRegion_Entry@{Shared\-Region\-\_\-\-Entry}}
+\paragraph[{create\-Heap}]{\setlength{\rightskip}{0pt plus 5cm}Bool Shared\-Region\-\_\-\-Entry\-::create\-Heap}\label{struct_shared_region___entry_a5db88d5d170d041d872527e9b5b71020}
+Whether a heap is created for the region \begin{DoxyVerb}   If 'TRUE', a HeapMemMP instance is created with the size
+   spanning the length of the shared region minus any memory
+   that is reserved in the region.  If 'FALSE', no heap
+   is created in the shared region.\end{DoxyVerb}
+ \index{Shared\-Region\-\_\-\-Entry@{Shared\-Region\-\_\-\-Entry}!name@{name}}
+\index{name@{name}!SharedRegion_Entry@{Shared\-Region\-\_\-\-Entry}}
+\paragraph[{name}]{\setlength{\rightskip}{0pt plus 5cm}String Shared\-Region\-\_\-\-Entry\-::name}\label{struct_shared_region___entry_a1e87b924f55373c770d8d5add58b9267}
+The name of the region. \begin{DoxyVerb}   The name must be in persistent memory.  It is used for
+   displaying in ROV.\end{DoxyVerb}
+ 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_shared_region_8h}{Shared\-Region.\-h}\end{DoxyCompactItemize}

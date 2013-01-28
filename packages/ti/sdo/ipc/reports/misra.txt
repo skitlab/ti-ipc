@@ -1,0 +1,256 @@
+==== Results for ti.sdo.io ====
+File: DriverTable.oe674, Defects: 0
+File: Stream.oe674, Defects: 0
+File: DriverTable.oea8f, Defects: 0
+File: Stream.oea8f, Defects: 0
+File: DriverTable.oem3, Defects: 0
+File: Stream.oem3, Defects: 0
+Files: 6, Defects: 0
+
+==== Results for ti.sdo.io.converters ====
+File: DriverAdapter.oe674, Defects: 0
+File: Transformer.oe674, Defects: 0
+File: NullConverter.oe674, Defects: 0
+File: DriverAdapter.oea8f, Defects: 0
+File: Transformer.oea8f, Defects: 0
+File: NullConverter.oea8f, Defects: 0
+File: DriverAdapter.oem3, Defects: 0
+File: Transformer.oem3, Defects: 0
+File: NullConverter.oem3, Defects: 0
+Files: 9, Defects: 0
+
+==== Results for ti.sdo.io.drivers ====
+File: IomAdapter.oe674, Defects: 0
+File: Generator.oe674, Defects: 0
+File: IomAdapter.oea8f, Defects: 0
+File: Generator.oea8f, Defects: 0
+File: IomAdapter.oem3, Defects: 0
+File: Generator.oem3, Defects: 0
+Files: 6, Defects: 0
+
+==== Results for ti.sdo.ipc ====
+File: Notify.oe674, Defects: 0
+File: GateMP.oe674, Defects: 0
+File: Ipc.oe674, Defects: 0
+File: MessageQ.oe674, Defects: 0
+File: SharedRegion.oe674, Defects: 0
+File: ListMP.oe674, Defects: 0
+File: Notify.oea8f, Defects: 0
+File: GateMP.oea8f, Defects: 0
+File: Ipc.oea8f, Defects: 0
+File: MessageQ.oea8f, Defects: 0
+File: SharedRegion.oea8f, Defects: 0
+File: ListMP.oea8f, Defects: 0
+File: Notify.oem3, Defects: 0
+File: GateMP.oem3, Defects: 0
+File: Ipc.oem3, Defects: 0
+File: MessageQ.oem3, Defects: 0
+File: SharedRegion.oem3, Defects: 0
+File: ListMP.oem3, Defects: 0
+Files: 18, Defects: 0
+
+==== Results for ti.sdo.ipc.family.arctic ====
+File: NotifySetup.oe674, Defects: 0
+File: NotifyCircSetup.oe674, Defects: 0
+File: InterruptDsp.oe674, Defects: 0
+Files: 3, Defects: 0
+
+==== Results for ti.sdo.ipc.family.c6a8149 ====
+File: InterruptDsp.oe674, Defects: 0
+File: NotifySetup.oe674, Defects: 0
+File: NotifyCircSetup.oe674, Defects: 0
+File: NotifyMbxSetup.oe674, Defects: 0
+File: NotifyDriverMbx.oe674, Defects: 8
+"NotifyDriverMbx.c", line 107: warning #1481-D: (MISRA-C:2004 19.12/R) There shall be at most one occurrence of the # or ## operators in a single macro definition
+"NotifyDriverMbx.c", line 125: warning #1430-D: (MISRA-C:2004 19.10/R) In the definition of a function-like macro each instance of a parameter shall be enclosed in parentheses unless it is used as the operand of # or ## ("dst")
+"NotifyDriverMbx.c", line 125: warning #1430-D: (MISRA-C:2004 19.10/R) In the definition of a function-like macro each instance of a parameter shall be enclosed in parentheses unless it is used as the operand of # or ## ("src")
+"NotifyDriverMbx.c", line 129: warning #1481-D: (MISRA-C:2004 19.12/R) There shall be at most one occurrence of the # or ## operators in a single macro definition
+"NotifyDriverMbx.c", line 509: warning #1430-D: (MISRA-C:2004 19.10/R) In the definition of a function-like macro each instance of a parameter shall be enclosed in parentheses unless it is used as the operand of # or ## ("dst")
+"NotifyDriverMbx.c", line 509: warning #1430-D: (MISRA-C:2004 19.10/R) In the definition of a function-like macro each instance of a parameter shall be enclosed in parentheses unless it is used as the operand of # or ## ("src")
+"NotifyDriverMbx.c", line 519: warning #1481-D: (MISRA-C:2004 19.12/R) There shall be at most one occurrence of the # or ## operators in a single macro definition
+"NotifyDriverMbx.c", line 521: warning #1481-D: (MISRA-C:2004 19.12/R) There shall be at most one occurrence of the # or ## operators in a single macro definition
+File: InterruptDucati.oem3, Defects: 0
+File: NotifySetup.oem3, Defects: 0
+File: NotifyCircSetup.oem3, Defects: 0
+File: NotifyMbxSetup.oem3, Defects: 0
+File: NotifyDriverMbx.oem3, Defects: 8
+"NotifyDriverMbx.c", line 107: warning: (MISRA-C:2004 19.12/R) There shall be at most one occurrence of the # or ## operators in a single macro definition
+"NotifyDriverMbx.c", line 125: warning: (MISRA-C:2004 19.10/R) In the definition of a function-like macro each instance of a parameter shall be enclosed in parentheses unless it is used as the operand of # or ## ("dst")
+"NotifyDriverMbx.c", line 125: warning: (MISRA-C:2004 19.10/R) In the definition of a function-like macro each instance of a parameter shall be enclosed in parentheses unless it is used as the operand of # or ## ("src")
+"NotifyDriverMbx.c", line 129: warning: (MISRA-C:2004 19.12/R) There shall be at most one occurrence of the # or ## operators in a single macro definition
+"NotifyDriverMbx.c", line 509: warning: (MISRA-C:2004 19.10/R) In the definition of a function-like macro each instance of a parameter shall be enclosed in parentheses unless it is used as the operand of # or ## ("dst")
+"NotifyDriverMbx.c", line 509: warning: (MISRA-C:2004 19.10/R) In the definition of a function-like macro each instance of a parameter shall be enclosed in parentheses unless it is used as the operand of # or ## ("src")
+"NotifyDriverMbx.c", line 519: warning: (MISRA-C:2004 19.12/R) There shall be at most one occurrence of the # or ## operators in a single macro definition
+"NotifyDriverMbx.c", line 521: warning: (MISRA-C:2004 19.12/R) There shall be at most one occurrence of the # or ## operators in a single macro definition
+File: InterruptHost.oea8f, Defects: 0
+File: NotifySetup.oea8f, Defects: 0
+File: NotifyCircSetup.oea8f, Defects: 0
+File: NotifyMbxSetup.oea8f, Defects: 0
+File: NotifyDriverMbx.oea8f, Defects: 8
+"NotifyDriverMbx.c", line 107: warning: (MISRA-C:2004 19.12/R) There shall be at most one occurrence of the # or ## operators in a single macro definition
+"NotifyDriverMbx.c", line 125: warning: (MISRA-C:2004 19.10/R) In the definition of a function-like macro each instance of a parameter shall be enclosed in parentheses unless it is used as the operand of # or ## ("dst")
+"NotifyDriverMbx.c", line 125: warning: (MISRA-C:2004 19.10/R) In the definition of a function-like macro each instance of a parameter shall be enclosed in parentheses unless it is used as the operand of # or ## ("src")
+"NotifyDriverMbx.c", line 129: warning: (MISRA-C:2004 19.12/R) There shall be at most one occurrence of the # or ## operators in a single macro definition
+"NotifyDriverMbx.c", line 509: warning: (MISRA-C:2004 19.10/R) In the definition of a function-like macro each instance of a parameter shall be enclosed in parentheses unless it is used as the operand of # or ## ("dst")
+"NotifyDriverMbx.c", line 509: warning: (MISRA-C:2004 19.10/R) In the definition of a function-like macro each instance of a parameter shall be enclosed in parentheses unless it is used as the operand of # or ## ("src")
+"NotifyDriverMbx.c", line 519: warning: (MISRA-C:2004 19.12/R) There shall be at most one occurrence of the # or ## operators in a single macro definition
+"NotifyDriverMbx.c", line 521: warning: (MISRA-C:2004 19.12/R) There shall be at most one occurrence of the # or ## operators in a single macro definition
+Files: 15, Defects: 24
+
+==== Results for ti.sdo.ipc.family.da830 ====
+File: InterruptDsp.oe674, Defects: 0
+File: NotifySetup.oe674, Defects: 0
+File: NotifyCircSetup.oe674, Defects: 0
+Files: 3, Defects: 0
+
+==== Results for ti.sdo.ipc.family.f28m35x ====
+File: IpcMgr.oem3, Defects: 0
+File: NotifyDriverCirc.oem3, Defects: 0
+File: NameServerBlock.oem3, Defects: 0
+File: TransportCirc.oem3, Defects: 0
+Files: 4, Defects: 0
+
+==== Results for ti.sdo.ipc.family.omap3530 ====
+File: NotifySetup.oea8f, Defects: 0
+File: NotifyCircSetup.oea8f, Defects: 0
+File: InterruptHost.oea8f, Defects: 0
+Files: 3, Defects: 0
+
+==== Results for ti.sdo.ipc.family.omap4430 ====
+File: NotifySetup.oem3, Defects: 0
+File: NotifyCircSetup.oem3, Defects: 0
+File: InterruptDucati.oem3, Defects: 0
+Files: 3, Defects: 0
+
+==== Results for ti.sdo.ipc.family.ti81xx ====
+File: InterruptDsp.oe674, Defects: 0
+File: NotifySetup.oe674, Defects: 0
+File: NotifyCircSetup.oe674, Defects: 0
+File: NotifyMbxSetup.oe674, Defects: 0
+File: NotifyDriverMbx.oe674, Defects: 8
+"NotifyDriverMbx.c", line 107: warning #1481-D: (MISRA-C:2004 19.12/R) There shall be at most one occurrence of the # or ## operators in a single macro definition
+"NotifyDriverMbx.c", line 125: warning #1430-D: (MISRA-C:2004 19.10/R) In the definition of a function-like macro each instance of a parameter shall be enclosed in parentheses unless it is used as the operand of # or ## ("dst")
+"NotifyDriverMbx.c", line 125: warning #1430-D: (MISRA-C:2004 19.10/R) In the definition of a function-like macro each instance of a parameter shall be enclosed in parentheses unless it is used as the operand of # or ## ("src")
+"NotifyDriverMbx.c", line 129: warning #1481-D: (MISRA-C:2004 19.12/R) There shall be at most one occurrence of the # or ## operators in a single macro definition
+"NotifyDriverMbx.c", line 507: warning #1430-D: (MISRA-C:2004 19.10/R) In the definition of a function-like macro each instance of a parameter shall be enclosed in parentheses unless it is used as the operand of # or ## ("dst")
+"NotifyDriverMbx.c", line 507: warning #1430-D: (MISRA-C:2004 19.10/R) In the definition of a function-like macro each instance of a parameter shall be enclosed in parentheses unless it is used as the operand of # or ## ("src")
+"NotifyDriverMbx.c", line 517: warning #1481-D: (MISRA-C:2004 19.12/R) There shall be at most one occurrence of the # or ## operators in a single macro definition
+"NotifyDriverMbx.c", line 519: warning #1481-D: (MISRA-C:2004 19.12/R) There shall be at most one occurrence of the # or ## operators in a single macro definition
+File: InterruptDucati.oem3, Defects: 0
+File: NotifySetup.oem3, Defects: 0
+File: NotifyCircSetup.oem3, Defects: 0
+File: NotifyMbxSetup.oem3, Defects: 0
+File: NotifyDriverMbx.oem3, Defects: 8
+"NotifyDriverMbx.c", line 107: warning: (MISRA-C:2004 19.12/R) There shall be at most one occurrence of the # or ## operators in a single macro definition
+"NotifyDriverMbx.c", line 125: warning: (MISRA-C:2004 19.10/R) In the definition of a function-like macro each instance of a parameter shall be enclosed in parentheses unless it is used as the operand of # or ## ("dst")
+"NotifyDriverMbx.c", line 125: warning: (MISRA-C:2004 19.10/R) In the definition of a function-like macro each instance of a parameter shall be enclosed in parentheses unless it is used as the operand of # or ## ("src")
+"NotifyDriverMbx.c", line 129: warning: (MISRA-C:2004 19.12/R) There shall be at most one occurrence of the # or ## operators in a single macro definition
+"NotifyDriverMbx.c", line 507: warning: (MISRA-C:2004 19.10/R) In the definition of a function-like macro each instance of a parameter shall be enclosed in parentheses unless it is used as the operand of # or ## ("dst")
+"NotifyDriverMbx.c", line 507: warning: (MISRA-C:2004 19.10/R) In the definition of a function-like macro each instance of a parameter shall be enclosed in parentheses unless it is used as the operand of # or ## ("src")
+"NotifyDriverMbx.c", line 517: warning: (MISRA-C:2004 19.12/R) There shall be at most one occurrence of the # or ## operators in a single macro definition
+"NotifyDriverMbx.c", line 519: warning: (MISRA-C:2004 19.12/R) There shall be at most one occurrence of the # or ## operators in a single macro definition
+File: InterruptHost.oea8f, Defects: 0
+File: NotifySetup.oea8f, Defects: 0
+File: NotifyCircSetup.oea8f, Defects: 0
+File: NotifyMbxSetup.oea8f, Defects: 0
+File: NotifyDriverMbx.oea8f, Defects: 8
+"NotifyDriverMbx.c", line 107: warning: (MISRA-C:2004 19.12/R) There shall be at most one occurrence of the # or ## operators in a single macro definition
+"NotifyDriverMbx.c", line 125: warning: (MISRA-C:2004 19.10/R) In the definition of a function-like macro each instance of a parameter shall be enclosed in parentheses unless it is used as the operand of # or ## ("dst")
+"NotifyDriverMbx.c", line 125: warning: (MISRA-C:2004 19.10/R) In the definition of a function-like macro each instance of a parameter shall be enclosed in parentheses unless it is used as the operand of # or ## ("src")
+"NotifyDriverMbx.c", line 129: warning: (MISRA-C:2004 19.12/R) There shall be at most one occurrence of the # or ## operators in a single macro definition
+"NotifyDriverMbx.c", line 507: warning: (MISRA-C:2004 19.10/R) In the definition of a function-like macro each instance of a parameter shall be enclosed in parentheses unless it is used as the operand of # or ## ("dst")
+"NotifyDriverMbx.c", line 507: warning: (MISRA-C:2004 19.10/R) In the definition of a function-like macro each instance of a parameter shall be enclosed in parentheses unless it is used as the operand of # or ## ("src")
+"NotifyDriverMbx.c", line 517: warning: (MISRA-C:2004 19.12/R) There shall be at most one occurrence of the # or ## operators in a single macro definition
+"NotifyDriverMbx.c", line 519: warning: (MISRA-C:2004 19.12/R) There shall be at most one occurrence of the # or ## operators in a single macro definition
+Files: 15, Defects: 24
+
+==== Results for ti.sdo.ipc.family.vayu ====
+File: InterruptBenelli.oem3, Defects: 0
+File: NotifySetup.oem3, Defects: 0
+Files: 2, Defects: 0
+
+==== Results for ti.sdo.ipc.gates ====
+File: GateHWSpinlock.oe674, Defects: 0
+File: GateMPSupportNull.oe674, Defects: 0
+File: GatePeterson.oe674, Defects: 0
+File: GateHWSpinlock.oea8f, Defects: 0
+File: GateMPSupportNull.oea8f, Defects: 0
+File: GatePeterson.oea8f, Defects: 0
+File: GateHWSpinlock.oem3, Defects: 0
+File: GateMPSupportNull.oem3, Defects: 0
+File: GatePeterson.oem3, Defects: 0
+Files: 9, Defects: 0
+
+==== Results for ti.sdo.ipc.heaps ====
+File: HeapMemMP.oe674, Defects: 0
+File: HeapBufMP.oe674, Defects: 0
+File: HeapMultiBufMP.oe674, Defects: 0
+File: HeapMemMP.oea8f, Defects: 0
+File: HeapBufMP.oea8f, Defects: 0
+File: HeapMultiBufMP.oea8f, Defects: 0
+File: HeapMemMP.oem3, Defects: 0
+File: HeapBufMP.oem3, Defects: 0
+File: HeapMultiBufMP.oem3, Defects: 0
+Files: 9, Defects: 0
+
+==== Results for ti.sdo.ipc.notifyDrivers ====
+File: NotifyDriverShm.oe674, Defects: 0
+File: NotifyDriverCirc.oe674, Defects: 0
+File: NotifySetupNull.oe674, Defects: 0
+File: NotifyDriverShm.oea8f, Defects: 0
+File: NotifyDriverCirc.oea8f, Defects: 0
+File: NotifySetupNull.oea8f, Defects: 0
+File: NotifyDriverShm.oem3, Defects: 0
+File: NotifyDriverCirc.oem3, Defects: 0
+File: NotifySetupNull.oem3, Defects: 0
+Files: 9, Defects: 0
+
+==== Results for ti.sdo.ipc.nsremote ====
+File: NameServerRemoteNotify.oe674, Defects: 0
+File: NameServerMessageQ.oe674, Defects: 0
+File: NameServerRemoteNotify.oea8f, Defects: 0
+File: NameServerMessageQ.oea8f, Defects: 0
+File: NameServerRemoteNotify.oem3, Defects: 0
+File: NameServerMessageQ.oem3, Defects: 0
+Files: 6, Defects: 0
+
+==== Results for ti.sdo.ipc.transports ====
+File: TransportShm.oe674, Defects: 0
+File: TransportShmSetup.oe674, Defects: 0
+File: TransportShmCirc.oe674, Defects: 0
+File: TransportShmCircSetup.oe674, Defects: 0
+File: TransportShmNotify.oe674, Defects: 0
+File: TransportShmNotifySetup.oe674, Defects: 0
+File: TransportNullSetup.oe674, Defects: 0
+File: TransportShm.oea8f, Defects: 0
+File: TransportShmSetup.oea8f, Defects: 0
+File: TransportShmCirc.oea8f, Defects: 0
+File: TransportShmCircSetup.oea8f, Defects: 0
+File: TransportShmNotify.oea8f, Defects: 0
+File: TransportShmNotifySetup.oea8f, Defects: 0
+File: TransportNullSetup.oea8f, Defects: 0
+File: TransportShm.oem3, Defects: 0
+File: TransportShmSetup.oem3, Defects: 0
+File: TransportShmCirc.oem3, Defects: 0
+File: TransportShmCircSetup.oem3, Defects: 0
+File: TransportShmNotify.oem3, Defects: 0
+File: TransportShmNotifySetup.oem3, Defects: 0
+File: TransportNullSetup.oem3, Defects: 0
+Files: 21, Defects: 0
+
+==== Results for ti.sdo.utils ====
+File: NameServer.oe674, Defects: 0
+File: NameServerRemoteNull.oe674, Defects: 0
+File: List.oe674, Defects: 0
+File: MultiProc.oe674, Defects: 0
+File: NameServer.oea8f, Defects: 0
+File: NameServerRemoteNull.oea8f, Defects: 0
+File: List.oea8f, Defects: 0
+File: MultiProc.oea8f, Defects: 0
+File: NameServer.oem3, Defects: 0
+File: NameServerRemoteNull.oem3, Defects: 0
+File: List.oem3, Defects: 0
+File: MultiProc.oem3, Defects: 0
+Files: 12, Defects: 0
+
+Totals - Files: 153, Defects: 48

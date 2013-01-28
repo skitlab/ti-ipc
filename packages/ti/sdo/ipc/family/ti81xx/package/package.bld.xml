@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="ti.sdo.ipc.family.ti81xx" version="1, 0, 0, 0" producerId="undefined">
+    <units>
+        <module name="NotifySetup"/>
+        <module name="NotifyMbxSetup"/>
+        <module name="NotifyCircSetup"/>
+        <module name="InterruptDsp"/>
+        <module name="InterruptDucati"/>
+        <module name="InterruptHost"/>
+        <module name="NotifyDriverMbx"/>
+    </units>
+    <sources>
+        <srcFile name="package/package_ti.sdo.ipc.family.ti81xx.c"/>
+        <srcFile name="InterruptDsp.c"/>
+        <srcFile name="NotifySetup.c"/>
+        <srcFile name="NotifyCircSetup.c"/>
+        <srcFile name="NotifyMbxSetup.c"/>
+        <srcFile name="NotifyDriverMbx.c"/>
+        <srcFile name="InterruptDucati.c"/>
+        <srcFile name="InterruptHost.c"/>
+    </sources>
+    <configscripts>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.ti81xx.a674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.ti81xx/package/package_ti.sdo.ipc.family.ti81xx.o674.dep" src="package/package_ti.sdo.ipc.family.ti81xx.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.ti81xx/InterruptDsp.o674.dep" src="InterruptDsp.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.ti81xx/NotifySetup.o674.dep" src="NotifySetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.ti81xx/NotifyCircSetup.o674.dep" src="NotifyCircSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.ti81xx/NotifyMbxSetup.o674.dep" src="NotifyMbxSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.ti81xx/NotifyDriverMbx.o674.dep" src="NotifyDriverMbx.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.ti81xx.ae674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.ti81xx/package/package_ti.sdo.ipc.family.ti81xx.oe674.dep" src="package/package_ti.sdo.ipc.family.ti81xx.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.ti81xx/InterruptDsp.oe674.dep" src="InterruptDsp.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.ti81xx/NotifySetup.oe674.dep" src="NotifySetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.ti81xx/NotifyCircSetup.oe674.dep" src="NotifyCircSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.ti81xx/NotifyMbxSetup.oe674.dep" src="NotifyMbxSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.ti81xx/NotifyDriverMbx.oe674.dep" src="NotifyDriverMbx.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.ti81xx.aem3.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.ti81xx/package/package_ti.sdo.ipc.family.ti81xx.oem3.dep" src="package/package_ti.sdo.ipc.family.ti81xx.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.ti81xx/InterruptDucati.oem3.dep" src="InterruptDucati.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.ti81xx/NotifySetup.oem3.dep" src="NotifySetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.ti81xx/NotifyCircSetup.oem3.dep" src="NotifyCircSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.ti81xx/NotifyMbxSetup.oem3.dep" src="NotifyMbxSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.ti81xx/NotifyDriverMbx.oem3.dep" src="NotifyDriverMbx.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.ti81xx.aea8f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.ti81xx/package/package_ti.sdo.ipc.family.ti81xx.oea8f.dep" src="package/package_ti.sdo.ipc.family.ti81xx.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.ti81xx/InterruptHost.oea8f.dep" src="InterruptHost.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.ti81xx/NotifySetup.oea8f.dep" src="NotifySetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.ti81xx/NotifyCircSetup.oea8f.dep" src="NotifyCircSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.ti81xx/NotifyMbxSetup.oea8f.dep" src="NotifyMbxSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.ti81xx/NotifyDriverMbx.oea8f.dep" src="NotifyDriverMbx.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.ti81xx.aea8fnv.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.ti81xx/package/package_ti.sdo.ipc.family.ti81xx.oea8fnv.dep" src="package/package_ti.sdo.ipc.family.ti81xx.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.ti81xx/InterruptHost.oea8fnv.dep" src="InterruptHost.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.ti81xx/NotifySetup.oea8fnv.dep" src="NotifySetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.ti81xx/NotifyCircSetup.oea8fnv.dep" src="NotifyCircSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.ti81xx/NotifyMbxSetup.oea8fnv.dep" src="NotifyMbxSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.ti81xx/NotifyDriverMbx.oea8fnv.dep" src="NotifyDriverMbx.c"/>
+        <srcFile name="lib/smpipc/debug/ti.sdo.ipc.family.ti81xx.aem3.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.family.ti81xx/package/package_ti.sdo.ipc.family.ti81xx.oem3.dep" src="package/package_ti.sdo.ipc.family.ti81xx.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.family.ti81xx/InterruptDucati.oem3.dep" src="InterruptDucati.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.family.ti81xx/NotifySetup.oem3.dep" src="NotifySetup.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.family.ti81xx/NotifyCircSetup.oem3.dep" src="NotifyCircSetup.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.family.ti81xx/NotifyMbxSetup.oem3.dep" src="NotifyMbxSetup.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.family.ti81xx/NotifyDriverMbx.oem3.dep" src="NotifyDriverMbx.c"/>
+        <srcFile name="package/rel/ti_sdo_ipc_family_ti81xx.tar.gz.dep" src="package/rel/ti_sdo_ipc_family_ti81xx.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="ti.targets.C674"
+            version="ti.targets.C674{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evmOMAPL138.dsp"
+            isa="674"
+            suffix="674"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C674"
+            version="ti.targets.elf.C674{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evmOMAPL138.dsp"
+            isa="674"
+            suffix="e674"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.M3"
+            version="ti.targets.arm.elf.M3{1,0,5.0,1"
+            platform="ti.sdo.ipc.examples.platforms.evmC6A8149.vpss"
+            isa="v7M"
+            suffix="em3"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.A8F"
+            version="ti.targets.arm.elf.A8F{1,0,5.0,1"
+            platform="ti.sdo.ipc.examples.platforms.evmTI816X.host"
+            isa="v7A"
+            suffix="ea8f"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.A8Fnv"
+            version="ti.targets.arm.elf.A8Fnv{1,0,5.0,1"
+            platform="ti.sdo.ipc.examples.platforms.evmTI816X.host"
+            isa="v7A"
+            suffix="ea8fnv"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+    </targets>
+    <libraries>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family.ti81xx"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.ti81xx.a674"
+        profile="debug"
+        target="ti.targets.C674"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family.ti81xx"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.ti81xx.ae674"
+        profile="debug"
+        target="ti.targets.elf.C674"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family.ti81xx"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.ti81xx.aem3"
+        profile="debug"
+        target="ti.targets.arm.elf.M3"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family.ti81xx"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.ti81xx.aea8f"
+        profile="debug"
+        target="ti.targets.arm.elf.A8F"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family.ti81xx"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.ti81xx.aea8fnv"
+        profile="debug"
+        target="ti.targets.arm.elf.A8Fnv"/>
+    <library name="lib/smpipc/debug/ti.sdo.ipc.family.ti81xx"
+        pname="lib/smpipc/debug/ti.sdo.ipc.family.ti81xx.aem3"
+        profile="smp"
+        target="ti.targets.arm.elf.M3"/>
+    </libraries>
+    <configurations>
+    </configurations>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="ti_sdo_ipc_family_ti81xx"
+        pname="../../../../../../exports/ti_sdo_ipc_family_ti81xx.tar.gz"
+        label="default"
+        relScript="tisb/release/filters/copyright.rel">
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package.bld"/>
+        <file name="package/package.cfg.xdc.inc"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.ti81xx.a674"/>
+        <file name="package/package_ti.sdo.ipc.family.ti81xx.c"/>
+        <file name="InterruptDsp.c"/>
+        <file name="NotifySetup.c"/>
+        <file name="NotifyCircSetup.c"/>
+        <file name="NotifyMbxSetup.c"/>
+        <file name="NotifyDriverMbx.c"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.ti81xx.ae674"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.ti81xx.aem3"/>
+        <file name="InterruptDucati.c"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.ti81xx.aea8f"/>
+        <file name="InterruptHost.c"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.ti81xx.aea8fnv"/>
+        <file name="lib/smpipc/debug/ti.sdo.ipc.family.ti81xx.aem3"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

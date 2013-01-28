@@ -1,0 +1,337 @@
+\subsection{Multi\-Proc.\-h File Reference}
+\label{_multi_proc_8h}\index{Multi\-Proc.\-h@{Multi\-Proc.\-h}}
+
+
+\subsubsection{Detailed Description}
+Processor I\-D Manager. ===========================================================================
+
+Many I\-P\-C modules require the ability to uniquely specify and identify processors in a multi-\/processor environment. The Multi\-Proc module centeralizes processor id management into one module. Since this configuration is almost always universally required, most I\-P\-C applications require supplying configuration of this module.
+
+Each processor in the Multi\-Proc module may be uniquely identified by either a name string or an integer ranging from 0 to N\-U\-M\-P\-R\-O\-C\-E\-S\-S\-O\-R\-S -\/ 1.
+
+At runtime, the \hyperlink{_multi_proc_8h_ad690d4b42978e95cb57d9244bb8e6959}{Multi\-Proc\-\_\-get\-Id} call returns the Multi\-Proc id for any processor given its name.
+
+The Multi\-Proc header should be included in an application as follows\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{    #include <ti/ipc/MultiProc.h>}
+\end{DoxyCode}
+ This graph shows which files directly or indirectly include this file\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=103pt]{_multi_proc_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_multi_proc_8h_a419e76c904cc23e3ab274bd49d4ba2f0}{Multi\-Proc\-\_\-\-S\-\_\-\-B\-U\-S\-Y}~2
+\begin{DoxyCompactList}\small\item\em The resource is still in use. \end{DoxyCompactList}\item 
+\#define \hyperlink{_multi_proc_8h_a67c6af51e4eee99a2e57b498ba943366}{Multi\-Proc\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P}~1
+\begin{DoxyCompactList}\small\item\em The module has been already setup. \end{DoxyCompactList}\item 
+\#define \hyperlink{_multi_proc_8h_a88ef69134ed8907ec46443a8c5445acd}{Multi\-Proc\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}~0
+\begin{DoxyCompactList}\small\item\em Operation is successful. \end{DoxyCompactList}\item 
+\#define \hyperlink{_multi_proc_8h_ac3e4ff7eac6f0fe38b97b1ca086ea1c6}{Multi\-Proc\-\_\-\-E\-\_\-\-F\-A\-I\-L}~-\/1
+\begin{DoxyCompactList}\small\item\em Generic failure. \end{DoxyCompactList}\item 
+\#define \hyperlink{_multi_proc_8h_a898d3875868db40c49e5c28100c2accb}{Multi\-Proc\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G}~-\/2
+\begin{DoxyCompactList}\small\item\em Argument passed to function is invalid. \end{DoxyCompactList}\item 
+\#define \hyperlink{_multi_proc_8h_aaa847e4fc5b581994dff79bcfc859bce}{Multi\-Proc\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y}~-\/3
+\begin{DoxyCompactList}\small\item\em Operation resulted in memory failure. \end{DoxyCompactList}\item 
+\#define \hyperlink{_multi_proc_8h_a18f5c0436a877611489726c797d86556}{Multi\-Proc\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S}~-\/4
+\begin{DoxyCompactList}\small\item\em The specified entity already exists. \end{DoxyCompactList}\item 
+\#define \hyperlink{_multi_proc_8h_a94763088a2d466568560a039ea675290}{Multi\-Proc\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}~-\/5
+\begin{DoxyCompactList}\small\item\em Unable to find the specified entity. \end{DoxyCompactList}\item 
+\#define \hyperlink{_multi_proc_8h_a2f6b71bcbab4cfe1c69f1c5a9403a3d5}{Multi\-Proc\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T}~-\/6
+\begin{DoxyCompactList}\small\item\em Operation timed out. \end{DoxyCompactList}\item 
+\#define \hyperlink{_multi_proc_8h_a4d77c2159e3d47966e8306c486e0c2da}{Multi\-Proc\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E}~-\/7
+\begin{DoxyCompactList}\small\item\em Module is not initialized. \end{DoxyCompactList}\item 
+\#define \hyperlink{_multi_proc_8h_aae22e0e82ebcff6fcdfb22b0ae26ff7b}{Multi\-Proc\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E}~-\/8
+\begin{DoxyCompactList}\small\item\em A failure occurred in an O\-S-\/specific call. \end{DoxyCompactList}\item 
+\#define \hyperlink{_multi_proc_8h_aa72d734728c7c0fc99353e9fdc89d9a1}{Multi\-Proc\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E}~-\/9
+\begin{DoxyCompactList}\small\item\em Specified resource is not available. \end{DoxyCompactList}\item 
+\#define \hyperlink{_multi_proc_8h_aa7adeed5b18aeefd77fb57e333974d5d}{Multi\-Proc\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T}~-\/10
+\begin{DoxyCompactList}\small\item\em Operation was interrupted. Please restart the operation. \end{DoxyCompactList}\item 
+\#define \hyperlink{_multi_proc_8h_a94a1d14527833bc8294407634d5495d9}{Multi\-Proc\-\_\-\-I\-N\-V\-A\-L\-I\-D\-I\-D}~(0x\-F\-F\-F\-F)
+\begin{DoxyCompactList}\small\item\em Invalid processor id. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+U\-Int16 \hyperlink{_multi_proc_8h_a147f37c02626ab600bea516211eac50e}{Multi\-Proc\-\_\-get\-Base\-Id\-Of\-Cluster} (Void)
+\begin{DoxyCompactList}\small\item\em Gets the base Multi\-Proc id of the cluster. \end{DoxyCompactList}\item 
+U\-Int16 \hyperlink{_multi_proc_8h_ad690d4b42978e95cb57d9244bb8e6959}{Multi\-Proc\-\_\-get\-Id} (String name)
+\begin{DoxyCompactList}\small\item\em Gets the Multi\-Proc id. \end{DoxyCompactList}\item 
+String \hyperlink{_multi_proc_8h_aa16e1bb4fd1eb6f968d6ba47c65f88e0}{Multi\-Proc\-\_\-get\-Name} (U\-Int16 id)
+\begin{DoxyCompactList}\small\item\em Gets the name of a processor. \end{DoxyCompactList}\item 
+U\-Int16 \hyperlink{_multi_proc_8h_a75e5d953ef6828ef03c2eb8d70dda82d}{Multi\-Proc\-\_\-get\-Num\-Processors} (Void)
+\begin{DoxyCompactList}\small\item\em Gets the number of processors. \end{DoxyCompactList}\item 
+U\-Int16 \hyperlink{_multi_proc_8h_a74dfbb6a7dbf74b2a9be6c041a13d8bd}{Multi\-Proc\-\_\-get\-Num\-Procs\-In\-Cluster} (Void)
+\begin{DoxyCompactList}\small\item\em Gets the number of processors in the cluster. \end{DoxyCompactList}\item 
+U\-Int16 \hyperlink{_multi_proc_8h_a2cb11a79ed2c6cbd6ea6b88b63903124}{Multi\-Proc\-\_\-self} (Void)
+\begin{DoxyCompactList}\small\item\em Gets executing processor's Multi\-Proc id. \end{DoxyCompactList}\item 
+Int \hyperlink{_multi_proc_8h_ae8ca0f1d758d428d9f06f56badee7f0c}{Multi\-Proc\-\_\-set\-Base\-Id\-Of\-Cluster} (U\-Int16 base\-Id)
+\begin{DoxyCompactList}\small\item\em Sets executing processor's base id of the cluster. \end{DoxyCompactList}\item 
+Int \hyperlink{_multi_proc_8h_a4a00561c7a3f5f91b7ab7e1b4c3fb1ef}{Multi\-Proc\-\_\-set\-Local\-Id} (U\-Int16 id)
+\begin{DoxyCompactList}\small\item\em Sets executing processor's Multi\-Proc id. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Macro Definition Documentation}
+\index{Multi\-Proc.\-h@{Multi\-Proc.\-h}!Multi\-Proc\-\_\-\-S\-\_\-\-B\-U\-S\-Y@{Multi\-Proc\-\_\-\-S\-\_\-\-B\-U\-S\-Y}}
+\index{Multi\-Proc\-\_\-\-S\-\_\-\-B\-U\-S\-Y@{Multi\-Proc\-\_\-\-S\-\_\-\-B\-U\-S\-Y}!MultiProc.h@{Multi\-Proc.\-h}}
+\paragraph[{Multi\-Proc\-\_\-\-S\-\_\-\-B\-U\-S\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define Multi\-Proc\-\_\-\-S\-\_\-\-B\-U\-S\-Y~2}\label{_multi_proc_8h_a419e76c904cc23e3ab274bd49d4ba2f0}
+
+
+The resource is still in use. 
+
+\index{Multi\-Proc.\-h@{Multi\-Proc.\-h}!Multi\-Proc\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P@{Multi\-Proc\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P}}
+\index{Multi\-Proc\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P@{Multi\-Proc\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P}!MultiProc.h@{Multi\-Proc.\-h}}
+\paragraph[{Multi\-Proc\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define Multi\-Proc\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P~1}\label{_multi_proc_8h_a67c6af51e4eee99a2e57b498ba943366}
+
+
+The module has been already setup. 
+
+\index{Multi\-Proc.\-h@{Multi\-Proc.\-h}!Multi\-Proc\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S@{Multi\-Proc\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}}
+\index{Multi\-Proc\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S@{Multi\-Proc\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}!MultiProc.h@{Multi\-Proc.\-h}}
+\paragraph[{Multi\-Proc\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define Multi\-Proc\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S~0}\label{_multi_proc_8h_a88ef69134ed8907ec46443a8c5445acd}
+
+
+Operation is successful. 
+
+\index{Multi\-Proc.\-h@{Multi\-Proc.\-h}!Multi\-Proc\-\_\-\-E\-\_\-\-F\-A\-I\-L@{Multi\-Proc\-\_\-\-E\-\_\-\-F\-A\-I\-L}}
+\index{Multi\-Proc\-\_\-\-E\-\_\-\-F\-A\-I\-L@{Multi\-Proc\-\_\-\-E\-\_\-\-F\-A\-I\-L}!MultiProc.h@{Multi\-Proc.\-h}}
+\paragraph[{Multi\-Proc\-\_\-\-E\-\_\-\-F\-A\-I\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define Multi\-Proc\-\_\-\-E\-\_\-\-F\-A\-I\-L~-\/1}\label{_multi_proc_8h_ac3e4ff7eac6f0fe38b97b1ca086ea1c6}
+
+
+Generic failure. 
+
+\index{Multi\-Proc.\-h@{Multi\-Proc.\-h}!Multi\-Proc\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G@{Multi\-Proc\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G}}
+\index{Multi\-Proc\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G@{Multi\-Proc\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G}!MultiProc.h@{Multi\-Proc.\-h}}
+\paragraph[{Multi\-Proc\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define Multi\-Proc\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G~-\/2}\label{_multi_proc_8h_a898d3875868db40c49e5c28100c2accb}
+
+
+Argument passed to function is invalid. 
+
+\index{Multi\-Proc.\-h@{Multi\-Proc.\-h}!Multi\-Proc\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y@{Multi\-Proc\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y}}
+\index{Multi\-Proc\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y@{Multi\-Proc\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y}!MultiProc.h@{Multi\-Proc.\-h}}
+\paragraph[{Multi\-Proc\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define Multi\-Proc\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y~-\/3}\label{_multi_proc_8h_aaa847e4fc5b581994dff79bcfc859bce}
+
+
+Operation resulted in memory failure. 
+
+\index{Multi\-Proc.\-h@{Multi\-Proc.\-h}!Multi\-Proc\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S@{Multi\-Proc\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S}}
+\index{Multi\-Proc\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S@{Multi\-Proc\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S}!MultiProc.h@{Multi\-Proc.\-h}}
+\paragraph[{Multi\-Proc\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define Multi\-Proc\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S~-\/4}\label{_multi_proc_8h_a18f5c0436a877611489726c797d86556}
+
+
+The specified entity already exists. 
+
+\index{Multi\-Proc.\-h@{Multi\-Proc.\-h}!Multi\-Proc\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D@{Multi\-Proc\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}}
+\index{Multi\-Proc\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D@{Multi\-Proc\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}!MultiProc.h@{Multi\-Proc.\-h}}
+\paragraph[{Multi\-Proc\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define Multi\-Proc\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D~-\/5}\label{_multi_proc_8h_a94763088a2d466568560a039ea675290}
+
+
+Unable to find the specified entity. 
+
+\index{Multi\-Proc.\-h@{Multi\-Proc.\-h}!Multi\-Proc\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T@{Multi\-Proc\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T}}
+\index{Multi\-Proc\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T@{Multi\-Proc\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T}!MultiProc.h@{Multi\-Proc.\-h}}
+\paragraph[{Multi\-Proc\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define Multi\-Proc\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T~-\/6}\label{_multi_proc_8h_a2f6b71bcbab4cfe1c69f1c5a9403a3d5}
+
+
+Operation timed out. 
+
+\index{Multi\-Proc.\-h@{Multi\-Proc.\-h}!Multi\-Proc\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E@{Multi\-Proc\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E}}
+\index{Multi\-Proc\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E@{Multi\-Proc\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E}!MultiProc.h@{Multi\-Proc.\-h}}
+\paragraph[{Multi\-Proc\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define Multi\-Proc\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E~-\/7}\label{_multi_proc_8h_a4d77c2159e3d47966e8306c486e0c2da}
+
+
+Module is not initialized. 
+
+\index{Multi\-Proc.\-h@{Multi\-Proc.\-h}!Multi\-Proc\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E@{Multi\-Proc\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E}}
+\index{Multi\-Proc\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E@{Multi\-Proc\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E}!MultiProc.h@{Multi\-Proc.\-h}}
+\paragraph[{Multi\-Proc\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define Multi\-Proc\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E~-\/8}\label{_multi_proc_8h_aae22e0e82ebcff6fcdfb22b0ae26ff7b}
+
+
+A failure occurred in an O\-S-\/specific call. 
+
+\index{Multi\-Proc.\-h@{Multi\-Proc.\-h}!Multi\-Proc\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E@{Multi\-Proc\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E}}
+\index{Multi\-Proc\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E@{Multi\-Proc\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E}!MultiProc.h@{Multi\-Proc.\-h}}
+\paragraph[{Multi\-Proc\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define Multi\-Proc\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E~-\/9}\label{_multi_proc_8h_aa72d734728c7c0fc99353e9fdc89d9a1}
+
+
+Specified resource is not available. 
+
+\index{Multi\-Proc.\-h@{Multi\-Proc.\-h}!Multi\-Proc\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T@{Multi\-Proc\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T}}
+\index{Multi\-Proc\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T@{Multi\-Proc\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T}!MultiProc.h@{Multi\-Proc.\-h}}
+\paragraph[{Multi\-Proc\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define Multi\-Proc\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T~-\/10}\label{_multi_proc_8h_aa7adeed5b18aeefd77fb57e333974d5d}
+
+
+Operation was interrupted. Please restart the operation. 
+
+\index{Multi\-Proc.\-h@{Multi\-Proc.\-h}!Multi\-Proc\-\_\-\-I\-N\-V\-A\-L\-I\-D\-I\-D@{Multi\-Proc\-\_\-\-I\-N\-V\-A\-L\-I\-D\-I\-D}}
+\index{Multi\-Proc\-\_\-\-I\-N\-V\-A\-L\-I\-D\-I\-D@{Multi\-Proc\-\_\-\-I\-N\-V\-A\-L\-I\-D\-I\-D}!MultiProc.h@{Multi\-Proc.\-h}}
+\paragraph[{Multi\-Proc\-\_\-\-I\-N\-V\-A\-L\-I\-D\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define Multi\-Proc\-\_\-\-I\-N\-V\-A\-L\-I\-D\-I\-D~(0x\-F\-F\-F\-F)}\label{_multi_proc_8h_a94a1d14527833bc8294407634d5495d9}
+
+
+Invalid processor id. 
+
+
+
+\subsubsection{Function Documentation}
+\index{Multi\-Proc.\-h@{Multi\-Proc.\-h}!Multi\-Proc\-\_\-get\-Base\-Id\-Of\-Cluster@{Multi\-Proc\-\_\-get\-Base\-Id\-Of\-Cluster}}
+\index{Multi\-Proc\-\_\-get\-Base\-Id\-Of\-Cluster@{Multi\-Proc\-\_\-get\-Base\-Id\-Of\-Cluster}!MultiProc.h@{Multi\-Proc.\-h}}
+\paragraph[{Multi\-Proc\-\_\-get\-Base\-Id\-Of\-Cluster}]{\setlength{\rightskip}{0pt plus 5cm}U\-Int16 Multi\-Proc\-\_\-get\-Base\-Id\-Of\-Cluster (
+\begin{DoxyParamCaption}
+\item[{Void}]{}
+\end{DoxyParamCaption}
+)}\label{_multi_proc_8h_a147f37c02626ab600bea516211eac50e}
+
+
+Gets the base Multi\-Proc id of the cluster. 
+
+Retrieves the base Multi\-Proc id for the cluster of processors.
+
+\begin{DoxyReturn}{Returns}
+Multi\-Proc id for base of cluster
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+Multi\-Proc\-\_\-get\-Cluster\-Id 
+\end{DoxySeeAlso}
+\index{Multi\-Proc.\-h@{Multi\-Proc.\-h}!Multi\-Proc\-\_\-get\-Id@{Multi\-Proc\-\_\-get\-Id}}
+\index{Multi\-Proc\-\_\-get\-Id@{Multi\-Proc\-\_\-get\-Id}!MultiProc.h@{Multi\-Proc.\-h}}
+\paragraph[{Multi\-Proc\-\_\-get\-Id}]{\setlength{\rightskip}{0pt plus 5cm}U\-Int16 Multi\-Proc\-\_\-get\-Id (
+\begin{DoxyParamCaption}
+\item[{String}]{name}
+\end{DoxyParamCaption}
+)}\label{_multi_proc_8h_ad690d4b42978e95cb57d9244bb8e6959}
+
+
+Gets the Multi\-Proc id. 
+
+Retrieves the Multi\-Proc id for the processor with corresponding Multi\-Proc name. \hyperlink{_multi_proc_8h_a94a1d14527833bc8294407634d5495d9}{Multi\-Proc\-\_\-\-I\-N\-V\-A\-L\-I\-D\-I\-D} is returned if the name was not found.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the processor.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Multi\-Proc id
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{_multi_proc_8h_aa16e1bb4fd1eb6f968d6ba47c65f88e0}{Multi\-Proc\-\_\-get\-Name} 
+\end{DoxySeeAlso}
+\index{Multi\-Proc.\-h@{Multi\-Proc.\-h}!Multi\-Proc\-\_\-get\-Name@{Multi\-Proc\-\_\-get\-Name}}
+\index{Multi\-Proc\-\_\-get\-Name@{Multi\-Proc\-\_\-get\-Name}!MultiProc.h@{Multi\-Proc.\-h}}
+\paragraph[{Multi\-Proc\-\_\-get\-Name}]{\setlength{\rightskip}{0pt plus 5cm}String Multi\-Proc\-\_\-get\-Name (
+\begin{DoxyParamCaption}
+\item[{U\-Int16}]{id}
+\end{DoxyParamCaption}
+)}\label{_multi_proc_8h_aa16e1bb4fd1eb6f968d6ba47c65f88e0}
+
+
+Gets the name of a processor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Multi\-Proc id.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Name of the processor
+\end{DoxyReturn}
+The returned string should never be modified.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{_multi_proc_8h_ad690d4b42978e95cb57d9244bb8e6959}{Multi\-Proc\-\_\-get\-Id} 
+\end{DoxySeeAlso}
+\index{Multi\-Proc.\-h@{Multi\-Proc.\-h}!Multi\-Proc\-\_\-get\-Num\-Processors@{Multi\-Proc\-\_\-get\-Num\-Processors}}
+\index{Multi\-Proc\-\_\-get\-Num\-Processors@{Multi\-Proc\-\_\-get\-Num\-Processors}!MultiProc.h@{Multi\-Proc.\-h}}
+\paragraph[{Multi\-Proc\-\_\-get\-Num\-Processors}]{\setlength{\rightskip}{0pt plus 5cm}U\-Int16 Multi\-Proc\-\_\-get\-Num\-Processors (
+\begin{DoxyParamCaption}
+\item[{Void}]{}
+\end{DoxyParamCaption}
+)}\label{_multi_proc_8h_a75e5d953ef6828ef03c2eb8d70dda82d}
+
+
+Gets the number of processors. 
+
+\begin{DoxyReturn}{Returns}
+Number of processors configured with Multi\-Proc 
+\end{DoxyReturn}
+\index{Multi\-Proc.\-h@{Multi\-Proc.\-h}!Multi\-Proc\-\_\-get\-Num\-Procs\-In\-Cluster@{Multi\-Proc\-\_\-get\-Num\-Procs\-In\-Cluster}}
+\index{Multi\-Proc\-\_\-get\-Num\-Procs\-In\-Cluster@{Multi\-Proc\-\_\-get\-Num\-Procs\-In\-Cluster}!MultiProc.h@{Multi\-Proc.\-h}}
+\paragraph[{Multi\-Proc\-\_\-get\-Num\-Procs\-In\-Cluster}]{\setlength{\rightskip}{0pt plus 5cm}U\-Int16 Multi\-Proc\-\_\-get\-Num\-Procs\-In\-Cluster (
+\begin{DoxyParamCaption}
+\item[{Void}]{}
+\end{DoxyParamCaption}
+)}\label{_multi_proc_8h_a74dfbb6a7dbf74b2a9be6c041a13d8bd}
+
+
+Gets the number of processors in the cluster. 
+
+\begin{DoxyReturn}{Returns}
+Number of processors in cluster 
+\end{DoxyReturn}
+\index{Multi\-Proc.\-h@{Multi\-Proc.\-h}!Multi\-Proc\-\_\-self@{Multi\-Proc\-\_\-self}}
+\index{Multi\-Proc\-\_\-self@{Multi\-Proc\-\_\-self}!MultiProc.h@{Multi\-Proc.\-h}}
+\paragraph[{Multi\-Proc\-\_\-self}]{\setlength{\rightskip}{0pt plus 5cm}U\-Int16 Multi\-Proc\-\_\-self (
+\begin{DoxyParamCaption}
+\item[{Void}]{}
+\end{DoxyParamCaption}
+)}\label{_multi_proc_8h_a2cb11a79ed2c6cbd6ea6b88b63903124}
+
+
+Gets executing processor's Multi\-Proc id. 
+
+\begin{DoxyReturn}{Returns}
+Executing processor's id
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{_multi_proc_8h_ad690d4b42978e95cb57d9244bb8e6959}{Multi\-Proc\-\_\-get\-Id} 
+\end{DoxySeeAlso}
+\index{Multi\-Proc.\-h@{Multi\-Proc.\-h}!Multi\-Proc\-\_\-set\-Base\-Id\-Of\-Cluster@{Multi\-Proc\-\_\-set\-Base\-Id\-Of\-Cluster}}
+\index{Multi\-Proc\-\_\-set\-Base\-Id\-Of\-Cluster@{Multi\-Proc\-\_\-set\-Base\-Id\-Of\-Cluster}!MultiProc.h@{Multi\-Proc.\-h}}
+\paragraph[{Multi\-Proc\-\_\-set\-Base\-Id\-Of\-Cluster}]{\setlength{\rightskip}{0pt plus 5cm}Int Multi\-Proc\-\_\-set\-Base\-Id\-Of\-Cluster (
+\begin{DoxyParamCaption}
+\item[{U\-Int16}]{base\-Id}
+\end{DoxyParamCaption}
+)}\label{_multi_proc_8h_ae8ca0f1d758d428d9f06f56badee7f0c}
+
+
+Sets executing processor's base id of the cluster. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em base\-Id} & The Multi\-Proc base id of the cluster\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Multi\-Proc status\-:
+\begin{DoxyItemize}
+\item \hyperlink{_multi_proc_8h_a88ef69134ed8907ec46443a8c5445acd}{Multi\-Proc\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}\-: sucessfully set base id of cluster
+\item \hyperlink{_multi_proc_8h_ac3e4ff7eac6f0fe38b97b1ca086ea1c6}{Multi\-Proc\-\_\-\-E\-\_\-\-F\-A\-I\-L}\-: failed to set base id of cluster 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\index{Multi\-Proc.\-h@{Multi\-Proc.\-h}!Multi\-Proc\-\_\-set\-Local\-Id@{Multi\-Proc\-\_\-set\-Local\-Id}}
+\index{Multi\-Proc\-\_\-set\-Local\-Id@{Multi\-Proc\-\_\-set\-Local\-Id}!MultiProc.h@{Multi\-Proc.\-h}}
+\paragraph[{Multi\-Proc\-\_\-set\-Local\-Id}]{\setlength{\rightskip}{0pt plus 5cm}Int Multi\-Proc\-\_\-set\-Local\-Id (
+\begin{DoxyParamCaption}
+\item[{U\-Int16}]{id}
+\end{DoxyParamCaption}
+)}\label{_multi_proc_8h_a4a00561c7a3f5f91b7ab7e1b4c3fb1ef}
+
+
+Sets executing processor's Multi\-Proc id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Multi\-Proc id\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Multi\-Proc status\-:
+\begin{DoxyItemize}
+\item \hyperlink{_multi_proc_8h_a88ef69134ed8907ec46443a8c5445acd}{Multi\-Proc\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}\-: Multi\-Proc id successfully set
+\item \hyperlink{_multi_proc_8h_ac3e4ff7eac6f0fe38b97b1ca086ea1c6}{Multi\-Proc\-\_\-\-E\-\_\-\-F\-A\-I\-L}\-: Multi\-Proc id cannot be set at this time 
+\end{DoxyItemize}
+\end{DoxyReturn}

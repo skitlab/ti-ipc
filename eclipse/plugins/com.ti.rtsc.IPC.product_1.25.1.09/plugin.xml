@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin
+    name="IPC (Multicore and I/O) Target Content"
+    id="com.ti.rtsc.IPC.product_1.25.1.09"
+    version="1.25.1.09"
+    provider-name="Texas Instruments">
+
+    <extension point="org.eclipse.rtsc.xdctools.ui.productInfo">
+        <repository location="../../../packages"/>
+        <docs location="../../../."/>
+        <docs location="../../../docs"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.omap3530.host"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.simVayu.benelli"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evm6678.core0"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evmTI813X.vpss"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evmTI811X.vpss"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evmTI811X.host"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evmC6A8149.dsp"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evmTI814X.dsp"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.simVayu.eve4"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evmC6A8149.host"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evmTI816X.host"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.omap4430.core1"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evmOMAPL138.dsp"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evmDM6446.dsp"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evmTI811X.dsp"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evmDM8148.vpss"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evmTI813X.host"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evmTI814X.vpss"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evmTI816X.vpss"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evmDA830.dsp"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.simVayu.eve2"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evm6474.core0"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.simArctic.arp32"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.omap4430.core0"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.simVayu.dsp2"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.simVayu.eve1"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.omap3530.dsp"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evmC6A8149.video"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.simArctic.dsp"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evmDM6446.arm"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.simVayu.eve3"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evmDM8148.dsp"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evmTI814X.host"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evmDM8148.video"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evmTI811X.video"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evmTI816X.dsp"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evmDA830.arm"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evmDM8148.host"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evmTI816X.video"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.simVayu.dsp1"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evm6472.core0"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evmTI814X.video"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evmTI813X.video"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evm6670.core0"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evmC6A8149.eve"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evmC6A8149.vpss"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evm6657.core0"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.omap4430.dsp"/>
+        <rtscPlatform name="ti.sdo.ipc.examples.platforms.evmOMAPL138.arm"/>
+        <info
+            installLocation="../../.."
+            productName="IPC (Multicore and I/O)"
+            versionNumber="1.25.1.09"
+            containsRTSCPlatforms="true"
+        />
+    </extension>
+
+    <extension point="org.eclipse.rtsc.xdctools.model.productView">
+        <productview
+            moduleName="ti.sdo.ipc.productview.IpcProductView"
+         />
+    </extension>
+
+
+</plugin>

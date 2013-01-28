@@ -1,0 +1,653 @@
+\subsection{Name\-Server.\-h File Reference}
+\label{_name_server_8h}\index{Name\-Server.\-h@{Name\-Server.\-h}}
+
+
+\subsubsection{Detailed Description}
+Name\-Server Manager. ===========================================================================
+
+The Name\-Server module manages local name/value pairs that enables an application and other modules to store and retrieve values based on a name. The module supports different lengths of values. The \hyperlink{_name_server_8h_ad7d45ed8fe5bcd1f10da5914c8da39f5}{Name\-Server\-\_\-add} and \hyperlink{_name_server_8h_a5f1013e57e7c5da9f003063d70a76e01}{Name\-Server\-\_\-get} functions are for variable length values. The \hyperlink{_name_server_8h_ac130195a04a34dfa2daba6ec3fff65d6}{Name\-Server\-\_\-add\-U\-Int32} and \hyperlink{_name_server_8h_ac3b6fa4f8f0ed572f1a5f6b7cb05679e}{Name\-Server\-\_\-get\-U\-Int32} functions are optimized for U\-Int32 variables and constants.
+
+The Name\-Server module maintains thread-\/safety for the A\-P\-Is. However, the Name\-Server A\-P\-Is cannot be called from an interrupt (i.\-e. Hwi) context. However, it is safe to use the A\-P\-Is in Swi's and Tasks.
+
+Each Name\-Server instance manages a different name/value table. This allows each table to be customized to meet the requirements of user\-: \begin{DoxyItemize}
+\item {\bfseries Size differences\-:} one table could allow long values (e.\-g. $>$ 32 bits) while another table could be used to store integers. This customization enables better memory usage. \item {\bfseries Performance\-:} improves search time when retrieving a name/value pair. \item {\bfseries Relax name uniqueness\-:} names in a specific table must be unique, but the same name can be used in different tables.\end{DoxyItemize}
+When adding a name/value pair, the name and value are copied into internal buffers in Name\-Server. To minimize runtime memory allocation these buffers can be allocated at creation time.
+
+Name\-Server maintains the name/values table in local memory (e.\-g. not shared memory). However the Name\-Server module can be used in a multiprocessor system.
+
+The Name\-Server module uses the Multi\-Proc module for identifying the different processors. Which remote processors and the order they are queried is determined by the proc\-Id array in the \hyperlink{_name_server_8h_a5f1013e57e7c5da9f003063d70a76e01}{Name\-Server\-\_\-get} function.
+
+Currently there is no endian or wordsize conversion performed by the Name\-Server module. Also there is no asynchronous support at this time.
+
+The Name\-Server header should be included in an application as follows\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{    #include <ti/ipc/NameServer.h>}
+\end{DoxyCode}
+ \subsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_name_server___params}{Name\-Server\-\_\-\-Params}
+\begin{DoxyCompactList}\small\item\em Name\-Server\-\_\-\-Handle type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_name_server_8h_a57542b4fd6b5d46d78064ae92215bc4b}{Name\-Server\-\_\-\-S\-\_\-\-B\-U\-S\-Y}~2
+\begin{DoxyCompactList}\small\item\em The resource is still in use. \end{DoxyCompactList}\item 
+\#define \hyperlink{_name_server_8h_a66224beb4a7f1cc92923a8fe630429ce}{Name\-Server\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P}~1
+\begin{DoxyCompactList}\small\item\em The module has been already setup. \end{DoxyCompactList}\item 
+\#define \hyperlink{_name_server_8h_a49cbe5edf8e519b17e323d01431e8161}{Name\-Server\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}~0
+\begin{DoxyCompactList}\small\item\em Operation is successful. \end{DoxyCompactList}\item 
+\#define \hyperlink{_name_server_8h_a2ffd6887c6aca49d73982fb226db679c}{Name\-Server\-\_\-\-E\-\_\-\-F\-A\-I\-L}~-\/1
+\begin{DoxyCompactList}\small\item\em Generic failure. \end{DoxyCompactList}\item 
+\#define \hyperlink{_name_server_8h_a213957efe13b0c8ec3d52e31a708b56f}{Name\-Server\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G}~-\/2
+\begin{DoxyCompactList}\small\item\em Argument passed to function is invalid. \end{DoxyCompactList}\item 
+\#define \hyperlink{_name_server_8h_a917b53c5df7ca0d6ecdc29c269fa0c2c}{Name\-Server\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y}~-\/3
+\begin{DoxyCompactList}\small\item\em Operation resulted in memory failure. \end{DoxyCompactList}\item 
+\#define \hyperlink{_name_server_8h_ac52dae450ec3de45caa3ce1fe143b46e}{Name\-Server\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S}~-\/4
+\begin{DoxyCompactList}\small\item\em The specified entity already exists. \end{DoxyCompactList}\item 
+\#define \hyperlink{_name_server_8h_a6af9a47d256473dbeb9653988603c36e}{Name\-Server\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}~-\/5
+\begin{DoxyCompactList}\small\item\em Unable to find the specified entity. \end{DoxyCompactList}\item 
+\#define \hyperlink{_name_server_8h_a0f8f1fb04f719120e127565d2c3aaa5c}{Name\-Server\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T}~-\/6
+\begin{DoxyCompactList}\small\item\em Operation timed out. \end{DoxyCompactList}\item 
+\#define \hyperlink{_name_server_8h_af8382f12ca225820d75eee0b5b48f57f}{Name\-Server\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E}~-\/7
+\begin{DoxyCompactList}\small\item\em Module is not initialized. \end{DoxyCompactList}\item 
+\#define \hyperlink{_name_server_8h_a1241686307312899fadce59ec251b237}{Name\-Server\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E}~-\/8
+\begin{DoxyCompactList}\small\item\em A failure occurred in an O\-S-\/specific call. \end{DoxyCompactList}\item 
+\#define \hyperlink{_name_server_8h_afb9e082dbbf79808eb895db9b818e126}{Name\-Server\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E}~-\/9
+\begin{DoxyCompactList}\small\item\em Specified resource is not available. \end{DoxyCompactList}\item 
+\#define \hyperlink{_name_server_8h_acf390d38dd50b5ea5f4d58c6e892d8b6}{Name\-Server\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T}~-\/10
+\begin{DoxyCompactList}\small\item\em Operation was interrupted. Please restart the operation. \end{DoxyCompactList}\item 
+\#define \hyperlink{_name_server_8h_aee02296103cd2e162143d40c917697d7}{Name\-Server\-\_\-\-A\-L\-L\-O\-W\-G\-R\-O\-W\-T\-H}~($\sim$0)
+\begin{DoxyCompactList}\small\item\em Allow dynamic growth of the Name\-Server instance table. \end{DoxyCompactList}\item 
+\#define \hyperlink{_name_server_8h_afa52c74cc2d67bda4d5522418abb4585}{Name\-Server\-\_\-\-Params\-\_\-\-M\-A\-X\-N\-A\-M\-E\-L\-E\-N}~16
+\begin{DoxyCompactList}\small\item\em The default maximum length of the name for the name/value pair. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct Name\-Server\-\_\-\-Object $\ast$ \hyperlink{_name_server_8h_a99fa93c4ee4169db90162b523d9152d4}{Name\-Server\-\_\-\-Handle}
+\begin{DoxyCompactList}\small\item\em Name\-Server handle type. \end{DoxyCompactList}\item 
+typedef struct \hyperlink{struct_name_server___params}{Name\-Server\-\_\-\-Params} \hyperlink{_name_server_8h_ad1c351b65dad7194f35c2ed9d7997b8d}{Name\-Server\-\_\-\-Params}
+\begin{DoxyCompactList}\small\item\em Name\-Server\-\_\-\-Handle type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Void \hyperlink{_name_server_8h_a9bb546e8a7d656ce5e919650febe4989}{Name\-Server\-\_\-\-Params\-\_\-init} (\hyperlink{struct_name_server___params}{Name\-Server\-\_\-\-Params} $\ast$params)
+\begin{DoxyCompactList}\small\item\em Initializes parameter structure. \end{DoxyCompactList}\item 
+\hyperlink{_name_server_8h_a99fa93c4ee4169db90162b523d9152d4}{Name\-Server\-\_\-\-Handle} \hyperlink{_name_server_8h_a7345e78debfbf6d5da6ae1603764429a}{Name\-Server\-\_\-create} (String name, const \hyperlink{struct_name_server___params}{Name\-Server\-\_\-\-Params} $\ast$params)
+\begin{DoxyCompactList}\small\item\em Creates a Name\-Server instance. \end{DoxyCompactList}\item 
+Int \hyperlink{_name_server_8h_a3419fc2bf3e6c34289c620cf9be38a04}{Name\-Server\-\_\-delete} (\hyperlink{_name_server_8h_a99fa93c4ee4169db90162b523d9152d4}{Name\-Server\-\_\-\-Handle} $\ast$handle\-Ptr)
+\begin{DoxyCompactList}\small\item\em Deletes a Name\-Server instance. \end{DoxyCompactList}\item 
+\hyperlink{_name_server_8h_a99fa93c4ee4169db90162b523d9152d4}{Name\-Server\-\_\-\-Handle} \hyperlink{_name_server_8h_abaebe428fbf536448c99acb6faf25134}{Name\-Server\-\_\-get\-Handle} (String name)
+\begin{DoxyCompactList}\small\item\em Gets the Name\-Server handle given the name. \end{DoxyCompactList}\item 
+Ptr \hyperlink{_name_server_8h_ad7d45ed8fe5bcd1f10da5914c8da39f5}{Name\-Server\-\_\-add} (\hyperlink{_name_server_8h_a99fa93c4ee4169db90162b523d9152d4}{Name\-Server\-\_\-\-Handle} handle, String name, Ptr buf, U\-Int32 len)
+\begin{DoxyCompactList}\small\item\em Adds a variable length value into the local Name\-Server table. \end{DoxyCompactList}\item 
+Ptr \hyperlink{_name_server_8h_ac130195a04a34dfa2daba6ec3fff65d6}{Name\-Server\-\_\-add\-U\-Int32} (\hyperlink{_name_server_8h_a99fa93c4ee4169db90162b523d9152d4}{Name\-Server\-\_\-\-Handle} handle, String name, U\-Int32 value)
+\begin{DoxyCompactList}\small\item\em Adds a 32-\/bit value into the local Name\-Server table. \end{DoxyCompactList}\item 
+Int \hyperlink{_name_server_8h_a5f1013e57e7c5da9f003063d70a76e01}{Name\-Server\-\_\-get} (\hyperlink{_name_server_8h_a99fa93c4ee4169db90162b523d9152d4}{Name\-Server\-\_\-\-Handle} handle, String name, Ptr buf, U\-Int32 $\ast$len, U\-Int16 proc\-Id\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Gets the variable value length by name. \end{DoxyCompactList}\item 
+Int \hyperlink{_name_server_8h_ac3b6fa4f8f0ed572f1a5f6b7cb05679e}{Name\-Server\-\_\-get\-U\-Int32} (\hyperlink{_name_server_8h_a99fa93c4ee4169db90162b523d9152d4}{Name\-Server\-\_\-\-Handle} handle, String name, Ptr buf, U\-Int16 proc\-Id\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Gets a 32-\/bit value by name. \end{DoxyCompactList}\item 
+Int \hyperlink{_name_server_8h_a46d3826bc4ef4bc6cc45d5287c697122}{Name\-Server\-\_\-get\-Local} (\hyperlink{_name_server_8h_a99fa93c4ee4169db90162b523d9152d4}{Name\-Server\-\_\-\-Handle} handle, String name, Ptr buf, U\-Int32 $\ast$len)
+\begin{DoxyCompactList}\small\item\em Gets the variable value length by name from the local table. \end{DoxyCompactList}\item 
+Int \hyperlink{_name_server_8h_a9e824f111db640d1bce81bfe25963b76}{Name\-Server\-\_\-get\-Local\-U\-Int32} (\hyperlink{_name_server_8h_a99fa93c4ee4169db90162b523d9152d4}{Name\-Server\-\_\-\-Handle} handle, String name, Ptr buf)
+\begin{DoxyCompactList}\small\item\em Gets a 32-\/bit value by name from the local table. \end{DoxyCompactList}\item 
+Int \hyperlink{_name_server_8h_ab21d262bcfa187f21e235b36ce17d6de}{Name\-Server\-\_\-remove} (\hyperlink{_name_server_8h_a99fa93c4ee4169db90162b523d9152d4}{Name\-Server\-\_\-\-Handle} handle, String name)
+\begin{DoxyCompactList}\small\item\em Remove a name/value pair from the table. \end{DoxyCompactList}\item 
+Int \hyperlink{_name_server_8h_a84b6883f07de21bcaf8f4dbdc2e55e63}{Name\-Server\-\_\-remove\-Entry} (\hyperlink{_name_server_8h_a99fa93c4ee4169db90162b523d9152d4}{Name\-Server\-\_\-\-Handle} handle, Ptr entry)
+\begin{DoxyCompactList}\small\item\em Remove a name/value pair from the table. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Macro Definition Documentation}
+\index{Name\-Server.\-h@{Name\-Server.\-h}!Name\-Server\-\_\-\-S\-\_\-\-B\-U\-S\-Y@{Name\-Server\-\_\-\-S\-\_\-\-B\-U\-S\-Y}}
+\index{Name\-Server\-\_\-\-S\-\_\-\-B\-U\-S\-Y@{Name\-Server\-\_\-\-S\-\_\-\-B\-U\-S\-Y}!NameServer.h@{Name\-Server.\-h}}
+\paragraph[{Name\-Server\-\_\-\-S\-\_\-\-B\-U\-S\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define Name\-Server\-\_\-\-S\-\_\-\-B\-U\-S\-Y~2}\label{_name_server_8h_a57542b4fd6b5d46d78064ae92215bc4b}
+
+
+The resource is still in use. 
+
+\index{Name\-Server.\-h@{Name\-Server.\-h}!Name\-Server\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P@{Name\-Server\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P}}
+\index{Name\-Server\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P@{Name\-Server\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P}!NameServer.h@{Name\-Server.\-h}}
+\paragraph[{Name\-Server\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define Name\-Server\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P~1}\label{_name_server_8h_a66224beb4a7f1cc92923a8fe630429ce}
+
+
+The module has been already setup. 
+
+\index{Name\-Server.\-h@{Name\-Server.\-h}!Name\-Server\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S@{Name\-Server\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}}
+\index{Name\-Server\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S@{Name\-Server\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}!NameServer.h@{Name\-Server.\-h}}
+\paragraph[{Name\-Server\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define Name\-Server\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S~0}\label{_name_server_8h_a49cbe5edf8e519b17e323d01431e8161}
+
+
+Operation is successful. 
+
+\index{Name\-Server.\-h@{Name\-Server.\-h}!Name\-Server\-\_\-\-E\-\_\-\-F\-A\-I\-L@{Name\-Server\-\_\-\-E\-\_\-\-F\-A\-I\-L}}
+\index{Name\-Server\-\_\-\-E\-\_\-\-F\-A\-I\-L@{Name\-Server\-\_\-\-E\-\_\-\-F\-A\-I\-L}!NameServer.h@{Name\-Server.\-h}}
+\paragraph[{Name\-Server\-\_\-\-E\-\_\-\-F\-A\-I\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define Name\-Server\-\_\-\-E\-\_\-\-F\-A\-I\-L~-\/1}\label{_name_server_8h_a2ffd6887c6aca49d73982fb226db679c}
+
+
+Generic failure. 
+
+\index{Name\-Server.\-h@{Name\-Server.\-h}!Name\-Server\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G@{Name\-Server\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G}}
+\index{Name\-Server\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G@{Name\-Server\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G}!NameServer.h@{Name\-Server.\-h}}
+\paragraph[{Name\-Server\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define Name\-Server\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G~-\/2}\label{_name_server_8h_a213957efe13b0c8ec3d52e31a708b56f}
+
+
+Argument passed to function is invalid. 
+
+\index{Name\-Server.\-h@{Name\-Server.\-h}!Name\-Server\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y@{Name\-Server\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y}}
+\index{Name\-Server\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y@{Name\-Server\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y}!NameServer.h@{Name\-Server.\-h}}
+\paragraph[{Name\-Server\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define Name\-Server\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y~-\/3}\label{_name_server_8h_a917b53c5df7ca0d6ecdc29c269fa0c2c}
+
+
+Operation resulted in memory failure. 
+
+\index{Name\-Server.\-h@{Name\-Server.\-h}!Name\-Server\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S@{Name\-Server\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S}}
+\index{Name\-Server\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S@{Name\-Server\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S}!NameServer.h@{Name\-Server.\-h}}
+\paragraph[{Name\-Server\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define Name\-Server\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S~-\/4}\label{_name_server_8h_ac52dae450ec3de45caa3ce1fe143b46e}
+
+
+The specified entity already exists. 
+
+\index{Name\-Server.\-h@{Name\-Server.\-h}!Name\-Server\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D@{Name\-Server\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}}
+\index{Name\-Server\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D@{Name\-Server\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}!NameServer.h@{Name\-Server.\-h}}
+\paragraph[{Name\-Server\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define Name\-Server\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D~-\/5}\label{_name_server_8h_a6af9a47d256473dbeb9653988603c36e}
+
+
+Unable to find the specified entity. 
+
+\index{Name\-Server.\-h@{Name\-Server.\-h}!Name\-Server\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T@{Name\-Server\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T}}
+\index{Name\-Server\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T@{Name\-Server\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T}!NameServer.h@{Name\-Server.\-h}}
+\paragraph[{Name\-Server\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define Name\-Server\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T~-\/6}\label{_name_server_8h_a0f8f1fb04f719120e127565d2c3aaa5c}
+
+
+Operation timed out. 
+
+\index{Name\-Server.\-h@{Name\-Server.\-h}!Name\-Server\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E@{Name\-Server\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E}}
+\index{Name\-Server\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E@{Name\-Server\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E}!NameServer.h@{Name\-Server.\-h}}
+\paragraph[{Name\-Server\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define Name\-Server\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E~-\/7}\label{_name_server_8h_af8382f12ca225820d75eee0b5b48f57f}
+
+
+Module is not initialized. 
+
+\index{Name\-Server.\-h@{Name\-Server.\-h}!Name\-Server\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E@{Name\-Server\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E}}
+\index{Name\-Server\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E@{Name\-Server\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E}!NameServer.h@{Name\-Server.\-h}}
+\paragraph[{Name\-Server\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define Name\-Server\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E~-\/8}\label{_name_server_8h_a1241686307312899fadce59ec251b237}
+
+
+A failure occurred in an O\-S-\/specific call. 
+
+\index{Name\-Server.\-h@{Name\-Server.\-h}!Name\-Server\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E@{Name\-Server\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E}}
+\index{Name\-Server\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E@{Name\-Server\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E}!NameServer.h@{Name\-Server.\-h}}
+\paragraph[{Name\-Server\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define Name\-Server\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E~-\/9}\label{_name_server_8h_afb9e082dbbf79808eb895db9b818e126}
+
+
+Specified resource is not available. 
+
+\index{Name\-Server.\-h@{Name\-Server.\-h}!Name\-Server\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T@{Name\-Server\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T}}
+\index{Name\-Server\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T@{Name\-Server\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T}!NameServer.h@{Name\-Server.\-h}}
+\paragraph[{Name\-Server\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define Name\-Server\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T~-\/10}\label{_name_server_8h_acf390d38dd50b5ea5f4d58c6e892d8b6}
+
+
+Operation was interrupted. Please restart the operation. 
+
+\index{Name\-Server.\-h@{Name\-Server.\-h}!Name\-Server\-\_\-\-A\-L\-L\-O\-W\-G\-R\-O\-W\-T\-H@{Name\-Server\-\_\-\-A\-L\-L\-O\-W\-G\-R\-O\-W\-T\-H}}
+\index{Name\-Server\-\_\-\-A\-L\-L\-O\-W\-G\-R\-O\-W\-T\-H@{Name\-Server\-\_\-\-A\-L\-L\-O\-W\-G\-R\-O\-W\-T\-H}!NameServer.h@{Name\-Server.\-h}}
+\paragraph[{Name\-Server\-\_\-\-A\-L\-L\-O\-W\-G\-R\-O\-W\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define Name\-Server\-\_\-\-A\-L\-L\-O\-W\-G\-R\-O\-W\-T\-H~($\sim$0)}\label{_name_server_8h_aee02296103cd2e162143d40c917697d7}
+
+
+Allow dynamic growth of the Name\-Server instance table. 
+
+\index{Name\-Server.\-h@{Name\-Server.\-h}!Name\-Server\-\_\-\-Params\-\_\-\-M\-A\-X\-N\-A\-M\-E\-L\-E\-N@{Name\-Server\-\_\-\-Params\-\_\-\-M\-A\-X\-N\-A\-M\-E\-L\-E\-N}}
+\index{Name\-Server\-\_\-\-Params\-\_\-\-M\-A\-X\-N\-A\-M\-E\-L\-E\-N@{Name\-Server\-\_\-\-Params\-\_\-\-M\-A\-X\-N\-A\-M\-E\-L\-E\-N}!NameServer.h@{Name\-Server.\-h}}
+\paragraph[{Name\-Server\-\_\-\-Params\-\_\-\-M\-A\-X\-N\-A\-M\-E\-L\-E\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define Name\-Server\-\_\-\-Params\-\_\-\-M\-A\-X\-N\-A\-M\-E\-L\-E\-N~16}\label{_name_server_8h_afa52c74cc2d67bda4d5522418abb4585}
+
+
+The default maximum length of the name for the name/value pair. 
+
+
+
+\subsubsection{Typedef Documentation}
+\index{Name\-Server.\-h@{Name\-Server.\-h}!Name\-Server\-\_\-\-Handle@{Name\-Server\-\_\-\-Handle}}
+\index{Name\-Server\-\_\-\-Handle@{Name\-Server\-\_\-\-Handle}!NameServer.h@{Name\-Server.\-h}}
+\paragraph[{Name\-Server\-\_\-\-Handle}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct Name\-Server\-\_\-\-Object$\ast$ {\bf Name\-Server\-\_\-\-Handle}}\label{_name_server_8h_a99fa93c4ee4169db90162b523d9152d4}
+
+
+Name\-Server handle type. 
+
+\index{Name\-Server.\-h@{Name\-Server.\-h}!Name\-Server\-\_\-\-Params@{Name\-Server\-\_\-\-Params}}
+\index{Name\-Server\-\_\-\-Params@{Name\-Server\-\_\-\-Params}!NameServer.h@{Name\-Server.\-h}}
+\paragraph[{Name\-Server\-\_\-\-Params}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Name\-Server\-\_\-\-Params}  {\bf Name\-Server\-\_\-\-Params}}\label{_name_server_8h_ad1c351b65dad7194f35c2ed9d7997b8d}
+
+
+Name\-Server\-\_\-\-Handle type. 
+
+
+
+\subsubsection{Function Documentation}
+\index{Name\-Server.\-h@{Name\-Server.\-h}!Name\-Server\-\_\-\-Params\-\_\-init@{Name\-Server\-\_\-\-Params\-\_\-init}}
+\index{Name\-Server\-\_\-\-Params\-\_\-init@{Name\-Server\-\_\-\-Params\-\_\-init}!NameServer.h@{Name\-Server.\-h}}
+\paragraph[{Name\-Server\-\_\-\-Params\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}Void Name\-Server\-\_\-\-Params\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{{\bf Name\-Server\-\_\-\-Params} $\ast$}]{params}
+\end{DoxyParamCaption}
+)}\label{_name_server_8h_a9bb546e8a7d656ce5e919650febe4989}
+
+
+Initializes parameter structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em params} & Instance param structure\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{_name_server_8h_a7345e78debfbf6d5da6ae1603764429a}{Name\-Server\-\_\-create} 
+\end{DoxySeeAlso}
+\index{Name\-Server.\-h@{Name\-Server.\-h}!Name\-Server\-\_\-create@{Name\-Server\-\_\-create}}
+\index{Name\-Server\-\_\-create@{Name\-Server\-\_\-create}!NameServer.h@{Name\-Server.\-h}}
+\paragraph[{Name\-Server\-\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Name\-Server\-\_\-\-Handle} Name\-Server\-\_\-create (
+\begin{DoxyParamCaption}
+\item[{String}]{name, }
+\item[{const {\bf Name\-Server\-\_\-\-Params} $\ast$}]{params}
+\end{DoxyParamCaption}
+)}\label{_name_server_8h_a7345e78debfbf6d5da6ae1603764429a}
+
+
+Creates a Name\-Server instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Instance name \\
+\hline
+{\em params} & Instance param structure\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Name\-Server handle
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{_name_server_8h_a3419fc2bf3e6c34289c620cf9be38a04}{Name\-Server\-\_\-delete} 
+\end{DoxySeeAlso}
+\index{Name\-Server.\-h@{Name\-Server.\-h}!Name\-Server\-\_\-delete@{Name\-Server\-\_\-delete}}
+\index{Name\-Server\-\_\-delete@{Name\-Server\-\_\-delete}!NameServer.h@{Name\-Server.\-h}}
+\paragraph[{Name\-Server\-\_\-delete}]{\setlength{\rightskip}{0pt plus 5cm}Int Name\-Server\-\_\-delete (
+\begin{DoxyParamCaption}
+\item[{{\bf Name\-Server\-\_\-\-Handle} $\ast$}]{handle\-Ptr}
+\end{DoxyParamCaption}
+)}\label{_name_server_8h_a3419fc2bf3e6c34289c620cf9be38a04}
+
+
+Deletes a Name\-Server instance. 
+
+If the instance is not empty, the contents is freed back to the heap it was allocated from.
+
+
+\begin{DoxyParams}{Parameters}
+{\em handle\-Ptr} & Pointer to a Name\-Server handle\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status
+\begin{DoxyItemize}
+\item \hyperlink{_name_server_8h_a49cbe5edf8e519b17e323d01431e8161}{Name\-Server\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}\-: Instance successfully deleted
+\item \hyperlink{_name_server_8h_a2ffd6887c6aca49d73982fb226db679c}{Name\-Server\-\_\-\-E\-\_\-\-F\-A\-I\-L}\-: Instance delete failed
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{_name_server_8h_a7345e78debfbf6d5da6ae1603764429a}{Name\-Server\-\_\-create} 
+\end{DoxySeeAlso}
+\index{Name\-Server.\-h@{Name\-Server.\-h}!Name\-Server\-\_\-get\-Handle@{Name\-Server\-\_\-get\-Handle}}
+\index{Name\-Server\-\_\-get\-Handle@{Name\-Server\-\_\-get\-Handle}!NameServer.h@{Name\-Server.\-h}}
+\paragraph[{Name\-Server\-\_\-get\-Handle}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Name\-Server\-\_\-\-Handle} Name\-Server\-\_\-get\-Handle (
+\begin{DoxyParamCaption}
+\item[{String}]{name}
+\end{DoxyParamCaption}
+)}\label{_name_server_8h_abaebe428fbf536448c99acb6faf25134}
+
+
+Gets the Name\-Server handle given the name. 
+
+Each Name\-Server instance has a name. The name and this function can be used by the remote driver module to aid in queries to remote processors. This function allows the caller to get the local handle based on the instance name.
+
+For example, when a remote driver sends a request to the remote processor, it probably contains the name of the instance to query. The receiving remote driver uses that name to obtain the handle for the local Name\-Server instance in question. Then that instance can be queried for the name/value pair.
+
+This function does not query remote processors.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of instance\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Name\-Server handle 
+\end{DoxyReturn}
+\index{Name\-Server.\-h@{Name\-Server.\-h}!Name\-Server\-\_\-add@{Name\-Server\-\_\-add}}
+\index{Name\-Server\-\_\-add@{Name\-Server\-\_\-add}!NameServer.h@{Name\-Server.\-h}}
+\paragraph[{Name\-Server\-\_\-add}]{\setlength{\rightskip}{0pt plus 5cm}Ptr Name\-Server\-\_\-add (
+\begin{DoxyParamCaption}
+\item[{{\bf Name\-Server\-\_\-\-Handle}}]{handle, }
+\item[{String}]{name, }
+\item[{Ptr}]{buf, }
+\item[{U\-Int32}]{len}
+\end{DoxyParamCaption}
+)}\label{_name_server_8h_ad7d45ed8fe5bcd1f10da5914c8da39f5}
+
+
+Adds a variable length value into the local Name\-Server table. 
+
+This function adds a variable length value into the local table. If the \hyperlink{struct_name_server___params_ac1accae9db70ea330e40c8da8d311eab}{Name\-Server\-\_\-\-Params\-::check\-Existing} flag was true on creation, this function searches the table to make sure the name does not already exist. If it does, the name/value pair is not added and the \hyperlink{_name_server_8h_ac52dae450ec3de45caa3ce1fe143b46e}{Name\-Server\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S} error is returned.
+
+There is memory allocation during this function if \hyperlink{struct_name_server___params_a26ee68e20b559b4c238c1e5a8646191f}{Name\-Server\-\_\-\-Params\-::max\-Runtime\-Entries} is set to \hyperlink{_name_server_8h_aee02296103cd2e162143d40c917697d7}{Name\-Server\-\_\-\-A\-L\-L\-O\-W\-G\-R\-O\-W\-T\-H}.
+
+This function copies the name and buffer into the name/value table, so they do not need to be persistent after the call.
+
+The function does not query remote processors to make sure the name is unique.
+
+
+\begin{DoxyParams}{Parameters}
+{\em handle} & Instance handle \\
+\hline
+{\em name} & Name for the name/value pair \\
+\hline
+{\em buf} & Pointer to value for the name/value pair \\
+\hline
+{\em len} & length of the value\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Unique entry identifier
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{_name_server_8h_ac130195a04a34dfa2daba6ec3fff65d6}{Name\-Server\-\_\-add\-U\-Int32}, \hyperlink{_name_server_8h_a5f1013e57e7c5da9f003063d70a76e01}{Name\-Server\-\_\-get}, 
+\end{DoxySeeAlso}
+\index{Name\-Server.\-h@{Name\-Server.\-h}!Name\-Server\-\_\-add\-U\-Int32@{Name\-Server\-\_\-add\-U\-Int32}}
+\index{Name\-Server\-\_\-add\-U\-Int32@{Name\-Server\-\_\-add\-U\-Int32}!NameServer.h@{Name\-Server.\-h}}
+\paragraph[{Name\-Server\-\_\-add\-U\-Int32}]{\setlength{\rightskip}{0pt plus 5cm}Ptr Name\-Server\-\_\-add\-U\-Int32 (
+\begin{DoxyParamCaption}
+\item[{{\bf Name\-Server\-\_\-\-Handle}}]{handle, }
+\item[{String}]{name, }
+\item[{U\-Int32}]{value}
+\end{DoxyParamCaption}
+)}\label{_name_server_8h_ac130195a04a34dfa2daba6ec3fff65d6}
+
+
+Adds a 32-\/bit value into the local Name\-Server table. 
+
+This function adds a 32-\/bit value into the local table. This function is simply a specialized \hyperlink{_name_server_8h_ad7d45ed8fe5bcd1f10da5914c8da39f5}{Name\-Server\-\_\-add()} function that allows a convenient way to add U\-Int32 bit values without needing to specify the address of a U\-Int32 local variable.
+
+If the \hyperlink{struct_name_server___params_ac1accae9db70ea330e40c8da8d311eab}{Name\-Server\-\_\-\-Params\-::check\-Existing} flag was true on creation, this function searches the table to make sure the name does not already exist. If it does, the name/value pair is not added and the \hyperlink{_name_server_8h_ac52dae450ec3de45caa3ce1fe143b46e}{Name\-Server\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S} error is returned.
+
+This function copies the name into the name/value table.
+
+There is memory allocation during this function if \hyperlink{struct_name_server___params_a26ee68e20b559b4c238c1e5a8646191f}{Name\-Server\-\_\-\-Params\-::max\-Runtime\-Entries} is set to \hyperlink{_name_server_8h_aee02296103cd2e162143d40c917697d7}{Name\-Server\-\_\-\-A\-L\-L\-O\-W\-G\-R\-O\-W\-T\-H}.
+
+The function does not query remote processors to make sure the name is unique.
+
+
+\begin{DoxyParams}{Parameters}
+{\em handle} & Instance handle \\
+\hline
+{\em name} & Name for the name/value pair \\
+\hline
+{\em value} & Value for the name/value pair\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Unique entry identifier
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{_name_server_8h_ad7d45ed8fe5bcd1f10da5914c8da39f5}{Name\-Server\-\_\-add}, \hyperlink{_name_server_8h_ac3b6fa4f8f0ed572f1a5f6b7cb05679e}{Name\-Server\-\_\-get\-U\-Int32} 
+\end{DoxySeeAlso}
+\index{Name\-Server.\-h@{Name\-Server.\-h}!Name\-Server\-\_\-get@{Name\-Server\-\_\-get}}
+\index{Name\-Server\-\_\-get@{Name\-Server\-\_\-get}!NameServer.h@{Name\-Server.\-h}}
+\paragraph[{Name\-Server\-\_\-get}]{\setlength{\rightskip}{0pt plus 5cm}Int Name\-Server\-\_\-get (
+\begin{DoxyParamCaption}
+\item[{{\bf Name\-Server\-\_\-\-Handle}}]{handle, }
+\item[{String}]{name, }
+\item[{Ptr}]{buf, }
+\item[{U\-Int32 $\ast$}]{len, }
+\item[{U\-Int16}]{proc\-Id\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}\label{_name_server_8h_a5f1013e57e7c5da9f003063d70a76e01}
+
+
+Gets the variable value length by name. 
+
+If the name is found, the value is copied into the value argument, the number of M\-A\-Us copied is returned in len, and a success status is returned.
+
+If the name is not found, zero is returned in len, the contents of value are not modified. Not finding a name is not considered an error.
+
+For Name\-Server to work across processors, each processor must must be assigned a unique id. Because remote Name\-Server requests usually employ the use of notifications, it is good practice to sleep/wait between successive Name\-Server\-\_\-get\mbox{[}U\-Int32\mbox{]} operations if polling on the success of this call. This helps ensure that remote cores are not inundated by a flood of incoming notifications and helps reduce the possiblity of deadlocks.
+
+The processors to query is determined by the proc\-Id array. The array is used to specify which processors to query and the order. The processor ids are determined via the Multi\-Proc module. The following are the valid settings for the proc\-Id array\-: \begin{DoxyItemize}
+\item {\bfseries N\-U\-L\-L\-:} denotes that the local table is searched first, then all remote processors in ascending order by Multi\-Proc id. \item {\bfseries Filled in array\-:} The Name\-Server will search the processors in the order given in the array. The end of the list must be denoted by the \hyperlink{_multi_proc_8h_a94a1d14527833bc8294407634d5495d9}{Multi\-Proc\-\_\-\-I\-N\-V\-A\-L\-I\-D\-I\-D} value.\end{DoxyItemize}
+
+\begin{DoxyCode}
+    UInt16 queryList[4] = \{3, 2, 4, MultiProc_INVALIDID\};
+    count = NameServer_get(handle, \textcolor{stringliteral}{"foo"}, &value, &len, queryList);
+\end{DoxyCode}
+
+
+The \hyperlink{_name_server_8h_a46d3826bc4ef4bc6cc45d5287c697122}{Name\-Server\-\_\-get\-Local()} call can be used for searching the local table only.
+
+
+\begin{DoxyParams}{Parameters}
+{\em handle} & Instance handle \\
+\hline
+{\em name} & Name to query \\
+\hline
+{\em buf} & Pointer where the value is returned \\
+\hline
+{\em len} & Pointer for input/output length. \\
+\hline
+{\em proc\-Id} & Array of processor(s) to query\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Name\-Server status\-:
+\begin{DoxyItemize}
+\item \hyperlink{_name_server_8h_a49cbe5edf8e519b17e323d01431e8161}{Name\-Server\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}\-: Successfully found entry
+\item \hyperlink{_name_server_8h_a6af9a47d256473dbeb9653988603c36e}{Name\-Server\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}\-: Entry was not found, len unchanged
+\item \hyperlink{_name_server_8h_a2ffd6887c6aca49d73982fb226db679c}{Name\-Server\-\_\-\-E\-\_\-\-F\-A\-I\-L}\-: Error searching for entry
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{_name_server_8h_ad7d45ed8fe5bcd1f10da5914c8da39f5}{Name\-Server\-\_\-add}, \hyperlink{_name_server_8h_a46d3826bc4ef4bc6cc45d5287c697122}{Name\-Server\-\_\-get\-Local} 
+\end{DoxySeeAlso}
+\index{Name\-Server.\-h@{Name\-Server.\-h}!Name\-Server\-\_\-get\-U\-Int32@{Name\-Server\-\_\-get\-U\-Int32}}
+\index{Name\-Server\-\_\-get\-U\-Int32@{Name\-Server\-\_\-get\-U\-Int32}!NameServer.h@{Name\-Server.\-h}}
+\paragraph[{Name\-Server\-\_\-get\-U\-Int32}]{\setlength{\rightskip}{0pt plus 5cm}Int Name\-Server\-\_\-get\-U\-Int32 (
+\begin{DoxyParamCaption}
+\item[{{\bf Name\-Server\-\_\-\-Handle}}]{handle, }
+\item[{String}]{name, }
+\item[{Ptr}]{buf, }
+\item[{U\-Int16}]{proc\-Id\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}\label{_name_server_8h_ac3b6fa4f8f0ed572f1a5f6b7cb05679e}
+
+
+Gets a 32-\/bit value by name. 
+
+If the name is found, the value is copied into the value argument, and a success status is returned.
+
+If the name is not found, the contents of value are not modified. Not finding a name is not considered an error.
+
+For Name\-Server to work across processors, each processor must must be assigned a unique id. Because remote Name\-Server requests usually employ the use of notifications, it is good practice to sleep/wait between successive Name\-Server\-\_\-get\mbox{[}U\-Int32\mbox{]} operations if polling on the success of this call. This helps ensure that remote cores are not inundated by a flood of incoming notifications and helps reduce the possiblity of deadlocks.
+
+The processors to query is determined by the proc\-Id array. The array is used to specify which processors to query and the order. The processor ids are determined via the Multi\-Proc module. The following are the valid settings for the proc\-Id array\-: \begin{DoxyItemize}
+\item {\bfseries N\-U\-L\-L\-:} denotes that the local table is searched first, then all remote processors in ascending order by Multi\-Proc id. \item {\bfseries Filled in array\-:} The Name\-Server will search the processors in the order given in the array. The end of the list must be denoted by the \hyperlink{_multi_proc_8h_a94a1d14527833bc8294407634d5495d9}{Multi\-Proc\-\_\-\-I\-N\-V\-A\-L\-I\-D\-I\-D} value.\end{DoxyItemize}
+
+\begin{DoxyCode}
+    UInt16 queryList[4] = \{3, 2, 4, MultiProc_INVALIDID\};
+    count = NameServer_getUInt32(handle, \textcolor{stringliteral}{"foo"}, &value, queryList);
+\end{DoxyCode}
+
+
+The \hyperlink{_name_server_8h_a46d3826bc4ef4bc6cc45d5287c697122}{Name\-Server\-\_\-get\-Local()} call can be used for searching the local table only. 
+\begin{DoxyParams}{Parameters}
+{\em handle} & Instance handle \\
+\hline
+{\em name} & Name to query \\
+\hline
+{\em buf} & Pointer where the value is returned \\
+\hline
+{\em proc\-Id} & Array of processor(s) to query\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status
+\begin{DoxyItemize}
+\item \hyperlink{_name_server_8h_a49cbe5edf8e519b17e323d01431e8161}{Name\-Server\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}\-: Successfully found entry
+\item \hyperlink{_name_server_8h_a6af9a47d256473dbeb9653988603c36e}{Name\-Server\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}\-: Entry was not found
+\item \hyperlink{_name_server_8h_a2ffd6887c6aca49d73982fb226db679c}{Name\-Server\-\_\-\-E\-\_\-\-F\-A\-I\-L}\-: Error searching for entry
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{_name_server_8h_ac130195a04a34dfa2daba6ec3fff65d6}{Name\-Server\-\_\-add\-U\-Int32}, \hyperlink{_name_server_8h_a9e824f111db640d1bce81bfe25963b76}{Name\-Server\-\_\-get\-Local\-U\-Int32} 
+\end{DoxySeeAlso}
+\index{Name\-Server.\-h@{Name\-Server.\-h}!Name\-Server\-\_\-get\-Local@{Name\-Server\-\_\-get\-Local}}
+\index{Name\-Server\-\_\-get\-Local@{Name\-Server\-\_\-get\-Local}!NameServer.h@{Name\-Server.\-h}}
+\paragraph[{Name\-Server\-\_\-get\-Local}]{\setlength{\rightskip}{0pt plus 5cm}Int Name\-Server\-\_\-get\-Local (
+\begin{DoxyParamCaption}
+\item[{{\bf Name\-Server\-\_\-\-Handle}}]{handle, }
+\item[{String}]{name, }
+\item[{Ptr}]{buf, }
+\item[{U\-Int32 $\ast$}]{len}
+\end{DoxyParamCaption}
+)}\label{_name_server_8h_a46d3826bc4ef4bc6cc45d5287c697122}
+
+
+Gets the variable value length by name from the local table. 
+
+If the name is found, the value is copied into the value argument, the number of M\-A\-Us copied is returned in len, and a success status is returned.
+
+If the name is not found, zero is returned in len, a fail status is returned and the contents of value are not modified. Not finding a name is not considered an error.
+
+This function only searches the local name/value table.
+
+
+\begin{DoxyParams}{Parameters}
+{\em handle} & Instance handle \\
+\hline
+{\em name} & Name to query \\
+\hline
+{\em buf} & Pointer where the value is returned \\
+\hline
+{\em len} & Length of the value\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status
+\begin{DoxyItemize}
+\item \hyperlink{_name_server_8h_a49cbe5edf8e519b17e323d01431e8161}{Name\-Server\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}\-: Successfully found entry, len holds amount of data retrieved.
+\item \hyperlink{_name_server_8h_a6af9a47d256473dbeb9653988603c36e}{Name\-Server\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}\-: Entry was not found, len remains unchanged.
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{_name_server_8h_ad7d45ed8fe5bcd1f10da5914c8da39f5}{Name\-Server\-\_\-add}, \hyperlink{_name_server_8h_a5f1013e57e7c5da9f003063d70a76e01}{Name\-Server\-\_\-get} 
+\end{DoxySeeAlso}
+\index{Name\-Server.\-h@{Name\-Server.\-h}!Name\-Server\-\_\-get\-Local\-U\-Int32@{Name\-Server\-\_\-get\-Local\-U\-Int32}}
+\index{Name\-Server\-\_\-get\-Local\-U\-Int32@{Name\-Server\-\_\-get\-Local\-U\-Int32}!NameServer.h@{Name\-Server.\-h}}
+\paragraph[{Name\-Server\-\_\-get\-Local\-U\-Int32}]{\setlength{\rightskip}{0pt plus 5cm}Int Name\-Server\-\_\-get\-Local\-U\-Int32 (
+\begin{DoxyParamCaption}
+\item[{{\bf Name\-Server\-\_\-\-Handle}}]{handle, }
+\item[{String}]{name, }
+\item[{Ptr}]{buf}
+\end{DoxyParamCaption}
+)}\label{_name_server_8h_a9e824f111db640d1bce81bfe25963b76}
+
+
+Gets a 32-\/bit value by name from the local table. 
+
+If the name is found, the 32-\/bit value is copied into buf and Name\-Server\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S is returned.
+
+If the name is not found, zero is copied into buf and Name\-Server\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D is returned.
+
+This function only searches the local name/value table.
+
+
+\begin{DoxyParams}{Parameters}
+{\em handle} & Instance handle \\
+\hline
+{\em name} & Name to query \\
+\hline
+{\em buf} & Pointer where the value is returned\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status
+\begin{DoxyItemize}
+\item \hyperlink{_name_server_8h_a49cbe5edf8e519b17e323d01431e8161}{Name\-Server\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}\-: Successfully found entry
+\item \hyperlink{_name_server_8h_a6af9a47d256473dbeb9653988603c36e}{Name\-Server\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}\-: Entry was not found
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{_name_server_8h_ac130195a04a34dfa2daba6ec3fff65d6}{Name\-Server\-\_\-add\-U\-Int32}, \hyperlink{_name_server_8h_ac3b6fa4f8f0ed572f1a5f6b7cb05679e}{Name\-Server\-\_\-get\-U\-Int32} 
+\end{DoxySeeAlso}
+\index{Name\-Server.\-h@{Name\-Server.\-h}!Name\-Server\-\_\-remove@{Name\-Server\-\_\-remove}}
+\index{Name\-Server\-\_\-remove@{Name\-Server\-\_\-remove}!NameServer.h@{Name\-Server.\-h}}
+\paragraph[{Name\-Server\-\_\-remove}]{\setlength{\rightskip}{0pt plus 5cm}Int Name\-Server\-\_\-remove (
+\begin{DoxyParamCaption}
+\item[{{\bf Name\-Server\-\_\-\-Handle}}]{handle, }
+\item[{String}]{name}
+\end{DoxyParamCaption}
+)}\label{_name_server_8h_ab21d262bcfa187f21e235b36ce17d6de}
+
+
+Remove a name/value pair from the table. 
+
+This function removes a name/value pair from the table.
+
+If \hyperlink{struct_name_server___params_a26ee68e20b559b4c238c1e5a8646191f}{Name\-Server\-\_\-\-Params\-::max\-Runtime\-Entries} is set to \hyperlink{_name_server_8h_aee02296103cd2e162143d40c917697d7}{Name\-Server\-\_\-\-A\-L\-L\-O\-W\-G\-R\-O\-W\-T\-H}, memory will be freed which was allocated in \hyperlink{_name_server_8h_ad7d45ed8fe5bcd1f10da5914c8da39f5}{Name\-Server\-\_\-add()}. Otherwise, no memory is freed during this call. The entry in the table is simply emptied. When another \hyperlink{_name_server_8h_ad7d45ed8fe5bcd1f10da5914c8da39f5}{Name\-Server\-\_\-add()} occurs, it will reuse the empty entry.
+
+
+\begin{DoxyParams}{Parameters}
+{\em handle} & Instance handle \\
+\hline
+{\em name} & Name to remove\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status
+\begin{DoxyItemize}
+\item \hyperlink{_name_server_8h_a49cbe5edf8e519b17e323d01431e8161}{Name\-Server\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}\-: Successfully removed entry or entry does not exists
+\item \hyperlink{_name_server_8h_a2ffd6887c6aca49d73982fb226db679c}{Name\-Server\-\_\-\-E\-\_\-\-F\-A\-I\-L}\-: Operation failed
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{_name_server_8h_ad7d45ed8fe5bcd1f10da5914c8da39f5}{Name\-Server\-\_\-add} 
+\end{DoxySeeAlso}
+\index{Name\-Server.\-h@{Name\-Server.\-h}!Name\-Server\-\_\-remove\-Entry@{Name\-Server\-\_\-remove\-Entry}}
+\index{Name\-Server\-\_\-remove\-Entry@{Name\-Server\-\_\-remove\-Entry}!NameServer.h@{Name\-Server.\-h}}
+\paragraph[{Name\-Server\-\_\-remove\-Entry}]{\setlength{\rightskip}{0pt plus 5cm}Int Name\-Server\-\_\-remove\-Entry (
+\begin{DoxyParamCaption}
+\item[{{\bf Name\-Server\-\_\-\-Handle}}]{handle, }
+\item[{Ptr}]{entry}
+\end{DoxyParamCaption}
+)}\label{_name_server_8h_a84b6883f07de21bcaf8f4dbdc2e55e63}
+
+
+Remove a name/value pair from the table. 
+
+This function removes an entry from the table based on the unique identifier returned from \hyperlink{_name_server_8h_ad7d45ed8fe5bcd1f10da5914c8da39f5}{Name\-Server\-\_\-add()} or \hyperlink{_name_server_8h_ac130195a04a34dfa2daba6ec3fff65d6}{Name\-Server\-\_\-add\-U\-Int32()}.
+
+If \hyperlink{struct_name_server___params_a26ee68e20b559b4c238c1e5a8646191f}{Name\-Server\-\_\-\-Params\-::max\-Runtime\-Entries} is set to \hyperlink{_name_server_8h_aee02296103cd2e162143d40c917697d7}{Name\-Server\-\_\-\-A\-L\-L\-O\-W\-G\-R\-O\-W\-T\-H}, memory will be freed which was allocated in \hyperlink{_name_server_8h_ad7d45ed8fe5bcd1f10da5914c8da39f5}{Name\-Server\-\_\-add()}. Otherwise, no memory is freed during this call. The entry in the table is simply emptied. When another \hyperlink{_name_server_8h_ad7d45ed8fe5bcd1f10da5914c8da39f5}{Name\-Server\-\_\-add()} occurs, it will reuse the empty entry.
+
+Once an Entry is removed from the Name\-Server table, it cannot be removed again (just like you cannot free the same block of memory twice).
+
+
+\begin{DoxyParams}{Parameters}
+{\em handle} & Instance handle \\
+\hline
+{\em entry} & Pointer to entry to be removed\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status
+\begin{DoxyItemize}
+\item \hyperlink{_name_server_8h_a49cbe5edf8e519b17e323d01431e8161}{Name\-Server\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}\-: Successfully removed entry or entry does not exists
+\item \hyperlink{_name_server_8h_a2ffd6887c6aca49d73982fb226db679c}{Name\-Server\-\_\-\-E\-\_\-\-F\-A\-I\-L}\-: Operation failed
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{_name_server_8h_ad7d45ed8fe5bcd1f10da5914c8da39f5}{Name\-Server\-\_\-add} 
+\end{DoxySeeAlso}

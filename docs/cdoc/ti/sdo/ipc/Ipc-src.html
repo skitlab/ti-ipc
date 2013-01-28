@@ -1,0 +1,557 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>module ti.sdo.ipc.Ipc</title>
+<meta name="googlebot" content="noindex,nofollow">
+<link rel="stylesheet" type="text/css" href="../../../src.css"/>
+</head>
+<body>
+<pre class=src>
+     1    <span class="comment">/* --COPYRIGHT--,BSD
+</span>     2    <span class="comment"> * Copyright (c) $(CPYYEAR), Texas Instruments Incorporated
+</span>     3    <span class="comment"> * All rights reserved.
+</span>     4    <span class="comment"> *
+</span>     5    <span class="comment"> * Redistribution and use in source and binary forms, with or without
+</span>     6    <span class="comment"> * modification, are permitted provided that the following conditions
+</span>     7    <span class="comment"> * are met:
+</span>     8    <span class="comment"> *
+</span>     9    <span class="comment"> * *  Redistributions of source code must retain the above copyright
+</span>    10    <span class="comment"> *    notice, this list of conditions and the following disclaimer.
+</span>    11    <span class="comment"> *
+</span>    12    <span class="comment"> * *  Redistributions in binary form must reproduce the above copyright
+</span>    13    <span class="comment"> *    notice, this list of conditions and the following disclaimer in the
+</span>    14    <span class="comment"> *    documentation and/or other materials provided with the distribution.
+</span>    15    <span class="comment"> *
+</span>    16    <span class="comment"> * *  Neither the name of Texas Instruments Incorporated nor the names of
+</span>    17    <span class="comment"> *    its contributors may be used to endorse or promote products derived
+</span>    18    <span class="comment"> *    from this software without specific prior written permission.
+</span>    19    <span class="comment"> *
+</span>    20    <span class="comment"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+</span>    21    <span class="comment"> * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+</span>    22    <span class="comment"> * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+</span>    23    <span class="comment"> * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+</span>    24    <span class="comment"> * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+</span>    25    <span class="comment"> * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+</span>    26    <span class="comment"> * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+</span>    27    <span class="comment"> * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+</span>    28    <span class="comment"> * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+</span>    29    <span class="comment"> * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+</span>    30    <span class="comment"> * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</span>    31    <span class="comment"> * --/COPYRIGHT--*/</span>
+    32    <span class="comment">/*
+</span>    33    <span class="comment"> *  ======== Ipc.xdc ========
+</span>    34    <span class="comment"> *
+</span>    35    <span class="comment"> *! Revision History
+</span>    36    <span class="comment"> *! ================
+</span>    37    <span class="comment"> *! 23-Jul-2010 jv      Fix 68467: Need detach() to handshake with remote core
+</span>    38    <span class="comment"> *! 19-May-2010 jv      Fix 67183: Ipc_attach should cleanly fail. Add ROV view.
+</span>    39    <span class="comment"> *!                     Fix 66692: Add getEntry() and setEntry().
+</span>    40    <span class="comment"> *! 22-Mar-2010 jv      Added Ipc.generateSlaveDataForHost.
+</span>    41    <span class="comment"> *! 19-Mar-2010 skp     Added Ipc_dummy
+</span>    42    <span class="comment"> *! 18-Mar-2010 skp     cdoc cleanup
+</span>    43    <span class="comment"> *! 12-Mar-2010 jv      hostProcId needs to be settable.
+</span>    44    <span class="comment"> *! 11-Sep-2009 skp     getObjTypeStr$view added
+</span>    45    <span class="comment"> *! 22-May-2009 skp     added GateSpinLock code; updated cdoc
+</span>    46    <span class="comment"> *! 29-Jan-2009 jv      added SharedRegion codes
+</span>    47    <span class="comment"> *! 15-Jan-2009 skp     added GatePeterson codes
+</span>    48    <span class="comment"> *! 13-Jan-2009 jv      created
+</span>    49    <span class="comment"> *!
+</span>    50    <span class="comment"> */</span>
+    51     
+    52    import xdc.runtime.Error;
+    53    import xdc.runtime.Assert;
+    54    import xdc.rov.ViewInfo;
+    55    import ti.sdo.utils.MultiProc;
+    56    
+    57    <span class="xdoc">/*!
+</span>    58    <span class="xdoc"> *  ======== Ipc ========
+</span>    59    <span class="xdoc"> *  IPC Master Manager
+</span>    60    <span class="xdoc"> * 
+</span>    61    <span class="xdoc"> *  <b>@p(html)</b>
+</span>    62    <span class="xdoc"> *  This module has a common header that can be found in the {<b>@link</b> ti.ipc}
+</span>    63    <span class="xdoc"> *  package.  Application code should include the common header file (not the 
+</span>    64    <span class="xdoc"> *  RTSC-generated one):
+</span>    65    <span class="xdoc"> *
+</span>    66    <span class="xdoc"> *  &lt;PRE&gt;#include &amp;lt;ti/ipc/Ipc.h&amp;gt;&lt;/PRE&gt;
+</span>    67    <span class="xdoc"> *   
+</span>    68    <span class="xdoc"> *  The RTSC module must be used in the application's RTSC configuration file 
+</span>    69    <span class="xdoc"> *  (.cfg):
+</span>    70    <span class="xdoc"> *  
+</span>    71    <span class="xdoc"> *  &lt;PRE&gt;Ipc = xdc.useModule('ti.sdo.ipc.Ipc');&lt;/PRE&gt;
+</span>    72    <span class="xdoc"> *
+</span>    73    <span class="xdoc"> *  Documentation for all runtime APIs, instance configuration parameters, 
+</span>    74    <span class="xdoc"> *  error codes macros and type definitions available to the application 
+</span>    75    <span class="xdoc"> *  integrator can be found in the 
+</span>    76    <span class="xdoc"> *  &lt;A HREF="../../../../doxygen/html/files.html"&gt;Doxygen documenation&lt;/A&gt;
+</span>    77    <span class="xdoc"> *  for the IPC product.  However, the documentation presented on this page 
+</span>    78    <span class="xdoc"> *  should be referred to for information specific to the RTSC module, such as
+</span>    79    <span class="xdoc"> *  module configuration, Errors, and Asserts.
+</span>    80    <span class="xdoc"> *  <b>@p</b>
+</span>    81    <span class="xdoc"> *
+</span>    82    <span class="xdoc"> *  The most common static configuration that is required of the Ipc module
+</span>    83    <span class="xdoc"> *  is the {<b>@link</b> #procSync} configuration that affects the behavior of the
+</span>    84    <span class="xdoc"> *  Ipc_start and Ipc_attach runtime APIs.
+</span>    85    <span class="xdoc"> * 
+</span>    86    <span class="xdoc"> *  Additionally, certain subsystems of IPC (such as Notify and MessageQ) can
+</span>    87    <span class="xdoc"> *  be disabled to save resources on a per-connection basis by configuring Ipc
+</span>    88    <span class="xdoc"> *  using {<b>@link</b> #setEntryMeta}.
+</span>    89    <span class="xdoc"> *  
+</span>    90    <span class="xdoc"> */</span>
+    91    
+    92    @Template (<span class="string">"./Ipc.xdt"</span>)
+    93    <span class=key>module</span> Ipc
+    94    {
+    95        <span class="xdoc">/*!
+</span>    96    <span class="xdoc">     *  ======== ModuleView ========
+</span>    97    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>    98    <span class="xdoc">     */</span>
+    99        <span class=key>metaonly</span> <span class=key>struct</span> ModuleView {
+   100            UInt16  remoteProcId;
+   101            Bool    attached;
+   102            Bool    setupNotify;
+   103            Bool    setupMessageQ;
+   104        };
+   105        
+   106        <span class="xdoc">/*!
+</span>   107    <span class="xdoc">     *  ======== rovViewInfo ========
+</span>   108    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   109    <span class="xdoc">     */</span>
+   110        @Facet
+   111        <span class=key>metaonly</span> <span class=key>config</span> xdc.rov.ViewInfo.Instance rovViewInfo = 
+   112            xdc.rov.ViewInfo.create({
+   113                viewMap: [
+   114                    [<span class="string">'Module'</span>,
+   115                        {
+   116                            type: xdc.rov.ViewInfo.MODULE_DATA,
+   117                            viewInitFxn: <span class="string">'viewInitModule'</span>,
+   118                            structName: <span class="string">'ModuleView'</span>
+   119                        }
+   120                    ],
+   121                ]
+   122            });
+   123            
+   124        <span class="xdoc">/*!     
+</span>   125    <span class="xdoc">     *  Various configuration options for {<b>@link</b> #procSync}
+</span>   126    <span class="xdoc">     *  
+</span>   127    <span class="xdoc">     *  The values in this enum affect the behavior of the Ipc_start and
+</span>   128    <span class="xdoc">     *  Ipc_attach runtime APIs. 
+</span>   129    <span class="xdoc">     * 
+</span>   130    <span class="xdoc">     *  ProcSync_ALL:  Calling Ipc_start will also internally Ipc_attach to 
+</span>   131    <span class="xdoc">     *  each remote processor.  The application should never call Ipc_attach.
+</span>   132    <span class="xdoc">     *  This type of startup and synchronization should be used if all IPC
+</span>   133    <span class="xdoc">     *  processors on a device start up at the same time and connections should 
+</span>   134    <span class="xdoc">     *  be established between every possible pair of processors.
+</span>   135    <span class="xdoc">     *  
+</span>   136    <span class="xdoc">     *  ProcSync_PAIR (default):  Calling Ipc_start will perform system-wide IPC
+</span>   137    <span class="xdoc">     *  initialization required on all processor, but connections to remote 
+</span>   138    <span class="xdoc">     *  processors will not be established (i.e. Ipc_attach will never be 
+</span>   139    <span class="xdoc">     *  called).  This configuration should be chosen if synchronization is
+</span>   140    <span class="xdoc">     *  required and some/all these conditions are true:
+</span>   141    <span class="xdoc">     *  <b>@p(blist)</b>
+</span>   142    <span class="xdoc">     *  - It is necessary to control when synchronization with each remote
+</span>   143    <span class="xdoc">     *    processor occurs
+</span>   144    <span class="xdoc">     *  - Useful work can be done while trying to synchronize with a remote
+</span>   145    <span class="xdoc">     *    processor by yielding a thread after each attempt to Ipc_attach
+</span>   146    <span class="xdoc">     *    to the processor.
+</span>   147    <span class="xdoc">     *  - Connections to all remote processors are unnecessary and connections
+</span>   148    <span class="xdoc">     *    should selectively be made to save memory
+</span>   149    <span class="xdoc">     *  <b>@p</b>
+</span>   150    <span class="xdoc">     *  NOTE: A connection should be made to the owner of region 0 (usually the
+</span>   151    <span class="xdoc">     *  processor with id = 0) before any connection to any other remote 
+</span>   152    <span class="xdoc">     *  processor can be made. For example, if there are three processors 
+</span>   153    <span class="xdoc">     *  configured with MultiProc, #1 should attach to #0 before it can attach
+</span>   154    <span class="xdoc">     *  to #2.
+</span>   155    <span class="xdoc">     *
+</span>   156    <span class="xdoc">     *  ProcSync_NONE:  This should be selected with caution.  Ipc_start will 
+</span>   157    <span class="xdoc">     *  work exactly as it does with ProcSync_PAIR.  However, Ipc_attach will
+</span>   158    <span class="xdoc">     *  not synchronize with the remote processor.  Callers of Ipc_attach are
+</span>   159    <span class="xdoc">     *  bound by the same restrictions imposed by using ProcSync_PAIR. 
+</span>   160    <span class="xdoc">     *  Additionally, an Ipc_attach to a remote processor whose id is less than
+</span>   161    <span class="xdoc">     *  our own has to occur *after* the corresponding remote processor has 
+</span>   162    <span class="xdoc">     *  called attach to the original processor.  For example, processor #2
+</span>   163    <span class="xdoc">     *  can call 
+</span>   164    <span class="xdoc">     *  <b>@p(code)</b>
+</span>   165    <span class="xdoc">     *  Ipc_attach(1); 
+</span>   166    <span class="xdoc">     *  <b>@p</b>
+</span>   167    <span class="xdoc">     *  only after processor #1 has called:
+</span>   168    <span class="xdoc">     *  <b>@p(code)</b>
+</span>   169    <span class="xdoc">     *  Ipc_attach(2); 
+</span>   170    <span class="xdoc">     *  <b>@p</b>
+</span>   171    <span class="xdoc">     *
+</span>   172    <span class="xdoc">     */</span>
+   173        <span class=key>enum</span> ProcSync {
+   174            ProcSync_NONE,          <span class="xdoc">/*! ProcSync_PAIR with no synchronization   */</span>
+   175            ProcSync_PAIR,          <span class="xdoc">/*! Ipc_start does not Ipc_attach           */</span>
+   176            ProcSync_ALL            <span class="xdoc">/*! Ipc_start attach to all remote procs    */</span>
+   177        };
+   178    
+   179        <span class="xdoc">/*!
+</span>   180    <span class="xdoc">     *  Struct used for configuration via {<b>@link</b> #setEntryMeta}
+</span>   181    <span class="xdoc">     * 
+</span>   182    <span class="xdoc">     *  This structure defines the fields that are to be configured
+</span>   183    <span class="xdoc">     *  between the executing processor and a remote processor.
+</span>   184    <span class="xdoc">     */</span>
+   185        <span class=key>struct</span> Entry {
+   186            UInt16 remoteProcId;    <span class="xdoc">/*! Remote processor id                     */</span>
+   187            Bool   setupNotify;     <span class="xdoc">/*! Whether to setup Notify                 */</span>
+   188            Bool   setupMessageQ;   <span class="xdoc">/*! Whether to setup MessageQ               */</span>
+   189        };
+   190    
+   191        <span class="xdoc">/*! struct for attach/detach plugs. */</span>
+   192        <span class=key>struct</span> UserFxn {
+   193            Int (*attach)(UArg, UInt16);
+   194            Int (*detach)(UArg, UInt16);
+   195        };
+   196    
+   197        <span class="comment">/*
+</span>   198    <span class="comment">     *************************************************************************
+</span>   199    <span class="comment">     *                       Generic IPC Errors/Asserts
+</span>   200    <span class="comment">     *************************************************************************
+</span>   201    <span class="comment">     */</span>
+   202        
+   203        <span class="xdoc">/*!
+</span>   204    <span class="xdoc">     *  ======== A_addrNotInSharedRegion ========
+</span>   205    <span class="xdoc">     *  Assert raised when an address lies outside all known shared regions
+</span>   206    <span class="xdoc">     */</span>
+   207        <span class=key>config</span> Assert.Id A_addrNotInSharedRegion  = {
+   208            msg: <span class="string">"A_addrNotInSharedRegion: Address not in any shared region"</span>
+   209        };
+   210    
+   211        <span class="xdoc">/*!
+</span>   212    <span class="xdoc">     *  ======== A_addrNotCacheAligned ========
+</span>   213    <span class="xdoc">     *  Assert raised when an address is not cache-aligned
+</span>   214    <span class="xdoc">     */</span>
+   215        <span class=key>config</span> Assert.Id A_addrNotCacheAligned  = {
+   216            msg: <span class="string">"A_addrNotCacheAligned: Address is not cache aligned"</span>
+   217        };
+   218    
+   219        <span class="xdoc">/*!
+</span>   220    <span class="xdoc">     *  ======== A_nullArgument ========
+</span>   221    <span class="xdoc">     *  Assert raised when a required argument is null
+</span>   222    <span class="xdoc">     */</span>
+   223        <span class=key>config</span> Assert.Id A_nullArgument  = {
+   224            msg: <span class="string">"A_nullArgument: Required argument is null"</span>
+   225        };
+   226    
+   227        <span class="xdoc">/*!
+</span>   228    <span class="xdoc">     *  ======== A_nullPointer ========
+</span>   229    <span class="xdoc">     *  Assert raised when a pointer is null
+</span>   230    <span class="xdoc">     */</span>
+   231        <span class=key>config</span> Assert.Id A_nullPointer  = {
+   232            msg: <span class="string">"A_nullPointer: Pointer is null"</span>
+   233        };
+   234    
+   235        <span class="xdoc">/*!
+</span>   236    <span class="xdoc">     *  ======== A_invArgument ========
+</span>   237    <span class="xdoc">     *  Assert raised when an argument is invalid
+</span>   238    <span class="xdoc">     */</span>
+   239        <span class=key>config</span> Assert.Id A_invArgument  = {
+   240            msg: <span class="string">"A_invArgument: Invalid argument supplied"</span>
+   241        };
+   242        
+   243        <span class="xdoc">/*!
+</span>   244    <span class="xdoc">     *  ======== A_invParam ========
+</span>   245    <span class="xdoc">     *  Assert raised when a parameter is invalid
+</span>   246    <span class="xdoc">     */</span>
+   247        <span class=key>config</span> Assert.Id A_invParam  = {
+   248            msg: <span class="string">"A_invParam: Invalid configuration parameter supplied"</span>
+   249        };
+   250    
+   251        <span class="xdoc">/*!
+</span>   252    <span class="xdoc">     *  ======== A_internal ========
+</span>   253    <span class="xdoc">     *  Assert raised when an internal error is encountered
+</span>   254    <span class="xdoc">     */</span>
+   255        <span class=key>config</span> Assert.Id A_internal = {
+   256            msg: <span class="string">"A_internal: An internal error has occurred"</span>
+   257        };
+   258    
+   259        <span class="xdoc">/*!
+</span>   260    <span class="xdoc">     *  ======== E_nameFailed ========
+</span>   261    <span class="xdoc">     *  Error raised when a name failed to be added to the NameServer
+</span>   262    <span class="xdoc">     * 
+</span>   263    <span class="xdoc">     *  Error raised in a create call when a name fails to be added
+</span>   264    <span class="xdoc">     *  to the NameServer table.  This can be because the name already
+</span>   265    <span class="xdoc">     *  exists, the table has reached its max length, or out of memory.
+</span>   266    <span class="xdoc">     */</span>
+   267        <span class=key>config</span> Error.Id E_nameFailed  = {
+   268            msg: <span class="string">"E_nameFailed: '%s' name failed to be added to NameServer"</span>
+   269        };
+   270    
+   271        <span class="xdoc">/*!
+</span>   272    <span class="xdoc">     *  ======== E_internal ========
+</span>   273    <span class="xdoc">     *  Error raised when an internal error occured
+</span>   274    <span class="xdoc">     */</span>
+   275        <span class=key>config</span> Error.Id E_internal  = {
+   276            msg: <span class="string">"E_internal: An internal error occurred"</span>
+   277        };
+   278    
+   279        <span class="xdoc">/*!
+</span>   280    <span class="xdoc">     *  ======== E_versionMismatch ========
+</span>   281    <span class="xdoc">     *  Error raised when a version mismatch occurs
+</span>   282    <span class="xdoc">     * 
+</span>   283    <span class="xdoc">     *  Error raised in an open call because there is
+</span>   284    <span class="xdoc">     *  a version mismatch between the opener and the creator
+</span>   285    <span class="xdoc">     */</span>
+   286        <span class=key>config</span> Error.Id E_versionMismatch  = {
+   287            msg: <span class="string">"E_versionMismatch: IPC Module version mismatch: creator: %d, opener: %d"</span>
+   288        };
+   289    
+   290        <span class="comment">/*
+</span>   291    <span class="comment">     *************************************************************************
+</span>   292    <span class="comment">     *                       Module-wide Config Parameters
+</span>   293    <span class="comment">     *************************************************************************
+</span>   294    <span class="comment">     */</span>
+   295    
+   296        <span class="xdoc">/*!
+</span>   297    <span class="xdoc">     *  ======== sr0MemorySetup ========
+</span>   298    <span class="xdoc">     *  Whether Shared Region 0 memory is accessible
+</span>   299    <span class="xdoc">     * 
+</span>   300    <span class="xdoc">     *  Certain devices have a slave MMU that needs to be configured by the
+</span>   301    <span class="xdoc">     *  host core before the slave core can access shared region 0.  If
+</span>   302    <span class="xdoc">     *  the host core is also running BIOS, it is necessary to set this 
+</span>   303    <span class="xdoc">     *  configuration to 'true', otherwise {<b>@link</b> #start} will always fail.
+</span>   304    <span class="xdoc">     *
+</span>   305    <span class="xdoc">     *  This configuration should not be used for devices that don't have 
+</span>   306    <span class="xdoc">     *  a slave MMU and don't run Linux.
+</span>   307    <span class="xdoc">     */</span>
+   308        <span class=key>config</span> Bool sr0MemorySetup;
+   309        
+   310        <span class="xdoc">/*! <b>@_nodoc</b>
+</span>   311    <span class="xdoc">     *  ======== hostProcId ========
+</span>   312    <span class="xdoc">     *  Host processor identifier.
+</span>   313    <span class="xdoc">     *  
+</span>   314    <span class="xdoc">     *  Used to specify the host processor's id.  This parameter is only used 
+</span>   315    <span class="xdoc">     *  in a Syslink system.
+</span>   316    <span class="xdoc">     */</span>
+   317        <span class=key>metaonly</span> <span class=key>config</span> UInt16 hostProcId = MultiProc.INVALIDID;
+   318    
+   319        <span class="xdoc">/*!
+</span>   320    <span class="xdoc">     *  ======== procSync ========
+</span>   321    <span class="xdoc">     *  Affects how Ipc_start and Ipc_attach behave
+</span>   322    <span class="xdoc">     *
+</span>   323    <span class="xdoc">     *  Refer to the documentation for the {<b>@link</b> #ProcSync} enum for 
+</span>   324    <span class="xdoc">     *  information about the various ProcSync options.
+</span>   325    <span class="xdoc">     */</span>
+   326        <span class=key>config</span> ProcSync procSync = Ipc.ProcSync_PAIR;
+   327    
+   328        <span class="xdoc">/*! <b>@_nodoc</b>
+</span>   329    <span class="xdoc">     *  ======== generateSlaveDataForHost ========
+</span>   330    <span class="xdoc">     *  generates the slave's data into a section for the host.
+</span>   331    <span class="xdoc">     */</span>
+   332        <span class=key>config</span> Bool generateSlaveDataForHost;
+   333    
+   334        <span class="xdoc">/*!<b>@_nodoc</b>
+</span>   335    <span class="xdoc">     *  ======== userFxn ========
+</span>   336    <span class="xdoc">     *  Attach and Detach hooks.
+</span>   337    <span class="xdoc">     */</span>
+   338        <span class=key>config</span> UserFxn userFxn;
+   339    
+   340        <span class="comment">/*
+</span>   341    <span class="comment">     *************************************************************************
+</span>   342    <span class="comment">     *                       IPC Functions
+</span>   343    <span class="comment">     *************************************************************************
+</span>   344    <span class="comment">     */</span>
+   345    
+   346         <span class="xdoc">/*!
+</span>   347    <span class="xdoc">     *  ======== addUserFxn ========
+</span>   348    <span class="xdoc">     *  Add a function that gets called during Ipc_attach/detach.
+</span>   349    <span class="xdoc">     *
+</span>   350    <span class="xdoc">     *  The user added functions must be non-blocking and must run
+</span>   351    <span class="xdoc">     *  to completion. The functions need to check to make sure it
+</span>   352    <span class="xdoc">     *  is not called multiple times when more than one thread calls
+</span>   353    <span class="xdoc">     *  Ipc_attach() for the same processor.  It is safe to use IPC
+</span>   354    <span class="xdoc">     *  APIs in a user function as long as the IPC APIs satisfy these
+</span>   355    <span class="xdoc">     *  requirements.
+</span>   356    <span class="xdoc">     *
+</span>   357    <span class="xdoc">     *  <b>@p(code)</b>
+</span>   358    <span class="xdoc">     *      var Ipc = xdc.useModule('ti.sdo.ipc.Ipc');
+</span>   359    <span class="xdoc">     *      var fxn = new Ipc.UserFxn;
+</span>   360    <span class="xdoc">     *      fxn.attach = '&amp;userAttachFxn';
+</span>   361    <span class="xdoc">     *      fxn.detach = '&amp;userDetachFxn';
+</span>   362    <span class="xdoc">     *      Ipc.addUserFxn(fxn, arg);
+</span>   363    <span class="xdoc">     *  <b>@p</b>
+</span>   364    <span class="xdoc">     *
+</span>   365    <span class="xdoc">     *  <b>@param(fxn)</b>     The user function to call during attach/detach.
+</span>   366    <span class="xdoc">     *  <b>@param(arg)</b>     The argument to the function.
+</span>   367    <span class="xdoc">     */</span>
+   368        <span class=key>metaonly</span> Void addUserFxn(UserFxn fxn, UArg arg);
+   369         
+   370         <span class="xdoc">/*!
+</span>   371    <span class="xdoc">     *  ======== getEntry ========
+</span>   372    <span class="xdoc">     *  Gets the properties for attaching to a remote processor.
+</span>   373    <span class="xdoc">     *
+</span>   374    <span class="xdoc">     *  This function must be called before Ipc_attach().  The
+</span>   375    <span class="xdoc">     *  parameter entry-&gt;remoteProcId field must be set prior to calling
+</span>   376    <span class="xdoc">     *  the function.
+</span>   377    <span class="xdoc">     *
+</span>   378    <span class="xdoc">     *  <b>@param(entry)</b>       Properties between a pair of processors.
+</span>   379    <span class="xdoc">     */</span>
+   380        Void getEntry(Entry *entry);
+   381    
+   382        <span class="xdoc">/*!
+</span>   383    <span class="xdoc">     *  ======== setEntryMeta ========
+</span>   384    <span class="xdoc">     *  Statically sets the properties for attaching to a remote processor.
+</span>   385    <span class="xdoc">     *
+</span>   386    <span class="xdoc">     *  This function allows the user to configure whether Notify and/or
+</span>   387    <span class="xdoc">     *  MessageQ is setup during Ipc_attach().  If 'setupNotify' is set
+</span>   388    <span class="xdoc">     *  to 'false', neither the Notify or NameServerRemoteNotify instances
+</span>   389    <span class="xdoc">     *  are created.  If 'setupMessageQ' is set to 'false', the MessageQ
+</span>   390    <span class="xdoc">     *  transport instances are not created.  By default, both flags are
+</span>   391    <span class="xdoc">     *  set to 'true'.
+</span>   392    <span class="xdoc">     *
+</span>   393    <span class="xdoc">     *  Note: For any pair of processors, the flags must be the same
+</span>   394    <span class="xdoc">     *
+</span>   395    <span class="xdoc">     *  <b>@param(entry)</b>       Properties between a pair of processors.
+</span>   396    <span class="xdoc">     */</span>
+   397        <span class=key>metaonly</span> Void setEntryMeta(Entry entry);
+   398    
+   399        <span class="xdoc">/*!
+</span>   400    <span class="xdoc">     *  ======== setEntry ========
+</span>   401    <span class="xdoc">     *  Sets the properties for attaching to a remote processor.
+</span>   402    <span class="xdoc">     *
+</span>   403    <span class="xdoc">     *  This function must be called before Ipc_attach().  It allows
+</span>   404    <span class="xdoc">     *  the user to configure whether Notify and/or MessageQ is setup
+</span>   405    <span class="xdoc">     *  during Ipc_attach().  If 'setupNotify' is set to 'FALSE',
+</span>   406    <span class="xdoc">     *  neither the Notify or NameServerRemoteNotify instances are
+</span>   407    <span class="xdoc">     *  created.  If 'setupMessageQ' is set to 'FALSE', the MessageQ
+</span>   408    <span class="xdoc">     *  transport instances are not created.  By default, both flags are
+</span>   409    <span class="xdoc">     *  set to 'TRUE'.
+</span>   410    <span class="xdoc">     *
+</span>   411    <span class="xdoc">     *  Note: For any pair of processors, the flags must be the same
+</span>   412    <span class="xdoc">     *
+</span>   413    <span class="xdoc">     *  <b>@param(entry)</b>       Properties between a pair of processors.
+</span>   414    <span class="xdoc">     */</span>
+   415        Void setEntry(Entry *entry);
+   416    
+   417        <span class="xdoc">/*! <b>@_nodoc</b>
+</span>   418    <span class="xdoc">     *  This is needed to prevent the Ipc module from being optimized away
+</span>   419    <span class="xdoc">     *  during the whole_program[_debug] partial link.
+</span>   420    <span class="xdoc">     */</span>
+   421        Void dummy();
+   422    
+   423    
+   424    <span class=key>internal</span>:    
+   425        
+   426        <span class="comment">/* flag for starting processor synchronization */</span>
+   427        <span class=key>const</span> UInt32 PROCSYNCSTART  = 1;
+   428        
+   429        <span class="comment">/* flag for finishing processor synchronization */</span>
+   430        <span class=key>const</span> UInt32 PROCSYNCFINISH = 2;
+   431        
+   432        <span class="comment">/* flag for detaching */</span>
+   433        <span class=key>const</span> UInt32 PROCSYNCDETACH = 3;
+   434    
+   435        <span class="comment">/* Type of Ipc object. Each value needs to be a power of two. */</span>
+   436        <span class=key>enum</span> ObjType {
+   437            ObjType_CREATESTATIC            = 0x1,
+   438            ObjType_CREATESTATIC_REGION     = 0x2,
+   439            ObjType_CREATEDYNAMIC           = 0x4,  <span class="comment">/* Created by sharedAddr      */</span>
+   440            ObjType_CREATEDYNAMIC_REGION    = 0x8,  <span class="comment">/* Created by regionId        */</span>
+   441            ObjType_OPENDYNAMIC             = 0x10, <span class="comment">/* Opened instance            */</span>
+   442            ObjType_LOCAL                   = 0x20  <span class="comment">/* Local-only instance        */</span>
+   443        };
+   444    
+   445        <span class="comment">/*
+</span>   446    <span class="comment">     *  This structure captures Configuration details of a module/instance
+</span>   447    <span class="comment">     *  written by a slave to synchornize with a remote slave/HOST
+</span>   448    <span class="comment">     */</span>
+   449        <span class=key>struct</span> ConfigEntry {
+   450            Bits32 remoteProcId;
+   451            Bits32 localProcId;
+   452            Bits32 tag;
+   453            Bits32 size;
+   454            Bits32 next;
+   455        };   
+   456    
+   457        <span class=key>struct</span> ProcEntry {
+   458            SharedRegion.SRPtr *localConfigList;
+   459            SharedRegion.SRPtr *remoteConfigList;
+   460            UInt   attached;
+   461            Entry  entry;
+   462        };
+   463    
+   464        <span class="comment">/* The structure used for reserving memory in SharedRegion */</span>
+   465        <span class=key>struct</span> Reserved {
+   466            volatile Bits32    startedKey;
+   467            SharedRegion.SRPtr notifySRPtr;
+   468            SharedRegion.SRPtr nsrnSRPtr;
+   469            SharedRegion.SRPtr transportSRPtr;
+   470            SharedRegion.SRPtr configListHead;
+   471        };    
+   472    
+   473        <span class="comment">/* The structure used for reserving memory in SharedRegion */</span>
+   474        <span class=key>struct</span> UserFxnAndArg {
+   475            UserFxn userFxn;
+   476            UArg    arg;
+   477        };
+   478    
+   479        <span class="comment">/* Storage for setup of processors */</span>
+   480        <span class=key>metaonly</span> <span class=key>config</span> Entry entry[];
+   481    
+   482        <span class=key>config</span> UInt numUserFxns = 0;
+   483        
+   484        <span class="xdoc">/*!
+</span>   485    <span class="xdoc">     *  ======== userFxns ========
+</span>   486    <span class="xdoc">     *  Attach and Detach hooks.
+</span>   487    <span class="xdoc">     */</span>
+   488        <span class=key>config</span> UserFxnAndArg userFxns[] = [];
+   489    
+   490        <span class="xdoc">/*!
+</span>   491    <span class="xdoc">     *  ======== getMasterAddr() ========
+</span>   492    <span class="xdoc">     */</span>
+   493        Ptr getMasterAddr(UInt16 remoteProcId, Ptr sharedAddr);
+   494        
+   495        <span class="xdoc">/*!
+</span>   496    <span class="xdoc">     *  ======== getRegion0ReservedSize ========
+</span>   497    <span class="xdoc">     *  Returns the amount of memory to be reserved for Ipc in SharedRegion 0.
+</span>   498    <span class="xdoc">     *
+</span>   499    <span class="xdoc">     *  This is used for synchronizing processors.
+</span>   500    <span class="xdoc">     */</span>
+   501        SizeT getRegion0ReservedSize();
+   502        
+   503        <span class="xdoc">/*!
+</span>   504    <span class="xdoc">     *  ======== getSlaveAddr() ========
+</span>   505    <span class="xdoc">     */</span>
+   506        Ptr getSlaveAddr(UInt16 remoteProcId, Ptr sharedAddr);
+   507    
+   508        <span class="xdoc">/*!
+</span>   509    <span class="xdoc">     *  ======== procSyncStart ========
+</span>   510    <span class="xdoc">     *  Starts the process of synchronizing processors.
+</span>   511    <span class="xdoc">     *
+</span>   512    <span class="xdoc">     *  Shared memory in region 0 will be used.  The processor which owns 
+</span>   513    <span class="xdoc">     *  SharedRegion 0 writes its reserve memory address in region 0
+</span>   514    <span class="xdoc">     *  to let the other processors know it has started.  It then spins
+</span>   515    <span class="xdoc">     *  until the other processors start.  The other processors write their
+</span>   516    <span class="xdoc">     *  reserve memory address in region 0 to let the owner processor
+</span>   517    <span class="xdoc">     *  know they've started.  The other processors then spin until the
+</span>   518    <span class="xdoc">     *  owner processor writes to let them know its finished the process
+</span>   519    <span class="xdoc">     *  of synchronization before continuing.
+</span>   520    <span class="xdoc">     */</span>
+   521        Int procSyncStart(UInt16 remoteProcId, Ptr sharedAddr);
+   522    
+   523        <span class="xdoc">/*!
+</span>   524    <span class="xdoc">     *  ======== procSyncFinish ========
+</span>   525    <span class="xdoc">     *  Finishes the process of synchronizing processors.
+</span>   526    <span class="xdoc">     *
+</span>   527    <span class="xdoc">     *  Each processor writes its reserve memory address in SharedRegion 0
+</span>   528    <span class="xdoc">     *  to let the other processors know its finished the process of
+</span>   529    <span class="xdoc">     *  synchronization.     
+</span>   530    <span class="xdoc">     */</span>
+   531        Int procSyncFinish(UInt16 remoteProcId, Ptr sharedAddr);
+   532    
+   533        <span class="xdoc">/*!
+</span>   534    <span class="xdoc">     *  ======== reservedSizePerProc ========
+</span>   535    <span class="xdoc">     *  The amount of memory required to be reserved per processor.
+</span>   536    <span class="xdoc">     */</span>
+   537        SizeT reservedSizePerProc();
+   538        
+   539        <span class="xdoc">/*! Used for populated the 'objType' field in ROV views*/</span>
+   540        <span class=key>metaonly</span> String getObjTypeStr$view(ObjType type);
+   541    
+   542        <span class="comment">/* Module state */</span>
+   543        <span class=key>struct</span> Module_State {
+   544            Ptr       ipcSharedAddr;
+   545            Ptr       gateMPSharedAddr;
+   546            ProcEntry procEntry[];
+   547        };
+   548    }
+</pre>
+</body></html>

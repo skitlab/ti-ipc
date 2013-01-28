@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="ti.sdo.ipc.notifyDrivers" version="1, 0, 0, 0" producerId="undefined">
+    <units>
+        <interface name="IInterrupt"/>
+        <module name="NotifyDriverShm"/>
+        <module name="NotifyDriverCirc"/>
+        <module name="NotifySetupNull"/>
+    </units>
+    <sources>
+        <srcFile name="package/package_ti.sdo.ipc.notifyDrivers.c"/>
+        <srcFile name="NotifyDriverShm.c"/>
+        <srcFile name="NotifyDriverCirc.c"/>
+        <srcFile name="NotifySetupNull.c"/>
+    </sources>
+    <configscripts>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.a28L.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/package/package_ti.sdo.ipc.notifyDrivers.o28L.dep" src="package/package_ti.sdo.ipc.notifyDrivers.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverShm.o28L.dep" src="NotifyDriverShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverCirc.o28L.dep" src="NotifyDriverCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifySetupNull.o28L.dep" src="NotifySetupNull.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.a28FP.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/package/package_ti.sdo.ipc.notifyDrivers.o28FP.dep" src="package/package_ti.sdo.ipc.notifyDrivers.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverShm.o28FP.dep" src="NotifyDriverShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverCirc.o28FP.dep" src="NotifyDriverCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifySetupNull.o28FP.dep" src="NotifySetupNull.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.a64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/package/package_ti.sdo.ipc.notifyDrivers.o64P.dep" src="package/package_ti.sdo.ipc.notifyDrivers.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverShm.o64P.dep" src="NotifyDriverShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverCirc.o64P.dep" src="NotifyDriverCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifySetupNull.o64P.dep" src="NotifySetupNull.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.a64Pe.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/package/package_ti.sdo.ipc.notifyDrivers.o64Pe.dep" src="package/package_ti.sdo.ipc.notifyDrivers.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverShm.o64Pe.dep" src="NotifyDriverShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverCirc.o64Pe.dep" src="NotifyDriverCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifySetupNull.o64Pe.dep" src="NotifySetupNull.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.a674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/package/package_ti.sdo.ipc.notifyDrivers.o674.dep" src="package/package_ti.sdo.ipc.notifyDrivers.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverShm.o674.dep" src="NotifyDriverShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverCirc.o674.dep" src="NotifyDriverCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifySetupNull.o674.dep" src="NotifySetupNull.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.ae64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/package/package_ti.sdo.ipc.notifyDrivers.oe64P.dep" src="package/package_ti.sdo.ipc.notifyDrivers.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverShm.oe64P.dep" src="NotifyDriverShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverCirc.oe64P.dep" src="NotifyDriverCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifySetupNull.oe64P.dep" src="NotifySetupNull.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.ae64Pe.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/package/package_ti.sdo.ipc.notifyDrivers.oe64Pe.dep" src="package/package_ti.sdo.ipc.notifyDrivers.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverShm.oe64Pe.dep" src="NotifyDriverShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverCirc.oe64Pe.dep" src="NotifyDriverCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifySetupNull.oe64Pe.dep" src="NotifySetupNull.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.ae674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/package/package_ti.sdo.ipc.notifyDrivers.oe674.dep" src="package/package_ti.sdo.ipc.notifyDrivers.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverShm.oe674.dep" src="NotifyDriverShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverCirc.oe674.dep" src="NotifyDriverCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifySetupNull.oe674.dep" src="NotifySetupNull.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.ae64T.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/package/package_ti.sdo.ipc.notifyDrivers.oe64T.dep" src="package/package_ti.sdo.ipc.notifyDrivers.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverShm.oe64T.dep" src="NotifyDriverShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverCirc.oe64T.dep" src="NotifyDriverCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifySetupNull.oe64T.dep" src="NotifySetupNull.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.ae66.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/package/package_ti.sdo.ipc.notifyDrivers.oe66.dep" src="package/package_ti.sdo.ipc.notifyDrivers.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverShm.oe66.dep" src="NotifyDriverShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverCirc.oe66.dep" src="NotifyDriverCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifySetupNull.oe66.dep" src="NotifySetupNull.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.ae66e.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/package/package_ti.sdo.ipc.notifyDrivers.oe66e.dep" src="package/package_ti.sdo.ipc.notifyDrivers.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverShm.oe66e.dep" src="NotifyDriverShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverCirc.oe66e.dep" src="NotifyDriverCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifySetupNull.oe66e.dep" src="NotifySetupNull.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.ae9.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/package/package_ti.sdo.ipc.notifyDrivers.oe9.dep" src="package/package_ti.sdo.ipc.notifyDrivers.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverShm.oe9.dep" src="NotifyDriverShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverCirc.oe9.dep" src="NotifyDriverCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifySetupNull.oe9.dep" src="NotifySetupNull.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.aea8f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/package/package_ti.sdo.ipc.notifyDrivers.oea8f.dep" src="package/package_ti.sdo.ipc.notifyDrivers.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverShm.oea8f.dep" src="NotifyDriverShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverCirc.oea8f.dep" src="NotifyDriverCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifySetupNull.oea8f.dep" src="NotifySetupNull.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.aea8fnv.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/package/package_ti.sdo.ipc.notifyDrivers.oea8fnv.dep" src="package/package_ti.sdo.ipc.notifyDrivers.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverShm.oea8fnv.dep" src="NotifyDriverShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverCirc.oea8fnv.dep" src="NotifyDriverCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifySetupNull.oea8fnv.dep" src="NotifySetupNull.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.aem3.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/package/package_ti.sdo.ipc.notifyDrivers.oem3.dep" src="package/package_ti.sdo.ipc.notifyDrivers.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverShm.oem3.dep" src="NotifyDriverShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverCirc.oem3.dep" src="NotifyDriverCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifySetupNull.oem3.dep" src="NotifySetupNull.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.aem4.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/package/package_ti.sdo.ipc.notifyDrivers.oem4.dep" src="package/package_ti.sdo.ipc.notifyDrivers.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverShm.oem4.dep" src="NotifyDriverShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverCirc.oem4.dep" src="NotifyDriverCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifySetupNull.oem4.dep" src="NotifySetupNull.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.aem4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/package/package_ti.sdo.ipc.notifyDrivers.oem4f.dep" src="package/package_ti.sdo.ipc.notifyDrivers.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverShm.oem4f.dep" src="NotifyDriverShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverCirc.oem4f.dep" src="NotifyDriverCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifySetupNull.oem4f.dep" src="NotifySetupNull.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.aearp32.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/package/package_ti.sdo.ipc.notifyDrivers.oearp32.dep" src="package/package_ti.sdo.ipc.notifyDrivers.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverShm.oearp32.dep" src="NotifyDriverShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverCirc.oearp32.dep" src="NotifyDriverCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifySetupNull.oearp32.dep" src="NotifySetupNull.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.aearp32F.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/package/package_ti.sdo.ipc.notifyDrivers.oearp32F.dep" src="package/package_ti.sdo.ipc.notifyDrivers.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverShm.oearp32F.dep" src="NotifyDriverShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverCirc.oearp32F.dep" src="NotifyDriverCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.notifyDrivers/NotifySetupNull.oearp32F.dep" src="NotifySetupNull.c"/>
+        <srcFile name="lib/smpipc/debug/ti.sdo.ipc.notifyDrivers.aem3.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.notifyDrivers/package/package_ti.sdo.ipc.notifyDrivers.oem3.dep" src="package/package_ti.sdo.ipc.notifyDrivers.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverShm.oem3.dep" src="NotifyDriverShm.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverCirc.oem3.dep" src="NotifyDriverCirc.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.notifyDrivers/NotifySetupNull.oem3.dep" src="NotifySetupNull.c"/>
+        <srcFile name="lib/smpipc/debug/ti.sdo.ipc.notifyDrivers.aem4.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.notifyDrivers/package/package_ti.sdo.ipc.notifyDrivers.oem4.dep" src="package/package_ti.sdo.ipc.notifyDrivers.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverShm.oem4.dep" src="NotifyDriverShm.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.notifyDrivers/NotifyDriverCirc.oem4.dep" src="NotifyDriverCirc.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.notifyDrivers/NotifySetupNull.oem4.dep" src="NotifySetupNull.c"/>
+        <srcFile name="package/rel/ti_sdo_ipc_notifyDrivers.tar.gz.dep" src="package/rel/ti_sdo_ipc_notifyDrivers.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="ti.targets.C28_large"
+            version="ti.targets.C28_large{1,0,5.2,3"
+            platform="ti.platforms.ezdsp28235"
+            isa="28"
+            suffix="28L"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c28/5.2.3/Linux"
+            os="undefined"
+            rts="ti.targets.rts2800">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="large"/>
+        </target>
+        <target name="ti.targets.C28_float"
+            version="ti.targets.C28_float{1,0,5.2,3"
+            platform="ti.platforms.concertoC28:F28M35H52C1:1"
+            isa="28FP"
+            suffix="28FP"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c28/5.2.3/Linux"
+            os="undefined"
+            rts="ti.targets.rts2800">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="large"/>
+        </target>
+        <target name="ti.targets.C64P"
+            version="ti.targets.C64P{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+            isa="64P"
+            suffix="64P"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.C64P_big_endian"
+            version="ti.targets.C64P_big_endian{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+            isa="64P"
+            suffix="64Pe"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.C674"
+            version="ti.targets.C674{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evmOMAPL138.dsp"
+            isa="674"
+            suffix="674"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64P"
+            version="ti.targets.elf.C64P{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+            isa="64P"
+            suffix="e64P"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64P_big_endian"
+            version="ti.targets.elf.C64P_big_endian{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+            isa="64P"
+            suffix="e64Pe"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C674"
+            version="ti.targets.elf.C674{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evmOMAPL138.dsp"
+            isa="674"
+            suffix="e674"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64T"
+            version="ti.targets.elf.C64T{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.omap4430.dsp"
+            isa="64T"
+            suffix="e64T"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C66"
+            version="ti.targets.elf.C66{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6678.core0"
+            isa="66"
+            suffix="e66"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C66_big_endian"
+            version="ti.targets.elf.C66_big_endian{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6678.core0"
+            isa="66"
+            suffix="e66e"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.Arm9"
+            version="ti.targets.arm.elf.Arm9{1,0,5.0,1"
+            platform="ti.sdo.ipc.examples.platforms.evmOMAPL138.arm"
+            isa="v5T"
+            suffix="e9"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.A8F"
+            version="ti.targets.arm.elf.A8F{1,0,5.0,1"
+            platform="ti.sdo.ipc.examples.platforms.evmTI816X.host"
+            isa="v7A"
+            suffix="ea8f"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.A8Fnv"
+            version="ti.targets.arm.elf.A8Fnv{1,0,5.0,1"
+            platform="ti.sdo.ipc.examples.platforms.evmTI816X.host"
+            isa="v7A"
+            suffix="ea8fnv"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.M3"
+            version="ti.targets.arm.elf.M3{1,0,5.0,1"
+            platform="ti.sdo.ipc.examples.platforms.evmC6A8149.vpss"
+            isa="v7M"
+            suffix="em3"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.M4"
+            version="ti.targets.arm.elf.M4{1,0,5.0,1"
+            platform="ti.platforms.stellaris:LM4FSXLH5BB:1"
+            isa="v7M4"
+            suffix="em4"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.M4F"
+            version="ti.targets.arm.elf.M4F{1,0,5.0,1"
+            platform="ti.platforms.stellaris:LM4FSXLH5BB:1"
+            isa="v7M4"
+            suffix="em4f"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arp32.elf.ARP32"
+            version="ti.targets.arp32.elf.ARP32{1,0,1.0,0,5"
+            platform="ti.sdo.ipc.examples.platforms.simArctic.arp32"
+            isa="arp32"
+            suffix="earp32"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arp32/1.0.0B5/Linux"
+            os="undefined"
+            rts="ti.targets.arp32.rts">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arp32.elf.ARP32_far"
+            version="ti.targets.arp32.elf.ARP32_far{1,0,1.0,0,5"
+            platform="ti.sdo.ipc.examples.platforms.simArctic.arp32"
+            isa="arp32"
+            suffix="earp32F"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arp32/1.0.0B5/Linux"
+            os="undefined"
+            rts="ti.targets.arp32.rts">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+    </targets>
+    <libraries>
+    <library name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers"
+        pname="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.a28L"
+        profile="debug"
+        target="ti.targets.C28_large"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers"
+        pname="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.a28FP"
+        profile="debug"
+        target="ti.targets.C28_float"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers"
+        pname="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.a64P"
+        profile="debug"
+        target="ti.targets.C64P"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers"
+        pname="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.a64Pe"
+        profile="debug"
+        target="ti.targets.C64P_big_endian"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers"
+        pname="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.a674"
+        profile="debug"
+        target="ti.targets.C674"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers"
+        pname="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.ae64P"
+        profile="debug"
+        target="ti.targets.elf.C64P"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers"
+        pname="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.ae64Pe"
+        profile="debug"
+        target="ti.targets.elf.C64P_big_endian"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers"
+        pname="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.ae674"
+        profile="debug"
+        target="ti.targets.elf.C674"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers"
+        pname="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.ae64T"
+        profile="debug"
+        target="ti.targets.elf.C64T"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers"
+        pname="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.ae66"
+        profile="debug"
+        target="ti.targets.elf.C66"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers"
+        pname="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.ae66e"
+        profile="debug"
+        target="ti.targets.elf.C66_big_endian"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers"
+        pname="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.ae9"
+        profile="debug"
+        target="ti.targets.arm.elf.Arm9"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers"
+        pname="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.aea8f"
+        profile="debug"
+        target="ti.targets.arm.elf.A8F"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers"
+        pname="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.aea8fnv"
+        profile="debug"
+        target="ti.targets.arm.elf.A8Fnv"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers"
+        pname="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.aem3"
+        profile="debug"
+        target="ti.targets.arm.elf.M3"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers"
+        pname="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.aem4"
+        profile="debug"
+        target="ti.targets.arm.elf.M4"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers"
+        pname="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.aem4f"
+        profile="debug"
+        target="ti.targets.arm.elf.M4F"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers"
+        pname="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.aearp32"
+        profile="debug"
+        target="ti.targets.arp32.elf.ARP32"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers"
+        pname="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.aearp32F"
+        profile="debug"
+        target="ti.targets.arp32.elf.ARP32_far"/>
+    <library name="lib/smpipc/debug/ti.sdo.ipc.notifyDrivers"
+        pname="lib/smpipc/debug/ti.sdo.ipc.notifyDrivers.aem3"
+        profile="smp"
+        target="ti.targets.arm.elf.M3"/>
+    <library name="lib/smpipc/debug/ti.sdo.ipc.notifyDrivers"
+        pname="lib/smpipc/debug/ti.sdo.ipc.notifyDrivers.aem4"
+        profile="smp"
+        target="ti.targets.arm.elf.M4"/>
+    </libraries>
+    <configurations>
+    </configurations>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="ti_sdo_ipc_notifyDrivers"
+        pname="../../../../../exports/ti_sdo_ipc_notifyDrivers.tar.gz"
+        label="default"
+        relScript="tisb/release/filters/copyright.rel">
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package.bld"/>
+        <file name="package/package.cfg.xdc.inc"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.a28L"/>
+        <file name="package/package_ti.sdo.ipc.notifyDrivers.c"/>
+        <file name="NotifyDriverShm.c"/>
+        <file name="NotifyDriverCirc.c"/>
+        <file name="NotifySetupNull.c"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.a28FP"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.a64P"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.a64Pe"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.a674"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.ae64P"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.ae64Pe"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.ae674"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.ae64T"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.ae66"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.ae66e"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.ae9"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.aea8f"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.aea8fnv"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.aem3"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.aem4"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.aem4f"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.aearp32"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.notifyDrivers.aearp32F"/>
+        <file name="lib/smpipc/debug/ti.sdo.ipc.notifyDrivers.aem3"/>
+        <file name="lib/smpipc/debug/ti.sdo.ipc.notifyDrivers.aem4"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

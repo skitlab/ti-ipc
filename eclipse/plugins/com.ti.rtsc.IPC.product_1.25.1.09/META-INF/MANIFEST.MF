@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-Name: IPC (Multicore and I/O) Embedded Runtime Content
+Created-By: 1.5.0_22 (Sun Microsystems Inc.)
+Bundle-Activator: org.eclipse.rtsc.xdctools.ui.CCSActivator
+Bundle-Vendor: Texas Instruments
+Bundle-ManifestVersion: 2
+Bundle-Localization: plugin
+Bundle-SymbolicName: com.ti.rtsc.IPC.product_1.25.1.09;singleton:=true
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.he
+ lp,org.eclipse.rtsc.xdctools.ui
+Bundle-Version: 1.25.1.09
+Eclipse-LazyStart: true
+
+Name: plugin.xml
+SHA1-Digest: sBLhlBBUpfy0gu1hFVbVnbaVbVM=
+

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="IPC (Multicore and I/O)  1.25.01.09"
+>
+    <topic label="Release Notes" href="ipc_1_25_01_09_release_notes.html"/>            
+    <topic label="Installation Guide" href="IPC_Install_Guide.pdf"/>            
+    <topic label="Users Guide" href="IPC_Users_Guide.pdf"/>            
+    <topic label="API reference">
+    <link toc="eclipse_cdoc_toc.xml"/>
+    </topic>
+</toc>

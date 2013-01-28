@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="ti.sdo.ipc.family" version="1, 0, 0, 0" producerId="undefined">
+    <units>
+        <module name="Settings"/>
+    </units>
+    <sources>
+        <srcFile name="package/package_ti.sdo.ipc.family.c"/>
+    </sources>
+    <configscripts>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.a28L.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family/package/package_ti.sdo.ipc.family.o28L.dep" src="package/package_ti.sdo.ipc.family.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.a28FP.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family/package/package_ti.sdo.ipc.family.o28FP.dep" src="package/package_ti.sdo.ipc.family.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.a64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family/package/package_ti.sdo.ipc.family.o64P.dep" src="package/package_ti.sdo.ipc.family.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.a64Pe.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family/package/package_ti.sdo.ipc.family.o64Pe.dep" src="package/package_ti.sdo.ipc.family.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.a674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family/package/package_ti.sdo.ipc.family.o674.dep" src="package/package_ti.sdo.ipc.family.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.ae64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family/package/package_ti.sdo.ipc.family.oe64P.dep" src="package/package_ti.sdo.ipc.family.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.ae64Pe.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family/package/package_ti.sdo.ipc.family.oe64Pe.dep" src="package/package_ti.sdo.ipc.family.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.ae674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family/package/package_ti.sdo.ipc.family.oe674.dep" src="package/package_ti.sdo.ipc.family.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.ae64T.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family/package/package_ti.sdo.ipc.family.oe64T.dep" src="package/package_ti.sdo.ipc.family.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.ae66.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family/package/package_ti.sdo.ipc.family.oe66.dep" src="package/package_ti.sdo.ipc.family.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.ae66e.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family/package/package_ti.sdo.ipc.family.oe66e.dep" src="package/package_ti.sdo.ipc.family.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.ae9.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family/package/package_ti.sdo.ipc.family.oe9.dep" src="package/package_ti.sdo.ipc.family.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.aea8f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family/package/package_ti.sdo.ipc.family.oea8f.dep" src="package/package_ti.sdo.ipc.family.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.aea8fnv.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family/package/package_ti.sdo.ipc.family.oea8fnv.dep" src="package/package_ti.sdo.ipc.family.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.aem3.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family/package/package_ti.sdo.ipc.family.oem3.dep" src="package/package_ti.sdo.ipc.family.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.aem4.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family/package/package_ti.sdo.ipc.family.oem4.dep" src="package/package_ti.sdo.ipc.family.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.aem4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family/package/package_ti.sdo.ipc.family.oem4f.dep" src="package/package_ti.sdo.ipc.family.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.aearp32.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family/package/package_ti.sdo.ipc.family.oearp32.dep" src="package/package_ti.sdo.ipc.family.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.aearp32F.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family/package/package_ti.sdo.ipc.family.oearp32F.dep" src="package/package_ti.sdo.ipc.family.c"/>
+        <srcFile name="lib/smpipc/debug/ti.sdo.ipc.family.aem3.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.family/package/package_ti.sdo.ipc.family.oem3.dep" src="package/package_ti.sdo.ipc.family.c"/>
+        <srcFile name="lib/smpipc/debug/ti.sdo.ipc.family.aem4.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.family/package/package_ti.sdo.ipc.family.oem4.dep" src="package/package_ti.sdo.ipc.family.c"/>
+        <srcFile name="package/rel/ti_sdo_ipc_family.tar.gz.dep" src="package/rel/ti_sdo_ipc_family.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="ti.targets.C28_large"
+            version="ti.targets.C28_large{1,0,5.2,3"
+            platform="ti.platforms.ezdsp28235"
+            isa="28"
+            suffix="28L"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c28/5.2.3/Linux"
+            os="undefined"
+            rts="ti.targets.rts2800">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="large"/>
+        </target>
+        <target name="ti.targets.C28_float"
+            version="ti.targets.C28_float{1,0,5.2,3"
+            platform="ti.platforms.concertoC28:F28M35H52C1:1"
+            isa="28FP"
+            suffix="28FP"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c28/5.2.3/Linux"
+            os="undefined"
+            rts="ti.targets.rts2800">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="large"/>
+        </target>
+        <target name="ti.targets.C64P"
+            version="ti.targets.C64P{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+            isa="64P"
+            suffix="64P"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.C64P_big_endian"
+            version="ti.targets.C64P_big_endian{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+            isa="64P"
+            suffix="64Pe"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.C674"
+            version="ti.targets.C674{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evmOMAPL138.dsp"
+            isa="674"
+            suffix="674"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64P"
+            version="ti.targets.elf.C64P{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+            isa="64P"
+            suffix="e64P"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64P_big_endian"
+            version="ti.targets.elf.C64P_big_endian{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+            isa="64P"
+            suffix="e64Pe"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C674"
+            version="ti.targets.elf.C674{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evmOMAPL138.dsp"
+            isa="674"
+            suffix="e674"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64T"
+            version="ti.targets.elf.C64T{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.omap4430.dsp"
+            isa="64T"
+            suffix="e64T"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C66"
+            version="ti.targets.elf.C66{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6678.core0"
+            isa="66"
+            suffix="e66"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C66_big_endian"
+            version="ti.targets.elf.C66_big_endian{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6678.core0"
+            isa="66"
+            suffix="e66e"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.Arm9"
+            version="ti.targets.arm.elf.Arm9{1,0,5.0,1"
+            platform="ti.sdo.ipc.examples.platforms.evmOMAPL138.arm"
+            isa="v5T"
+            suffix="e9"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.A8F"
+            version="ti.targets.arm.elf.A8F{1,0,5.0,1"
+            platform="ti.sdo.ipc.examples.platforms.evmTI816X.host"
+            isa="v7A"
+            suffix="ea8f"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.A8Fnv"
+            version="ti.targets.arm.elf.A8Fnv{1,0,5.0,1"
+            platform="ti.sdo.ipc.examples.platforms.evmTI816X.host"
+            isa="v7A"
+            suffix="ea8fnv"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.M3"
+            version="ti.targets.arm.elf.M3{1,0,5.0,1"
+            platform="ti.sdo.ipc.examples.platforms.evmC6A8149.vpss"
+            isa="v7M"
+            suffix="em3"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.M4"
+            version="ti.targets.arm.elf.M4{1,0,5.0,1"
+            platform="ti.platforms.stellaris:LM4FSXLH5BB:1"
+            isa="v7M4"
+            suffix="em4"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.M4F"
+            version="ti.targets.arm.elf.M4F{1,0,5.0,1"
+            platform="ti.platforms.stellaris:LM4FSXLH5BB:1"
+            isa="v7M4"
+            suffix="em4f"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arp32.elf.ARP32"
+            version="ti.targets.arp32.elf.ARP32{1,0,1.0,0,5"
+            platform="ti.sdo.ipc.examples.platforms.simArctic.arp32"
+            isa="arp32"
+            suffix="earp32"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arp32/1.0.0B5/Linux"
+            os="undefined"
+            rts="ti.targets.arp32.rts">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arp32.elf.ARP32_far"
+            version="ti.targets.arp32.elf.ARP32_far{1,0,1.0,0,5"
+            platform="ti.sdo.ipc.examples.platforms.simArctic.arp32"
+            isa="arp32"
+            suffix="earp32F"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arp32/1.0.0B5/Linux"
+            os="undefined"
+            rts="ti.targets.arp32.rts">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+    </targets>
+    <libraries>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.a28L"
+        profile="debug"
+        target="ti.targets.C28_large"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.a28FP"
+        profile="debug"
+        target="ti.targets.C28_float"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.a64P"
+        profile="debug"
+        target="ti.targets.C64P"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.a64Pe"
+        profile="debug"
+        target="ti.targets.C64P_big_endian"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.a674"
+        profile="debug"
+        target="ti.targets.C674"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.ae64P"
+        profile="debug"
+        target="ti.targets.elf.C64P"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.ae64Pe"
+        profile="debug"
+        target="ti.targets.elf.C64P_big_endian"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.ae674"
+        profile="debug"
+        target="ti.targets.elf.C674"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.ae64T"
+        profile="debug"
+        target="ti.targets.elf.C64T"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.ae66"
+        profile="debug"
+        target="ti.targets.elf.C66"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.ae66e"
+        profile="debug"
+        target="ti.targets.elf.C66_big_endian"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.ae9"
+        profile="debug"
+        target="ti.targets.arm.elf.Arm9"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.aea8f"
+        profile="debug"
+        target="ti.targets.arm.elf.A8F"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.aea8fnv"
+        profile="debug"
+        target="ti.targets.arm.elf.A8Fnv"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.aem3"
+        profile="debug"
+        target="ti.targets.arm.elf.M3"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.aem4"
+        profile="debug"
+        target="ti.targets.arm.elf.M4"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.aem4f"
+        profile="debug"
+        target="ti.targets.arm.elf.M4F"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.aearp32"
+        profile="debug"
+        target="ti.targets.arp32.elf.ARP32"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.aearp32F"
+        profile="debug"
+        target="ti.targets.arp32.elf.ARP32_far"/>
+    <library name="lib/smpipc/debug/ti.sdo.ipc.family"
+        pname="lib/smpipc/debug/ti.sdo.ipc.family.aem3"
+        profile="smp"
+        target="ti.targets.arm.elf.M3"/>
+    <library name="lib/smpipc/debug/ti.sdo.ipc.family"
+        pname="lib/smpipc/debug/ti.sdo.ipc.family.aem4"
+        profile="smp"
+        target="ti.targets.arm.elf.M4"/>
+    </libraries>
+    <configurations>
+    </configurations>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="ti_sdo_ipc_family"
+        pname="../../../../../exports/ti_sdo_ipc_family.tar.gz"
+        label="default"
+        relScript="tisb/release/filters/copyright.rel">
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package.bld"/>
+        <file name="doc-files"/>
+        <file name="procNamesDocGen.xs"/>
+        <file name="package/package.cfg.xdc.inc"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.a28L"/>
+        <file name="package/package_ti.sdo.ipc.family.c"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.a28FP"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.a64P"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.a64Pe"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.a674"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.ae64P"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.ae64Pe"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.ae674"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.ae64T"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.ae66"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.ae66e"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.ae9"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.aea8f"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.aea8fnv"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.aem3"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.aem4"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.aem4f"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.aearp32"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.aearp32F"/>
+        <file name="lib/smpipc/debug/ti.sdo.ipc.family.aem3"/>
+        <file name="lib/smpipc/debug/ti.sdo.ipc.family.aem4"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

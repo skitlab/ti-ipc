@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="ti.sdo.io.examples" version="1, 0, 0, 0" producerId="undefined">
+    <units>
+    </units>
+    <sources>
+        <srcFile name="package/cfg/release/stream_p28L.c"/>
+        <srcFile name="stream.c"/>
+    </sources>
+    <configscripts>
+        <srcFile name="stream.cfg"/>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/cfg/release/stream_p28L.mak" src="package.bld"/>
+        <srcFile name="package/cfg/release/stream_p28L.o28L.dep" src="package/cfg/release/stream_p28L.c"/>
+        <srcFile name="package/cfg/release/stream_p28L.dep" src="package/cfg/release/stream_p28L.cfg"/>
+        <srcFile name="package/cfg/release/stream.x28L.mak" src="package.bld"/>
+        <srcFile name="package/cfg/release/stream/stream.o28L.dep" src="stream.c"/>
+        <srcFile name="package/rel/ti_sdo_io_examples.tar.gz.dep" src="package/rel/ti_sdo_io_examples.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="ti.targets.C28_large"
+            version="ti.targets.C28_large{1,0,5.2,3"
+            platform="ti.platforms.ezdsp28235"
+            isa="28"
+            suffix="28L"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c28/5.2.3/Linux"
+            os="undefined"
+            rts="ti.targets.rts2800">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="large"/>
+        </target>
+    </targets>
+    <libraries>
+    </libraries>
+    <configurations>
+    <configuration name="release/stream"
+        pname="release/stream.p28L"
+        target="ti.targets.C28_large"
+        platform="ti.platforms.ezdsp28235"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/release/stream_p28L.cfg"
+        xCfgPrefix="package/cfg/release/stream_p28L"
+        cfgScript="stream.cfg"
+        />
+    </configurations>
+    <executables>
+    <executable name="release/stream"
+        pname="release/stream.x28L"
+        target="ti.targets.C28_large"
+        platform="ti.platforms.ezdsp28235"
+        profile="release"
+        xCfgScript="package/cfg/release/stream_p28L.cfg"
+        xCfgPrefix="package/cfg/release/stream_p28L"
+        cfgScript="stream.cfg"
+        />
+    </executables>
+    <tests>
+    <test exeName="release/stream.x28L"
+        args=""
+        groupName="regress"
+        refOutput="golden/stream.k"
+        refExitCode="0"
+        execArgs="-t%2060"
+        />
+    <test exeName="release/stream.x28L"
+        args=""
+        groupName="release/stream.x28L"
+        refOutput="undefined"
+        refExitCode="0"
+        execArgs="-t%2060"
+        />
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="ti_sdo_io_examples"
+        pname="../../../../../exports/ti_sdo_io_examples.tar.gz"
+        label="default"
+        relScript="tisb/release/filters/copyright.rel">
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package.bld"/>
+        <file name="stream.k"/>
+        <file name="package/cfg/release/stream_p28L.xdc.inc"/>
+        <file name="package/cfg/release/stream_p28L.cfg"/>
+        <file name="package/cfg/release/stream_p28L.c"/>
+        <file name="stream.c"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

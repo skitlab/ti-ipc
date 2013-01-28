@@ -1,0 +1,4 @@
+<map id="G" name="G">
+<area shape="rect" href="$_shared_region_8h.html" title="Shared memory manager and address translator." alt="" coords="8,83,144,107" />
+<area shape="rect" href="$_gate_m_p_8h.html" title="Multiple processor gate that provides local and remote context protection." alt="" coords="168,83,274,107" />
+</map>

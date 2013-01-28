@@ -1,0 +1,59 @@
+\subsection{Heap\-Mem\-M\-P\-\_\-\-Params Struct Reference}
+\label{struct_heap_mem_m_p___params}\index{Heap\-Mem\-M\-P\-\_\-\-Params@{Heap\-Mem\-M\-P\-\_\-\-Params}}
+
+
+Structure defining parameters for the Heap\-Mem\-M\-P module.  
+
+
+
+
+{\ttfamily \#include $<$Heap\-Mem\-M\-P.\-h$>$}
+
+\subsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+String \hyperlink{struct_heap_mem_m_p___params_a6b71abc682a2b5503fde320e29a1a5f7}{name}
+\item 
+U\-Int16 \hyperlink{struct_heap_mem_m_p___params_ad1a5b94d015d0b5b75f091ca9be8a04e}{region\-Id}
+\item 
+Size\-T \hyperlink{struct_heap_mem_m_p___params_a7206d2bd65bf705da74310fd004b67bf}{shared\-Buf\-Size}
+\item 
+\hyperlink{_gate_m_p_8h_ad5bb259f928a14e98d973334bc60ebb3}{Gate\-M\-P\-\_\-\-Handle} \hyperlink{struct_heap_mem_m_p___params_ab07964aed674d108f19482a0d35e4e46}{gate}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+Structure defining parameters for the Heap\-Mem\-M\-P module. 
+
+\subsubsection{Field Documentation}
+\index{Heap\-Mem\-M\-P\-\_\-\-Params@{Heap\-Mem\-M\-P\-\_\-\-Params}!name@{name}}
+\index{name@{name}!HeapMemMP_Params@{Heap\-Mem\-M\-P\-\_\-\-Params}}
+\paragraph[{name}]{\setlength{\rightskip}{0pt plus 5cm}String Heap\-Mem\-M\-P\-\_\-\-Params\-::name}\label{struct_heap_mem_m_p___params_a6b71abc682a2b5503fde320e29a1a5f7}
+Name of this instance. \begin{DoxyVerb}   The name (if not NULL) must be unique among all HeapMemMP
+   instances in the entire system.  When creating a new
+   heap, it is necessary to supply an instance name.
+
+   The name does not have to be persistent.  The supplied string is copied
+   into persistent memory.\end{DoxyVerb}
+ \index{Heap\-Mem\-M\-P\-\_\-\-Params@{Heap\-Mem\-M\-P\-\_\-\-Params}!region\-Id@{region\-Id}}
+\index{region\-Id@{region\-Id}!HeapMemMP_Params@{Heap\-Mem\-M\-P\-\_\-\-Params}}
+\paragraph[{region\-Id}]{\setlength{\rightskip}{0pt plus 5cm}U\-Int16 Heap\-Mem\-M\-P\-\_\-\-Params\-::region\-Id}\label{struct_heap_mem_m_p___params_ad1a5b94d015d0b5b75f091ca9be8a04e}
+Shared region I\-D \begin{DoxyVerb}   The index corresponding to the shared region from which shared memory
+   will be allocated.\end{DoxyVerb}
+ \index{Heap\-Mem\-M\-P\-\_\-\-Params@{Heap\-Mem\-M\-P\-\_\-\-Params}!shared\-Buf\-Size@{shared\-Buf\-Size}}
+\index{shared\-Buf\-Size@{shared\-Buf\-Size}!HeapMemMP_Params@{Heap\-Mem\-M\-P\-\_\-\-Params}}
+\paragraph[{shared\-Buf\-Size}]{\setlength{\rightskip}{0pt plus 5cm}Size\-T Heap\-Mem\-M\-P\-\_\-\-Params\-::shared\-Buf\-Size}\label{struct_heap_mem_m_p___params_a7206d2bd65bf705da74310fd004b67bf}
+Size of shared buffer
+
+This is the size of the buffer to be used in the Heap\-Mem\-M\-P instance. The actual buffer size in the created instance might actually be less than the value supplied in 'shared\-Buf\-Size' because of alignment constraints.
+
+It is important to note that the total amount of shared memory required for a Heap\-Mem\-M\-P instance will be greater than the size supplied here. Additional space will be consumed by shared instance attributes and alignment-\/related padding. \index{Heap\-Mem\-M\-P\-\_\-\-Params@{Heap\-Mem\-M\-P\-\_\-\-Params}!gate@{gate}}
+\index{gate@{gate}!HeapMemMP_Params@{Heap\-Mem\-M\-P\-\_\-\-Params}}
+\paragraph[{gate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Gate\-M\-P\-\_\-\-Handle} Heap\-Mem\-M\-P\-\_\-\-Params\-::gate}\label{struct_heap_mem_m_p___params_ab07964aed674d108f19482a0d35e4e46}
+Gate\-M\-P used for critical region management of the shared memory \begin{DoxyVerb}   Using the default value of NULL will result in use of the GateMP
+   system gate for context protection.\end{DoxyVerb}
+ 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_heap_mem_m_p_8h}{Heap\-Mem\-M\-P.\-h}\end{DoxyCompactItemize}

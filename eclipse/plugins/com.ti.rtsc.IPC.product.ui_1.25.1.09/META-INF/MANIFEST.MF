@@ -1,0 +1,334 @@
+Manifest-Version: 1.0
+Bundle-Name: IPC (Multicore and I/O) IDE Tooling
+Created-By: 1.5.0_22 (Sun Microsystems Inc.)
+Bundle-Activator: org.eclipse.rtsc.xdctools.ui.CCSActivator
+Bundle-Vendor: Texas Instruments
+Bundle-ManifestVersion: 2
+Bundle-Localization: plugin
+Bundle-SymbolicName: com.ti.rtsc.IPC.product.ui;singleton:=true
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.eclipse.he
+ lp,org.eclipse.rtsc.xdctools.ui
+Bundle-Version: 1.25.1.09
+Eclipse-LazyStart: true
+
+Name: resources/multicore/evmDM6446/notify_dsp.c
+SHA1-Digest: /MqxvTmi2eIcMYFOaNi5cPZjHdM=
+
+Name: resources/multicore/omap3530/notify_dsp.cfg
+SHA1-Digest: yzebscqrYBsxo5BWq5JaAnFkW3A=
+
+Name: resources/io/stream.c
+SHA1-Digest: B5kFHw2uxT1oBm8OBY82LS/+ylA=
+
+Name: resources/multicore/omap4430/notify_core0.cfg
+SHA1-Digest: 4z4YO+S9g+o8DZPTfEdZKMdK5SE=
+
+Name: resources/multicore/evmTI81XX/notify_video.cfg
+SHA1-Digest: bp9utdOV9uCmRjgbhjUe6XtTJt4=
+
+Name: resources/multicore/simArctic/message_common.cfg.xs
+SHA1-Digest: GilyFNFJ56zI0CcF/IRW3A9JCGI=
+
+Name: resources/multicore/omap4430/message_dsp.cfg
+SHA1-Digest: ayMgiT66H0lkwJf/OECorNPxARs=
+
+Name: resources/multicore/evmF28M35x/message_f28m35x.c
+SHA1-Digest: iYBdu9IDMODfTR3inWcGrZ4GRcQ=
+
+Name: resources/multicore/evmOMAPL138/message_common.cfg.xs
+SHA1-Digest: /Wxc4au2UhaTRVrppJcN50C6/gQ=
+
+Name: resources/multicore/evmF28M35x/message_m3.cfg
+SHA1-Digest: 8xAnT6BymezZxaCuUPymzmumCZc=
+
+Name: resources/multicore/omap3530/message_multicore.c
+SHA1-Digest: Nb7EZCK6nFtnm+cahaVmgKumZms=
+
+Name: resources/multicore/simArctic/message_dsp.cfg
+SHA1-Digest: kOgHZRKfo/fkoVNOuepM8OWNsyA=
+
+Name: resources/multicore/omap3530/notify_host.cfg
+SHA1-Digest: HxC7E9QUIKpf6/UjlesWhAD3VZU=
+
+Name: resources/multicore/evmF28M35x/notify_f28m35x.c
+SHA1-Digest: BQGidArMykH+BD37gwj7/KK6yNc=
+
+Name: resources/multicore/evmOMAPL138/notify_dsp.c
+SHA1-Digest: V3qOcikHLVXzHzRTB6oIHMqjFho=
+
+Name: resources/benchmarks/messageq_latency.c
+SHA1-Digest: YqTB0jU/1JDN1xxOBsJs7vFuwWs=
+
+Name: resources/singlecore/notify_loopback.c
+SHA1-Digest: 4eZ6Hj//7rnnKcleQhtseX39tX8=
+
+Name: plugin.xml
+SHA1-Digest: 7GJ3gnZmqv497PZg6vjSrSQ7cUQ=
+
+Name: resources/singlecore/message.c
+SHA1-Digest: 4KCayL+cirsGlBSuLXY8nbPl2Mw=
+
+Name: resources/multicore/evmC6A8149/message_multicore.c
+SHA1-Digest: 4ma2f6cLAqtTyoPNKMgR+oNj7qs=
+
+Name: resources/multicore/evmOMAPL138/notify_arm.cfg
+SHA1-Digest: KPRb1FnZJ7SvzWtJ8QFgHr7obEc=
+
+Name: resources/multicore/simArctic/notify_multicore.c
+SHA1-Digest: Mgxebm89JYcvOhmSVvZ8YykYA6I=
+
+Name: resources/multicore/evmF28M35x/message_c28.cfg
+SHA1-Digest: s3PVgRMNRqcrA98DRiO4X7gTVUs=
+
+Name: resources/benchmarks/notify_latency.c
+SHA1-Digest: 3SQNm5OcA6839lF5cX4BNHWPzgA=
+
+Name: resources/multicore/omap4430/message_core0.cfg
+SHA1-Digest: taTCZ8BDy5ppNbVk54Pdfh5e07o=
+
+Name: resources/multicore/evmTI81XX/notify_common.cfg.xs
+SHA1-Digest: Pb2pdqXcAm7spBMEr4YybktSneI=
+
+Name: resources/multicore/evm667x/message_multicore.c
+SHA1-Digest: /wrD28zFxXKMSi2gslFhQr4MJjc=
+
+Name: resources/multicore/omap4430/message_core1.c
+SHA1-Digest: EKfRYc3xIUIHsRs6OyCeeOfITy4=
+
+Name: resources/benchmarks/messageq_latency.cfg
+SHA1-Digest: V4x+8zgjWzAXySr/s/GbyBbeJxg=
+
+Name: resources/multicore/evmTI81XX/message_video.cfg
+SHA1-Digest: YbafMkAqjmkyyi2UXN1f9UiHBoM=
+
+Name: resources/multicore/simArctic/notify_common.cfg.xs
+SHA1-Digest: doJhLEFtrpSlQw2QS5KF3+7BC6U=
+
+Name: resources/multicore/evmC6A8149/message_dsp.cfg
+SHA1-Digest: FG7QltJenfqoZlf/J5ZSXdGnc4w=
+
+Name: resources/multicore/evmDM6446/message_multicore.c
+SHA1-Digest: oV8TOSY81tPV4aDo75dCJrZCt9Q=
+
+Name: resources/multicore/evmC6A8149/notify_eve.cfg
+SHA1-Digest: lFmPH83kWF1uhRN8sLluLe0HfJs=
+
+Name: resources/multicore/evmOMAPL138/message_multicore.c
+SHA1-Digest: 9eaPnqYaV5v6+sVco0A5td+vuxs=
+
+Name: resources/io/stream.cfg
+SHA1-Digest: naFF479VS+/H5Lz654HclXsFap8=
+
+Name: resources/multicore/evm667x/message_multicore.cfg
+SHA1-Digest: 21J/7bQ4Z4RC6aijIib5TcTk4Bk=
+
+Name: resources/multicore/omap3530/notify_common.cfg.xs
+SHA1-Digest: lPIg9cZkygF6eN4E/UhcSlN6ciI=
+
+Name: resources/multicore/evmDM6446/notify_dsp.cfg
+SHA1-Digest: wa/UondsmavTFm8nPARbpT78bbE=
+
+Name: resources/multicore/omap4430/message_common.cfg.xs
+SHA1-Digest: 8lpUAvXEXpAww/2cSe4MHerhubU=
+
+Name: plugin.properties
+SHA1-Digest: +XHyVfo8pCOUyDl7c29O6T+41FI=
+
+Name: resources/multicore/omap4430/message_dsp.c
+SHA1-Digest: DCTo3LfNAfQNuflc0iwG1+YS+to=
+
+Name: resources/multicore/evmTI81XX/message_vpss.cfg
+SHA1-Digest: 84Sy1HQntho0zFEQGF66OZtHY3o=
+
+Name: resources/multicore/evmOMAPL138/message_dsp.cfg
+SHA1-Digest: x/42Y9/QRgE2yRAnd/UFM2sOr3s=
+
+Name: resources/multicore/omap4430/message_core0.c
+SHA1-Digest: FEzNWcdcIS4MJUXZPuWPuneNCVI=
+
+Name: resources/multicore/omap4430/notify_dsp.c
+SHA1-Digest: CrTjzBRsPRAXBeWNjxYj5bIIk8c=
+
+Name: resources/multicore/omap4430/notify_core1.c
+SHA1-Digest: +8h4eEGIdf74kznmquI1Ee4CykE=
+
+Name: resources/benchmarks/readme.txt
+SHA1-Digest: BaQQ8dFtMTxrBwYp/Sheoj0shbk=
+
+Name: resources/benchmarks/bench_common.h
+SHA1-Digest: U97Rj27NyvAZDa+zF0PZOpQ6fo4=
+
+Name: resources/multicore/evmOMAPL138/notify_common.cfg.xs
+SHA1-Digest: 5B8CMw5iTDcp3xbEbwrRNuX7M4Q=
+
+Name: resources/multicore/evm667x/notify_multicore.c
+SHA1-Digest: +vvvJv9pGLgm0xNgE/8mvZKK3fI=
+
+Name: resources/multicore/omap4430/notify_dsp.cfg
+SHA1-Digest: ROg0VkXZu1lVU8I2hJ/N2P7fPlU=
+
+Name: resources/multicore/evmOMAPL138/notify_dsp.cfg
+SHA1-Digest: 1N6p1l8prKZGNh+rfNC22xmM7Qw=
+
+Name: resources/multicore/omap4430/message_core1.cfg
+SHA1-Digest: YlvBHHQhWkdwZPC5zzJE5oRLPO0=
+
+Name: resources/multicore/evmOMAPL138/notify_arm.c
+SHA1-Digest: g9ek/azxr5wqbgN59BAOcha38Zw=
+
+Name: resources/multicore/omap3530/message_dsp.cfg
+SHA1-Digest: ydcPJnW5UaJh2Sjm75Vo84sxfJU=
+
+Name: resources/multicore/evmDM6446/notify_arm.c
+SHA1-Digest: GUNS+NDxAoMBYIUO84h58uRmWYA=
+
+Name: resources/multicore/evmDM6446/message_arm.cfg
+SHA1-Digest: LEMVRoPMXzlNBzXAUOqvznjN4sg=
+
+Name: resources/multicore/simArctic/notify_arp32.cfg
+SHA1-Digest: StNk51FIK6SVPs++8mQiQkqgnyA=
+
+Name: toc_top.xml
+SHA1-Digest: fJ+iIgDQG37aeL4KJjL8G0le8EE=
+
+Name: eclipse_cdoc_toc.xml
+SHA1-Digest: bmVU031Hc4U32fVU2HA4EdNJB1o=
+
+Name: resources/multicore/evmTI81XX/message_dsp.cfg
+SHA1-Digest: Inq0h8puhqhuRsDxnQcD/zwYsLw=
+
+Name: resources/multicore/evmDM6446/notify_common.cfg.xs
+SHA1-Digest: mJJFCFBihISlZ+1KhuhGrGLDEuQ=
+
+Name: resources/multicore/evm647x/notify_multicore.cfg
+SHA1-Digest: hkguCXUBtbAGjEjZ03dJUL7enJE=
+
+Name: resources/multicore/evmC6A8149/message_vpss.cfg
+SHA1-Digest: +8Mj3jFitBbWpimTBxzVZxWOE/g=
+
+Name: resources/benchmarks/bench_common.c
+SHA1-Digest: YnqbMlbkL6GY3vdV7i7Y8lTcn6E=
+
+Name: resources/multicore/simArctic/message_arp32.cfg
+SHA1-Digest: XwtgCT1aMSaPyZSEonqdPmqNu9Y=
+
+Name: resources/multicore/evmTI81XX/message_common.cfg.xs
+SHA1-Digest: +Doukl8tEKqx3fcANLhtbs9/M50=
+
+Name: resources/makefile.defs
+SHA1-Digest: 5+U6QiqsCLA9ZwuVCWc3BOFiUyw=
+
+Name: resources/multicore/evmDM6446/message_common.cfg.xs
+SHA1-Digest: sBdgOyLYFDsdXJQjE42xJfDrLTE=
+
+Name: resources/multicore/omap3530/message_host.cfg
+SHA1-Digest: Gite3yzcWDnGve/1NdQXSq6RidI=
+
+Name: resources/multicore/omap3530/notify_multicore.c
+SHA1-Digest: f9wVofE3byImfo0sYdwWhsROrOY=
+
+Name: resources/benchmarks/bench_common.cfg.xs
+SHA1-Digest: w66+jyNVLxdrM+3ZoVZCBFG5d2c=
+
+Name: resources/multicore/evmOMAPL138/message_arm.cfg
+SHA1-Digest: iLfQhHTWxDMvhL92SuxoUHiYIWw=
+
+Name: resources/multicore/omap3530/message_common.cfg.xs
+SHA1-Digest: /7aQqjosqJsMXx6vJ1aYaX3GC00=
+
+Name: resources/multicore/evmC6A8149/notify_multicore.c
+SHA1-Digest: h3YsupKqa2xrcpGl1GzsmulOcew=
+
+Name: resources/multicore/evmC6A8149/notify_dsp.cfg
+SHA1-Digest: fIDvONxWMS+rTV6H2dRiHU0W5ow=
+
+Name: resources/multicore/omap4430/notify_core0.c
+SHA1-Digest: 3slE1bOvpAc/3/mhlLLPWK2Rc3M=
+
+Name: resources/multicore/evmC6A8149/message_video.cfg
+SHA1-Digest: F7yLEh9IDkqQz+utMhpVGAkGktM=
+
+Name: resources/multicore/simArctic/message_multicore.c
+SHA1-Digest: RKWCTWkYAPX+I4rk4Y2UZiDC+zI=
+
+Name: resources/multicore/omap4430/notify_core1.cfg
+SHA1-Digest: vzcrAzFwxgHXDIshMw8PWQ12wEI=
+
+Name: resources/singlecore/message.cfg
+SHA1-Digest: 1FKD7TZEz95Gy6Dhleps2GRBADA=
+
+Name: resources/multicore/evmC6A8149/notify_host.cfg
+SHA1-Digest: rU/i6eLQQvPhoXoNyZINVErvnps=
+
+Name: resources/multicore/evmTI81XX/notify_host.cfg
+SHA1-Digest: nlUuym8RhsSqu9GYlvDhFU70dAA=
+
+Name: resources/multicore/evm667x/notify_multicore.cfg
+SHA1-Digest: auFB2XM157ooph8iTd+vh2vKPRw=
+
+Name: resources/multicore/evmC6A8149/message_common.cfg.xs
+SHA1-Digest: x+SAmI7UotyHXix/+7BDMN+7qMQ=
+
+Name: resources/multicore/simArctic/notify_dsp.cfg
+SHA1-Digest: u+H5G6aXKU7P/GxD4hj1fI9njbQ=
+
+Name: resources/multicore/evmC6A8149/notify_common.cfg.xs
+SHA1-Digest: u9rhDSIaKSU4m4cQsNCbk1I6jPk=
+
+Name: resources/multicore/evmF28M35x/notify_m3.cfg
+SHA1-Digest: ctdfK9SBYiLV1ct/TGBzbv+/2fQ=
+
+Name: resources/multicore/evm647x/message_multicore.c
+SHA1-Digest: 3QPwmksHu2NGkRS3347noQtFCUo=
+
+Name: resources/multicore/omap4430/notify_common.cfg.xs
+SHA1-Digest: W4ygPXGY+CWNYDToyQLtKJaYnxY=
+
+Name: resources/multicore/evmC6A8149/notify_vpss.cfg
+SHA1-Digest: xFQ/jNvXfFTlHGwEqyhFm+yoBis=
+
+Name: resources/multicore/evmTI81XX/notify_vpss.cfg
+SHA1-Digest: wKOCvkvAx/zQ8LyEmQKV7cOS8gc=
+
+Name: resources/multicore/evmDM6446/notify_arm.cfg
+SHA1-Digest: ltqAmc0DHR8zlENRiNqZqKBSwrQ=
+
+Name: resources/multicore/evmF28M35x/notify_c28.cfg
+SHA1-Digest: oKyTjs5MRTrDgIwKXre1yr68Ll0=
+
+Name: resources/singlecore/notify_loopback.cfg
+SHA1-Digest: QdDHZYMr24E67oYtnQn11GwRljk=
+
+Name: resources/multicore/evmDM6446/message_dsp.cfg
+SHA1-Digest: XVtU83nJn0/jXSvmLXKWkJ2Xm2s=
+
+Name: resources/multicore/evmC6A8149/notify_video.cfg
+SHA1-Digest: TGMsgyFR2Udnp71Qhd5jkmgJ5Ro=
+
+Name: resources/multicore/evmTI81XX/message_host.cfg
+SHA1-Digest: shamJwievAD7JB5VMb13hwGvGq8=
+
+Name: resources/multicore/evmTI81XX/notify_dsp.cfg
+SHA1-Digest: IW8beKh2mnzpEfhgQ7cN/ivSbYw=
+
+Name: resources/multicore/evmC6A8149/message_host.cfg
+SHA1-Digest: xDtUWFt6EHEUnm509ARaeL4pTXI=
+
+Name: resources/benchmarks/notify_latency.cfg
+SHA1-Digest: S84R0KsQvlLNIyTrwU6hC1SNd2E=
+
+Name: resources/multicore/evmTI81XX/message_multicore.c
+SHA1-Digest: mkl7OHVefemqOPY/3JqfRtc1b6w=
+
+Name: resources/multicore/evm647x/notify_multicore.c
+SHA1-Digest: Oli7o5+qBXMfmcfzAffv4bZWVrw=
+
+Name: resources/multicore/evmC6A8149/message_eve.cfg
+SHA1-Digest: MKdQHgdmcGO2dRCQUsd+BOUN54E=
+
+Name: resources/multicore/evm647x/message_multicore.cfg
+SHA1-Digest: QhnHAnwgHS8QFzWdknUjXjYNpUA=
+
+Name: resources/multicore/evmTI81XX/notify_multicore.c
+SHA1-Digest: UCdWL7aJU9b6yBTJcnrBJICXNWM=
+

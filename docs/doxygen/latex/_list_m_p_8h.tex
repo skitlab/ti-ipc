@@ -1,0 +1,667 @@
+\subsection{List\-M\-P.\-h File Reference}
+\label{_list_m_p_8h}\index{List\-M\-P.\-h@{List\-M\-P.\-h}}
+
+
+\subsubsection{Detailed Description}
+Multiple processor shared memory list. ===========================================================================
+
+List\-M\-P is a doubly linked-\/list based module designed to be used in a multi-\/processor environment. It provides a way for multiple processors to create, access, and manipulate the same link list in shared memory.
+
+The List\-M\-P module uses a Name\-Server instance to store information about an instance during create. Each List\-M\-P instance is created by specifying a name and region id. The name supplied must be unique for all List\-M\-P instances in the system.
+
+\hyperlink{_list_m_p_8h_a71fdd7f30d377065fb70dd095a186d3e}{List\-M\-P\-\_\-create()} is used to create an instance of a List\-M\-P. Shared memory is modified during create. Once created, an instance may be opened by calling \hyperlink{_list_m_p_8h_aeae2eea832b0f2f8cf45ea297bb1c7d0}{List\-M\-P\-\_\-open()}. Open does not modify any shared memory. Open() should be called only when global interrupts are enabled.
+
+To use a List\-M\-P instance, a \hyperlink{struct_list_m_p___elem}{List\-M\-P\-\_\-\-Elem} must be embedded as the very first element of a structure. List\-M\-P does not provide cache coherency for the buffer put onto the link list. List\-M\-P only provides cache coherency for the \hyperlink{struct_list_m_p___elem}{List\-M\-P\-\_\-\-Elem} fields. The buffer should be written back before being placed on a List\-M\-P, if cache coherency is required.
+
+The List\-M\-P header should be included in an application as follows\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{    #include <ti/ipc/ListMP.h>}
+\end{DoxyCode}
+ 
+
+{\ttfamily \#include $<$ti/ipc/\-Shared\-Region.\-h$>$}\\*
+{\ttfamily \#include $<$ti/ipc/\-Gate\-M\-P.\-h$>$}\\*
+Include dependency graph for List\-M\-P.\-h\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{_list_m_p_8h__incl}
+\end{center}
+\end{figure}
+\subsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_list_m_p___elem}{List\-M\-P\-\_\-\-Elem}
+\begin{DoxyCompactList}\small\item\em Structure defining a List\-M\-P element. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_list_m_p___params}{List\-M\-P\-\_\-\-Params}
+\begin{DoxyCompactList}\small\item\em Structure defining parameter structure for \hyperlink{_list_m_p_8h_a71fdd7f30d377065fb70dd095a186d3e}{List\-M\-P\-\_\-create()}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_list_m_p_8h_aae3ea24c5161e44b42c0a2c6f73fd3d2}{List\-M\-P\-\_\-\-S\-\_\-\-B\-U\-S\-Y}~2
+\begin{DoxyCompactList}\small\item\em The resource is still in use. \end{DoxyCompactList}\item 
+\#define \hyperlink{_list_m_p_8h_ae2dbc4743a0ddc0c4aaded37551cf25e}{List\-M\-P\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P}~1
+\begin{DoxyCompactList}\small\item\em The module has been already setup. \end{DoxyCompactList}\item 
+\#define \hyperlink{_list_m_p_8h_a67e97f10cd480f457375e9a20bb41e27}{List\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}~0
+\begin{DoxyCompactList}\small\item\em Operation is successful. \end{DoxyCompactList}\item 
+\#define \hyperlink{_list_m_p_8h_a4aa4e08eddd7d36b42395070f21125df}{List\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L}~-\/1
+\begin{DoxyCompactList}\small\item\em Generic failure. \end{DoxyCompactList}\item 
+\#define \hyperlink{_list_m_p_8h_a0cfe16cd038629372772230866ef681f}{List\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G}~-\/2
+\begin{DoxyCompactList}\small\item\em Argument passed to function is invalid. \end{DoxyCompactList}\item 
+\#define \hyperlink{_list_m_p_8h_ae855742ffb668b39109633d3a3fe552c}{List\-M\-P\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y}~-\/3
+\begin{DoxyCompactList}\small\item\em Operation resulted in memory failure. \end{DoxyCompactList}\item 
+\#define \hyperlink{_list_m_p_8h_aa943a6dd86b5cd4092faa9a2c3650678}{List\-M\-P\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S}~-\/4
+\begin{DoxyCompactList}\small\item\em The specified entity already exists. \end{DoxyCompactList}\item 
+\#define \hyperlink{_list_m_p_8h_ad1094272ac41cf2b022d6c514beaceac}{List\-M\-P\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}~-\/5
+\begin{DoxyCompactList}\small\item\em Unable to find the specified entity. \end{DoxyCompactList}\item 
+\#define \hyperlink{_list_m_p_8h_a163b8195b54eab051c94c37b6f76a3c0}{List\-M\-P\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T}~-\/6
+\begin{DoxyCompactList}\small\item\em Operation timed out. \end{DoxyCompactList}\item 
+\#define \hyperlink{_list_m_p_8h_a1f5136445766b775f24f09fbc1e77531}{List\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E}~-\/7
+\begin{DoxyCompactList}\small\item\em Module is not initialized. \end{DoxyCompactList}\item 
+\#define \hyperlink{_list_m_p_8h_a71a0081f7de24109c2b91f209b3d9d3d}{List\-M\-P\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E}~-\/8
+\begin{DoxyCompactList}\small\item\em A failure occurred in an O\-S-\/specific call. \end{DoxyCompactList}\item 
+\#define \hyperlink{_list_m_p_8h_a17bd29505d65eb1130a9526bb842507c}{List\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E}~-\/9
+\begin{DoxyCompactList}\small\item\em Specified resource is not available. \end{DoxyCompactList}\item 
+\#define \hyperlink{_list_m_p_8h_a6fd9b6b57f38d4be617d2fdae5f4d4e8}{List\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T}~-\/10
+\begin{DoxyCompactList}\small\item\em Operation was interrupted. Please restart the operation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct List\-M\-P\-\_\-\-Object $\ast$ \hyperlink{_list_m_p_8h_abf5a0381ce9dab133382015abaf7fe6b}{List\-M\-P\-\_\-\-Handle}
+\begin{DoxyCompactList}\small\item\em List\-M\-P\-\_\-\-Handle type. \end{DoxyCompactList}\item 
+typedef struct \hyperlink{struct_list_m_p___elem}{List\-M\-P\-\_\-\-Elem} \hyperlink{_list_m_p_8h_a848cf7dfe687e86045808fca1c561ea0}{List\-M\-P\-\_\-\-Elem}
+\begin{DoxyCompactList}\small\item\em Structure defining a List\-M\-P element. \end{DoxyCompactList}\item 
+typedef struct \hyperlink{struct_list_m_p___params}{List\-M\-P\-\_\-\-Params} \hyperlink{_list_m_p_8h_ad2f3144c55c1f05df600bc6f37290b8f}{List\-M\-P\-\_\-\-Params}
+\begin{DoxyCompactList}\small\item\em Structure defining parameter structure for \hyperlink{_list_m_p_8h_a71fdd7f30d377065fb70dd095a186d3e}{List\-M\-P\-\_\-create()}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Void \hyperlink{_list_m_p_8h_a051127fdcd75440808d0fed31c6e8b4b}{List\-M\-P\-\_\-\-Params\-\_\-init} (\hyperlink{struct_list_m_p___params}{List\-M\-P\-\_\-\-Params} $\ast$params)
+\begin{DoxyCompactList}\small\item\em Initializes List\-M\-P parameters. \end{DoxyCompactList}\item 
+\hyperlink{_list_m_p_8h_abf5a0381ce9dab133382015abaf7fe6b}{List\-M\-P\-\_\-\-Handle} \hyperlink{_list_m_p_8h_a71fdd7f30d377065fb70dd095a186d3e}{List\-M\-P\-\_\-create} (const \hyperlink{struct_list_m_p___params}{List\-M\-P\-\_\-\-Params} $\ast$params)
+\begin{DoxyCompactList}\small\item\em Creates and initializes List\-M\-P module. \end{DoxyCompactList}\item 
+Int \hyperlink{_list_m_p_8h_a9f9045344d095a9829ba601d74d39c93}{List\-M\-P\-\_\-close} (\hyperlink{_list_m_p_8h_abf5a0381ce9dab133382015abaf7fe6b}{List\-M\-P\-\_\-\-Handle} $\ast$handle\-Ptr)
+\begin{DoxyCompactList}\small\item\em Close an opened List\-M\-P instance. \end{DoxyCompactList}\item 
+Int \hyperlink{_list_m_p_8h_a9a3875bf334cbc6d692e9053e7e4152b}{List\-M\-P\-\_\-delete} (\hyperlink{_list_m_p_8h_abf5a0381ce9dab133382015abaf7fe6b}{List\-M\-P\-\_\-\-Handle} $\ast$handle\-Ptr)
+\begin{DoxyCompactList}\small\item\em Deletes a List\-M\-P instance. \end{DoxyCompactList}\item 
+Int \hyperlink{_list_m_p_8h_aeae2eea832b0f2f8cf45ea297bb1c7d0}{List\-M\-P\-\_\-open} (String name, \hyperlink{_list_m_p_8h_abf5a0381ce9dab133382015abaf7fe6b}{List\-M\-P\-\_\-\-Handle} $\ast$handle\-Ptr)
+\begin{DoxyCompactList}\small\item\em Open a created List\-M\-P instance. \end{DoxyCompactList}\item 
+Bool \hyperlink{_list_m_p_8h_a87f3489e92331dd7e3a2ca7315d6ae88}{List\-M\-P\-\_\-empty} (\hyperlink{_list_m_p_8h_abf5a0381ce9dab133382015abaf7fe6b}{List\-M\-P\-\_\-\-Handle} handle)
+\begin{DoxyCompactList}\small\item\em Determines if a List\-M\-P instance is empty. \end{DoxyCompactList}\item 
+\hyperlink{_gate_m_p_8h_ad5bb259f928a14e98d973334bc60ebb3}{Gate\-M\-P\-\_\-\-Handle} \hyperlink{_list_m_p_8h_abcbcfa3aa97f94f1559c94e3de56a445}{List\-M\-P\-\_\-get\-Gate} (\hyperlink{_list_m_p_8h_abf5a0381ce9dab133382015abaf7fe6b}{List\-M\-P\-\_\-\-Handle} handle)
+\begin{DoxyCompactList}\small\item\em Retrieves the Gate\-M\-P handle associated with the List\-M\-P instance. \end{DoxyCompactList}\item 
+Ptr \hyperlink{_list_m_p_8h_a3f94c683617f51b4e9de75d87c729524}{List\-M\-P\-\_\-get\-Head} (\hyperlink{_list_m_p_8h_abf5a0381ce9dab133382015abaf7fe6b}{List\-M\-P\-\_\-\-Handle} handle)
+\begin{DoxyCompactList}\small\item\em Get an element from front of a List\-M\-P instance. \end{DoxyCompactList}\item 
+Ptr \hyperlink{_list_m_p_8h_a75ac818a89cae66a10fb200f691c3949}{List\-M\-P\-\_\-get\-Tail} (\hyperlink{_list_m_p_8h_abf5a0381ce9dab133382015abaf7fe6b}{List\-M\-P\-\_\-\-Handle} handle)
+\begin{DoxyCompactList}\small\item\em Get an element from back of a List\-M\-P instance. \end{DoxyCompactList}\item 
+Int \hyperlink{_list_m_p_8h_a202b294a05f5be8b909c38e592978e8b}{List\-M\-P\-\_\-insert} (\hyperlink{_list_m_p_8h_abf5a0381ce9dab133382015abaf7fe6b}{List\-M\-P\-\_\-\-Handle} handle, \hyperlink{struct_list_m_p___elem}{List\-M\-P\-\_\-\-Elem} $\ast$new\-Elem, \hyperlink{struct_list_m_p___elem}{List\-M\-P\-\_\-\-Elem} $\ast$cur\-Elem)
+\begin{DoxyCompactList}\small\item\em Insert an element into a List\-M\-P instance. \end{DoxyCompactList}\item 
+Ptr \hyperlink{_list_m_p_8h_a1c9b826d5b17a55a8ddbe231db1b8f36}{List\-M\-P\-\_\-next} (\hyperlink{_list_m_p_8h_abf5a0381ce9dab133382015abaf7fe6b}{List\-M\-P\-\_\-\-Handle} handle, \hyperlink{struct_list_m_p___elem}{List\-M\-P\-\_\-\-Elem} $\ast$elem)
+\begin{DoxyCompactList}\small\item\em Return the next element in a List\-M\-P instance (non-\/atomic) \end{DoxyCompactList}\item 
+Ptr \hyperlink{_list_m_p_8h_aab4e8c1ad68b0d4908ea6221b889cf14}{List\-M\-P\-\_\-prev} (\hyperlink{_list_m_p_8h_abf5a0381ce9dab133382015abaf7fe6b}{List\-M\-P\-\_\-\-Handle} handle, \hyperlink{struct_list_m_p___elem}{List\-M\-P\-\_\-\-Elem} $\ast$elem)
+\begin{DoxyCompactList}\small\item\em Return the previous element in List\-M\-P instance (non-\/atomic) \end{DoxyCompactList}\item 
+Int \hyperlink{_list_m_p_8h_aed19b5eadd7b9007c948c1343934e251}{List\-M\-P\-\_\-put\-Head} (\hyperlink{_list_m_p_8h_abf5a0381ce9dab133382015abaf7fe6b}{List\-M\-P\-\_\-\-Handle} handle, \hyperlink{struct_list_m_p___elem}{List\-M\-P\-\_\-\-Elem} $\ast$elem)
+\begin{DoxyCompactList}\small\item\em Put an element at head of a List\-M\-P instance. \end{DoxyCompactList}\item 
+Int \hyperlink{_list_m_p_8h_ab97d069db0de6f8116acb262989b8441}{List\-M\-P\-\_\-put\-Tail} (\hyperlink{_list_m_p_8h_abf5a0381ce9dab133382015abaf7fe6b}{List\-M\-P\-\_\-\-Handle} handle, \hyperlink{struct_list_m_p___elem}{List\-M\-P\-\_\-\-Elem} $\ast$elem)
+\begin{DoxyCompactList}\small\item\em Put an element at back of a List\-M\-P instance. \end{DoxyCompactList}\item 
+Int \hyperlink{_list_m_p_8h_ab66a123f8234c4eb218fa81407c06c3c}{List\-M\-P\-\_\-remove} (\hyperlink{_list_m_p_8h_abf5a0381ce9dab133382015abaf7fe6b}{List\-M\-P\-\_\-\-Handle} handle, \hyperlink{struct_list_m_p___elem}{List\-M\-P\-\_\-\-Elem} $\ast$elem)
+\begin{DoxyCompactList}\small\item\em Remove an element from a List\-M\-P instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Macro Definition Documentation}
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-\-S\-\_\-\-B\-U\-S\-Y@{List\-M\-P\-\_\-\-S\-\_\-\-B\-U\-S\-Y}}
+\index{List\-M\-P\-\_\-\-S\-\_\-\-B\-U\-S\-Y@{List\-M\-P\-\_\-\-S\-\_\-\-B\-U\-S\-Y}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-\-S\-\_\-\-B\-U\-S\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define List\-M\-P\-\_\-\-S\-\_\-\-B\-U\-S\-Y~2}\label{_list_m_p_8h_aae3ea24c5161e44b42c0a2c6f73fd3d2}
+
+
+The resource is still in use. 
+
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P@{List\-M\-P\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P}}
+\index{List\-M\-P\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P@{List\-M\-P\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define List\-M\-P\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P~1}\label{_list_m_p_8h_ae2dbc4743a0ddc0c4aaded37551cf25e}
+
+
+The module has been already setup. 
+
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S@{List\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}}
+\index{List\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S@{List\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define List\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S~0}\label{_list_m_p_8h_a67e97f10cd480f457375e9a20bb41e27}
+
+
+Operation is successful. 
+
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L@{List\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L}}
+\index{List\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L@{List\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define List\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L~-\/1}\label{_list_m_p_8h_a4aa4e08eddd7d36b42395070f21125df}
+
+
+Generic failure. 
+
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G@{List\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G}}
+\index{List\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G@{List\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define List\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G~-\/2}\label{_list_m_p_8h_a0cfe16cd038629372772230866ef681f}
+
+
+Argument passed to function is invalid. 
+
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y@{List\-M\-P\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y}}
+\index{List\-M\-P\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y@{List\-M\-P\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define List\-M\-P\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y~-\/3}\label{_list_m_p_8h_ae855742ffb668b39109633d3a3fe552c}
+
+
+Operation resulted in memory failure. 
+
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S@{List\-M\-P\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S}}
+\index{List\-M\-P\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S@{List\-M\-P\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define List\-M\-P\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S~-\/4}\label{_list_m_p_8h_aa943a6dd86b5cd4092faa9a2c3650678}
+
+
+The specified entity already exists. 
+
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D@{List\-M\-P\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}}
+\index{List\-M\-P\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D@{List\-M\-P\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define List\-M\-P\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D~-\/5}\label{_list_m_p_8h_ad1094272ac41cf2b022d6c514beaceac}
+
+
+Unable to find the specified entity. 
+
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T@{List\-M\-P\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T}}
+\index{List\-M\-P\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T@{List\-M\-P\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define List\-M\-P\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T~-\/6}\label{_list_m_p_8h_a163b8195b54eab051c94c37b6f76a3c0}
+
+
+Operation timed out. 
+
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E@{List\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E}}
+\index{List\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E@{List\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define List\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E~-\/7}\label{_list_m_p_8h_a1f5136445766b775f24f09fbc1e77531}
+
+
+Module is not initialized. 
+
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E@{List\-M\-P\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E}}
+\index{List\-M\-P\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E@{List\-M\-P\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define List\-M\-P\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E~-\/8}\label{_list_m_p_8h_a71a0081f7de24109c2b91f209b3d9d3d}
+
+
+A failure occurred in an O\-S-\/specific call. 
+
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E@{List\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E}}
+\index{List\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E@{List\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define List\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E~-\/9}\label{_list_m_p_8h_a17bd29505d65eb1130a9526bb842507c}
+
+
+Specified resource is not available. 
+
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T@{List\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T}}
+\index{List\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T@{List\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define List\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T~-\/10}\label{_list_m_p_8h_a6fd9b6b57f38d4be617d2fdae5f4d4e8}
+
+
+Operation was interrupted. Please restart the operation. 
+
+
+
+\subsubsection{Typedef Documentation}
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-\-Handle@{List\-M\-P\-\_\-\-Handle}}
+\index{List\-M\-P\-\_\-\-Handle@{List\-M\-P\-\_\-\-Handle}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-\-Handle}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct List\-M\-P\-\_\-\-Object$\ast$ {\bf List\-M\-P\-\_\-\-Handle}}\label{_list_m_p_8h_abf5a0381ce9dab133382015abaf7fe6b}
+
+
+List\-M\-P\-\_\-\-Handle type. 
+
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-\-Elem@{List\-M\-P\-\_\-\-Elem}}
+\index{List\-M\-P\-\_\-\-Elem@{List\-M\-P\-\_\-\-Elem}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-\-Elem}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf List\-M\-P\-\_\-\-Elem}  {\bf List\-M\-P\-\_\-\-Elem}}\label{_list_m_p_8h_a848cf7dfe687e86045808fca1c561ea0}
+
+
+Structure defining a List\-M\-P element. 
+
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-\-Params@{List\-M\-P\-\_\-\-Params}}
+\index{List\-M\-P\-\_\-\-Params@{List\-M\-P\-\_\-\-Params}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-\-Params}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf List\-M\-P\-\_\-\-Params}  {\bf List\-M\-P\-\_\-\-Params}}\label{_list_m_p_8h_ad2f3144c55c1f05df600bc6f37290b8f}
+
+
+Structure defining parameter structure for \hyperlink{_list_m_p_8h_a71fdd7f30d377065fb70dd095a186d3e}{List\-M\-P\-\_\-create()}. 
+
+
+
+\subsubsection{Function Documentation}
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-\-Params\-\_\-init@{List\-M\-P\-\_\-\-Params\-\_\-init}}
+\index{List\-M\-P\-\_\-\-Params\-\_\-init@{List\-M\-P\-\_\-\-Params\-\_\-init}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-\-Params\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}Void List\-M\-P\-\_\-\-Params\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{{\bf List\-M\-P\-\_\-\-Params} $\ast$}]{params}
+\end{DoxyParamCaption}
+)}\label{_list_m_p_8h_a051127fdcd75440808d0fed31c6e8b4b}
+
+
+Initializes List\-M\-P parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em params} & Instance param structure. \\
+\hline
+\end{DoxyParams}
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-create@{List\-M\-P\-\_\-create}}
+\index{List\-M\-P\-\_\-create@{List\-M\-P\-\_\-create}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}{\bf List\-M\-P\-\_\-\-Handle} List\-M\-P\-\_\-create (
+\begin{DoxyParamCaption}
+\item[{const {\bf List\-M\-P\-\_\-\-Params} $\ast$}]{params}
+\end{DoxyParamCaption}
+)}\label{_list_m_p_8h_a71fdd7f30d377065fb70dd095a186d3e}
+
+
+Creates and initializes List\-M\-P module. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em params} & Instance param structure.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List\-M\-P instance handle. N\-U\-L\-L if create failed.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{_list_m_p_8h_a9a3875bf334cbc6d692e9053e7e4152b}{List\-M\-P\-\_\-delete} 
+\end{DoxySeeAlso}
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-close@{List\-M\-P\-\_\-close}}
+\index{List\-M\-P\-\_\-close@{List\-M\-P\-\_\-close}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-close}]{\setlength{\rightskip}{0pt plus 5cm}Int List\-M\-P\-\_\-close (
+\begin{DoxyParamCaption}
+\item[{{\bf List\-M\-P\-\_\-\-Handle} $\ast$}]{handle\-Ptr}
+\end{DoxyParamCaption}
+)}\label{_list_m_p_8h_a9f9045344d095a9829ba601d74d39c93}
+
+
+Close an opened List\-M\-P instance. 
+
+Closing an instance will free local memory consumed by the opened instance. Instances that are opened should be closed before the instance is deleted. If using Name\-Server, the instance name will be removed from the Name\-Server instance.
+
+
+\begin{DoxyParams}{Parameters}
+{\em handle\-Ptr} & Pointer to a List\-M\-P instance\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status
+\begin{DoxyItemize}
+\item \hyperlink{_list_m_p_8h_a67e97f10cd480f457375e9a20bb41e27}{List\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}\-: List\-M\-P successfully closed
+\item \hyperlink{_list_m_p_8h_a4aa4e08eddd7d36b42395070f21125df}{List\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L}\-: A general failure has occurred
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{_list_m_p_8h_aeae2eea832b0f2f8cf45ea297bb1c7d0}{List\-M\-P\-\_\-open} 
+\end{DoxySeeAlso}
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-delete@{List\-M\-P\-\_\-delete}}
+\index{List\-M\-P\-\_\-delete@{List\-M\-P\-\_\-delete}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-delete}]{\setlength{\rightskip}{0pt plus 5cm}Int List\-M\-P\-\_\-delete (
+\begin{DoxyParamCaption}
+\item[{{\bf List\-M\-P\-\_\-\-Handle} $\ast$}]{handle\-Ptr}
+\end{DoxyParamCaption}
+)}\label{_list_m_p_8h_a9a3875bf334cbc6d692e9053e7e4152b}
+
+
+Deletes a List\-M\-P instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em handle\-Ptr} & Pointer to List\-M\-P instance\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status
+\begin{DoxyItemize}
+\item \hyperlink{_list_m_p_8h_a67e97f10cd480f457375e9a20bb41e27}{List\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}\-: List\-M\-P successfully deleted
+\begin{DoxyItemize}
+\item \hyperlink{_list_m_p_8h_a4aa4e08eddd7d36b42395070f21125df}{List\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L}\-: List\-M\-P delete failed
+\end{DoxyItemize}
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{_list_m_p_8h_a71fdd7f30d377065fb70dd095a186d3e}{List\-M\-P\-\_\-create} 
+\end{DoxySeeAlso}
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-open@{List\-M\-P\-\_\-open}}
+\index{List\-M\-P\-\_\-open@{List\-M\-P\-\_\-open}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-open}]{\setlength{\rightskip}{0pt plus 5cm}Int List\-M\-P\-\_\-open (
+\begin{DoxyParamCaption}
+\item[{String}]{name, }
+\item[{{\bf List\-M\-P\-\_\-\-Handle} $\ast$}]{handle\-Ptr}
+\end{DoxyParamCaption}
+)}\label{_list_m_p_8h_aeae2eea832b0f2f8cf45ea297bb1c7d0}
+
+
+Open a created List\-M\-P instance. 
+
+An open can be performed on a previously created instance. Open is used to gain access to the same List\-M\-P instance. Generally an instance is created on one processor and opened on other processors but it can be opened on the same processor too. Open returns a List\-M\-P instance handle like create, but it does not initialize any shared memory.
+
+The open call searches the local List\-M\-P Name\-Server table first for a matching name. If no local match is found, it will search all remote List\-M\-P Name\-Server tables for a matching name.
+
+A status value of \hyperlink{_list_m_p_8h_a67e97f10cd480f457375e9a20bb41e27}{List\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S} is returned if a matching List\-M\-P instance is found. A \hyperlink{_list_m_p_8h_a4aa4e08eddd7d36b42395070f21125df}{List\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L} is returned if no matching instance is found. Generally this means the List\-M\-P instance has not yet been created. A more specific status error is returned if an error was raised.
+
+Call close() when the opened instance is no longer needed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of created List\-M\-P instance \\
+\hline
+{\em handle\-Ptr} & pointer to the handle if a handle was found.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status
+\begin{DoxyItemize}
+\item \hyperlink{_list_m_p_8h_a67e97f10cd480f457375e9a20bb41e27}{List\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}\-: List\-M\-P successfully opened
+\item \hyperlink{_list_m_p_8h_ad1094272ac41cf2b022d6c514beaceac}{List\-M\-P\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}\-: List\-M\-P is not yet ready to be opened.
+\item \hyperlink{_list_m_p_8h_a4aa4e08eddd7d36b42395070f21125df}{List\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L}\-: A general failure has occurred
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{_list_m_p_8h_a71fdd7f30d377065fb70dd095a186d3e}{List\-M\-P\-\_\-create} 
+\end{DoxySeeAlso}
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-empty@{List\-M\-P\-\_\-empty}}
+\index{List\-M\-P\-\_\-empty@{List\-M\-P\-\_\-empty}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-empty}]{\setlength{\rightskip}{0pt plus 5cm}Bool List\-M\-P\-\_\-empty (
+\begin{DoxyParamCaption}
+\item[{{\bf List\-M\-P\-\_\-\-Handle}}]{handle}
+\end{DoxyParamCaption}
+)}\label{_list_m_p_8h_a87f3489e92331dd7e3a2ca7315d6ae88}
+
+
+Determines if a List\-M\-P instance is empty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em handle} & a List\-M\-P handle.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T\-R\-U\-E if 'next' element points to head, otherwise F\-A\-L\-S\-E 
+\end{DoxyReturn}
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-get\-Gate@{List\-M\-P\-\_\-get\-Gate}}
+\index{List\-M\-P\-\_\-get\-Gate@{List\-M\-P\-\_\-get\-Gate}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-get\-Gate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Gate\-M\-P\-\_\-\-Handle} List\-M\-P\-\_\-get\-Gate (
+\begin{DoxyParamCaption}
+\item[{{\bf List\-M\-P\-\_\-\-Handle}}]{handle}
+\end{DoxyParamCaption}
+)}\label{_list_m_p_8h_abcbcfa3aa97f94f1559c94e3de56a445}
+
+
+Retrieves the Gate\-M\-P handle associated with the List\-M\-P instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em handle} & a List\-M\-P handle.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Gate\-M\-P handle for List\-M\-P instance. 
+\end{DoxyReturn}
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-get\-Head@{List\-M\-P\-\_\-get\-Head}}
+\index{List\-M\-P\-\_\-get\-Head@{List\-M\-P\-\_\-get\-Head}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-get\-Head}]{\setlength{\rightskip}{0pt plus 5cm}Ptr List\-M\-P\-\_\-get\-Head (
+\begin{DoxyParamCaption}
+\item[{{\bf List\-M\-P\-\_\-\-Handle}}]{handle}
+\end{DoxyParamCaption}
+)}\label{_list_m_p_8h_a3f94c683617f51b4e9de75d87c729524}
+
+
+Get an element from front of a List\-M\-P instance. 
+
+Atomically removes the element from the front of a List\-M\-P instance and returns a pointer to it. Uses \hyperlink{struct_list_m_p___params_a4808f5c75029b059fa388a33e158c2f4}{List\-M\-P\-\_\-\-Params\-::gate} for critical region management.
+
+
+\begin{DoxyParams}{Parameters}
+{\em handle} & a List\-M\-P handle.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to former first element. -\/\-N\-U\-L\-L if the List\-M\-P is empty. 
+\end{DoxyReturn}
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-get\-Tail@{List\-M\-P\-\_\-get\-Tail}}
+\index{List\-M\-P\-\_\-get\-Tail@{List\-M\-P\-\_\-get\-Tail}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-get\-Tail}]{\setlength{\rightskip}{0pt plus 5cm}Ptr List\-M\-P\-\_\-get\-Tail (
+\begin{DoxyParamCaption}
+\item[{{\bf List\-M\-P\-\_\-\-Handle}}]{handle}
+\end{DoxyParamCaption}
+)}\label{_list_m_p_8h_a75ac818a89cae66a10fb200f691c3949}
+
+
+Get an element from back of a List\-M\-P instance. 
+
+Atomically removes the element from the back of a List\-M\-P instance and returns a pointer to it. Uses \hyperlink{struct_list_m_p___params_a4808f5c75029b059fa388a33e158c2f4}{List\-M\-P\-\_\-\-Params\-::gate} for critical region management.
+
+
+\begin{DoxyParams}{Parameters}
+{\em handle} & a List\-M\-P handle.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to former last element -\/\-N\-U\-L\-L if the List\-M\-P is empty. 
+\end{DoxyReturn}
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-insert@{List\-M\-P\-\_\-insert}}
+\index{List\-M\-P\-\_\-insert@{List\-M\-P\-\_\-insert}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-insert}]{\setlength{\rightskip}{0pt plus 5cm}Int List\-M\-P\-\_\-insert (
+\begin{DoxyParamCaption}
+\item[{{\bf List\-M\-P\-\_\-\-Handle}}]{handle, }
+\item[{{\bf List\-M\-P\-\_\-\-Elem} $\ast$}]{new\-Elem, }
+\item[{{\bf List\-M\-P\-\_\-\-Elem} $\ast$}]{cur\-Elem}
+\end{DoxyParamCaption}
+)}\label{_list_m_p_8h_a202b294a05f5be8b909c38e592978e8b}
+
+
+Insert an element into a List\-M\-P instance. 
+
+Atomically inserts {\ttfamily new\-Elem} in the instance in front of {\ttfamily cur\-Elem}. To place an element at the back of a List\-M\-P instance, use \hyperlink{_list_m_p_8h_ab97d069db0de6f8116acb262989b8441}{List\-M\-P\-\_\-put\-Tail}. To place an element at the front of a List\-M\-P instance, use \hyperlink{_list_m_p_8h_aed19b5eadd7b9007c948c1343934e251}{List\-M\-P\-\_\-put\-Head}.
+
+The following code shows an example.
+
+
+\begin{DoxyCode}
+    ListMP_Elem elem, curElem;
+  
+    ListMP_insert(listHandle, &elem, &curElem);  \textcolor{comment}{// insert before curElem}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em handle} & a List\-M\-P handle. \\
+\hline
+{\em new\-Elem} & new element to insert into the List\-M\-P. \\
+\hline
+{\em cur\-Elem} & current element in the List\-M\-P.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status
+\begin{DoxyItemize}
+\item \hyperlink{_list_m_p_8h_a67e97f10cd480f457375e9a20bb41e27}{List\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}\-: if operation was successful
+\item \hyperlink{_list_m_p_8h_a4aa4e08eddd7d36b42395070f21125df}{List\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L}\-: if operation failed 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-next@{List\-M\-P\-\_\-next}}
+\index{List\-M\-P\-\_\-next@{List\-M\-P\-\_\-next}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-next}]{\setlength{\rightskip}{0pt plus 5cm}Ptr List\-M\-P\-\_\-next (
+\begin{DoxyParamCaption}
+\item[{{\bf List\-M\-P\-\_\-\-Handle}}]{handle, }
+\item[{{\bf List\-M\-P\-\_\-\-Elem} $\ast$}]{elem}
+\end{DoxyParamCaption}
+)}\label{_list_m_p_8h_a1c9b826d5b17a55a8ddbe231db1b8f36}
+
+
+Return the next element in a List\-M\-P instance (non-\/atomic) 
+
+Is useful in searching a List\-M\-P instance. It does not remove any items from the List\-M\-P instance. The caller should protect the List\-M\-P instance from being changed while using this call since it is non-\/atomic.
+
+To look at the first {\ttfamily elem} on the List\-M\-P, use N\-U\-L\-L as the {\ttfamily elem} argument.
+
+The following code shows an example. The scanning of a List\-M\-P instance should be protected against other threads that modify the List\-M\-P.
+
+
+\begin{DoxyCode}
+    ListMP_Elem   *elem = NULL;
+    GateMP_Handle gate;
+    IArg          key;
+  
+    \textcolor{comment}{// get the gate for the ListMP instance}
+    gate = ListMP_getGate(listHandle);
+  
+    \textcolor{comment}{// Begin protection against modification of the ListMP.}
+    key = GateMP_enter(gate);
+  
+    \textcolor{keywordflow}{while} ((elem = ListMP_next(ListMPHandle, elem)) != NULL) \{
+        \textcolor{comment}{//act on elem as needed. For example call ListMP\_remove().}
+    \}
+  
+    \textcolor{comment}{// End protection against modification of the ListMP.}
+    GateMP_leave(gate, key);
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em handle} & a List\-M\-P handle. \\
+\hline
+{\em elem} & element in List\-M\-P or N\-U\-L\-L to start at the head\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+next element in List\-M\-P instance or N\-U\-L\-L to denote end. 
+\end{DoxyReturn}
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-prev@{List\-M\-P\-\_\-prev}}
+\index{List\-M\-P\-\_\-prev@{List\-M\-P\-\_\-prev}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-prev}]{\setlength{\rightskip}{0pt plus 5cm}Ptr List\-M\-P\-\_\-prev (
+\begin{DoxyParamCaption}
+\item[{{\bf List\-M\-P\-\_\-\-Handle}}]{handle, }
+\item[{{\bf List\-M\-P\-\_\-\-Elem} $\ast$}]{elem}
+\end{DoxyParamCaption}
+)}\label{_list_m_p_8h_aab4e8c1ad68b0d4908ea6221b889cf14}
+
+
+Return the previous element in List\-M\-P instance (non-\/atomic) 
+
+Useful in searching a List\-M\-P instance in reverse order. It does not remove any items from the List\-M\-P instance. The caller should protect the List\-M\-P instance from being changed while using this call since it is non-\/atomic.
+
+To look at the last {\ttfamily elem} on the List\-M\-P instance, use N\-U\-L\-L as the {\ttfamily elem} argument.
+
+The following code shows an example. The scanning of a List\-M\-P instance should be protected against other threads that modify the instance.
+
+
+\begin{DoxyCode}
+    ListMP_Elem  *elem = NULL;
+    GateMP_Handle gate;
+    IArg          key;
+  
+    \textcolor{comment}{// get the gate for the ListMP instance}
+    gate = ListMP_getGate(listHandle);
+  
+    \textcolor{comment}{// Begin protection against modification of the ListMP.}
+    key = GateMP_enter(gate);
+  
+    \textcolor{keywordflow}{while} ((elem = ListMP_prev(listHandle, elem)) != NULL) \{
+        \textcolor{comment}{//act on elem as needed. For example call ListMP\_remove().}
+    \}
+  
+    \textcolor{comment}{// End protection against modification of the ListMP.}
+    GateMP_leave(gate, key);
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em handle} & a List\-M\-P handle. \\
+\hline
+{\em elem} & element in List\-M\-P or N\-U\-L\-L to start at the end\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+previous element in List\-M\-P or N\-U\-L\-L if empty. 
+\end{DoxyReturn}
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-put\-Head@{List\-M\-P\-\_\-put\-Head}}
+\index{List\-M\-P\-\_\-put\-Head@{List\-M\-P\-\_\-put\-Head}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-put\-Head}]{\setlength{\rightskip}{0pt plus 5cm}Int List\-M\-P\-\_\-put\-Head (
+\begin{DoxyParamCaption}
+\item[{{\bf List\-M\-P\-\_\-\-Handle}}]{handle, }
+\item[{{\bf List\-M\-P\-\_\-\-Elem} $\ast$}]{elem}
+\end{DoxyParamCaption}
+)}\label{_list_m_p_8h_aed19b5eadd7b9007c948c1343934e251}
+
+
+Put an element at head of a List\-M\-P instance. 
+
+Atomically places the element at the front of a List\-M\-P instance. Uses \hyperlink{struct_list_m_p___params_a4808f5c75029b059fa388a33e158c2f4}{List\-M\-P\-\_\-\-Params\-::gate} for critical region management.
+
+
+\begin{DoxyParams}{Parameters}
+{\em handle} & a List\-M\-P handle \\
+\hline
+{\em elem} & pointer to new List\-M\-P element\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status
+\begin{DoxyItemize}
+\item \hyperlink{_list_m_p_8h_a67e97f10cd480f457375e9a20bb41e27}{List\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}\-: if operation was successful
+\item \hyperlink{_list_m_p_8h_a4aa4e08eddd7d36b42395070f21125df}{List\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L}\-: if operation failed 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-put\-Tail@{List\-M\-P\-\_\-put\-Tail}}
+\index{List\-M\-P\-\_\-put\-Tail@{List\-M\-P\-\_\-put\-Tail}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-put\-Tail}]{\setlength{\rightskip}{0pt plus 5cm}Int List\-M\-P\-\_\-put\-Tail (
+\begin{DoxyParamCaption}
+\item[{{\bf List\-M\-P\-\_\-\-Handle}}]{handle, }
+\item[{{\bf List\-M\-P\-\_\-\-Elem} $\ast$}]{elem}
+\end{DoxyParamCaption}
+)}\label{_list_m_p_8h_ab97d069db0de6f8116acb262989b8441}
+
+
+Put an element at back of a List\-M\-P instance. 
+
+Atomically places the element at the back of a List\-M\-P instance. Uses \hyperlink{struct_list_m_p___params_a4808f5c75029b059fa388a33e158c2f4}{List\-M\-P\-\_\-\-Params\-::gate} for critical region management.
+
+
+\begin{DoxyParams}{Parameters}
+{\em handle} & a List\-M\-P handle \\
+\hline
+{\em elem} & pointer to new List\-M\-P element\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status
+\begin{DoxyItemize}
+\item \hyperlink{_list_m_p_8h_a67e97f10cd480f457375e9a20bb41e27}{List\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}\-: if operation was successful
+\item \hyperlink{_list_m_p_8h_a4aa4e08eddd7d36b42395070f21125df}{List\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L}\-: if operation failed 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\index{List\-M\-P.\-h@{List\-M\-P.\-h}!List\-M\-P\-\_\-remove@{List\-M\-P\-\_\-remove}}
+\index{List\-M\-P\-\_\-remove@{List\-M\-P\-\_\-remove}!ListMP.h@{List\-M\-P.\-h}}
+\paragraph[{List\-M\-P\-\_\-remove}]{\setlength{\rightskip}{0pt plus 5cm}Int List\-M\-P\-\_\-remove (
+\begin{DoxyParamCaption}
+\item[{{\bf List\-M\-P\-\_\-\-Handle}}]{handle, }
+\item[{{\bf List\-M\-P\-\_\-\-Elem} $\ast$}]{elem}
+\end{DoxyParamCaption}
+)}\label{_list_m_p_8h_ab66a123f8234c4eb218fa81407c06c3c}
+
+
+Remove an element from a List\-M\-P instance. 
+
+Atomically removes an element from a List\-M\-P.
+
+The {\ttfamily elem} parameter is a pointer to an existing element to be removed from a List\-M\-P instance.
+
+
+\begin{DoxyParams}{Parameters}
+{\em handle} & a List\-M\-P handle \\
+\hline
+{\em elem} & element in List\-M\-P\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status
+\begin{DoxyItemize}
+\item \hyperlink{_list_m_p_8h_a67e97f10cd480f457375e9a20bb41e27}{List\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}\-: if operation was successful
+\item \hyperlink{_list_m_p_8h_a4aa4e08eddd7d36b42395070f21125df}{List\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L}\-: if operation failed 
+\end{DoxyItemize}
+\end{DoxyReturn}

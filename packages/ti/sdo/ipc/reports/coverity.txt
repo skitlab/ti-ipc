@@ -1,0 +1,517 @@
+==== Results for ti.sdo.io.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../coverity/ti.sdo.io/lib/io/debug/ti.sdo.io.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 7
+Total LoC input to cov-analyze : 11183
+Functions analyzed             : 39
+Paths analyzed                 : 924
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.io.aea8f ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../coverity/ti.sdo.io/lib/io/debug/ti.sdo.io.aea8f --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 7
+Total LoC input to cov-analyze : 11275
+Functions analyzed             : 39
+Paths analyzed                 : 924
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.io.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../coverity/ti.sdo.io/lib/io/debug/ti.sdo.io.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 7
+Total LoC input to cov-analyze : 12885
+Functions analyzed             : 39
+Paths analyzed                 : 924
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.io.converters.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.io.converters/lib/io/debug/ti.sdo.io.converters.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 8
+Total LoC input to cov-analyze : 8935
+Functions analyzed             : 43
+Paths analyzed                 : 116
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.io.converters.aea8f ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.io.converters/lib/io/debug/ti.sdo.io.converters.aea8f --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 8
+Total LoC input to cov-analyze : 9009
+Functions analyzed             : 43
+Paths analyzed                 : 116
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.io.converters.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.io.converters/lib/io/debug/ti.sdo.io.converters.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 8
+Total LoC input to cov-analyze : 9006
+Functions analyzed             : 43
+Paths analyzed                 : 116
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.io.drivers.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.io.drivers/lib/io/debug/ti.sdo.io.drivers.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 5
+Total LoC input to cov-analyze : 12027
+Functions analyzed             : 19
+Paths analyzed                 : 217
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.io.drivers.aea8f ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.io.drivers/lib/io/debug/ti.sdo.io.drivers.aea8f --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 5
+Total LoC input to cov-analyze : 12092
+Functions analyzed             : 19
+Paths analyzed                 : 217
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.io.drivers.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.io.drivers/lib/io/debug/ti.sdo.io.drivers.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 5
+Total LoC input to cov-analyze : 12089
+Functions analyzed             : 19
+Paths analyzed                 : 217
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../coverity/ti.sdo.ipc/lib/ipc/debug/ti.sdo.ipc.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 21
+Total LoC input to cov-analyze : 25311
+Functions analyzed             : 180
+Paths analyzed                 : 27615
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.aea8f ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../coverity/ti.sdo.ipc/lib/ipc/debug/ti.sdo.ipc.aea8f --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 21
+Total LoC input to cov-analyze : 25385
+Functions analyzed             : 180
+Paths analyzed                 : 27615
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../coverity/ti.sdo.ipc/lib/ipc/debug/ti.sdo.ipc.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 21
+Total LoC input to cov-analyze : 26470
+Functions analyzed             : 180
+Paths analyzed                 : 27615
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.family.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.ipc.family/lib/ipc/debug/ti.sdo.ipc.family.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 0
+Total LoC input to cov-analyze : 803
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.family.aea8f ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.ipc.family/lib/ipc/debug/ti.sdo.ipc.family.aea8f --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 0
+Total LoC input to cov-analyze : 868
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.family.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.ipc.family/lib/ipc/debug/ti.sdo.ipc.family.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 0
+Total LoC input to cov-analyze : 865
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.family.arctic.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.ipc.family.arctic/lib/ipc/debug/ti.sdo.ipc.family.arctic.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 7
+Total LoC input to cov-analyze : 9340
+Functions analyzed             : 26
+Paths analyzed                 : 104
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.family.c6a8149.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.ipc.family.c6a8149/lib/ipc/debug/ti.sdo.ipc.family.c6a8149.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 10
+Total LoC input to cov-analyze : 12681
+Functions analyzed             : 46
+Paths analyzed                 : 1379
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.family.c6a8149.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.ipc.family.c6a8149/lib/ipc/debug/ti.sdo.ipc.family.c6a8149.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 10
+Total LoC input to cov-analyze : 14602
+Functions analyzed             : 47
+Paths analyzed                 : 2464
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.family.c6a8149.aea8f ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.ipc.family.c6a8149/lib/ipc/debug/ti.sdo.ipc.family.c6a8149.aea8f --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 10
+Total LoC input to cov-analyze : 13480
+Functions analyzed             : 45
+Paths analyzed                 : 1134
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.family.da830.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.ipc.family.da830/lib/ipc/debug/ti.sdo.ipc.family.da830.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 7
+Total LoC input to cov-analyze : 9491
+Functions analyzed             : 25
+Paths analyzed                 : 616
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.family.f28m35x.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.ipc.family.f28m35x/lib/ipc/debug/ti.sdo.ipc.family.f28m35x.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 11
+Total LoC input to cov-analyze : 19964
+Functions analyzed             : 67
+Paths analyzed                 : 1597
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.family.omap3530.aea8f ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.ipc.family.omap3530/lib/ipc/debug/ti.sdo.ipc.family.omap3530.aea8f --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 7
+Total LoC input to cov-analyze : 10009
+Functions analyzed             : 25
+Paths analyzed                 : 77
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.family.omap4430.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.ipc.family.omap4430/lib/ipc/debug/ti.sdo.ipc.family.omap4430.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 7
+Total LoC input to cov-analyze : 12117
+Functions analyzed             : 27
+Paths analyzed                 : 755
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.family.ti81xx.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.ipc.family.ti81xx/lib/ipc/debug/ti.sdo.ipc.family.ti81xx.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 10
+Total LoC input to cov-analyze : 12778
+Functions analyzed             : 44
+Paths analyzed                 : 1302
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.family.ti81xx.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.ipc.family.ti81xx/lib/ipc/debug/ti.sdo.ipc.family.ti81xx.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 10
+Total LoC input to cov-analyze : 13927
+Functions analyzed             : 46
+Paths analyzed                 : 2113
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.family.ti81xx.aea8f ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.ipc.family.ti81xx/lib/ipc/debug/ti.sdo.ipc.family.ti81xx.aea8f --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 10
+Total LoC input to cov-analyze : 13585
+Functions analyzed             : 44
+Paths analyzed                 : 1077
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.family.vayu.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../../coverity/ti.sdo.ipc.family.vayu/lib/ipc/debug/ti.sdo.ipc.family.vayu.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 5
+Total LoC input to cov-analyze : 11535
+Functions analyzed             : 20
+Paths analyzed                 : 314
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.gates.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.ipc.gates/lib/ipc/debug/ti.sdo.ipc.gates.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 4
+Total LoC input to cov-analyze : 7399
+Functions analyzed             : 25
+Paths analyzed                 : 631
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.gates.aea8f ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.ipc.gates/lib/ipc/debug/ti.sdo.ipc.gates.aea8f --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 4
+Total LoC input to cov-analyze : 7464
+Functions analyzed             : 25
+Paths analyzed                 : 631
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.gates.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.ipc.gates/lib/ipc/debug/ti.sdo.ipc.gates.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 4
+Total LoC input to cov-analyze : 7461
+Functions analyzed             : 25
+Paths analyzed                 : 631
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.heaps.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.ipc.heaps/lib/ipc/debug/ti.sdo.ipc.heaps.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 6
+Total LoC input to cov-analyze : 12802
+Functions analyzed             : 74
+Paths analyzed                 : 10219
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.heaps.aea8f ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.ipc.heaps/lib/ipc/debug/ti.sdo.ipc.heaps.aea8f --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 6
+Total LoC input to cov-analyze : 12894
+Functions analyzed             : 74
+Paths analyzed                 : 10219
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.heaps.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.ipc.heaps/lib/ipc/debug/ti.sdo.ipc.heaps.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 6
+Total LoC input to cov-analyze : 12891
+Functions analyzed             : 74
+Paths analyzed                 : 10219
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.interfaces.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.ipc.interfaces/lib/ipc/debug/ti.sdo.ipc.interfaces.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 0
+Total LoC input to cov-analyze : 803
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.interfaces.aea8f ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.ipc.interfaces/lib/ipc/debug/ti.sdo.ipc.interfaces.aea8f --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 0
+Total LoC input to cov-analyze : 868
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.interfaces.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.ipc.interfaces/lib/ipc/debug/ti.sdo.ipc.interfaces.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 0
+Total LoC input to cov-analyze : 865
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.notifyDrivers.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.ipc.notifyDrivers/lib/ipc/debug/ti.sdo.ipc.notifyDrivers.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 3
+Total LoC input to cov-analyze : 10330
+Functions analyzed             : 27
+Paths analyzed                 : 1842
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.notifyDrivers.aea8f ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.ipc.notifyDrivers/lib/ipc/debug/ti.sdo.ipc.notifyDrivers.aea8f --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 3
+Total LoC input to cov-analyze : 10395
+Functions analyzed             : 27
+Paths analyzed                 : 1842
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.notifyDrivers.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.ipc.notifyDrivers/lib/ipc/debug/ti.sdo.ipc.notifyDrivers.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 3
+Total LoC input to cov-analyze : 12739
+Functions analyzed             : 27
+Paths analyzed                 : 1842
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.nsremote.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.ipc.nsremote/lib/ipc/debug/ti.sdo.ipc.nsremote.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 6
+Total LoC input to cov-analyze : 18855
+Functions analyzed             : 40
+Paths analyzed                 : 1703
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.nsremote.aea8f ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.ipc.nsremote/lib/ipc/debug/ti.sdo.ipc.nsremote.aea8f --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 6
+Total LoC input to cov-analyze : 18947
+Functions analyzed             : 40
+Paths analyzed                 : 1703
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.nsremote.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.ipc.nsremote/lib/ipc/debug/ti.sdo.ipc.nsremote.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 6
+Total LoC input to cov-analyze : 18944
+Functions analyzed             : 40
+Paths analyzed                 : 1703
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.transports.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.ipc.transports/lib/ipc/debug/ti.sdo.ipc.transports.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 11
+Total LoC input to cov-analyze : 20785
+Functions analyzed             : 62
+Paths analyzed                 : 1486
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.transports.aea8f ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.ipc.transports/lib/ipc/debug/ti.sdo.ipc.transports.aea8f --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 11
+Total LoC input to cov-analyze : 20850
+Functions analyzed             : 62
+Paths analyzed                 : 1486
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.ipc.transports.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../../coverity/ti.sdo.ipc.transports/lib/ipc/debug/ti.sdo.ipc.transports.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 11
+Total LoC input to cov-analyze : 22460
+Functions analyzed             : 62
+Paths analyzed                 : 1486
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.utils.ae674 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../coverity/ti.sdo.utils/lib/utils/debug/ti.sdo.utils.ae674 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 7
+Total LoC input to cov-analyze : 9057
+Functions analyzed             : 63
+Paths analyzed                 : 1360
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.utils.aea8f ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../coverity/ti.sdo.utils/lib/utils/debug/ti.sdo.utils.aea8f --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 7
+Total LoC input to cov-analyze : 9149
+Functions analyzed             : 63
+Paths analyzed                 : 1360
+Defect occurrences found       : 0
+
+ 
+==== Results for ti.sdo.utils.aem3 ====
+/apps/coverity/5.5.3/bin/cov-analyze --verbose 0 --config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/cfg/coverity_config.xml --dir ../../../coverity/ti.sdo.utils/lib/utils/debug/ti.sdo.utils.aem3 --all --disable SECURE_CODING --checker-option OVERRUN_DYNAMIC:allow_symbol --checker-option USE_AFTER_FREE:allow_report_args:true --parse-warnings-config /db/toolsrc/library/toolsE24/packages/tisb/coverity/filters/parse_warnings.conf 
+Analysis summary report:
+------------------------
+Files analyzed                 : 7
+Total LoC input to cov-analyze : 11493
+Functions analyzed             : 63
+Paths analyzed                 : 1360
+Defect occurrences found       : 0
+
+ 
+Totals - LoC: 579163, Defects: 0

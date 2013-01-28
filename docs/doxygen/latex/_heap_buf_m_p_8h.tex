@@ -1,0 +1,457 @@
+\subsection{Heap\-Buf\-M\-P.\-h File Reference}
+\label{_heap_buf_m_p_8h}\index{Heap\-Buf\-M\-P.\-h@{Heap\-Buf\-M\-P.\-h}}
+
+
+\subsubsection{Detailed Description}
+Multi-\/processor fixed-\/size buffer heap implementation. ============================================================================
+
+Heap implementation that manages fixed size buffers that can be used in a multiprocessor system with shared memory.
+
+The Heap\-Buf\-M\-P manager provides functions to allocate and free storage from a heap of type Heap\-Buf\-M\-P which inherits from I\-Heap. Heap\-Buf\-M\-P manages a single fixed-\/size buffer, split into equally sized allocatable blocks.
+
+The Heap\-Buf\-M\-P manager is intended as a very fast memory manager which can only allocate blocks of a single size. It is ideal for managing a heap that is only used for allocating a single type of object, or for objects that have very similar sizes.
+
+The Heap\-Buf\-M\-P module uses a Name\-Server instance to store instance information when an instance is created. The name supplied must be unique for all Heap\-Buf\-M\-P instances.
+
+The \hyperlink{_heap_buf_m_p_8h_a3bb1b659403d9944bc4b64596b20f1f3}{Heap\-Buf\-M\-P\-\_\-create} call initializes the shared memory as needed. Once an instance is created, a \hyperlink{_heap_buf_m_p_8h_a826facae0861c09d545f18dd503f0f0f}{Heap\-Buf\-M\-P\-\_\-open} can be performed. The open is used to gain access to the same Heap\-Buf\-M\-P instance. Generally an instance is created on one processor and opened on the other processor(s).
+
+The open returns a Heap\-Buf\-M\-P instance handle like the create, however the open does not modify the shared memory.
+
+The Heap\-Buf\-M\-P header should be included in an application as follows\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{    #include <ti/ipc/HeapBufMP.h>}
+\end{DoxyCode}
+
+
+\begin{DoxyVersion}{Version}
+0.\-00.\-01 
+\end{DoxyVersion}
+{\ttfamily \#include $<$ti/ipc/\-Gate\-M\-P.\-h$>$}\\*
+Include dependency graph for Heap\-Buf\-M\-P.\-h\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=117pt]{_heap_buf_m_p_8h__incl}
+\end{center}
+\end{figure}
+\subsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_heap_buf_m_p___params}{Heap\-Buf\-M\-P\-\_\-\-Params}
+\begin{DoxyCompactList}\small\item\em Structure defining parameters for the Heap\-Buf\-M\-P module. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_heap_buf_m_p___extended_stats}{Heap\-Buf\-M\-P\-\_\-\-Extended\-Stats}
+\begin{DoxyCompactList}\small\item\em Stats structure for the Heap\-Buf\-M\-P\-\_\-get\-Extended\-Stats A\-P\-I. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_heap_buf_m_p_8h_ae1b0ea5865b0687653171ad2bf3d17b3}{Heap\-Buf\-M\-P\-\_\-\-S\-\_\-\-B\-U\-S\-Y}~2
+\begin{DoxyCompactList}\small\item\em The resource is still in use. \end{DoxyCompactList}\item 
+\#define \hyperlink{_heap_buf_m_p_8h_a8d7ddf7f2176ffd9e11dad5d32545ebb}{Heap\-Buf\-M\-P\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P}~1
+\begin{DoxyCompactList}\small\item\em The module has been already setup. \end{DoxyCompactList}\item 
+\#define \hyperlink{_heap_buf_m_p_8h_ab98593be8c8588e512f38265b4d185f0}{Heap\-Buf\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}~0
+\begin{DoxyCompactList}\small\item\em Operation is successful. \end{DoxyCompactList}\item 
+\#define \hyperlink{_heap_buf_m_p_8h_afe559bb52af4c143c559d3ca44654520}{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L}~-\/1
+\begin{DoxyCompactList}\small\item\em Generic failure. \end{DoxyCompactList}\item 
+\#define \hyperlink{_heap_buf_m_p_8h_a3bd067e1c23ed6c94aad604e5a74244d}{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G}~-\/2
+\begin{DoxyCompactList}\small\item\em Argument passed to function is invalid. \end{DoxyCompactList}\item 
+\#define \hyperlink{_heap_buf_m_p_8h_a7dff5751dc8d83830b7ad130d0e6fe86}{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y}~-\/3
+\begin{DoxyCompactList}\small\item\em Operation resulted in memory failure. \end{DoxyCompactList}\item 
+\#define \hyperlink{_heap_buf_m_p_8h_a27b1533d0d529ecdd7d6a7d7090aa5a7}{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S}~-\/4
+\begin{DoxyCompactList}\small\item\em The specified entity already exists. \end{DoxyCompactList}\item 
+\#define \hyperlink{_heap_buf_m_p_8h_a413c47cfb2257df264b84951abc0409f}{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}~-\/5
+\begin{DoxyCompactList}\small\item\em Unable to find the specified entity. \end{DoxyCompactList}\item 
+\#define \hyperlink{_heap_buf_m_p_8h_aa2bf7936fb8db078713544c7ee1197fd}{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T}~-\/6
+\begin{DoxyCompactList}\small\item\em Operation timed out. \end{DoxyCompactList}\item 
+\#define \hyperlink{_heap_buf_m_p_8h_a72fbd9726f36a122c3462ab151e67518}{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E}~-\/7
+\begin{DoxyCompactList}\small\item\em Module is not initialized. \end{DoxyCompactList}\item 
+\#define \hyperlink{_heap_buf_m_p_8h_a7b0421d7bd809415074b1483f044162f}{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E}~-\/8
+\begin{DoxyCompactList}\small\item\em A failure occurred in an O\-S-\/specific call. \end{DoxyCompactList}\item 
+\#define \hyperlink{_heap_buf_m_p_8h_a7354bfdbab3d4d028d0c6d48edd308a7}{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E}~-\/9
+\begin{DoxyCompactList}\small\item\em Specified resource is not available. \end{DoxyCompactList}\item 
+\#define \hyperlink{_heap_buf_m_p_8h_a445c7db0d4aa1939dc33cefe24f6c4df}{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T}~-\/10
+\begin{DoxyCompactList}\small\item\em Operation was interrupted. Please restart the operation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct Heap\-Buf\-M\-P\-\_\-\-Object $\ast$ \hyperlink{_heap_buf_m_p_8h_a0dc02cca2abd71fa48bfaf79c1c09ca3}{Heap\-Buf\-M\-P\-\_\-\-Handle}
+\begin{DoxyCompactList}\small\item\em Heap\-Buf\-M\-P\-\_\-\-Handle type. \end{DoxyCompactList}\item 
+typedef struct \hyperlink{struct_heap_buf_m_p___params}{Heap\-Buf\-M\-P\-\_\-\-Params} \hyperlink{_heap_buf_m_p_8h_ada60a6b6a4bee75403768e41d07525ff}{Heap\-Buf\-M\-P\-\_\-\-Params}
+\begin{DoxyCompactList}\small\item\em Structure defining parameters for the Heap\-Buf\-M\-P module. \end{DoxyCompactList}\item 
+typedef struct \\*
+\hyperlink{struct_heap_buf_m_p___extended_stats}{Heap\-Buf\-M\-P\-\_\-\-Extended\-Stats} \hyperlink{_heap_buf_m_p_8h_a0a9972756cf113da0ac5f2eb7f647fbe}{Heap\-Buf\-M\-P\-\_\-\-Extended\-Stats}
+\begin{DoxyCompactList}\small\item\em Stats structure for the Heap\-Buf\-M\-P\-\_\-get\-Extended\-Stats A\-P\-I. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Int \hyperlink{_heap_buf_m_p_8h_a53c73d33bd195e23cd90c83a147b330f}{Heap\-Buf\-M\-P\-\_\-close} (\hyperlink{_heap_buf_m_p_8h_a0dc02cca2abd71fa48bfaf79c1c09ca3}{Heap\-Buf\-M\-P\-\_\-\-Handle} $\ast$handle\-Ptr)
+\begin{DoxyCompactList}\small\item\em Close a Heap\-Buf\-M\-P instance. \end{DoxyCompactList}\item 
+\hyperlink{_heap_buf_m_p_8h_a0dc02cca2abd71fa48bfaf79c1c09ca3}{Heap\-Buf\-M\-P\-\_\-\-Handle} \hyperlink{_heap_buf_m_p_8h_a3bb1b659403d9944bc4b64596b20f1f3}{Heap\-Buf\-M\-P\-\_\-create} (const \hyperlink{struct_heap_buf_m_p___params}{Heap\-Buf\-M\-P\-\_\-\-Params} $\ast$params)
+\begin{DoxyCompactList}\small\item\em Create a Heap\-Buf\-M\-P instance. \end{DoxyCompactList}\item 
+Int \hyperlink{_heap_buf_m_p_8h_aff10f0e0fc4ec4b88adb2b7422955f96}{Heap\-Buf\-M\-P\-\_\-delete} (\hyperlink{_heap_buf_m_p_8h_a0dc02cca2abd71fa48bfaf79c1c09ca3}{Heap\-Buf\-M\-P\-\_\-\-Handle} $\ast$handle\-Ptr)
+\begin{DoxyCompactList}\small\item\em Delete a created Heap\-Buf\-M\-P instance. \end{DoxyCompactList}\item 
+Int \hyperlink{_heap_buf_m_p_8h_a826facae0861c09d545f18dd503f0f0f}{Heap\-Buf\-M\-P\-\_\-open} (String name, \hyperlink{_heap_buf_m_p_8h_a0dc02cca2abd71fa48bfaf79c1c09ca3}{Heap\-Buf\-M\-P\-\_\-\-Handle} $\ast$handle\-Ptr)
+\begin{DoxyCompactList}\small\item\em Open a created Heap\-Buf\-M\-P instance. \end{DoxyCompactList}\item 
+Void \hyperlink{_heap_buf_m_p_8h_a81700157982b86ed3aefc72c6f3a7a5f}{Heap\-Buf\-M\-P\-\_\-\-Params\-\_\-init} (\hyperlink{struct_heap_buf_m_p___params}{Heap\-Buf\-M\-P\-\_\-\-Params} $\ast$params)
+\begin{DoxyCompactList}\small\item\em Initialize a Heap\-Buf\-M\-P parameters struct. \end{DoxyCompactList}\item 
+Void $\ast$ \hyperlink{_heap_buf_m_p_8h_aab507dc414e09bbfe75ceb78458c27ed}{Heap\-Buf\-M\-P\-\_\-alloc} (\hyperlink{_heap_buf_m_p_8h_a0dc02cca2abd71fa48bfaf79c1c09ca3}{Heap\-Buf\-M\-P\-\_\-\-Handle} handle, Size\-T size, Size\-T align)
+\begin{DoxyCompactList}\small\item\em Allocate a block of memory of specified size and alignment. \end{DoxyCompactList}\item 
+Void \hyperlink{_heap_buf_m_p_8h_a667a26b92e70373b8642ff15e61ad7d0}{Heap\-Buf\-M\-P\-\_\-free} (\hyperlink{_heap_buf_m_p_8h_a0dc02cca2abd71fa48bfaf79c1c09ca3}{Heap\-Buf\-M\-P\-\_\-\-Handle} handle, Ptr block, Size\-T size)
+\begin{DoxyCompactList}\small\item\em Frees a block of memory. \end{DoxyCompactList}\item 
+Void \hyperlink{_heap_buf_m_p_8h_a339d8eb929f35742d2ff5b3b5381c57b}{Heap\-Buf\-M\-P\-\_\-get\-Extended\-Stats} (\hyperlink{_heap_buf_m_p_8h_a0dc02cca2abd71fa48bfaf79c1c09ca3}{Heap\-Buf\-M\-P\-\_\-\-Handle} handle, \hyperlink{struct_heap_buf_m_p___extended_stats}{Heap\-Buf\-M\-P\-\_\-\-Extended\-Stats} $\ast$stats)
+\begin{DoxyCompactList}\small\item\em Get extended memory statistics. \end{DoxyCompactList}\item 
+Void \hyperlink{_heap_buf_m_p_8h_aed941f6bb592ec1573c646f7c6a4290a}{Heap\-Buf\-M\-P\-\_\-get\-Stats} (\hyperlink{_heap_buf_m_p_8h_a0dc02cca2abd71fa48bfaf79c1c09ca3}{Heap\-Buf\-M\-P\-\_\-\-Handle} handle, Ptr stats)
+\begin{DoxyCompactList}\small\item\em Get memory statistics. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Macro Definition Documentation}
+\index{Heap\-Buf\-M\-P.\-h@{Heap\-Buf\-M\-P.\-h}!Heap\-Buf\-M\-P\-\_\-\-S\-\_\-\-B\-U\-S\-Y@{Heap\-Buf\-M\-P\-\_\-\-S\-\_\-\-B\-U\-S\-Y}}
+\index{Heap\-Buf\-M\-P\-\_\-\-S\-\_\-\-B\-U\-S\-Y@{Heap\-Buf\-M\-P\-\_\-\-S\-\_\-\-B\-U\-S\-Y}!HeapBufMP.h@{Heap\-Buf\-M\-P.\-h}}
+\paragraph[{Heap\-Buf\-M\-P\-\_\-\-S\-\_\-\-B\-U\-S\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define Heap\-Buf\-M\-P\-\_\-\-S\-\_\-\-B\-U\-S\-Y~2}\label{_heap_buf_m_p_8h_ae1b0ea5865b0687653171ad2bf3d17b3}
+
+
+The resource is still in use. 
+
+\index{Heap\-Buf\-M\-P.\-h@{Heap\-Buf\-M\-P.\-h}!Heap\-Buf\-M\-P\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P@{Heap\-Buf\-M\-P\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P}}
+\index{Heap\-Buf\-M\-P\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P@{Heap\-Buf\-M\-P\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P}!HeapBufMP.h@{Heap\-Buf\-M\-P.\-h}}
+\paragraph[{Heap\-Buf\-M\-P\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define Heap\-Buf\-M\-P\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P~1}\label{_heap_buf_m_p_8h_a8d7ddf7f2176ffd9e11dad5d32545ebb}
+
+
+The module has been already setup. 
+
+\index{Heap\-Buf\-M\-P.\-h@{Heap\-Buf\-M\-P.\-h}!Heap\-Buf\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S@{Heap\-Buf\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}}
+\index{Heap\-Buf\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S@{Heap\-Buf\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}!HeapBufMP.h@{Heap\-Buf\-M\-P.\-h}}
+\paragraph[{Heap\-Buf\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define Heap\-Buf\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S~0}\label{_heap_buf_m_p_8h_ab98593be8c8588e512f38265b4d185f0}
+
+
+Operation is successful. 
+
+\index{Heap\-Buf\-M\-P.\-h@{Heap\-Buf\-M\-P.\-h}!Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L@{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L}}
+\index{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L@{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L}!HeapBufMP.h@{Heap\-Buf\-M\-P.\-h}}
+\paragraph[{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L~-\/1}\label{_heap_buf_m_p_8h_afe559bb52af4c143c559d3ca44654520}
+
+
+Generic failure. 
+
+\index{Heap\-Buf\-M\-P.\-h@{Heap\-Buf\-M\-P.\-h}!Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G@{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G}}
+\index{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G@{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G}!HeapBufMP.h@{Heap\-Buf\-M\-P.\-h}}
+\paragraph[{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G~-\/2}\label{_heap_buf_m_p_8h_a3bd067e1c23ed6c94aad604e5a74244d}
+
+
+Argument passed to function is invalid. 
+
+\index{Heap\-Buf\-M\-P.\-h@{Heap\-Buf\-M\-P.\-h}!Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y@{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y}}
+\index{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y@{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y}!HeapBufMP.h@{Heap\-Buf\-M\-P.\-h}}
+\paragraph[{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y~-\/3}\label{_heap_buf_m_p_8h_a7dff5751dc8d83830b7ad130d0e6fe86}
+
+
+Operation resulted in memory failure. 
+
+\index{Heap\-Buf\-M\-P.\-h@{Heap\-Buf\-M\-P.\-h}!Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S@{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S}}
+\index{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S@{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S}!HeapBufMP.h@{Heap\-Buf\-M\-P.\-h}}
+\paragraph[{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S~-\/4}\label{_heap_buf_m_p_8h_a27b1533d0d529ecdd7d6a7d7090aa5a7}
+
+
+The specified entity already exists. 
+
+\index{Heap\-Buf\-M\-P.\-h@{Heap\-Buf\-M\-P.\-h}!Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D@{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}}
+\index{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D@{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}!HeapBufMP.h@{Heap\-Buf\-M\-P.\-h}}
+\paragraph[{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D~-\/5}\label{_heap_buf_m_p_8h_a413c47cfb2257df264b84951abc0409f}
+
+
+Unable to find the specified entity. 
+
+\index{Heap\-Buf\-M\-P.\-h@{Heap\-Buf\-M\-P.\-h}!Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T@{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T}}
+\index{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T@{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T}!HeapBufMP.h@{Heap\-Buf\-M\-P.\-h}}
+\paragraph[{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T~-\/6}\label{_heap_buf_m_p_8h_aa2bf7936fb8db078713544c7ee1197fd}
+
+
+Operation timed out. 
+
+\index{Heap\-Buf\-M\-P.\-h@{Heap\-Buf\-M\-P.\-h}!Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E@{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E}}
+\index{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E@{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E}!HeapBufMP.h@{Heap\-Buf\-M\-P.\-h}}
+\paragraph[{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E~-\/7}\label{_heap_buf_m_p_8h_a72fbd9726f36a122c3462ab151e67518}
+
+
+Module is not initialized. 
+
+\index{Heap\-Buf\-M\-P.\-h@{Heap\-Buf\-M\-P.\-h}!Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E@{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E}}
+\index{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E@{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E}!HeapBufMP.h@{Heap\-Buf\-M\-P.\-h}}
+\paragraph[{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E~-\/8}\label{_heap_buf_m_p_8h_a7b0421d7bd809415074b1483f044162f}
+
+
+A failure occurred in an O\-S-\/specific call. 
+
+\index{Heap\-Buf\-M\-P.\-h@{Heap\-Buf\-M\-P.\-h}!Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E@{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E}}
+\index{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E@{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E}!HeapBufMP.h@{Heap\-Buf\-M\-P.\-h}}
+\paragraph[{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E~-\/9}\label{_heap_buf_m_p_8h_a7354bfdbab3d4d028d0c6d48edd308a7}
+
+
+Specified resource is not available. 
+
+\index{Heap\-Buf\-M\-P.\-h@{Heap\-Buf\-M\-P.\-h}!Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T@{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T}}
+\index{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T@{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T}!HeapBufMP.h@{Heap\-Buf\-M\-P.\-h}}
+\paragraph[{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T~-\/10}\label{_heap_buf_m_p_8h_a445c7db0d4aa1939dc33cefe24f6c4df}
+
+
+Operation was interrupted. Please restart the operation. 
+
+
+
+\subsubsection{Typedef Documentation}
+\index{Heap\-Buf\-M\-P.\-h@{Heap\-Buf\-M\-P.\-h}!Heap\-Buf\-M\-P\-\_\-\-Handle@{Heap\-Buf\-M\-P\-\_\-\-Handle}}
+\index{Heap\-Buf\-M\-P\-\_\-\-Handle@{Heap\-Buf\-M\-P\-\_\-\-Handle}!HeapBufMP.h@{Heap\-Buf\-M\-P.\-h}}
+\paragraph[{Heap\-Buf\-M\-P\-\_\-\-Handle}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct Heap\-Buf\-M\-P\-\_\-\-Object$\ast$ {\bf Heap\-Buf\-M\-P\-\_\-\-Handle}}\label{_heap_buf_m_p_8h_a0dc02cca2abd71fa48bfaf79c1c09ca3}
+
+
+Heap\-Buf\-M\-P\-\_\-\-Handle type. 
+
+\index{Heap\-Buf\-M\-P.\-h@{Heap\-Buf\-M\-P.\-h}!Heap\-Buf\-M\-P\-\_\-\-Params@{Heap\-Buf\-M\-P\-\_\-\-Params}}
+\index{Heap\-Buf\-M\-P\-\_\-\-Params@{Heap\-Buf\-M\-P\-\_\-\-Params}!HeapBufMP.h@{Heap\-Buf\-M\-P.\-h}}
+\paragraph[{Heap\-Buf\-M\-P\-\_\-\-Params}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Heap\-Buf\-M\-P\-\_\-\-Params}  {\bf Heap\-Buf\-M\-P\-\_\-\-Params}}\label{_heap_buf_m_p_8h_ada60a6b6a4bee75403768e41d07525ff}
+
+
+Structure defining parameters for the Heap\-Buf\-M\-P module. 
+
+\index{Heap\-Buf\-M\-P.\-h@{Heap\-Buf\-M\-P.\-h}!Heap\-Buf\-M\-P\-\_\-\-Extended\-Stats@{Heap\-Buf\-M\-P\-\_\-\-Extended\-Stats}}
+\index{Heap\-Buf\-M\-P\-\_\-\-Extended\-Stats@{Heap\-Buf\-M\-P\-\_\-\-Extended\-Stats}!HeapBufMP.h@{Heap\-Buf\-M\-P.\-h}}
+\paragraph[{Heap\-Buf\-M\-P\-\_\-\-Extended\-Stats}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Heap\-Buf\-M\-P\-\_\-\-Extended\-Stats}  {\bf Heap\-Buf\-M\-P\-\_\-\-Extended\-Stats}}\label{_heap_buf_m_p_8h_a0a9972756cf113da0ac5f2eb7f647fbe}
+
+
+Stats structure for the Heap\-Buf\-M\-P\-\_\-get\-Extended\-Stats A\-P\-I. 
+
+
+
+\subsubsection{Function Documentation}
+\index{Heap\-Buf\-M\-P.\-h@{Heap\-Buf\-M\-P.\-h}!Heap\-Buf\-M\-P\-\_\-close@{Heap\-Buf\-M\-P\-\_\-close}}
+\index{Heap\-Buf\-M\-P\-\_\-close@{Heap\-Buf\-M\-P\-\_\-close}!HeapBufMP.h@{Heap\-Buf\-M\-P.\-h}}
+\paragraph[{Heap\-Buf\-M\-P\-\_\-close}]{\setlength{\rightskip}{0pt plus 5cm}Int Heap\-Buf\-M\-P\-\_\-close (
+\begin{DoxyParamCaption}
+\item[{{\bf Heap\-Buf\-M\-P\-\_\-\-Handle} $\ast$}]{handle\-Ptr}
+\end{DoxyParamCaption}
+)}\label{_heap_buf_m_p_8h_a53c73d33bd195e23cd90c83a147b330f}
+
+
+Close a Heap\-Buf\-M\-P instance. 
+
+Closing an instance will free local memory consumed by the opened instance. All opened instances should be closed before the instance is deleted.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em handle\-Ptr} & Pointer to Heap\-Buf\-M\-P handle typically returned from \hyperlink{_heap_buf_m_p_8h_a826facae0861c09d545f18dd503f0f0f}{Heap\-Buf\-M\-P\-\_\-open}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Heap\-Buf\-M\-P status\-:
+\begin{DoxyItemize}
+\item \hyperlink{_heap_buf_m_p_8h_ab98593be8c8588e512f38265b4d185f0}{Heap\-Buf\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}\-: Heap successfully closed
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{_heap_buf_m_p_8h_a826facae0861c09d545f18dd503f0f0f}{Heap\-Buf\-M\-P\-\_\-open} 
+\end{DoxySeeAlso}
+\index{Heap\-Buf\-M\-P.\-h@{Heap\-Buf\-M\-P.\-h}!Heap\-Buf\-M\-P\-\_\-create@{Heap\-Buf\-M\-P\-\_\-create}}
+\index{Heap\-Buf\-M\-P\-\_\-create@{Heap\-Buf\-M\-P\-\_\-create}!HeapBufMP.h@{Heap\-Buf\-M\-P.\-h}}
+\paragraph[{Heap\-Buf\-M\-P\-\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Heap\-Buf\-M\-P\-\_\-\-Handle} Heap\-Buf\-M\-P\-\_\-create (
+\begin{DoxyParamCaption}
+\item[{const {\bf Heap\-Buf\-M\-P\-\_\-\-Params} $\ast$}]{params}
+\end{DoxyParamCaption}
+)}\label{_heap_buf_m_p_8h_a3bb1b659403d9944bc4b64596b20f1f3}
+
+
+Create a Heap\-Buf\-M\-P instance. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em params} & Heap\-Buf\-M\-P parameters\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Heap\-Buf\-M\-P Handle 
+\end{DoxyReturn}
+\index{Heap\-Buf\-M\-P.\-h@{Heap\-Buf\-M\-P.\-h}!Heap\-Buf\-M\-P\-\_\-delete@{Heap\-Buf\-M\-P\-\_\-delete}}
+\index{Heap\-Buf\-M\-P\-\_\-delete@{Heap\-Buf\-M\-P\-\_\-delete}!HeapBufMP.h@{Heap\-Buf\-M\-P.\-h}}
+\paragraph[{Heap\-Buf\-M\-P\-\_\-delete}]{\setlength{\rightskip}{0pt plus 5cm}Int Heap\-Buf\-M\-P\-\_\-delete (
+\begin{DoxyParamCaption}
+\item[{{\bf Heap\-Buf\-M\-P\-\_\-\-Handle} $\ast$}]{handle\-Ptr}
+\end{DoxyParamCaption}
+)}\label{_heap_buf_m_p_8h_aff10f0e0fc4ec4b88adb2b7422955f96}
+
+
+Delete a created Heap\-Buf\-M\-P instance. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em handle\-Ptr} & Pointer to handle to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Heap\-Buf\-M\-P status\-:
+\begin{DoxyItemize}
+\item \hyperlink{_heap_buf_m_p_8h_ab98593be8c8588e512f38265b4d185f0}{Heap\-Buf\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}\-: Heap successfully deleted 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\index{Heap\-Buf\-M\-P.\-h@{Heap\-Buf\-M\-P.\-h}!Heap\-Buf\-M\-P\-\_\-open@{Heap\-Buf\-M\-P\-\_\-open}}
+\index{Heap\-Buf\-M\-P\-\_\-open@{Heap\-Buf\-M\-P\-\_\-open}!HeapBufMP.h@{Heap\-Buf\-M\-P.\-h}}
+\paragraph[{Heap\-Buf\-M\-P\-\_\-open}]{\setlength{\rightskip}{0pt plus 5cm}Int Heap\-Buf\-M\-P\-\_\-open (
+\begin{DoxyParamCaption}
+\item[{String}]{name, }
+\item[{{\bf Heap\-Buf\-M\-P\-\_\-\-Handle} $\ast$}]{handle\-Ptr}
+\end{DoxyParamCaption}
+)}\label{_heap_buf_m_p_8h_a826facae0861c09d545f18dd503f0f0f}
+
+
+Open a created Heap\-Buf\-M\-P instance. 
+
+Once an instance is created, an open can be performed. The open is used to gain access to the same Heap\-Buf\-M\-P instance. Generally an instance is created on one processor and opened on the other processor.
+
+The open returns a Heap\-Buf\-M\-P instance handle like the create, however the open does not initialize the shared memory. The supplied name is used to identify the created instance.
+
+Call \hyperlink{_heap_buf_m_p_8h_a53c73d33bd195e23cd90c83a147b330f}{Heap\-Buf\-M\-P\-\_\-close} when the opened instance is not longer needed.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & Name of created Heap\-Buf\-M\-P instance \\
+\hline
+\mbox{\tt out}  & {\em handle\-Ptr} & Pointer to Heap\-Buf\-M\-P handle to be opened\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Heap\-Buf\-M\-P status\-:
+\begin{DoxyItemize}
+\item \hyperlink{_heap_buf_m_p_8h_ab98593be8c8588e512f38265b4d185f0}{Heap\-Buf\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}\-: Heap successfully opened
+\item \hyperlink{_heap_buf_m_p_8h_a413c47cfb2257df264b84951abc0409f}{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}\-: Heap is not yet ready to be opened.
+\item \hyperlink{_heap_buf_m_p_8h_afe559bb52af4c143c559d3ca44654520}{Heap\-Buf\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L}\-: A general failure has occurred
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{_heap_buf_m_p_8h_a53c73d33bd195e23cd90c83a147b330f}{Heap\-Buf\-M\-P\-\_\-close} 
+\end{DoxySeeAlso}
+\index{Heap\-Buf\-M\-P.\-h@{Heap\-Buf\-M\-P.\-h}!Heap\-Buf\-M\-P\-\_\-\-Params\-\_\-init@{Heap\-Buf\-M\-P\-\_\-\-Params\-\_\-init}}
+\index{Heap\-Buf\-M\-P\-\_\-\-Params\-\_\-init@{Heap\-Buf\-M\-P\-\_\-\-Params\-\_\-init}!HeapBufMP.h@{Heap\-Buf\-M\-P.\-h}}
+\paragraph[{Heap\-Buf\-M\-P\-\_\-\-Params\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}Void Heap\-Buf\-M\-P\-\_\-\-Params\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{{\bf Heap\-Buf\-M\-P\-\_\-\-Params} $\ast$}]{params}
+\end{DoxyParamCaption}
+)}\label{_heap_buf_m_p_8h_a81700157982b86ed3aefc72c6f3a7a5f}
+
+
+Initialize a Heap\-Buf\-M\-P parameters struct. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em params} & Pointer to Gate\-M\-P parameters \\
+\hline
+\end{DoxyParams}
+\index{Heap\-Buf\-M\-P.\-h@{Heap\-Buf\-M\-P.\-h}!Heap\-Buf\-M\-P\-\_\-alloc@{Heap\-Buf\-M\-P\-\_\-alloc}}
+\index{Heap\-Buf\-M\-P\-\_\-alloc@{Heap\-Buf\-M\-P\-\_\-alloc}!HeapBufMP.h@{Heap\-Buf\-M\-P.\-h}}
+\paragraph[{Heap\-Buf\-M\-P\-\_\-alloc}]{\setlength{\rightskip}{0pt plus 5cm}Void$\ast$ Heap\-Buf\-M\-P\-\_\-alloc (
+\begin{DoxyParamCaption}
+\item[{{\bf Heap\-Buf\-M\-P\-\_\-\-Handle}}]{handle, }
+\item[{Size\-T}]{size, }
+\item[{Size\-T}]{align}
+\end{DoxyParamCaption}
+)}\label{_heap_buf_m_p_8h_aab507dc414e09bbfe75ceb78458c27ed}
+
+
+Allocate a block of memory of specified size and alignment. 
+
+The actual block returned may be larger than requested to satisfy alignment requirements. N\-U\-L\-L is returned if alloc fails.
+
+Heap\-Buf\-M\-P\-\_\-alloc will lock the heap using the Heap\-Buf\-M\-P gate while it traverses the list of free blocks to find a large enough block for the request.
+
+Guidelines for using large heaps and multiple alloc() calls.
+\begin{DoxyItemize}
+\item If possible, allocate larger blocks first. Previous allocations of small memory blocks can reduce the size of the blocks available for larger memory allocations.
+\item Realize that alloc() can fail even if the heap contains a sufficient absolute amount of unalloccated space. This is because the largest free memory block may be smaller than total amount of unallocated memory.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em handle} & Handle to previously created/opened instance. \\
+\hline
+\mbox{\tt in}  & {\em size} & Size to be allocated (in M\-A\-D\-Us) \\
+\hline
+\mbox{\tt in}  & {\em align} & Alignment for allocation (power of 2)\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{_heap_buf_m_p_8h_a667a26b92e70373b8642ff15e61ad7d0}{Heap\-Buf\-M\-P\-\_\-free} 
+\end{DoxySeeAlso}
+\index{Heap\-Buf\-M\-P.\-h@{Heap\-Buf\-M\-P.\-h}!Heap\-Buf\-M\-P\-\_\-free@{Heap\-Buf\-M\-P\-\_\-free}}
+\index{Heap\-Buf\-M\-P\-\_\-free@{Heap\-Buf\-M\-P\-\_\-free}!HeapBufMP.h@{Heap\-Buf\-M\-P.\-h}}
+\paragraph[{Heap\-Buf\-M\-P\-\_\-free}]{\setlength{\rightskip}{0pt plus 5cm}Void Heap\-Buf\-M\-P\-\_\-free (
+\begin{DoxyParamCaption}
+\item[{{\bf Heap\-Buf\-M\-P\-\_\-\-Handle}}]{handle, }
+\item[{Ptr}]{block, }
+\item[{Size\-T}]{size}
+\end{DoxyParamCaption}
+)}\label{_heap_buf_m_p_8h_a667a26b92e70373b8642ff15e61ad7d0}
+
+
+Frees a block of memory. 
+
+free() places the memory block specified by addr and size back into the free pool of the heap specified. The newly freed block is combined with any adjacent free blocks. The space is then available for further allocation by alloc().
+
+\hyperlink{_heap_buf_m_p_8h_a667a26b92e70373b8642ff15e61ad7d0}{Heap\-Buf\-M\-P\-\_\-free} will lock the heap using the Heap\-Buf\-M\-P gate if one is specified or the system Gate\-M\-P if not.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em handle} & Handle to previously created/opened instance. \\
+\hline
+\mbox{\tt in}  & {\em block} & Block of memory to be freed. \\
+\hline
+\mbox{\tt in}  & {\em size} & Size to be freed (in M\-A\-D\-Us)\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{_heap_buf_m_p_8h_aab507dc414e09bbfe75ceb78458c27ed}{Heap\-Buf\-M\-P\-\_\-alloc} 
+\end{DoxySeeAlso}
+\index{Heap\-Buf\-M\-P.\-h@{Heap\-Buf\-M\-P.\-h}!Heap\-Buf\-M\-P\-\_\-get\-Extended\-Stats@{Heap\-Buf\-M\-P\-\_\-get\-Extended\-Stats}}
+\index{Heap\-Buf\-M\-P\-\_\-get\-Extended\-Stats@{Heap\-Buf\-M\-P\-\_\-get\-Extended\-Stats}!HeapBufMP.h@{Heap\-Buf\-M\-P.\-h}}
+\paragraph[{Heap\-Buf\-M\-P\-\_\-get\-Extended\-Stats}]{\setlength{\rightskip}{0pt plus 5cm}Void Heap\-Buf\-M\-P\-\_\-get\-Extended\-Stats (
+\begin{DoxyParamCaption}
+\item[{{\bf Heap\-Buf\-M\-P\-\_\-\-Handle}}]{handle, }
+\item[{{\bf Heap\-Buf\-M\-P\-\_\-\-Extended\-Stats} $\ast$}]{stats}
+\end{DoxyParamCaption}
+)}\label{_heap_buf_m_p_8h_a339d8eb929f35742d2ff5b3b5381c57b}
+
+
+Get extended memory statistics. 
+
+This function retrieves the extended statistics for a Heap\-Buf\-M\-P instance. It does not retrieve the standard Memory\-\_\-\-Stats information. Refer to \hyperlink{struct_heap_buf_m_p___extended_stats}{Heap\-Buf\-M\-P\-\_\-\-Extended\-Stats} for more information regarding what information is returned.
+
+In B\-I\-O\-S, Heap\-Buf\-M\-P.\-track\-Allocs needs to be set to 'true' in the configuration to get meaningful extended stats.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em handle} & Handle to previously created/opened instance. \\
+\hline
+\mbox{\tt out}  & {\em stats} & Extended\-Stats structure\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{_heap_buf_m_p_8h_aed941f6bb592ec1573c646f7c6a4290a}{Heap\-Buf\-M\-P\-\_\-get\-Stats} 
+\end{DoxySeeAlso}
+\index{Heap\-Buf\-M\-P.\-h@{Heap\-Buf\-M\-P.\-h}!Heap\-Buf\-M\-P\-\_\-get\-Stats@{Heap\-Buf\-M\-P\-\_\-get\-Stats}}
+\index{Heap\-Buf\-M\-P\-\_\-get\-Stats@{Heap\-Buf\-M\-P\-\_\-get\-Stats}!HeapBufMP.h@{Heap\-Buf\-M\-P.\-h}}
+\paragraph[{Heap\-Buf\-M\-P\-\_\-get\-Stats}]{\setlength{\rightskip}{0pt plus 5cm}Void Heap\-Buf\-M\-P\-\_\-get\-Stats (
+\begin{DoxyParamCaption}
+\item[{{\bf Heap\-Buf\-M\-P\-\_\-\-Handle}}]{handle, }
+\item[{Ptr}]{stats}
+\end{DoxyParamCaption}
+)}\label{_heap_buf_m_p_8h_aed941f6bb592ec1573c646f7c6a4290a}
+
+
+Get memory statistics. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em handle} & Handle to previously created/opened instance. \\
+\hline
+\mbox{\tt out}  & {\em stats} & Memory statistics structure\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{_heap_buf_m_p_8h_a339d8eb929f35742d2ff5b3b5381c57b}{Heap\-Buf\-M\-P\-\_\-get\-Extended\-Stats} 
+\end{DoxySeeAlso}

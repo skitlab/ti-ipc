@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.ti.rtsc.IPC.product.ui"
+      version="1.25.1.09"
+      label="IPC (Multicore and I/O) (IDE Client)"
+      provider-name="Texas Instruments">
+
+   <description url="http://www.ti.com">
+IPC
+   </description>
+
+   <copyright>
+Copyright Texas Instruments 2010
+   </copyright>
+
+   <license>
+      Released under Texas Instruments Incorporated - Technology Software Publicly Available license.
+   </license>
+
+
+   <plugin
+        id="com.ti.rtsc.IPC.product.ui"
+        version="1.25.1.09"
+        unpack="false" 
+   />  
+    
+
+</feature>

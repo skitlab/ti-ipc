@@ -1,0 +1,304 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>module ti.sdo.ipc.Notify</title>
+<meta name="googlebot" content="noindex,nofollow">
+<link rel="stylesheet" type="text/css" href="../../../src.css"/>
+</head>
+<body>
+<pre class=src>
+     1    <span class="comment">/* --COPYRIGHT--,BSD
+</span>     2    <span class="comment"> * Copyright (c) $(CPYYEAR), Texas Instruments Incorporated
+</span>     3    <span class="comment"> * All rights reserved.
+</span>     4    <span class="comment"> *
+</span>     5    <span class="comment"> * Redistribution and use in source and binary forms, with or without
+</span>     6    <span class="comment"> * modification, are permitted provided that the following conditions
+</span>     7    <span class="comment"> * are met:
+</span>     8    <span class="comment"> *
+</span>     9    <span class="comment"> * *  Redistributions of source code must retain the above copyright
+</span>    10    <span class="comment"> *    notice, this list of conditions and the following disclaimer.
+</span>    11    <span class="comment"> *
+</span>    12    <span class="comment"> * *  Redistributions in binary form must reproduce the above copyright
+</span>    13    <span class="comment"> *    notice, this list of conditions and the following disclaimer in the
+</span>    14    <span class="comment"> *    documentation and/or other materials provided with the distribution.
+</span>    15    <span class="comment"> *
+</span>    16    <span class="comment"> * *  Neither the name of Texas Instruments Incorporated nor the names of
+</span>    17    <span class="comment"> *    its contributors may be used to endorse or promote products derived
+</span>    18    <span class="comment"> *    from this software without specific prior written permission.
+</span>    19    <span class="comment"> *
+</span>    20    <span class="comment"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+</span>    21    <span class="comment"> * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+</span>    22    <span class="comment"> * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+</span>    23    <span class="comment"> * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+</span>    24    <span class="comment"> * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+</span>    25    <span class="comment"> * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+</span>    26    <span class="comment"> * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+</span>    27    <span class="comment"> * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+</span>    28    <span class="comment"> * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+</span>    29    <span class="comment"> * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+</span>    30    <span class="comment"> * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</span>    31    <span class="comment"> * --/COPYRIGHT--*/</span>
+    32    <span class="comment">/*
+</span>    33    <span class="comment"> *  ======== Notify.xdc ========
+</span>    34    <span class="comment"> *
+</span>    35    <span class="comment"> *! Revision History
+</span>    36    <span class="comment"> *! ================
+</span>    37    <span class="comment"> *! 23-Mar-2010 skp     cdoc updates, .xdc cleanup
+</span>    38    <span class="comment"> *! 04-Mar-2010 skp     Fix SDOCM00067516 (default # of events should be 32)
+</span>    39    <span class="comment"> *! 21-Jan-2010 skp     Fix SDOCM00066064 (misc notify bugs)
+</span>    40    <span class="comment"> *! 12-Jan-2010 skp     'reservedEvents' moved out of internal: section
+</span>    41    <span class="comment"> *! 09-Dec-2009 skp     Common-header changes
+</span>    42    <span class="comment"> *! 01-Dec-2009 skp     Default number of events changed to '8' from '32'
+</span>    43    <span class="comment"> *! 19-Nov-2009 skp     Fixed high interrupt latency issue
+</span>    44    <span class="comment"> *! 16-Nov-2009 skp     ROV re-implemented for multiple/single callbacks
+</span>    45    <span class="comment"> *! 14-Nov-2009 skp     cleanup/cbFxn removed from driver
+</span>    46    <span class="comment"> *! 05-Nov-2009 kw      reworked and added 'Many' APIs, keep Lists in Notify
+</span>    47    <span class="comment"> *! 26-Oct-2009 skp     ROV views, cleanup
+</span>    48    <span class="comment"> *! 24-Oct-2009 skp     cdoc changes, cleanup
+</span>    49    <span class="comment"> *! 30-Jul-2009 skp     static support, ROV views, logging added
+</span>    50    <span class="comment"> *! 06-Feb-2009 yogesh  modified to incorporate review comments
+</span>    51    <span class="comment"> *! 08-Jan-2009 yogesh  created
+</span>    52    <span class="comment"> */</span>
+    53    
+    54    <span class=key>package</span> ti.sdo.ipc;
+    55    
+    56    import xdc.runtime.Assert;
+    57    import xdc.runtime.Diags;
+    58    
+    59    import xdc.rov.ViewInfo;
+    60    
+    61    import ti.sdo.utils.List;
+    62    
+    63    import ti.sdo.ipc.interfaces.INotifyDriver;
+    64    
+    65    <span class="xdoc">/*!
+</span>    66    <span class="xdoc"> *  ======== Notify ========
+</span>    67    <span class="xdoc"> *  Notification manager
+</span>    68    <span class="xdoc"> *
+</span>    69    <span class="xdoc"> *  <b>@p(html)</b>
+</span>    70    <span class="xdoc"> *  This module has a common header that can be found in the {<b>@link</b> ti.ipc}
+</span>    71    <span class="xdoc"> *  package.  Application code should include the common header file (not the 
+</span>    72    <span class="xdoc"> *  RTSC-generated one):
+</span>    73    <span class="xdoc"> *
+</span>    74    <span class="xdoc"> *  &lt;PRE&gt;#include &amp;lt;ti/ipc/Notify.h&amp;gt;&lt;/PRE&gt;
+</span>    75    <span class="xdoc"> *   
+</span>    76    <span class="xdoc"> *  The RTSC module must be used in the application's RTSC configuration file 
+</span>    77    <span class="xdoc"> *  (.cfg) if runtime APIs will be used in the application:
+</span>    78    <span class="xdoc"> *  
+</span>    79    <span class="xdoc"> *  &lt;PRE&gt;Notify = xdc.useModule('ti.sdo.ipc.Notify');&lt;/PRE&gt;
+</span>    80    <span class="xdoc"> *
+</span>    81    <span class="xdoc"> *  Documentation for all runtime APIs, instance configuration parameters, 
+</span>    82    <span class="xdoc"> *  error codes macros and type definitions available to the application 
+</span>    83    <span class="xdoc"> *  integrator can be found in the 
+</span>    84    <span class="xdoc"> *  &lt;A HREF="../../../../doxygen/html/files.html"&gt;Doxygen documenation&lt;/A&gt;
+</span>    85    <span class="xdoc"> *  for the IPC product.  However, the documentation presented on this page 
+</span>    86    <span class="xdoc"> *  should be referred to for information specific to the RTSC module, such as
+</span>    87    <span class="xdoc"> *  module configuration, Errors, and Asserts.
+</span>    88    <span class="xdoc"> *  <b>@p</b>
+</span>    89    <span class="xdoc"> *
+</span>    90    <span class="xdoc"> *  The Notify module typically doesn't require much (if any) configuration at  
+</span>    91    <span class="xdoc"> *  static time. However, it is possible to reduce the amount of shared memory
+</span>    92    <span class="xdoc"> *  used by the Notify subsystem by reducing the value of {<b>@link</b> #numEvents}.
+</span>    93    <span class="xdoc"> */</span>
+    94     
+    95    @Gated
+    96    @ModuleStartup
+    97    @InstanceInitError
+    98    @InstanceFinalize
+    99    
+   100    <span class=key>module</span> Notify
+   101    {
+   102        <span class="xdoc">/*! <b>@_nodoc</b> */</span>
+   103        <span class=key>metaonly</span> <span class=key>struct</span> BasicView {
+   104            UInt        remoteProcId;
+   105            String      remoteProcName;
+   106            UInt        lineId;
+   107            UInt        disabled;
+   108        }
+   109    
+   110        <span class="xdoc">/*! <b>@_nodoc</b> */</span>
+   111        <span class=key>metaonly</span> <span class=key>struct</span> EventDataView {
+   112            UInt        eventId;
+   113            String      fnNotifyCbck;
+   114            String      cbckArg;
+   115        }
+   116    
+   117        <span class="xdoc">/*!
+</span>   118    <span class="xdoc">     *  ======== rovViewInfo ========
+</span>   119    <span class="xdoc">     */</span>
+   120        @Facet
+   121        <span class=key>metaonly</span> <span class=key>config</span> ViewInfo.Instance rovViewInfo =
+   122            ViewInfo.create({
+   123                viewMap: [
+   124                    [<span class="string">'Basic'</span>,
+   125                        {
+   126                            type: ViewInfo.INSTANCE,
+   127                            viewInitFxn: <span class="string">'viewInitBasic'</span>,
+   128                            structName: <span class="string">'BasicView'</span>
+   129                        }
+   130                    ],
+   131                    [<span class="string">'EventListeners'</span>,
+   132                        {
+   133                            type: ViewInfo.INSTANCE_DATA,
+   134                            viewInitFxn: <span class="string">'viewInitData'</span>,
+   135                            structName: <span class="string">'EventDataView'</span>
+   136                        }
+   137                    ],
+   138                ]
+   139            });
+   140    
+   141        <span class="xdoc">/*!
+</span>   142    <span class="xdoc">     *  Assert raised when trying to re-register for given line and processor
+</span>   143    <span class="xdoc">     */</span>
+   144        <span class=key>config</span> Assert.Id A_alreadyRegistered =
+   145            {msg: <span class="string">"A_alreadyRegistered: Notify instance for the processor/line already registered"</span>};
+   146    
+   147        <span class="xdoc">/*!
+</span>   148    <span class="xdoc">     *  Assert raised when trying to use an unregistered Notify instance
+</span>   149    <span class="xdoc">     */</span>
+   150        <span class=key>config</span> Assert.Id A_notRegistered =
+   151            {msg: <span class="string">"A_notRegistered: Notify instance not yet registered for the processor/line"</span>};
+   152    
+   153        <span class="xdoc">/*!
+</span>   154    <span class="xdoc">     *  Assert raised when trying to improperly use a reserved event
+</span>   155    <span class="xdoc">     */</span>
+   156        <span class=key>config</span> Assert.Id A_reservedEvent =
+   157            {msg: <span class="string">"A_reservedEvent: Improper use of a reserved event"</span>};
+   158    
+   159        <span class="xdoc">/*!
+</span>   160    <span class="xdoc">     *  Assert raised when {<b>@link</b> #restore} called with improper key
+</span>   161    <span class="xdoc">     */</span>
+   162        <span class=key>config</span> Assert.Id A_outOfOrderNesting =
+   163            {msg: <span class="string">"A_outOfOrderNesting: Out of order nesting"</span>};
+   164            
+   165        <span class="xdoc">/*!
+</span>   166    <span class="xdoc">     *  ======== A_invArgument ========
+</span>   167    <span class="xdoc">     *  Assert raised when an argument is invalid
+</span>   168    <span class="xdoc">     */</span>
+   169        <span class=key>config</span> Assert.Id A_invArgument  = {
+   170            msg: <span class="string">"A_invArgument: Invalid argument supplied"</span>
+   171        };
+   172        
+   173        <span class="xdoc">/*!
+</span>   174    <span class="xdoc">     *  ======== A_internal ========
+</span>   175    <span class="xdoc">     *  Assert raised when an internal error is encountered
+</span>   176    <span class="xdoc">     */</span>
+   177        <span class=key>config</span> Assert.Id A_internal = {
+   178            msg: <span class="string">"A_internal: An internal error has occurred"</span>
+   179        };
+   180    
+   181        <span class="xdoc">/*!
+</span>   182    <span class="xdoc">     *  ======== SetupProxy ========
+</span>   183    <span class="xdoc">     *  Device-specific Notify setup proxy
+</span>   184    <span class="xdoc">     */</span>
+   185        <span class=key>proxy</span> SetupProxy <span class=key>inherits</span> ti.sdo.ipc.interfaces.INotifySetup;
+   186    
+   187        <span class="xdoc">/*! Maximum number of events supported by the Notify module */</span>
+   188        <span class=key>const</span> UInt MAXEVENTS = 32;
+   189    
+   190        <span class="xdoc">/*!
+</span>   191    <span class="xdoc">     *  Number of events supported by Notify
+</span>   192    <span class="xdoc">     *
+</span>   193    <span class="xdoc">     *  Lowering this value offers the benefit of lower footprint especially in
+</span>   194    <span class="xdoc">     *  shared memory.
+</span>   195    <span class="xdoc">     */</span>
+   196        <span class=key>config</span> UInt numEvents = 32;
+   197        
+   198        <span class="xdoc">/*!
+</span>   199    <span class="xdoc">     *  ======== sendEventPollCount ========
+</span>   200    <span class="xdoc">     *  Poll for specified amount before sendEvent times out
+</span>   201    <span class="xdoc">     *
+</span>   202    <span class="xdoc">     *  Setting a finite value for sendEventPollCount will cause 
+</span>   203    <span class="xdoc">     *  Notify_sendEvent to poll for an amount of time 
+</span>   204    <span class="xdoc">     *  proportional to this value when the 'waitClear' flag is TRUE.
+</span>   205    <span class="xdoc">     */</span>
+   206        <span class=key>config</span> UInt32 sendEventPollCount = -1;
+   207    
+   208        <span class="xdoc">/*! <b>@_nodoc</b>
+</span>   209    <span class="xdoc">     *  Maximum number of interrupt lines between a single pair of processors
+</span>   210    <span class="xdoc">     *
+</span>   211    <span class="xdoc">     *  This config is usually set internally by the NotfiySetup proxy when the
+</span>   212    <span class="xdoc">     *  proxy is set up to use more than one line.
+</span>   213    <span class="xdoc">     */</span>
+   214        <span class=key>config</span> UInt16 numLines = 1;
+   215        
+   216        <span class="xdoc">/*!
+</span>   217    <span class="xdoc">     *  Number of reserved event numbers
+</span>   218    <span class="xdoc">     *
+</span>   219    <span class="xdoc">     *  The first reservedEvents event numbers are reserved for
+</span>   220    <span class="xdoc">     *  middleware modules. Attempts to use these reserved events
+</span>   221    <span class="xdoc">     *  will result in a {<b>@link</b> #A_reservedEvent} assert.
+</span>   222    <span class="xdoc">     *
+</span>   223    <span class="xdoc">     *  To use the reserved events, the top 16-bits of the eventId must equal
+</span>   224    <span class="xdoc">     *  Notify_SYSTEMKEY.
+</span>   225    <span class="xdoc">     */</span>
+   226        <span class=key>config</span> UInt16 reservedEvents = 5;
+   227    
+   228        <span class="xdoc">/*!
+</span>   229    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   230    <span class="xdoc">     *  Detach Notify from a remote processor. Should only be called by the Ipc
+</span>   231    <span class="xdoc">     *  module during its detach operation.
+</span>   232    <span class="xdoc">     */</span>
+   233        Int detach(UInt16 remoteProcId);
+   234    
+   235    <span class=key>instance</span>:
+   236    
+   237        <span class="xdoc">/*! <b>@_nodoc</b>
+</span>   238    <span class="xdoc">     *  Register a created Notify driver with the Notify module
+</span>   239    <span class="xdoc">     *
+</span>   240    <span class="xdoc">     *  The Notify module stores a copy of the driverHandle in an array
+</span>   241    <span class="xdoc">     *  indexed by procId and lineId.  Furture references to the procId
+</span>   242    <span class="xdoc">     *  and lineId in Notify APIs will utilize the driver registered using
+</span>   243    <span class="xdoc">     *  {<b>@link</b> #create}.
+</span>   244    <span class="xdoc">     *
+</span>   245    <span class="xdoc">     *  <b>@param(driverHandle)</b>    Notify driver handle
+</span>   246    <span class="xdoc">     *  <b>@param(procId)</b>          Remote processor id
+</span>   247    <span class="xdoc">     *  <b>@param(lineId)</b>          Line id
+</span>   248    <span class="xdoc">     */</span>
+   249        create(INotifyDriver.Handle driverHandle, UInt16 remoteProcId,
+   250               UInt16 lineId);
+   251    
+   252        <span class="xdoc">/*! <b>@_nodoc</b>
+</span>   253    <span class="xdoc">     *  Called internally by the Notify module or notify driver module 
+</span>   254    <span class="xdoc">     *  to execute the callback registered to a specific event.
+</span>   255    <span class="xdoc">     */</span>
+   256        Void exec(UInt32 eventId, UInt32 payload);
+   257    
+   258    <span class=key>internal</span>:
+   259    
+   260        <span class="xdoc">/*!
+</span>   261    <span class="xdoc">     *  Used to execute a list of callback functions when the callbacks are
+</span>   262    <span class="xdoc">     *  registered using registerMany.
+</span>   263    <span class="xdoc">     */</span>
+   264        Void execMany(UInt16 remoteProcId, UInt16 lineId, UInt32 eventId, UArg arg, 
+   265                      UInt32 payload);
+   266    
+   267        <span class=key>struct</span> EventCallback {
+   268            Fxn             fnNotifyCbck;
+   269            UArg            cbckArg;
+   270        }
+   271    
+   272        <span class=key>struct</span> EventListener {
+   273            List.Elem       element;          <span class="comment">/* List elem         */</span>
+   274            EventCallback   callback;
+   275        }
+   276    
+   277        <span class=key>struct</span> Instance_State {
+   278            UInt                    nesting;        <span class="comment">/* Disable/restore nesting    */</span>
+   279            INotifyDriver.Handle    driverHandle;   <span class="comment">/* Driver handle              */</span>
+   280            UInt16                  remoteProcId;   <span class="comment">/* Remote MultiProc id        */</span>
+   281            UInt16                  lineId;         <span class="comment">/* Interrupt line id          */</span>
+   282            EventCallback           callbacks[];    <span class="comment">/* indexed by eventId         */</span>
+   283            List.Object             eventList[];    <span class="comment">/* indexed by eventId         */</span>
+   284        };
+   285    
+   286        <span class=key>struct</span> Module_State {
+   287            Handle        notifyHandles[][]; <span class="comment">/* indexed by procId then lineId */</span>
+   288    
+   289            <span class="comment">/*
+</span>   290    <span class="comment">         * these fields are used for local/loopback events
+</span>   291    <span class="comment">         */</span>
+   292            Bits32        localEnableMask;  <span class="comment">/* default to enabled (-1) */</span>
+   293        }
+   294    
+   295    }
+</pre>
+</body></html>

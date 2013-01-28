@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="ti.sdo.ipc.examples.singlecore" version="1, 0, 0, 0" producerId="undefined">
+    <units>
+    </units>
+    <sources>
+        <srcFile name="package/cfg/release/notify_loopback_pe66.c"/>
+        <srcFile name="package/cfg/release/message_pe66.c"/>
+        <srcFile name="notify_loopback.c"/>
+        <srcFile name="message.c"/>
+    </sources>
+    <configscripts>
+        <srcFile name="notify_loopback.cfg"/>
+        <srcFile name="message.cfg"/>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/cfg/release/notify_loopback_pe66.mak" src="package.bld"/>
+        <srcFile name="package/cfg/release/notify_loopback_pe66.oe66.dep" src="package/cfg/release/notify_loopback_pe66.c"/>
+        <srcFile name="package/cfg/release/notify_loopback_pe66.dep" src="package/cfg/release/notify_loopback_pe66.cfg"/>
+        <srcFile name="package/cfg/release/message_pe66.mak" src="package.bld"/>
+        <srcFile name="package/cfg/release/message_pe66.oe66.dep" src="package/cfg/release/message_pe66.c"/>
+        <srcFile name="package/cfg/release/message_pe66.dep" src="package/cfg/release/message_pe66.cfg"/>
+        <srcFile name="package/cfg/release/notify_loopback.xe66.mak" src="package.bld"/>
+        <srcFile name="package/cfg/release/notify_loopback/notify_loopback.oe66.dep" src="notify_loopback.c"/>
+        <srcFile name="package/cfg/release/message.xe66.mak" src="package.bld"/>
+        <srcFile name="package/cfg/release/message/message.oe66.dep" src="message.c"/>
+        <srcFile name="package/rel/ti_sdo_ipc_examples_singlecore.tar.gz.dep" src="package/rel/ti_sdo_ipc_examples_singlecore.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="ti.targets.elf.C66"
+            version="ti.targets.elf.C66{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6678.core0"
+            isa="66"
+            suffix="e66"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+    </targets>
+    <libraries>
+    </libraries>
+    <configurations>
+    <configuration name="release/notify_loopback"
+        pname="release/notify_loopback.pe66"
+        target="ti.targets.elf.C66"
+        platform="ti.sdo.ipc.examples.platforms.evm6678.core0"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/release/notify_loopback_pe66.cfg"
+        xCfgPrefix="package/cfg/release/notify_loopback_pe66"
+        cfgScript="notify_loopback.cfg"
+        />
+    <configuration name="release/message"
+        pname="release/message.pe66"
+        target="ti.targets.elf.C66"
+        platform="ti.sdo.ipc.examples.platforms.evm6678.core0"
+        profile="release"
+        isPartial="false"
+        xCfgScript="package/cfg/release/message_pe66.cfg"
+        xCfgPrefix="package/cfg/release/message_pe66"
+        cfgScript="message.cfg"
+        />
+    </configurations>
+    <executables>
+    <executable name="release/notify_loopback"
+        pname="release/notify_loopback.xe66"
+        target="ti.targets.elf.C66"
+        platform="ti.sdo.ipc.examples.platforms.evm6678.core0"
+        profile="release"
+        xCfgScript="package/cfg/release/notify_loopback_pe66.cfg"
+        xCfgPrefix="package/cfg/release/notify_loopback_pe66"
+        cfgScript="notify_loopback.cfg"
+        />
+    <executable name="release/message"
+        pname="release/message.xe66"
+        target="ti.targets.elf.C66"
+        platform="ti.sdo.ipc.examples.platforms.evm6678.core0"
+        profile="release"
+        xCfgScript="package/cfg/release/message_pe66.cfg"
+        xCfgPrefix="package/cfg/release/message_pe66"
+        cfgScript="message.cfg"
+        />
+    </executables>
+    <tests>
+    <test exeName="release/notify_loopback.xe66"
+        args=""
+        groupName="regress"
+        refOutput="golden/notify_loopback.k"
+        refExitCode="0"
+        execArgs="-t%2060"
+        />
+    <test exeName="release/notify_loopback.xe66"
+        args=""
+        groupName="release/notify_loopback.xe66"
+        refOutput="undefined"
+        refExitCode="0"
+        execArgs="-t%2060"
+        />
+    <test exeName="release/message.xe66"
+        args=""
+        groupName="regress"
+        refOutput="golden/message.k"
+        refExitCode="0"
+        execArgs="-t%2060"
+        />
+    <test exeName="release/message.xe66"
+        args=""
+        groupName="release/message.xe66"
+        refOutput="undefined"
+        refExitCode="0"
+        execArgs="-t%2060"
+        />
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="ti_sdo_ipc_examples_singlecore"
+        pname="../../../../../../exports/ti_sdo_ipc_examples_singlecore.tar.gz"
+        label="default"
+        relScript="tisb/release/filters/copyright.rel">
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package.bld"/>
+        <file name="message.k"/>
+        <file name="notify_loopback.k"/>
+        <file name="readme.txt"/>
+        <file name="package/cfg/release/notify_loopback_pe66.xdc.inc"/>
+        <file name="package/cfg/release/notify_loopback_pe66.cfg"/>
+        <file name="package/cfg/release/notify_loopback_pe66.c"/>
+        <file name="package/cfg/release/message_pe66.xdc.inc"/>
+        <file name="package/cfg/release/message_pe66.cfg"/>
+        <file name="package/cfg/release/message_pe66.c"/>
+        <file name="notify_loopback.c"/>
+        <file name="message.c"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

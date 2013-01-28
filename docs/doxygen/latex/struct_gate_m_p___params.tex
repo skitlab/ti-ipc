@@ -1,0 +1,59 @@
+\subsection{Gate\-M\-P\-\_\-\-Params Struct Reference}
+\label{struct_gate_m_p___params}\index{Gate\-M\-P\-\_\-\-Params@{Gate\-M\-P\-\_\-\-Params}}
+
+
+Structure defining parameters for the Gate\-M\-P module.  
+
+
+
+
+{\ttfamily \#include $<$Gate\-M\-P.\-h$>$}
+
+\subsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+String \hyperlink{struct_gate_m_p___params_a159f61c6e36fe603775dc4840121969b}{name}
+\item 
+U\-Int16 \hyperlink{struct_gate_m_p___params_a5af9a96f1fcf6f29b69c07207a33d453}{region\-Id}
+\item 
+\hyperlink{_gate_m_p_8h_a3877bd64627d7449d3687e8b06939652}{Gate\-M\-P\-\_\-\-Local\-Protect} \hyperlink{struct_gate_m_p___params_ac080433fff177b3d5b1cd5dcafc9e28c}{local\-Protect}
+\item 
+\hyperlink{_gate_m_p_8h_a88716d5706d8fa8c6a3b9a4f023ef1d8}{Gate\-M\-P\-\_\-\-Remote\-Protect} \hyperlink{struct_gate_m_p___params_a32a1870109d6aa6f583932aff19ebb50}{remote\-Protect}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+Structure defining parameters for the Gate\-M\-P module. 
+
+\subsubsection{Field Documentation}
+\index{Gate\-M\-P\-\_\-\-Params@{Gate\-M\-P\-\_\-\-Params}!name@{name}}
+\index{name@{name}!GateMP_Params@{Gate\-M\-P\-\_\-\-Params}}
+\paragraph[{name}]{\setlength{\rightskip}{0pt plus 5cm}String Gate\-M\-P\-\_\-\-Params\-::name}\label{struct_gate_m_p___params_a159f61c6e36fe603775dc4840121969b}
+Name of this instance. \begin{DoxyVerb}   The name (if not NULL) must be unique among all GateMP instances
+   in the entire system.  The name does not have to be in persistent
+   memory.  The supplied string is copied into persistent memory.
+   If no name is supplied, the instance cannot be opened calling
+   GateMP_open().  The max length of the name is defined by the
+   maxNameLen of the NameServer instance.\end{DoxyVerb}
+ \index{Gate\-M\-P\-\_\-\-Params@{Gate\-M\-P\-\_\-\-Params}!region\-Id@{region\-Id}}
+\index{region\-Id@{region\-Id}!GateMP_Params@{Gate\-M\-P\-\_\-\-Params}}
+\paragraph[{region\-Id}]{\setlength{\rightskip}{0pt plus 5cm}U\-Int16 Gate\-M\-P\-\_\-\-Params\-::region\-Id}\label{struct_gate_m_p___params_a5af9a96f1fcf6f29b69c07207a33d453}
+Shared region I\-D \begin{DoxyVerb}   The index corresponding to the shared region from which shared memory
+   is allocated for the instance.  If not specified, the default of '0'
+   is used, otherwise the specified SharedRegion is used.  The amount
+   of shared memory allocated can be determined by calling
+   GateMP_sharedMemReq().\end{DoxyVerb}
+ \index{Gate\-M\-P\-\_\-\-Params@{Gate\-M\-P\-\_\-\-Params}!local\-Protect@{local\-Protect}}
+\index{local\-Protect@{local\-Protect}!GateMP_Params@{Gate\-M\-P\-\_\-\-Params}}
+\paragraph[{local\-Protect}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Gate\-M\-P\-\_\-\-Local\-Protect} Gate\-M\-P\-\_\-\-Params\-::local\-Protect}\label{struct_gate_m_p___params_ac080433fff177b3d5b1cd5dcafc9e28c}
+Local protection level
+
+The default value is \hyperlink{_gate_m_p_8h_a3877bd64627d7449d3687e8b06939652a257bc8d4b8d6d19bdbe96cae37cbd908}{Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-T\-H\-R\-E\-A\-D} \index{Gate\-M\-P\-\_\-\-Params@{Gate\-M\-P\-\_\-\-Params}!remote\-Protect@{remote\-Protect}}
+\index{remote\-Protect@{remote\-Protect}!GateMP_Params@{Gate\-M\-P\-\_\-\-Params}}
+\paragraph[{remote\-Protect}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Gate\-M\-P\-\_\-\-Remote\-Protect} Gate\-M\-P\-\_\-\-Params\-::remote\-Protect}\label{struct_gate_m_p___params_a32a1870109d6aa6f583932aff19ebb50}
+Remote protection level \begin{DoxyVerb}    The default value is #GateMP_RemoteProtect_SYSTEM\end{DoxyVerb}
+ 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_gate_m_p_8h}{Gate\-M\-P.\-h}\end{DoxyCompactItemize}

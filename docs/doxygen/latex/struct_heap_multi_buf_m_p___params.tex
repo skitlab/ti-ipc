@@ -1,0 +1,91 @@
+\subsection{Heap\-Multi\-Buf\-M\-P\-\_\-\-Params Struct Reference}
+\label{struct_heap_multi_buf_m_p___params}\index{Heap\-Multi\-Buf\-M\-P\-\_\-\-Params@{Heap\-Multi\-Buf\-M\-P\-\_\-\-Params}}
+
+
+Structure defining parameters for the Heap\-Multi\-Buf\-M\-P module.  
+
+
+
+
+{\ttfamily \#include $<$Heap\-Multi\-Buf\-M\-P.\-h$>$}
+
+
+
+Collaboration diagram for Heap\-Multi\-Buf\-M\-P\-\_\-\-Params\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=159pt]{struct_heap_multi_buf_m_p___params__coll__graph}
+\end{center}
+\end{figure}
+\subsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_gate_m_p_8h_ad5bb259f928a14e98d973334bc60ebb3}{Gate\-M\-P\-\_\-\-Handle} \hyperlink{struct_heap_multi_buf_m_p___params_a3c5f4bb4ecfb525299208a686c27cbfd}{gate}
+\item 
+Bool \hyperlink{struct_heap_multi_buf_m_p___params_a3ed83d3de19f3fd04062229fe6c693f7}{exact}
+\item 
+String \hyperlink{struct_heap_multi_buf_m_p___params_ac7a5994ab0dd02e88d3ad16e23b1a548}{name}
+\item 
+Int \hyperlink{struct_heap_multi_buf_m_p___params_a30eef328df3b8f69f50a013defb5fbb1}{num\-Buckets}
+\item 
+\hyperlink{struct_heap_multi_buf_m_p___bucket}{Heap\-Multi\-Buf\-M\-P\-\_\-\-Bucket} $\ast$ \hyperlink{struct_heap_multi_buf_m_p___params_ac130e0ad7fad30d9c759af90984dee8b}{bucket\-Entries}
+\item 
+U\-Int16 \hyperlink{struct_heap_multi_buf_m_p___params_aa3c641a64db9b4ff0c93f9a0c265f8d7}{region\-Id}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+Structure defining parameters for the Heap\-Multi\-Buf\-M\-P module. 
+
+\subsubsection{Field Documentation}
+\index{Heap\-Multi\-Buf\-M\-P\-\_\-\-Params@{Heap\-Multi\-Buf\-M\-P\-\_\-\-Params}!gate@{gate}}
+\index{gate@{gate}!HeapMultiBufMP_Params@{Heap\-Multi\-Buf\-M\-P\-\_\-\-Params}}
+\paragraph[{gate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Gate\-M\-P\-\_\-\-Handle} Heap\-Multi\-Buf\-M\-P\-\_\-\-Params\-::gate}\label{struct_heap_multi_buf_m_p___params_a3c5f4bb4ecfb525299208a686c27cbfd}
+Gate\-M\-P used for critical region management of the shared memory \begin{DoxyVerb}   Using the default value of NULL will result in use of the GateMP
+   system gate for context protection.\end{DoxyVerb}
+ \index{Heap\-Multi\-Buf\-M\-P\-\_\-\-Params@{Heap\-Multi\-Buf\-M\-P\-\_\-\-Params}!exact@{exact}}
+\index{exact@{exact}!HeapMultiBufMP_Params@{Heap\-Multi\-Buf\-M\-P\-\_\-\-Params}}
+\paragraph[{exact}]{\setlength{\rightskip}{0pt plus 5cm}Bool Heap\-Multi\-Buf\-M\-P\-\_\-\-Params\-::exact}\label{struct_heap_multi_buf_m_p___params_a3ed83d3de19f3fd04062229fe6c693f7}
+Use exact matching \begin{DoxyVerb}   Setting this flag will allow allocation only if the requested size
+   is equal to (rather than less than or equal to) a buffer's block size.\end{DoxyVerb}
+ \index{Heap\-Multi\-Buf\-M\-P\-\_\-\-Params@{Heap\-Multi\-Buf\-M\-P\-\_\-\-Params}!name@{name}}
+\index{name@{name}!HeapMultiBufMP_Params@{Heap\-Multi\-Buf\-M\-P\-\_\-\-Params}}
+\paragraph[{name}]{\setlength{\rightskip}{0pt plus 5cm}String Heap\-Multi\-Buf\-M\-P\-\_\-\-Params\-::name}\label{struct_heap_multi_buf_m_p___params_ac7a5994ab0dd02e88d3ad16e23b1a548}
+Name of this instance. \begin{DoxyVerb}   The name (if not NULL) must be unique among all HeapMultiBufMP
+   instances in the entire system.  When creating a new
+   heap, it is necessary to supply an instance name.
+
+   The name does not have to be persistent.  The supplied string is copied
+   into persistent memory.\end{DoxyVerb}
+ \index{Heap\-Multi\-Buf\-M\-P\-\_\-\-Params@{Heap\-Multi\-Buf\-M\-P\-\_\-\-Params}!num\-Buckets@{num\-Buckets}}
+\index{num\-Buckets@{num\-Buckets}!HeapMultiBufMP_Params@{Heap\-Multi\-Buf\-M\-P\-\_\-\-Params}}
+\paragraph[{num\-Buckets}]{\setlength{\rightskip}{0pt plus 5cm}Int Heap\-Multi\-Buf\-M\-P\-\_\-\-Params\-::num\-Buckets}\label{struct_heap_multi_buf_m_p___params_a30eef328df3b8f69f50a013defb5fbb1}
+Number of buckets in \hyperlink{struct_heap_multi_buf_m_p___params_ac130e0ad7fad30d9c759af90984dee8b}{Heap\-Multi\-Buf\-M\-P\-\_\-\-Params\-::bucket\-Entries} \begin{DoxyVerb}   This parameter is required to create any instance.\end{DoxyVerb}
+ \index{Heap\-Multi\-Buf\-M\-P\-\_\-\-Params@{Heap\-Multi\-Buf\-M\-P\-\_\-\-Params}!bucket\-Entries@{bucket\-Entries}}
+\index{bucket\-Entries@{bucket\-Entries}!HeapMultiBufMP_Params@{Heap\-Multi\-Buf\-M\-P\-\_\-\-Params}}
+\paragraph[{bucket\-Entries}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Heap\-Multi\-Buf\-M\-P\-\_\-\-Bucket}$\ast$ Heap\-Multi\-Buf\-M\-P\-\_\-\-Params\-::bucket\-Entries}\label{struct_heap_multi_buf_m_p___params_ac130e0ad7fad30d9c759af90984dee8b}
+Bucket Entries \begin{DoxyVerb}   The bucket entries are an array of #HeapMultiBufMP_Bucket whose values
+   correspond to the desired alignment, block size and length for each
+   buffer.  It is important to note that the alignments and sizes for each
+   buffer may be adjusted due to cache and alignment related constraints.
+   Buffer sizes are rounded up by their corresponding alignments.  Buffer
+   alignments themselves will assume the value of region cache alignment
+   size when the cache size is greater than the requested buffer alignment.
+
+   For example, specifying a bucket with {blockSize: 192, align: 256} will
+   result in a buffer of blockSize = 256 and alignment = 256.  If cache
+   alignment is required, then a bucket of {blockSize: 96, align: 64} will
+   result in a buffer of blockSize = 128 and alignment = 128 (assuming
+   cacheSize = 128).\end{DoxyVerb}
+ \index{Heap\-Multi\-Buf\-M\-P\-\_\-\-Params@{Heap\-Multi\-Buf\-M\-P\-\_\-\-Params}!region\-Id@{region\-Id}}
+\index{region\-Id@{region\-Id}!HeapMultiBufMP_Params@{Heap\-Multi\-Buf\-M\-P\-\_\-\-Params}}
+\paragraph[{region\-Id}]{\setlength{\rightskip}{0pt plus 5cm}U\-Int16 Heap\-Multi\-Buf\-M\-P\-\_\-\-Params\-::region\-Id}\label{struct_heap_multi_buf_m_p___params_aa3c641a64db9b4ff0c93f9a0c265f8d7}
+Shared region I\-D \begin{DoxyVerb}    The index corresponding to the shared region from which shared memory
+    will be allocated.\end{DoxyVerb}
+ 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_heap_multi_buf_m_p_8h}{Heap\-Multi\-Buf\-M\-P.\-h}\end{DoxyCompactItemize}

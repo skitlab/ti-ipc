@@ -1,0 +1,413 @@
+\subsection{Ipc.\-h File Reference}
+\label{_ipc_8h}\index{Ipc.\-h@{Ipc.\-h}}
+
+
+\subsubsection{Detailed Description}
+Ipc Manager. ===========================================================================
+
+This module is primarily used to configure I\-P\-C, synchronize processors, and initialize the I\-P\-C runtime. The memory for Shared\-Region zero must be valid before \hyperlink{_ipc_8h_aca550c6a5498637cfec7b0f4e6d07828}{Ipc\-\_\-start()} can be called. \hyperlink{_ipc_8h_aca550c6a5498637cfec7b0f4e6d07828}{Ipc\-\_\-start()} must be called before any other I\-P\-C A\-P\-Is are used.
+
+The Ipc header should be included in an application as follows\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{    #include <ti/ipc/Ipc.h>}
+\end{DoxyCode}
+ 
+
+\subsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_ipc_8h_a0d668ce8a2a1411b52db7dd0c930e0f0}{Ipc\-\_\-\-S\-\_\-\-B\-U\-S\-Y}~2
+\begin{DoxyCompactList}\small\item\em The resource is still in use. \end{DoxyCompactList}\item 
+\#define \hyperlink{_ipc_8h_a1cffa46553c4e6cb6d699f9fdadadef8}{Ipc\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P}~1
+\begin{DoxyCompactList}\small\item\em The module has been already setup. \end{DoxyCompactList}\item 
+\#define \hyperlink{_ipc_8h_a3f2ce5a89194a828588322cb29548360}{Ipc\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}~0
+\begin{DoxyCompactList}\small\item\em Operation is successful. \end{DoxyCompactList}\item 
+\#define \hyperlink{_ipc_8h_a156e22baea9b53fb663a7bb8684022f1}{Ipc\-\_\-\-E\-\_\-\-F\-A\-I\-L}~-\/1
+\begin{DoxyCompactList}\small\item\em Generic failure. \end{DoxyCompactList}\item 
+\#define \hyperlink{_ipc_8h_aaf0d0edb6356669b49dcf0429e7705e0}{Ipc\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G}~-\/2
+\begin{DoxyCompactList}\small\item\em Argument passed to function is invalid. \end{DoxyCompactList}\item 
+\#define \hyperlink{_ipc_8h_a55c40b7f048ac0aaf3b2836101c9dc81}{Ipc\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y}~-\/3
+\begin{DoxyCompactList}\small\item\em Operation resulted in memory failure. \end{DoxyCompactList}\item 
+\#define \hyperlink{_ipc_8h_a31205e4f4d3cc31cc615926d466e920b}{Ipc\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S}~-\/4
+\begin{DoxyCompactList}\small\item\em The specified entity already exists. \end{DoxyCompactList}\item 
+\#define \hyperlink{_ipc_8h_ab511d4936c15fb4ad724a6c457af45a2}{Ipc\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}~-\/5
+\begin{DoxyCompactList}\small\item\em Unable to find the specified entity. \end{DoxyCompactList}\item 
+\#define \hyperlink{_ipc_8h_a5ec546ed4e07fc5d8215ebdf8fee65d0}{Ipc\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T}~-\/6
+\begin{DoxyCompactList}\small\item\em Operation timed out. \end{DoxyCompactList}\item 
+\#define \hyperlink{_ipc_8h_acebc3658919077d62e56e7e88247fa22}{Ipc\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E}~-\/7
+\begin{DoxyCompactList}\small\item\em Module is not initialized or in an invalid state. \end{DoxyCompactList}\item 
+\#define \hyperlink{_ipc_8h_ae747ac1c4d39501d31ed73c09db1fd30}{Ipc\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E}~-\/8
+\begin{DoxyCompactList}\small\item\em A failure occurred in an O\-S-\/specific call. \end{DoxyCompactList}\item 
+\#define \hyperlink{_ipc_8h_a80f32a1da0accc7f1636b7e875cb731a}{Ipc\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E}~-\/9
+\begin{DoxyCompactList}\small\item\em Specified resource is not available. \end{DoxyCompactList}\item 
+\#define \hyperlink{_ipc_8h_acaf8edc10dc7b47670564739d63f6657}{Ipc\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T}~-\/10
+\begin{DoxyCompactList}\small\item\em Operation was interrupted. Please restart the operation. \end{DoxyCompactList}\item 
+\#define \hyperlink{_ipc_8h_af61be5fb093e7cd7cb076afc8b2fe798}{Ipc\-\_\-\-E\-\_\-\-N\-O\-T\-R\-E\-A\-D\-Y}~-\/11
+\begin{DoxyCompactList}\small\item\em Operation was not ready. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Int \hyperlink{_ipc_8h_a170f84915df79377080be708302bcb08}{Ipc\-\_\-attach} (U\-Int16 remote\-Proc\-Id)
+\begin{DoxyCompactList}\small\item\em Attach to remote processor. \end{DoxyCompactList}\item 
+Int \hyperlink{_ipc_8h_abd0bc0fb5d84415b441c7050f92826c0}{Ipc\-\_\-detach} (U\-Int16 remote\-Proc\-Id)
+\begin{DoxyCompactList}\small\item\em Detach from the remote processor. \end{DoxyCompactList}\item 
+Bool \hyperlink{_ipc_8h_a6c17c41b2d25e8b69208082126cde887}{Ipc\-\_\-is\-Attached} (U\-Int16 remote\-Proc\-Id)
+\begin{DoxyCompactList}\small\item\em Query whether attached to a remote processor. \end{DoxyCompactList}\item 
+Int \hyperlink{_ipc_8h_a4a5c82ebf2441ebf3fa86e6e7dc917d7}{Ipc\-\_\-read\-Config} (U\-Int16 remote\-Proc\-Id, U\-Int32 tag, Ptr cfg, Size\-T size)
+\begin{DoxyCompactList}\small\item\em Reads the config entry from the config area. \end{DoxyCompactList}\item 
+Int \hyperlink{_ipc_8h_aca550c6a5498637cfec7b0f4e6d07828}{Ipc\-\_\-start} (Void)
+\begin{DoxyCompactList}\small\item\em Reserves memory, creates default Gate\-M\-P and Heap\-Mem\-M\-P. \end{DoxyCompactList}\item 
+Int \hyperlink{_ipc_8h_ae47b1d9fa8486f162c836f142f0ab2ee}{Ipc\-\_\-stop} (Void)
+\begin{DoxyCompactList}\small\item\em Resets the Ipc state. \end{DoxyCompactList}\item 
+Int \hyperlink{_ipc_8h_af3b2fb0c66ad86f148870202b1b7aca1}{Ipc\-\_\-write\-Config} (U\-Int16 remote\-Proc\-Id, U\-Int32 tag, Ptr cfg, Size\-T size)
+\begin{DoxyCompactList}\small\item\em Writes the config entry to the config area. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Macro Definition Documentation}
+\index{Ipc.\-h@{Ipc.\-h}!Ipc\-\_\-\-S\-\_\-\-B\-U\-S\-Y@{Ipc\-\_\-\-S\-\_\-\-B\-U\-S\-Y}}
+\index{Ipc\-\_\-\-S\-\_\-\-B\-U\-S\-Y@{Ipc\-\_\-\-S\-\_\-\-B\-U\-S\-Y}!Ipc.h@{Ipc.\-h}}
+\paragraph[{Ipc\-\_\-\-S\-\_\-\-B\-U\-S\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define Ipc\-\_\-\-S\-\_\-\-B\-U\-S\-Y~2}\label{_ipc_8h_a0d668ce8a2a1411b52db7dd0c930e0f0}
+
+
+The resource is still in use. 
+
+\index{Ipc.\-h@{Ipc.\-h}!Ipc\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P@{Ipc\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P}}
+\index{Ipc\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P@{Ipc\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P}!Ipc.h@{Ipc.\-h}}
+\paragraph[{Ipc\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define Ipc\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P~1}\label{_ipc_8h_a1cffa46553c4e6cb6d699f9fdadadef8}
+
+
+The module has been already setup. 
+
+\index{Ipc.\-h@{Ipc.\-h}!Ipc\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S@{Ipc\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}}
+\index{Ipc\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S@{Ipc\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}!Ipc.h@{Ipc.\-h}}
+\paragraph[{Ipc\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define Ipc\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S~0}\label{_ipc_8h_a3f2ce5a89194a828588322cb29548360}
+
+
+Operation is successful. 
+
+\index{Ipc.\-h@{Ipc.\-h}!Ipc\-\_\-\-E\-\_\-\-F\-A\-I\-L@{Ipc\-\_\-\-E\-\_\-\-F\-A\-I\-L}}
+\index{Ipc\-\_\-\-E\-\_\-\-F\-A\-I\-L@{Ipc\-\_\-\-E\-\_\-\-F\-A\-I\-L}!Ipc.h@{Ipc.\-h}}
+\paragraph[{Ipc\-\_\-\-E\-\_\-\-F\-A\-I\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define Ipc\-\_\-\-E\-\_\-\-F\-A\-I\-L~-\/1}\label{_ipc_8h_a156e22baea9b53fb663a7bb8684022f1}
+
+
+Generic failure. 
+
+\index{Ipc.\-h@{Ipc.\-h}!Ipc\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G@{Ipc\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G}}
+\index{Ipc\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G@{Ipc\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G}!Ipc.h@{Ipc.\-h}}
+\paragraph[{Ipc\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define Ipc\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G~-\/2}\label{_ipc_8h_aaf0d0edb6356669b49dcf0429e7705e0}
+
+
+Argument passed to function is invalid. 
+
+\index{Ipc.\-h@{Ipc.\-h}!Ipc\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y@{Ipc\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y}}
+\index{Ipc\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y@{Ipc\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y}!Ipc.h@{Ipc.\-h}}
+\paragraph[{Ipc\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define Ipc\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y~-\/3}\label{_ipc_8h_a55c40b7f048ac0aaf3b2836101c9dc81}
+
+
+Operation resulted in memory failure. 
+
+\index{Ipc.\-h@{Ipc.\-h}!Ipc\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S@{Ipc\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S}}
+\index{Ipc\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S@{Ipc\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S}!Ipc.h@{Ipc.\-h}}
+\paragraph[{Ipc\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define Ipc\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S~-\/4}\label{_ipc_8h_a31205e4f4d3cc31cc615926d466e920b}
+
+
+The specified entity already exists. 
+
+\index{Ipc.\-h@{Ipc.\-h}!Ipc\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D@{Ipc\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}}
+\index{Ipc\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D@{Ipc\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}!Ipc.h@{Ipc.\-h}}
+\paragraph[{Ipc\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define Ipc\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D~-\/5}\label{_ipc_8h_ab511d4936c15fb4ad724a6c457af45a2}
+
+
+Unable to find the specified entity. 
+
+\index{Ipc.\-h@{Ipc.\-h}!Ipc\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T@{Ipc\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T}}
+\index{Ipc\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T@{Ipc\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T}!Ipc.h@{Ipc.\-h}}
+\paragraph[{Ipc\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define Ipc\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T~-\/6}\label{_ipc_8h_a5ec546ed4e07fc5d8215ebdf8fee65d0}
+
+
+Operation timed out. 
+
+\index{Ipc.\-h@{Ipc.\-h}!Ipc\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E@{Ipc\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E}}
+\index{Ipc\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E@{Ipc\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E}!Ipc.h@{Ipc.\-h}}
+\paragraph[{Ipc\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define Ipc\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E~-\/7}\label{_ipc_8h_acebc3658919077d62e56e7e88247fa22}
+
+
+Module is not initialized or in an invalid state. 
+
+\index{Ipc.\-h@{Ipc.\-h}!Ipc\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E@{Ipc\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E}}
+\index{Ipc\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E@{Ipc\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E}!Ipc.h@{Ipc.\-h}}
+\paragraph[{Ipc\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define Ipc\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E~-\/8}\label{_ipc_8h_ae747ac1c4d39501d31ed73c09db1fd30}
+
+
+A failure occurred in an O\-S-\/specific call. 
+
+\index{Ipc.\-h@{Ipc.\-h}!Ipc\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E@{Ipc\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E}}
+\index{Ipc\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E@{Ipc\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E}!Ipc.h@{Ipc.\-h}}
+\paragraph[{Ipc\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define Ipc\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E~-\/9}\label{_ipc_8h_a80f32a1da0accc7f1636b7e875cb731a}
+
+
+Specified resource is not available. 
+
+\index{Ipc.\-h@{Ipc.\-h}!Ipc\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T@{Ipc\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T}}
+\index{Ipc\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T@{Ipc\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T}!Ipc.h@{Ipc.\-h}}
+\paragraph[{Ipc\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define Ipc\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T~-\/10}\label{_ipc_8h_acaf8edc10dc7b47670564739d63f6657}
+
+
+Operation was interrupted. Please restart the operation. 
+
+\index{Ipc.\-h@{Ipc.\-h}!Ipc\-\_\-\-E\-\_\-\-N\-O\-T\-R\-E\-A\-D\-Y@{Ipc\-\_\-\-E\-\_\-\-N\-O\-T\-R\-E\-A\-D\-Y}}
+\index{Ipc\-\_\-\-E\-\_\-\-N\-O\-T\-R\-E\-A\-D\-Y@{Ipc\-\_\-\-E\-\_\-\-N\-O\-T\-R\-E\-A\-D\-Y}!Ipc.h@{Ipc.\-h}}
+\paragraph[{Ipc\-\_\-\-E\-\_\-\-N\-O\-T\-R\-E\-A\-D\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define Ipc\-\_\-\-E\-\_\-\-N\-O\-T\-R\-E\-A\-D\-Y~-\/11}\label{_ipc_8h_af61be5fb093e7cd7cb076afc8b2fe798}
+
+
+Operation was not ready. 
+
+
+
+\subsubsection{Function Documentation}
+\index{Ipc.\-h@{Ipc.\-h}!Ipc\-\_\-attach@{Ipc\-\_\-attach}}
+\index{Ipc\-\_\-attach@{Ipc\-\_\-attach}!Ipc.h@{Ipc.\-h}}
+\paragraph[{Ipc\-\_\-attach}]{\setlength{\rightskip}{0pt plus 5cm}Int Ipc\-\_\-attach (
+\begin{DoxyParamCaption}
+\item[{U\-Int16}]{remote\-Proc\-Id}
+\end{DoxyParamCaption}
+)}\label{_ipc_8h_a170f84915df79377080be708302bcb08}
+
+
+Attach to remote processor. 
+
+This function uses shared memory to synchronize self with the remote processor. Both processors must call this function to attach to each other. \hyperlink{_ipc_8h_aca550c6a5498637cfec7b0f4e6d07828}{Ipc\-\_\-start()} must be called before calling \hyperlink{_ipc_8h_a170f84915df79377080be708302bcb08}{Ipc\-\_\-attach()}. A processor must attach to the owner of Shared\-Region zero before it can successfully attach to another processor. Attempting to attach to another processor first returns \hyperlink{_ipc_8h_a156e22baea9b53fb663a7bb8684022f1}{Ipc\-\_\-\-E\-\_\-\-F\-A\-I\-L}.
+
+This function opens the default Gate\-M\-P and Shared\-Region zero heap. The Notify, Name\-Server\-Remote\-Notify, and Message\-Q transport instances are created for communicating with the specified remote processor in Shared\-Region zero heap. The user's Ipc attach function is called.
+
+For B\-I\-O\-S, this function should be called within a 'while' loop within a Task. A Task\-\_\-sleep() or Task\-\_\-yield() should be called within the loop to allow other threads in the system to execute. This function needs to be called in a loop because the remote processor may not be in a ready state.
+
+Note\-: For B\-I\-O\-S, if the config parameter Ipc.\-proc\-Sync is set to Ipc.\-Proc\-Sync\-\_\-\-A\-L\-L, there is no need to call this function as it is internally called by \hyperlink{_ipc_8h_aca550c6a5498637cfec7b0f4e6d07828}{Ipc\-\_\-start()}.
+
+
+\begin{DoxyCode}
+    \textcolor{keywordflow}{while} (Ipc_attach(remoteProcId) < 0) \{
+        Task\_sleep(1);
+    \}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em remote\-Proc\-Id} & remote processor's Multi\-Proc id\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status
+\begin{DoxyItemize}
+\item \hyperlink{_ipc_8h_a3f2ce5a89194a828588322cb29548360}{Ipc\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}\-: attach was successful
+\item \hyperlink{_ipc_8h_a1cffa46553c4e6cb6d699f9fdadadef8}{Ipc\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P}\-: already attached
+\item \hyperlink{_ipc_8h_a55c40b7f048ac0aaf3b2836101c9dc81}{Ipc\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y}\-: operation failed due to a memory error
+\item \hyperlink{_ipc_8h_a156e22baea9b53fb663a7bb8684022f1}{Ipc\-\_\-\-E\-\_\-\-F\-A\-I\-L}\-: General failure
+\item \hyperlink{_ipc_8h_af61be5fb093e7cd7cb076afc8b2fe798}{Ipc\-\_\-\-E\-\_\-\-N\-O\-T\-R\-E\-A\-D\-Y}\-: remote processor not ready
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{_ipc_8h_abd0bc0fb5d84415b441c7050f92826c0}{Ipc\-\_\-detach} \hyperlink{_ipc_8h_a6c17c41b2d25e8b69208082126cde887}{Ipc\-\_\-is\-Attached} 
+\end{DoxySeeAlso}
+\index{Ipc.\-h@{Ipc.\-h}!Ipc\-\_\-detach@{Ipc\-\_\-detach}}
+\index{Ipc\-\_\-detach@{Ipc\-\_\-detach}!Ipc.h@{Ipc.\-h}}
+\paragraph[{Ipc\-\_\-detach}]{\setlength{\rightskip}{0pt plus 5cm}Int Ipc\-\_\-detach (
+\begin{DoxyParamCaption}
+\item[{U\-Int16}]{remote\-Proc\-Id}
+\end{DoxyParamCaption}
+)}\label{_ipc_8h_abd0bc0fb5d84415b441c7050f92826c0}
+
+
+Detach from the remote processor. 
+
+A processor must detach from all other processors before it can successfully detach from the owner of Shared\-Region zero. Attempting to detach from the owner of Shared\-Region zero first returns \hyperlink{_ipc_8h_a156e22baea9b53fb663a7bb8684022f1}{Ipc\-\_\-\-E\-\_\-\-F\-A\-I\-L}.
+
+If a processor successfully attached to a remote processor 'N' times, it must call Ipc\-\_\-detach 'N' times to be completely detached. Ipc\-\_\-detach returns \hyperlink{_ipc_8h_a0d668ce8a2a1411b52db7dd0c930e0f0}{Ipc\-\_\-\-S\-\_\-\-B\-U\-S\-Y} for the first 'N -\/ 1' times its called. Ipc\-\_\-detach returns \hyperlink{_ipc_8h_a3f2ce5a89194a828588322cb29548360}{Ipc\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}, if successful, on the 'N' time its called. If called on a remote processor that is detached, \hyperlink{_ipc_8h_a3f2ce5a89194a828588322cb29548360}{Ipc\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S} is returned.
+
+This function should be called within a loop to make sure the processor successfully detached from the remote processor. If called from the processor with the bigger proc\-Id, this function closes the instances created for communicating with the specified remote processor. If called from the processor with the smaller proc\-Id, this function returns Ipc\-\_\-\-E\-\_\-\-N\-O\-T\-R\-E\-A\-D\-Y while the processor with the bigger proc\-Id has not finished detaching. Once the processor with the bigger proc\-Id is finished detaching, this function deletes the instances created for communicating with the specified remote processor.
+
+For B\-I\-O\-S, this function should be called within a 'while' loop in a Task because the slave may have to wait for the master to detach. Furthermore, a Task\-\_\-sleep() or Task\-\_\-yield() should be called within the same 'while' loop to allow other threads in the system to execute.
+
+
+\begin{DoxyCode}
+    \textcolor{keywordflow}{while} (TRUE) \{
+        status = Ipc_detach(remoteProcId);
+        \textcolor{keywordflow}{if} (status == Ipc_E_NOTREADY) \{
+            Task\_sleep(1);
+        \}
+        \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (status < 0) \{
+            System\_printf(\textcolor{stringliteral}{"Ipc\_detach failed \(\backslash\)n"});
+            \textcolor{keywordflow}{break};
+        \}
+        \textcolor{keywordflow}{else} \{
+            \textcolor{keywordflow}{break};
+        \}
+    \}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em remote\-Proc\-Id} & remote processor's Multi\-Proc id\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status
+\begin{DoxyItemize}
+\item \hyperlink{_ipc_8h_a3f2ce5a89194a828588322cb29548360}{Ipc\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}\-: operation was successful
+\item \hyperlink{_ipc_8h_a0d668ce8a2a1411b52db7dd0c930e0f0}{Ipc\-\_\-\-S\-\_\-\-B\-U\-S\-Y}\-: attach count != 0
+\item \hyperlink{_ipc_8h_a156e22baea9b53fb663a7bb8684022f1}{Ipc\-\_\-\-E\-\_\-\-F\-A\-I\-L}\-: operation failed
+\item \hyperlink{_ipc_8h_af61be5fb093e7cd7cb076afc8b2fe798}{Ipc\-\_\-\-E\-\_\-\-N\-O\-T\-R\-E\-A\-D\-Y}\-: processor not ready to detach
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{_ipc_8h_a170f84915df79377080be708302bcb08}{Ipc\-\_\-attach} \hyperlink{_ipc_8h_a6c17c41b2d25e8b69208082126cde887}{Ipc\-\_\-is\-Attached} 
+\end{DoxySeeAlso}
+\index{Ipc.\-h@{Ipc.\-h}!Ipc\-\_\-is\-Attached@{Ipc\-\_\-is\-Attached}}
+\index{Ipc\-\_\-is\-Attached@{Ipc\-\_\-is\-Attached}!Ipc.h@{Ipc.\-h}}
+\paragraph[{Ipc\-\_\-is\-Attached}]{\setlength{\rightskip}{0pt plus 5cm}Bool Ipc\-\_\-is\-Attached (
+\begin{DoxyParamCaption}
+\item[{U\-Int16}]{remote\-Proc\-Id}
+\end{DoxyParamCaption}
+)}\label{_ipc_8h_a6c17c41b2d25e8b69208082126cde887}
+
+
+Query whether attached to a remote processor. 
+
+Returns T\-R\-U\-E if attached to a remote processor and F\-A\-L\-S\-E otherwise. If remote\-Proc\-Id == \hyperlink{_multi_proc_8h_a2cb11a79ed2c6cbd6ea6b88b63903124}{Multi\-Proc\-\_\-self()}, F\-A\-L\-S\-E is always returned.
+
+
+\begin{DoxyParams}{Parameters}
+{\em remote\-Proc\-Id} & remote processor's Multi\-Proc id\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T\-R\-U\-E if attached, F\-A\-L\-S\-E if not attached
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{_ipc_8h_a170f84915df79377080be708302bcb08}{Ipc\-\_\-attach} \hyperlink{_ipc_8h_abd0bc0fb5d84415b441c7050f92826c0}{Ipc\-\_\-detach} 
+\end{DoxySeeAlso}
+\index{Ipc.\-h@{Ipc.\-h}!Ipc\-\_\-read\-Config@{Ipc\-\_\-read\-Config}}
+\index{Ipc\-\_\-read\-Config@{Ipc\-\_\-read\-Config}!Ipc.h@{Ipc.\-h}}
+\paragraph[{Ipc\-\_\-read\-Config}]{\setlength{\rightskip}{0pt plus 5cm}Int Ipc\-\_\-read\-Config (
+\begin{DoxyParamCaption}
+\item[{U\-Int16}]{remote\-Proc\-Id, }
+\item[{U\-Int32}]{tag, }
+\item[{Ptr}]{cfg, }
+\item[{Size\-T}]{size}
+\end{DoxyParamCaption}
+)}\label{_ipc_8h_a4a5c82ebf2441ebf3fa86e6e7dc917d7}
+
+
+Reads the config entry from the config area. 
+
+For more information about this A\-P\-I, refer to the documentation for \hyperlink{_ipc_8h_af3b2fb0c66ad86f148870202b1b7aca1}{Ipc\-\_\-write\-Config}
+
+
+\begin{DoxyParams}{Parameters}
+{\em remote\-Proc\-Id} & remote processor's Multi\-Proc id \\
+\hline
+{\em tag} & tag to identify a config entry \\
+\hline
+{\em cfg} & address where the entry will be copied \\
+\hline
+{\em size} & size of config entry\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status
+\begin{DoxyItemize}
+\item \hyperlink{_ipc_8h_a3f2ce5a89194a828588322cb29548360}{Ipc\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}\-: operation was successful
+\item \hyperlink{_ipc_8h_a156e22baea9b53fb663a7bb8684022f1}{Ipc\-\_\-\-E\-\_\-\-F\-A\-I\-L}\-: operation failed
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{_ipc_8h_af3b2fb0c66ad86f148870202b1b7aca1}{Ipc\-\_\-write\-Config} 
+\end{DoxySeeAlso}
+\index{Ipc.\-h@{Ipc.\-h}!Ipc\-\_\-start@{Ipc\-\_\-start}}
+\index{Ipc\-\_\-start@{Ipc\-\_\-start}!Ipc.h@{Ipc.\-h}}
+\paragraph[{Ipc\-\_\-start}]{\setlength{\rightskip}{0pt plus 5cm}Int Ipc\-\_\-start (
+\begin{DoxyParamCaption}
+\item[{Void}]{}
+\end{DoxyParamCaption}
+)}\label{_ipc_8h_aca550c6a5498637cfec7b0f4e6d07828}
+
+
+Reserves memory, creates default Gate\-M\-P and Heap\-Mem\-M\-P. 
+
+This function needs to be called before \hyperlink{_ipc_8h_a170f84915df79377080be708302bcb08}{Ipc\-\_\-attach()}. It should only be called once, unless the return value is \hyperlink{_ipc_8h_af61be5fb093e7cd7cb076afc8b2fe798}{Ipc\-\_\-\-E\-\_\-\-N\-O\-T\-R\-E\-A\-D\-Y}. This indicates that either the Shared\-Region zero is not valid or has not been setup yet so Ipc\-\_\-start may be called again. Once sucessfully started, subsequent calls returns \hyperlink{_ipc_8h_a1cffa46553c4e6cb6d699f9fdadadef8}{Ipc\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P}.
+
+Ipc reserves some shared memory in Shared\-Region zero for synchronization. Gate\-M\-P reserves some shared memory for managing the gates and for the default Gate\-M\-P. The same amount of memory must be reserved by each processor, but only the owner of Shared\-Region zero clears the reserved memory and creates the default Gate\-M\-P. The default heap for each Shared\-Region is created by the owner of each Shared\-Region.
+
+Note\-: For B\-I\-O\-S, if the config parameter Ipc.\-proc\-Sync is set to Ipc.\-Proc\-Sync\-\_\-\-A\-L\-L, this function calls \hyperlink{_ipc_8h_a170f84915df79377080be708302bcb08}{Ipc\-\_\-attach()} internally.
+
+\begin{DoxyReturn}{Returns}
+Status
+\begin{DoxyItemize}
+\item \hyperlink{_ipc_8h_a3f2ce5a89194a828588322cb29548360}{Ipc\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}\-: operation was successful
+\item \hyperlink{_ipc_8h_a1cffa46553c4e6cb6d699f9fdadadef8}{Ipc\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P}\-: already successfully called
+\item \hyperlink{_ipc_8h_af61be5fb093e7cd7cb076afc8b2fe798}{Ipc\-\_\-\-E\-\_\-\-N\-O\-T\-R\-E\-A\-D\-Y}\-: shared memory is not ready
+\item \hyperlink{_ipc_8h_a156e22baea9b53fb663a7bb8684022f1}{Ipc\-\_\-\-E\-\_\-\-F\-A\-I\-L}\-: operation failed 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\index{Ipc.\-h@{Ipc.\-h}!Ipc\-\_\-stop@{Ipc\-\_\-stop}}
+\index{Ipc\-\_\-stop@{Ipc\-\_\-stop}!Ipc.h@{Ipc.\-h}}
+\paragraph[{Ipc\-\_\-stop}]{\setlength{\rightskip}{0pt plus 5cm}Int Ipc\-\_\-stop (
+\begin{DoxyParamCaption}
+\item[{Void}]{}
+\end{DoxyParamCaption}
+)}\label{_ipc_8h_ae47b1d9fa8486f162c836f142f0ab2ee}
+
+
+Resets the Ipc state. 
+
+This function should be called only once and only after detaching from all processors. Once called, Ipc is placed back to the same state as it was before \hyperlink{_ipc_8h_aca550c6a5498637cfec7b0f4e6d07828}{Ipc\-\_\-start()} was called.
+
+\begin{DoxyReturn}{Returns}
+Status
+\begin{DoxyItemize}
+\item \hyperlink{_ipc_8h_a3f2ce5a89194a828588322cb29548360}{Ipc\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}\-: operation was successful 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\index{Ipc.\-h@{Ipc.\-h}!Ipc\-\_\-write\-Config@{Ipc\-\_\-write\-Config}}
+\index{Ipc\-\_\-write\-Config@{Ipc\-\_\-write\-Config}!Ipc.h@{Ipc.\-h}}
+\paragraph[{Ipc\-\_\-write\-Config}]{\setlength{\rightskip}{0pt plus 5cm}Int Ipc\-\_\-write\-Config (
+\begin{DoxyParamCaption}
+\item[{U\-Int16}]{remote\-Proc\-Id, }
+\item[{U\-Int32}]{tag, }
+\item[{Ptr}]{cfg, }
+\item[{Size\-T}]{size}
+\end{DoxyParamCaption}
+)}\label{_ipc_8h_af3b2fb0c66ad86f148870202b1b7aca1}
+
+
+Writes the config entry to the config area. 
+
+The \hyperlink{_ipc_8h_af3b2fb0c66ad86f148870202b1b7aca1}{Ipc\-\_\-write\-Config} and \hyperlink{_ipc_8h_a4a5c82ebf2441ebf3fa86e6e7dc917d7}{Ipc\-\_\-read\-Config} A\-P\-Is are used to pass configuration information from one core to another. This 'information' is passed via a pointer to shared memory with a given size and is identified via a unique tag. A typical use case of this A\-P\-I would be passing configuration information from a Slave core to the Host at startup-\/time. For example, if Message\-Q is used, this information might include the queue name, message heap sizes, etc.
+
+For \hyperlink{_ipc_8h_af3b2fb0c66ad86f148870202b1b7aca1}{Ipc\-\_\-write\-Config}, if 'N\-U\-L\-L' is passed in for the cfg parameter, it attempts to free the shared memory that is allocated by a previous \hyperlink{_ipc_8h_af3b2fb0c66ad86f148870202b1b7aca1}{Ipc\-\_\-write\-Config} call. The remote\-Proc\-Id, tag, and size must match the previous \hyperlink{_ipc_8h_af3b2fb0c66ad86f148870202b1b7aca1}{Ipc\-\_\-write\-Config} call.
+
+The \hyperlink{_ipc_8h_af3b2fb0c66ad86f148870202b1b7aca1}{Ipc\-\_\-write\-Config} A\-P\-I writes into Shared\-Region 0 (S\-R0) and uses the tag to uniquely identify the structure (cfg) and size written into S\-R0 which both sides must agree on.
+
+
+\begin{DoxyParams}{Parameters}
+{\em remote\-Proc\-Id} & remote processor's Multi\-Proc id \\
+\hline
+{\em tag} & tag to identify a config entry \\
+\hline
+{\em cfg} & address where the entry will be copied \\
+\hline
+{\em size} & size of config entry\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status
+\begin{DoxyItemize}
+\item \hyperlink{_ipc_8h_a3f2ce5a89194a828588322cb29548360}{Ipc\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}\-: if operation was successful
+\item \hyperlink{_ipc_8h_a156e22baea9b53fb663a7bb8684022f1}{Ipc\-\_\-\-E\-\_\-\-F\-A\-I\-L}\-: if operation failed
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{_ipc_8h_a4a5c82ebf2441ebf3fa86e6e7dc917d7}{Ipc\-\_\-read\-Config} 
+\end{DoxySeeAlso}

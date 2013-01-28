@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="ti.sdo.io.converters" version="1, 0, 0, 0" producerId="undefined">
+    <units>
+        <module name="Transformer"/>
+        <module name="DriverAdapter"/>
+        <module name="NullConverter"/>
+    </units>
+    <sources>
+        <srcFile name="package/package_ti.sdo.io.converters.c"/>
+        <srcFile name="DriverAdapter.c"/>
+        <srcFile name="Transformer.c"/>
+        <srcFile name="NullConverter.c"/>
+    </sources>
+    <configscripts>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.converters.a28L.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/package/package_ti.sdo.io.converters.o28L.dep" src="package/package_ti.sdo.io.converters.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/DriverAdapter.o28L.dep" src="DriverAdapter.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/Transformer.o28L.dep" src="Transformer.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/NullConverter.o28L.dep" src="NullConverter.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.converters.a28FP.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/package/package_ti.sdo.io.converters.o28FP.dep" src="package/package_ti.sdo.io.converters.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/DriverAdapter.o28FP.dep" src="DriverAdapter.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/Transformer.o28FP.dep" src="Transformer.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/NullConverter.o28FP.dep" src="NullConverter.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.converters.a64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/package/package_ti.sdo.io.converters.o64P.dep" src="package/package_ti.sdo.io.converters.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/DriverAdapter.o64P.dep" src="DriverAdapter.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/Transformer.o64P.dep" src="Transformer.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/NullConverter.o64P.dep" src="NullConverter.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.converters.a64Pe.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/package/package_ti.sdo.io.converters.o64Pe.dep" src="package/package_ti.sdo.io.converters.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/DriverAdapter.o64Pe.dep" src="DriverAdapter.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/Transformer.o64Pe.dep" src="Transformer.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/NullConverter.o64Pe.dep" src="NullConverter.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.converters.a674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/package/package_ti.sdo.io.converters.o674.dep" src="package/package_ti.sdo.io.converters.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/DriverAdapter.o674.dep" src="DriverAdapter.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/Transformer.o674.dep" src="Transformer.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/NullConverter.o674.dep" src="NullConverter.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.converters.ae64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/package/package_ti.sdo.io.converters.oe64P.dep" src="package/package_ti.sdo.io.converters.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/DriverAdapter.oe64P.dep" src="DriverAdapter.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/Transformer.oe64P.dep" src="Transformer.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/NullConverter.oe64P.dep" src="NullConverter.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.converters.ae64Pe.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/package/package_ti.sdo.io.converters.oe64Pe.dep" src="package/package_ti.sdo.io.converters.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/DriverAdapter.oe64Pe.dep" src="DriverAdapter.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/Transformer.oe64Pe.dep" src="Transformer.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/NullConverter.oe64Pe.dep" src="NullConverter.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.converters.ae674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/package/package_ti.sdo.io.converters.oe674.dep" src="package/package_ti.sdo.io.converters.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/DriverAdapter.oe674.dep" src="DriverAdapter.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/Transformer.oe674.dep" src="Transformer.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/NullConverter.oe674.dep" src="NullConverter.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.converters.ae64T.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/package/package_ti.sdo.io.converters.oe64T.dep" src="package/package_ti.sdo.io.converters.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/DriverAdapter.oe64T.dep" src="DriverAdapter.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/Transformer.oe64T.dep" src="Transformer.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/NullConverter.oe64T.dep" src="NullConverter.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.converters.ae66.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/package/package_ti.sdo.io.converters.oe66.dep" src="package/package_ti.sdo.io.converters.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/DriverAdapter.oe66.dep" src="DriverAdapter.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/Transformer.oe66.dep" src="Transformer.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/NullConverter.oe66.dep" src="NullConverter.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.converters.ae66e.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/package/package_ti.sdo.io.converters.oe66e.dep" src="package/package_ti.sdo.io.converters.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/DriverAdapter.oe66e.dep" src="DriverAdapter.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/Transformer.oe66e.dep" src="Transformer.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/NullConverter.oe66e.dep" src="NullConverter.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.converters.ae9.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/package/package_ti.sdo.io.converters.oe9.dep" src="package/package_ti.sdo.io.converters.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/DriverAdapter.oe9.dep" src="DriverAdapter.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/Transformer.oe9.dep" src="Transformer.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/NullConverter.oe9.dep" src="NullConverter.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.converters.aea8f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/package/package_ti.sdo.io.converters.oea8f.dep" src="package/package_ti.sdo.io.converters.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/DriverAdapter.oea8f.dep" src="DriverAdapter.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/Transformer.oea8f.dep" src="Transformer.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/NullConverter.oea8f.dep" src="NullConverter.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.converters.aea8fnv.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/package/package_ti.sdo.io.converters.oea8fnv.dep" src="package/package_ti.sdo.io.converters.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/DriverAdapter.oea8fnv.dep" src="DriverAdapter.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/Transformer.oea8fnv.dep" src="Transformer.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/NullConverter.oea8fnv.dep" src="NullConverter.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.converters.aem3.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/package/package_ti.sdo.io.converters.oem3.dep" src="package/package_ti.sdo.io.converters.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/DriverAdapter.oem3.dep" src="DriverAdapter.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/Transformer.oem3.dep" src="Transformer.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/NullConverter.oem3.dep" src="NullConverter.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.converters.aem4.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/package/package_ti.sdo.io.converters.oem4.dep" src="package/package_ti.sdo.io.converters.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/DriverAdapter.oem4.dep" src="DriverAdapter.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/Transformer.oem4.dep" src="Transformer.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/NullConverter.oem4.dep" src="NullConverter.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.converters.aem4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/package/package_ti.sdo.io.converters.oem4f.dep" src="package/package_ti.sdo.io.converters.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/DriverAdapter.oem4f.dep" src="DriverAdapter.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/Transformer.oem4f.dep" src="Transformer.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/NullConverter.oem4f.dep" src="NullConverter.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.converters.aearp32.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/package/package_ti.sdo.io.converters.oearp32.dep" src="package/package_ti.sdo.io.converters.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/DriverAdapter.oearp32.dep" src="DriverAdapter.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/Transformer.oearp32.dep" src="Transformer.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/NullConverter.oearp32.dep" src="NullConverter.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.converters.aearp32F.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/package/package_ti.sdo.io.converters.oearp32F.dep" src="package/package_ti.sdo.io.converters.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/DriverAdapter.oearp32F.dep" src="DriverAdapter.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/Transformer.oearp32F.dep" src="Transformer.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/NullConverter.oearp32F.dep" src="NullConverter.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.converters.aer4te.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/package/package_ti.sdo.io.converters.oer4te.dep" src="package/package_ti.sdo.io.converters.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/DriverAdapter.oer4te.dep" src="DriverAdapter.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/Transformer.oer4te.dep" src="Transformer.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/NullConverter.oer4te.dep" src="NullConverter.c"/>
+        <srcFile name="lib/io/debug/ti.sdo.io.converters.aer4fte.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/package/package_ti.sdo.io.converters.oer4fte.dep" src="package/package_ti.sdo.io.converters.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/DriverAdapter.oer4fte.dep" src="DriverAdapter.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/Transformer.oer4fte.dep" src="Transformer.c"/>
+        <srcFile name="package/lib/lib/io/debug/ti.sdo.io.converters/NullConverter.oer4fte.dep" src="NullConverter.c"/>
+        <srcFile name="lib/smpio/debug/ti.sdo.io.converters.aem3.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/smpio/debug/ti.sdo.io.converters/package/package_ti.sdo.io.converters.oem3.dep" src="package/package_ti.sdo.io.converters.c"/>
+        <srcFile name="package/lib/lib/smpio/debug/ti.sdo.io.converters/DriverAdapter.oem3.dep" src="DriverAdapter.c"/>
+        <srcFile name="package/lib/lib/smpio/debug/ti.sdo.io.converters/Transformer.oem3.dep" src="Transformer.c"/>
+        <srcFile name="package/lib/lib/smpio/debug/ti.sdo.io.converters/NullConverter.oem3.dep" src="NullConverter.c"/>
+        <srcFile name="lib/smpio/debug/ti.sdo.io.converters.aem4.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/smpio/debug/ti.sdo.io.converters/package/package_ti.sdo.io.converters.oem4.dep" src="package/package_ti.sdo.io.converters.c"/>
+        <srcFile name="package/lib/lib/smpio/debug/ti.sdo.io.converters/DriverAdapter.oem4.dep" src="DriverAdapter.c"/>
+        <srcFile name="package/lib/lib/smpio/debug/ti.sdo.io.converters/Transformer.oem4.dep" src="Transformer.c"/>
+        <srcFile name="package/lib/lib/smpio/debug/ti.sdo.io.converters/NullConverter.oem4.dep" src="NullConverter.c"/>
+        <srcFile name="package/rel/ti_sdo_io_converters.tar.gz.dep" src="package/rel/ti_sdo_io_converters.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="ti.targets.C28_large"
+            version="ti.targets.C28_large{1,0,5.2,3"
+            platform="ti.platforms.ezdsp28235"
+            isa="28"
+            suffix="28L"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c28/5.2.3/Linux"
+            os="undefined"
+            rts="ti.targets.rts2800">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="large"/>
+        </target>
+        <target name="ti.targets.C28_float"
+            version="ti.targets.C28_float{1,0,5.2,3"
+            platform="ti.platforms.concertoC28:F28M35H52C1:1"
+            isa="28FP"
+            suffix="28FP"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c28/5.2.3/Linux"
+            os="undefined"
+            rts="ti.targets.rts2800">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="large"/>
+        </target>
+        <target name="ti.targets.C64P"
+            version="ti.targets.C64P{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+            isa="64P"
+            suffix="64P"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.C64P_big_endian"
+            version="ti.targets.C64P_big_endian{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+            isa="64P"
+            suffix="64Pe"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.C674"
+            version="ti.targets.C674{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evmOMAPL138.dsp"
+            isa="674"
+            suffix="674"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64P"
+            version="ti.targets.elf.C64P{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+            isa="64P"
+            suffix="e64P"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64P_big_endian"
+            version="ti.targets.elf.C64P_big_endian{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+            isa="64P"
+            suffix="e64Pe"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C674"
+            version="ti.targets.elf.C674{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evmOMAPL138.dsp"
+            isa="674"
+            suffix="e674"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64T"
+            version="ti.targets.elf.C64T{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.omap4430.dsp"
+            isa="64T"
+            suffix="e64T"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C66"
+            version="ti.targets.elf.C66{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6678.core0"
+            isa="66"
+            suffix="e66"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C66_big_endian"
+            version="ti.targets.elf.C66_big_endian{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6678.core0"
+            isa="66"
+            suffix="e66e"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.Arm9"
+            version="ti.targets.arm.elf.Arm9{1,0,5.0,1"
+            platform="ti.sdo.ipc.examples.platforms.evmOMAPL138.arm"
+            isa="v5T"
+            suffix="e9"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.A8F"
+            version="ti.targets.arm.elf.A8F{1,0,5.0,1"
+            platform="ti.sdo.ipc.examples.platforms.evmTI816X.host"
+            isa="v7A"
+            suffix="ea8f"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.A8Fnv"
+            version="ti.targets.arm.elf.A8Fnv{1,0,5.0,1"
+            platform="ti.sdo.ipc.examples.platforms.evmTI816X.host"
+            isa="v7A"
+            suffix="ea8fnv"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.M3"
+            version="ti.targets.arm.elf.M3{1,0,5.0,1"
+            platform="ti.sdo.ipc.examples.platforms.evmC6A8149.vpss"
+            isa="v7M"
+            suffix="em3"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.M4"
+            version="ti.targets.arm.elf.M4{1,0,5.0,1"
+            platform="ti.platforms.stellaris:LM4FSXLH5BB:1"
+            isa="v7M4"
+            suffix="em4"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.M4F"
+            version="ti.targets.arm.elf.M4F{1,0,5.0,1"
+            platform="ti.platforms.stellaris:LM4FSXLH5BB:1"
+            isa="v7M4"
+            suffix="em4f"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arp32.elf.ARP32"
+            version="ti.targets.arp32.elf.ARP32{1,0,1.0,0,5"
+            platform="ti.sdo.ipc.examples.platforms.simArctic.arp32"
+            isa="arp32"
+            suffix="earp32"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arp32/1.0.0B5/Linux"
+            os="undefined"
+            rts="ti.targets.arp32.rts">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arp32.elf.ARP32_far"
+            version="ti.targets.arp32.elf.ARP32_far{1,0,1.0,0,5"
+            platform="ti.sdo.ipc.examples.platforms.simArctic.arp32"
+            isa="arp32"
+            suffix="earp32F"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arp32/1.0.0B5/Linux"
+            os="undefined"
+            rts="ti.targets.arp32.rts">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.R4t_big_endian"
+            version="ti.targets.arm.elf.R4t_big_endian{1,0,5.0,1"
+            platform="ti.platforms.evmTMS570LS20216:testInst"
+            isa="v7R"
+            suffix="er4te"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="big"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.R4Ft_big_endian"
+            version="ti.targets.arm.elf.R4Ft_big_endian{1,0,5.0,1"
+            platform="ti.platforms.evmTMS570LS20216:testInst"
+            isa="v7R"
+            suffix="er4fte"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="big"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+    </targets>
+    <libraries>
+    <library name="lib/io/debug/ti.sdo.io.converters"
+        pname="lib/io/debug/ti.sdo.io.converters.a28L"
+        profile="debug"
+        target="ti.targets.C28_large"/>
+    <library name="lib/io/debug/ti.sdo.io.converters"
+        pname="lib/io/debug/ti.sdo.io.converters.a28FP"
+        profile="debug"
+        target="ti.targets.C28_float"/>
+    <library name="lib/io/debug/ti.sdo.io.converters"
+        pname="lib/io/debug/ti.sdo.io.converters.a64P"
+        profile="debug"
+        target="ti.targets.C64P"/>
+    <library name="lib/io/debug/ti.sdo.io.converters"
+        pname="lib/io/debug/ti.sdo.io.converters.a64Pe"
+        profile="debug"
+        target="ti.targets.C64P_big_endian"/>
+    <library name="lib/io/debug/ti.sdo.io.converters"
+        pname="lib/io/debug/ti.sdo.io.converters.a674"
+        profile="debug"
+        target="ti.targets.C674"/>
+    <library name="lib/io/debug/ti.sdo.io.converters"
+        pname="lib/io/debug/ti.sdo.io.converters.ae64P"
+        profile="debug"
+        target="ti.targets.elf.C64P"/>
+    <library name="lib/io/debug/ti.sdo.io.converters"
+        pname="lib/io/debug/ti.sdo.io.converters.ae64Pe"
+        profile="debug"
+        target="ti.targets.elf.C64P_big_endian"/>
+    <library name="lib/io/debug/ti.sdo.io.converters"
+        pname="lib/io/debug/ti.sdo.io.converters.ae674"
+        profile="debug"
+        target="ti.targets.elf.C674"/>
+    <library name="lib/io/debug/ti.sdo.io.converters"
+        pname="lib/io/debug/ti.sdo.io.converters.ae64T"
+        profile="debug"
+        target="ti.targets.elf.C64T"/>
+    <library name="lib/io/debug/ti.sdo.io.converters"
+        pname="lib/io/debug/ti.sdo.io.converters.ae66"
+        profile="debug"
+        target="ti.targets.elf.C66"/>
+    <library name="lib/io/debug/ti.sdo.io.converters"
+        pname="lib/io/debug/ti.sdo.io.converters.ae66e"
+        profile="debug"
+        target="ti.targets.elf.C66_big_endian"/>
+    <library name="lib/io/debug/ti.sdo.io.converters"
+        pname="lib/io/debug/ti.sdo.io.converters.ae9"
+        profile="debug"
+        target="ti.targets.arm.elf.Arm9"/>
+    <library name="lib/io/debug/ti.sdo.io.converters"
+        pname="lib/io/debug/ti.sdo.io.converters.aea8f"
+        profile="debug"
+        target="ti.targets.arm.elf.A8F"/>
+    <library name="lib/io/debug/ti.sdo.io.converters"
+        pname="lib/io/debug/ti.sdo.io.converters.aea8fnv"
+        profile="debug"
+        target="ti.targets.arm.elf.A8Fnv"/>
+    <library name="lib/io/debug/ti.sdo.io.converters"
+        pname="lib/io/debug/ti.sdo.io.converters.aem3"
+        profile="debug"
+        target="ti.targets.arm.elf.M3"/>
+    <library name="lib/io/debug/ti.sdo.io.converters"
+        pname="lib/io/debug/ti.sdo.io.converters.aem4"
+        profile="debug"
+        target="ti.targets.arm.elf.M4"/>
+    <library name="lib/io/debug/ti.sdo.io.converters"
+        pname="lib/io/debug/ti.sdo.io.converters.aem4f"
+        profile="debug"
+        target="ti.targets.arm.elf.M4F"/>
+    <library name="lib/io/debug/ti.sdo.io.converters"
+        pname="lib/io/debug/ti.sdo.io.converters.aearp32"
+        profile="debug"
+        target="ti.targets.arp32.elf.ARP32"/>
+    <library name="lib/io/debug/ti.sdo.io.converters"
+        pname="lib/io/debug/ti.sdo.io.converters.aearp32F"
+        profile="debug"
+        target="ti.targets.arp32.elf.ARP32_far"/>
+    <library name="lib/io/debug/ti.sdo.io.converters"
+        pname="lib/io/debug/ti.sdo.io.converters.aer4te"
+        profile="debug"
+        target="ti.targets.arm.elf.R4t_big_endian"/>
+    <library name="lib/io/debug/ti.sdo.io.converters"
+        pname="lib/io/debug/ti.sdo.io.converters.aer4fte"
+        profile="debug"
+        target="ti.targets.arm.elf.R4Ft_big_endian"/>
+    <library name="lib/smpio/debug/ti.sdo.io.converters"
+        pname="lib/smpio/debug/ti.sdo.io.converters.aem3"
+        profile="smp"
+        target="ti.targets.arm.elf.M3"/>
+    <library name="lib/smpio/debug/ti.sdo.io.converters"
+        pname="lib/smpio/debug/ti.sdo.io.converters.aem4"
+        profile="smp"
+        target="ti.targets.arm.elf.M4"/>
+    </libraries>
+    <configurations>
+    </configurations>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="ti_sdo_io_converters"
+        pname="../../../../../exports/ti_sdo_io_converters.tar.gz"
+        label="default"
+        relScript="tisb/release/filters/copyright.rel">
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="Transformer.c"/>
+        <file name="package.bld"/>
+        <file name="package/package.cfg.xdc.inc"/>
+        <file name="lib/io/debug/ti.sdo.io.converters.a28L"/>
+        <file name="package/package_ti.sdo.io.converters.c"/>
+        <file name="DriverAdapter.c"/>
+        <file name="NullConverter.c"/>
+        <file name="lib/io/debug/ti.sdo.io.converters.a28FP"/>
+        <file name="lib/io/debug/ti.sdo.io.converters.a64P"/>
+        <file name="lib/io/debug/ti.sdo.io.converters.a64Pe"/>
+        <file name="lib/io/debug/ti.sdo.io.converters.a674"/>
+        <file name="lib/io/debug/ti.sdo.io.converters.ae64P"/>
+        <file name="lib/io/debug/ti.sdo.io.converters.ae64Pe"/>
+        <file name="lib/io/debug/ti.sdo.io.converters.ae674"/>
+        <file name="lib/io/debug/ti.sdo.io.converters.ae64T"/>
+        <file name="lib/io/debug/ti.sdo.io.converters.ae66"/>
+        <file name="lib/io/debug/ti.sdo.io.converters.ae66e"/>
+        <file name="lib/io/debug/ti.sdo.io.converters.ae9"/>
+        <file name="lib/io/debug/ti.sdo.io.converters.aea8f"/>
+        <file name="lib/io/debug/ti.sdo.io.converters.aea8fnv"/>
+        <file name="lib/io/debug/ti.sdo.io.converters.aem3"/>
+        <file name="lib/io/debug/ti.sdo.io.converters.aem4"/>
+        <file name="lib/io/debug/ti.sdo.io.converters.aem4f"/>
+        <file name="lib/io/debug/ti.sdo.io.converters.aearp32"/>
+        <file name="lib/io/debug/ti.sdo.io.converters.aearp32F"/>
+        <file name="lib/io/debug/ti.sdo.io.converters.aer4te"/>
+        <file name="lib/io/debug/ti.sdo.io.converters.aer4fte"/>
+        <file name="lib/smpio/debug/ti.sdo.io.converters.aem3"/>
+        <file name="lib/smpio/debug/ti.sdo.io.converters.aem4"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

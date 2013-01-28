@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="ti.sdo.ipc.transports" version="1, 0, 0, 0" producerId="undefined">
+    <units>
+        <module name="TransportShm"/>
+        <module name="TransportShmSetup"/>
+        <module name="TransportShmCirc"/>
+        <module name="TransportShmCircSetup"/>
+        <module name="TransportShmNotify"/>
+        <module name="TransportShmNotifySetup"/>
+        <module name="TransportNullSetup"/>
+    </units>
+    <sources>
+        <srcFile name="package/package_ti.sdo.ipc.transports.c"/>
+        <srcFile name="TransportShm.c"/>
+        <srcFile name="TransportShmSetup.c"/>
+        <srcFile name="TransportShmCirc.c"/>
+        <srcFile name="TransportShmCircSetup.c"/>
+        <srcFile name="TransportShmNotify.c"/>
+        <srcFile name="TransportShmNotifySetup.c"/>
+        <srcFile name="TransportNullSetup.c"/>
+    </sources>
+    <configscripts>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.transports.a28L.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/package/package_ti.sdo.ipc.transports.o28L.dep" src="package/package_ti.sdo.ipc.transports.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShm.o28L.dep" src="TransportShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmSetup.o28L.dep" src="TransportShmSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCirc.o28L.dep" src="TransportShmCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCircSetup.o28L.dep" src="TransportShmCircSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotify.o28L.dep" src="TransportShmNotify.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotifySetup.o28L.dep" src="TransportShmNotifySetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportNullSetup.o28L.dep" src="TransportNullSetup.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.transports.a28FP.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/package/package_ti.sdo.ipc.transports.o28FP.dep" src="package/package_ti.sdo.ipc.transports.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShm.o28FP.dep" src="TransportShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmSetup.o28FP.dep" src="TransportShmSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCirc.o28FP.dep" src="TransportShmCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCircSetup.o28FP.dep" src="TransportShmCircSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotify.o28FP.dep" src="TransportShmNotify.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotifySetup.o28FP.dep" src="TransportShmNotifySetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportNullSetup.o28FP.dep" src="TransportNullSetup.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.transports.a64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/package/package_ti.sdo.ipc.transports.o64P.dep" src="package/package_ti.sdo.ipc.transports.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShm.o64P.dep" src="TransportShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmSetup.o64P.dep" src="TransportShmSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCirc.o64P.dep" src="TransportShmCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCircSetup.o64P.dep" src="TransportShmCircSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotify.o64P.dep" src="TransportShmNotify.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotifySetup.o64P.dep" src="TransportShmNotifySetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportNullSetup.o64P.dep" src="TransportNullSetup.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.transports.a64Pe.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/package/package_ti.sdo.ipc.transports.o64Pe.dep" src="package/package_ti.sdo.ipc.transports.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShm.o64Pe.dep" src="TransportShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmSetup.o64Pe.dep" src="TransportShmSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCirc.o64Pe.dep" src="TransportShmCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCircSetup.o64Pe.dep" src="TransportShmCircSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotify.o64Pe.dep" src="TransportShmNotify.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotifySetup.o64Pe.dep" src="TransportShmNotifySetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportNullSetup.o64Pe.dep" src="TransportNullSetup.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.transports.a674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/package/package_ti.sdo.ipc.transports.o674.dep" src="package/package_ti.sdo.ipc.transports.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShm.o674.dep" src="TransportShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmSetup.o674.dep" src="TransportShmSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCirc.o674.dep" src="TransportShmCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCircSetup.o674.dep" src="TransportShmCircSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotify.o674.dep" src="TransportShmNotify.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotifySetup.o674.dep" src="TransportShmNotifySetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportNullSetup.o674.dep" src="TransportNullSetup.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.transports.ae64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/package/package_ti.sdo.ipc.transports.oe64P.dep" src="package/package_ti.sdo.ipc.transports.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShm.oe64P.dep" src="TransportShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmSetup.oe64P.dep" src="TransportShmSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCirc.oe64P.dep" src="TransportShmCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCircSetup.oe64P.dep" src="TransportShmCircSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotify.oe64P.dep" src="TransportShmNotify.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotifySetup.oe64P.dep" src="TransportShmNotifySetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportNullSetup.oe64P.dep" src="TransportNullSetup.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.transports.ae64Pe.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/package/package_ti.sdo.ipc.transports.oe64Pe.dep" src="package/package_ti.sdo.ipc.transports.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShm.oe64Pe.dep" src="TransportShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmSetup.oe64Pe.dep" src="TransportShmSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCirc.oe64Pe.dep" src="TransportShmCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCircSetup.oe64Pe.dep" src="TransportShmCircSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotify.oe64Pe.dep" src="TransportShmNotify.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotifySetup.oe64Pe.dep" src="TransportShmNotifySetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportNullSetup.oe64Pe.dep" src="TransportNullSetup.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.transports.ae674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/package/package_ti.sdo.ipc.transports.oe674.dep" src="package/package_ti.sdo.ipc.transports.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShm.oe674.dep" src="TransportShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmSetup.oe674.dep" src="TransportShmSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCirc.oe674.dep" src="TransportShmCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCircSetup.oe674.dep" src="TransportShmCircSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotify.oe674.dep" src="TransportShmNotify.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotifySetup.oe674.dep" src="TransportShmNotifySetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportNullSetup.oe674.dep" src="TransportNullSetup.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.transports.ae64T.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/package/package_ti.sdo.ipc.transports.oe64T.dep" src="package/package_ti.sdo.ipc.transports.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShm.oe64T.dep" src="TransportShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmSetup.oe64T.dep" src="TransportShmSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCirc.oe64T.dep" src="TransportShmCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCircSetup.oe64T.dep" src="TransportShmCircSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotify.oe64T.dep" src="TransportShmNotify.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotifySetup.oe64T.dep" src="TransportShmNotifySetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportNullSetup.oe64T.dep" src="TransportNullSetup.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.transports.ae66.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/package/package_ti.sdo.ipc.transports.oe66.dep" src="package/package_ti.sdo.ipc.transports.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShm.oe66.dep" src="TransportShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmSetup.oe66.dep" src="TransportShmSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCirc.oe66.dep" src="TransportShmCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCircSetup.oe66.dep" src="TransportShmCircSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotify.oe66.dep" src="TransportShmNotify.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotifySetup.oe66.dep" src="TransportShmNotifySetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportNullSetup.oe66.dep" src="TransportNullSetup.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.transports.ae66e.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/package/package_ti.sdo.ipc.transports.oe66e.dep" src="package/package_ti.sdo.ipc.transports.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShm.oe66e.dep" src="TransportShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmSetup.oe66e.dep" src="TransportShmSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCirc.oe66e.dep" src="TransportShmCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCircSetup.oe66e.dep" src="TransportShmCircSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotify.oe66e.dep" src="TransportShmNotify.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotifySetup.oe66e.dep" src="TransportShmNotifySetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportNullSetup.oe66e.dep" src="TransportNullSetup.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.transports.ae9.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/package/package_ti.sdo.ipc.transports.oe9.dep" src="package/package_ti.sdo.ipc.transports.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShm.oe9.dep" src="TransportShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmSetup.oe9.dep" src="TransportShmSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCirc.oe9.dep" src="TransportShmCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCircSetup.oe9.dep" src="TransportShmCircSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotify.oe9.dep" src="TransportShmNotify.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotifySetup.oe9.dep" src="TransportShmNotifySetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportNullSetup.oe9.dep" src="TransportNullSetup.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.transports.aea8f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/package/package_ti.sdo.ipc.transports.oea8f.dep" src="package/package_ti.sdo.ipc.transports.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShm.oea8f.dep" src="TransportShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmSetup.oea8f.dep" src="TransportShmSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCirc.oea8f.dep" src="TransportShmCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCircSetup.oea8f.dep" src="TransportShmCircSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotify.oea8f.dep" src="TransportShmNotify.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotifySetup.oea8f.dep" src="TransportShmNotifySetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportNullSetup.oea8f.dep" src="TransportNullSetup.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.transports.aea8fnv.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/package/package_ti.sdo.ipc.transports.oea8fnv.dep" src="package/package_ti.sdo.ipc.transports.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShm.oea8fnv.dep" src="TransportShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmSetup.oea8fnv.dep" src="TransportShmSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCirc.oea8fnv.dep" src="TransportShmCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCircSetup.oea8fnv.dep" src="TransportShmCircSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotify.oea8fnv.dep" src="TransportShmNotify.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotifySetup.oea8fnv.dep" src="TransportShmNotifySetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportNullSetup.oea8fnv.dep" src="TransportNullSetup.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.transports.aem3.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/package/package_ti.sdo.ipc.transports.oem3.dep" src="package/package_ti.sdo.ipc.transports.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShm.oem3.dep" src="TransportShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmSetup.oem3.dep" src="TransportShmSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCirc.oem3.dep" src="TransportShmCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCircSetup.oem3.dep" src="TransportShmCircSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotify.oem3.dep" src="TransportShmNotify.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotifySetup.oem3.dep" src="TransportShmNotifySetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportNullSetup.oem3.dep" src="TransportNullSetup.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.transports.aem4.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/package/package_ti.sdo.ipc.transports.oem4.dep" src="package/package_ti.sdo.ipc.transports.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShm.oem4.dep" src="TransportShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmSetup.oem4.dep" src="TransportShmSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCirc.oem4.dep" src="TransportShmCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCircSetup.oem4.dep" src="TransportShmCircSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotify.oem4.dep" src="TransportShmNotify.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotifySetup.oem4.dep" src="TransportShmNotifySetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportNullSetup.oem4.dep" src="TransportNullSetup.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.transports.aem4f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/package/package_ti.sdo.ipc.transports.oem4f.dep" src="package/package_ti.sdo.ipc.transports.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShm.oem4f.dep" src="TransportShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmSetup.oem4f.dep" src="TransportShmSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCirc.oem4f.dep" src="TransportShmCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCircSetup.oem4f.dep" src="TransportShmCircSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotify.oem4f.dep" src="TransportShmNotify.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotifySetup.oem4f.dep" src="TransportShmNotifySetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportNullSetup.oem4f.dep" src="TransportNullSetup.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.transports.aearp32.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/package/package_ti.sdo.ipc.transports.oearp32.dep" src="package/package_ti.sdo.ipc.transports.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShm.oearp32.dep" src="TransportShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmSetup.oearp32.dep" src="TransportShmSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCirc.oearp32.dep" src="TransportShmCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCircSetup.oearp32.dep" src="TransportShmCircSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotify.oearp32.dep" src="TransportShmNotify.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotifySetup.oearp32.dep" src="TransportShmNotifySetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportNullSetup.oearp32.dep" src="TransportNullSetup.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.transports.aearp32F.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/package/package_ti.sdo.ipc.transports.oearp32F.dep" src="package/package_ti.sdo.ipc.transports.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShm.oearp32F.dep" src="TransportShm.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmSetup.oearp32F.dep" src="TransportShmSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCirc.oearp32F.dep" src="TransportShmCirc.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmCircSetup.oearp32F.dep" src="TransportShmCircSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotify.oearp32F.dep" src="TransportShmNotify.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportShmNotifySetup.oearp32F.dep" src="TransportShmNotifySetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.transports/TransportNullSetup.oearp32F.dep" src="TransportNullSetup.c"/>
+        <srcFile name="lib/smpipc/debug/ti.sdo.ipc.transports.aem3.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.transports/package/package_ti.sdo.ipc.transports.oem3.dep" src="package/package_ti.sdo.ipc.transports.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.transports/TransportShm.oem3.dep" src="TransportShm.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.transports/TransportShmSetup.oem3.dep" src="TransportShmSetup.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.transports/TransportShmCirc.oem3.dep" src="TransportShmCirc.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.transports/TransportShmCircSetup.oem3.dep" src="TransportShmCircSetup.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.transports/TransportShmNotify.oem3.dep" src="TransportShmNotify.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.transports/TransportShmNotifySetup.oem3.dep" src="TransportShmNotifySetup.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.transports/TransportNullSetup.oem3.dep" src="TransportNullSetup.c"/>
+        <srcFile name="lib/smpipc/debug/ti.sdo.ipc.transports.aem4.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.transports/package/package_ti.sdo.ipc.transports.oem4.dep" src="package/package_ti.sdo.ipc.transports.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.transports/TransportShm.oem4.dep" src="TransportShm.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.transports/TransportShmSetup.oem4.dep" src="TransportShmSetup.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.transports/TransportShmCirc.oem4.dep" src="TransportShmCirc.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.transports/TransportShmCircSetup.oem4.dep" src="TransportShmCircSetup.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.transports/TransportShmNotify.oem4.dep" src="TransportShmNotify.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.transports/TransportShmNotifySetup.oem4.dep" src="TransportShmNotifySetup.c"/>
+        <srcFile name="package/lib/lib/smpipc/debug/ti.sdo.ipc.transports/TransportNullSetup.oem4.dep" src="TransportNullSetup.c"/>
+        <srcFile name="package/rel/ti_sdo_ipc_transports.tar.gz.dep" src="package/rel/ti_sdo_ipc_transports.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="ti.targets.C28_large"
+            version="ti.targets.C28_large{1,0,5.2,3"
+            platform="ti.platforms.ezdsp28235"
+            isa="28"
+            suffix="28L"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c28/5.2.3/Linux"
+            os="undefined"
+            rts="ti.targets.rts2800">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="large"/>
+        </target>
+        <target name="ti.targets.C28_float"
+            version="ti.targets.C28_float{1,0,5.2,3"
+            platform="ti.platforms.concertoC28:F28M35H52C1:1"
+            isa="28FP"
+            suffix="28FP"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c28/5.2.3/Linux"
+            os="undefined"
+            rts="ti.targets.rts2800">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="large"/>
+        </target>
+        <target name="ti.targets.C64P"
+            version="ti.targets.C64P{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+            isa="64P"
+            suffix="64P"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.C64P_big_endian"
+            version="ti.targets.C64P_big_endian{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+            isa="64P"
+            suffix="64Pe"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.C674"
+            version="ti.targets.C674{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evmOMAPL138.dsp"
+            isa="674"
+            suffix="674"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64P"
+            version="ti.targets.elf.C64P{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+            isa="64P"
+            suffix="e64P"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64P_big_endian"
+            version="ti.targets.elf.C64P_big_endian{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+            isa="64P"
+            suffix="e64Pe"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C674"
+            version="ti.targets.elf.C674{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evmOMAPL138.dsp"
+            isa="674"
+            suffix="e674"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64T"
+            version="ti.targets.elf.C64T{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.omap4430.dsp"
+            isa="64T"
+            suffix="e64T"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C66"
+            version="ti.targets.elf.C66{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6678.core0"
+            isa="66"
+            suffix="e66"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C66_big_endian"
+            version="ti.targets.elf.C66_big_endian{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6678.core0"
+            isa="66"
+            suffix="e66e"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.Arm9"
+            version="ti.targets.arm.elf.Arm9{1,0,5.0,1"
+            platform="ti.sdo.ipc.examples.platforms.evmOMAPL138.arm"
+            isa="v5T"
+            suffix="e9"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.A8F"
+            version="ti.targets.arm.elf.A8F{1,0,5.0,1"
+            platform="ti.sdo.ipc.examples.platforms.evmTI816X.host"
+            isa="v7A"
+            suffix="ea8f"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.A8Fnv"
+            version="ti.targets.arm.elf.A8Fnv{1,0,5.0,1"
+            platform="ti.sdo.ipc.examples.platforms.evmTI816X.host"
+            isa="v7A"
+            suffix="ea8fnv"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.M3"
+            version="ti.targets.arm.elf.M3{1,0,5.0,1"
+            platform="ti.sdo.ipc.examples.platforms.evmC6A8149.vpss"
+            isa="v7M"
+            suffix="em3"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.M4"
+            version="ti.targets.arm.elf.M4{1,0,5.0,1"
+            platform="ti.platforms.stellaris:LM4FSXLH5BB:1"
+            isa="v7M4"
+            suffix="em4"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arm.elf.M4F"
+            version="ti.targets.arm.elf.M4F{1,0,5.0,1"
+            platform="ti.platforms.stellaris:LM4FSXLH5BB:1"
+            isa="v7M4"
+            suffix="em4f"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arm/5.0.1/Linux"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arp32.elf.ARP32"
+            version="ti.targets.arp32.elf.ARP32{1,0,1.0,0,5"
+            platform="ti.sdo.ipc.examples.platforms.simArctic.arp32"
+            isa="arp32"
+            suffix="earp32"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arp32/1.0.0B5/Linux"
+            os="undefined"
+            rts="ti.targets.arp32.rts">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.arp32.elf.ARP32_far"
+            version="ti.targets.arp32.elf.ARP32_far{1,0,1.0,0,5"
+            platform="ti.sdo.ipc.examples.platforms.simArctic.arp32"
+            isa="arp32"
+            suffix="earp32F"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/arp32/1.0.0B5/Linux"
+            os="undefined"
+            rts="ti.targets.arp32.rts">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+    </targets>
+    <libraries>
+    <library name="lib/ipc/debug/ti.sdo.ipc.transports"
+        pname="lib/ipc/debug/ti.sdo.ipc.transports.a28L"
+        profile="debug"
+        target="ti.targets.C28_large"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.transports"
+        pname="lib/ipc/debug/ti.sdo.ipc.transports.a28FP"
+        profile="debug"
+        target="ti.targets.C28_float"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.transports"
+        pname="lib/ipc/debug/ti.sdo.ipc.transports.a64P"
+        profile="debug"
+        target="ti.targets.C64P"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.transports"
+        pname="lib/ipc/debug/ti.sdo.ipc.transports.a64Pe"
+        profile="debug"
+        target="ti.targets.C64P_big_endian"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.transports"
+        pname="lib/ipc/debug/ti.sdo.ipc.transports.a674"
+        profile="debug"
+        target="ti.targets.C674"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.transports"
+        pname="lib/ipc/debug/ti.sdo.ipc.transports.ae64P"
+        profile="debug"
+        target="ti.targets.elf.C64P"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.transports"
+        pname="lib/ipc/debug/ti.sdo.ipc.transports.ae64Pe"
+        profile="debug"
+        target="ti.targets.elf.C64P_big_endian"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.transports"
+        pname="lib/ipc/debug/ti.sdo.ipc.transports.ae674"
+        profile="debug"
+        target="ti.targets.elf.C674"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.transports"
+        pname="lib/ipc/debug/ti.sdo.ipc.transports.ae64T"
+        profile="debug"
+        target="ti.targets.elf.C64T"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.transports"
+        pname="lib/ipc/debug/ti.sdo.ipc.transports.ae66"
+        profile="debug"
+        target="ti.targets.elf.C66"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.transports"
+        pname="lib/ipc/debug/ti.sdo.ipc.transports.ae66e"
+        profile="debug"
+        target="ti.targets.elf.C66_big_endian"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.transports"
+        pname="lib/ipc/debug/ti.sdo.ipc.transports.ae9"
+        profile="debug"
+        target="ti.targets.arm.elf.Arm9"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.transports"
+        pname="lib/ipc/debug/ti.sdo.ipc.transports.aea8f"
+        profile="debug"
+        target="ti.targets.arm.elf.A8F"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.transports"
+        pname="lib/ipc/debug/ti.sdo.ipc.transports.aea8fnv"
+        profile="debug"
+        target="ti.targets.arm.elf.A8Fnv"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.transports"
+        pname="lib/ipc/debug/ti.sdo.ipc.transports.aem3"
+        profile="debug"
+        target="ti.targets.arm.elf.M3"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.transports"
+        pname="lib/ipc/debug/ti.sdo.ipc.transports.aem4"
+        profile="debug"
+        target="ti.targets.arm.elf.M4"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.transports"
+        pname="lib/ipc/debug/ti.sdo.ipc.transports.aem4f"
+        profile="debug"
+        target="ti.targets.arm.elf.M4F"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.transports"
+        pname="lib/ipc/debug/ti.sdo.ipc.transports.aearp32"
+        profile="debug"
+        target="ti.targets.arp32.elf.ARP32"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.transports"
+        pname="lib/ipc/debug/ti.sdo.ipc.transports.aearp32F"
+        profile="debug"
+        target="ti.targets.arp32.elf.ARP32_far"/>
+    <library name="lib/smpipc/debug/ti.sdo.ipc.transports"
+        pname="lib/smpipc/debug/ti.sdo.ipc.transports.aem3"
+        profile="smp"
+        target="ti.targets.arm.elf.M3"/>
+    <library name="lib/smpipc/debug/ti.sdo.ipc.transports"
+        pname="lib/smpipc/debug/ti.sdo.ipc.transports.aem4"
+        profile="smp"
+        target="ti.targets.arm.elf.M4"/>
+    </libraries>
+    <configurations>
+    </configurations>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="ti_sdo_ipc_transports"
+        pname="../../../../../exports/ti_sdo_ipc_transports.tar.gz"
+        label="default"
+        relScript="tisb/release/filters/copyright.rel">
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package.bld"/>
+        <file name="package/package.cfg.xdc.inc"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.transports.a28L"/>
+        <file name="package/package_ti.sdo.ipc.transports.c"/>
+        <file name="TransportShm.c"/>
+        <file name="TransportShmSetup.c"/>
+        <file name="TransportShmCirc.c"/>
+        <file name="TransportShmCircSetup.c"/>
+        <file name="TransportShmNotify.c"/>
+        <file name="TransportShmNotifySetup.c"/>
+        <file name="TransportNullSetup.c"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.transports.a28FP"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.transports.a64P"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.transports.a64Pe"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.transports.a674"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.transports.ae64P"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.transports.ae64Pe"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.transports.ae674"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.transports.ae64T"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.transports.ae66"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.transports.ae66e"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.transports.ae9"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.transports.aea8f"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.transports.aea8fnv"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.transports.aem3"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.transports.aem4"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.transports.aem4f"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.transports.aearp32"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.transports.aearp32F"/>
+        <file name="lib/smpipc/debug/ti.sdo.ipc.transports.aem3"/>
+        <file name="lib/smpipc/debug/ti.sdo.ipc.transports.aem4"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

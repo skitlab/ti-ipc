@@ -1,0 +1,554 @@
+\subsection{Gate\-M\-P.\-h File Reference}
+\label{_gate_m_p_8h}\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}}
+
+
+\subsubsection{Detailed Description}
+Multiple processor gate that provides local and remote context protection. ============================================================================
+
+A Gate\-M\-P instance can be used to enforce both local and remote context context protection. That is, entering a Gate\-M\-P can prevent preemption by another thread running on the same processor and simultaneously prevent a remote processor from entering the same gate. Gate\-M\-P's are typically used to protect reads/writes to a shared resource, such as shared memory.
+
+Creating a Gate\-M\-P requires supplying the following configuration
+\begin{DoxyItemize}
+\item Instance name (see \hyperlink{struct_gate_m_p___params_a159f61c6e36fe603775dc4840121969b}{Gate\-M\-P\-\_\-\-Params\-::name})
+\item Region id (see \hyperlink{struct_gate_m_p___params_a5af9a96f1fcf6f29b69c07207a33d453}{Gate\-M\-P\-\_\-\-Params\-::region\-Id}) In addition, the following parameters should be configured as necessary\-:
+\item The level of local protection (interrupt, thread, tasklet, process or none) can be configured using the \hyperlink{struct_gate_m_p___params_ac080433fff177b3d5b1cd5dcafc9e28c}{Gate\-M\-P\-\_\-\-Params\-::local\-Protect} config parameter.
+\item The type of remote system gate that can be used. Most devices will typically have a single type of system gate so this configuration should typically be left alone. See \hyperlink{struct_gate_m_p___params_a32a1870109d6aa6f583932aff19ebb50}{Gate\-M\-P\-\_\-\-Params\-::remote\-Protect} for more information.
+\end{DoxyItemize}
+
+Once created Gate\-M\-P allows the gate to be opened on another processor using \hyperlink{_gate_m_p_8h_acefd091d723ca21a0a02e1e1d5600fc8}{Gate\-M\-P\-\_\-open()} and the name that was used in \hyperlink{_gate_m_p_8h_ad83d284487eb5d7996318c7e8d88cf82}{Gate\-M\-P\-\_\-create()}.
+
+A Gate\-M\-P can be entered and left using \hyperlink{_gate_m_p_8h_a20a6cab18407f07cb1dbcba48de04cd3}{Gate\-M\-P\-\_\-enter()} and \hyperlink{_gate_m_p_8h_a622c40958deebda445715cd8e8b3ea34}{Gate\-M\-P\-\_\-leave()} like any other gate that implements the I\-Gate\-Provider interface.
+
+Gate\-M\-P has the following proxies -\/ Remote\-System\-Proxy, Remote\-Custom1\-Proxy and Remote\-Custom2\-Proxy which are automatically plugged with device-\/specific delegates that implement multiple processor mutexes using a variety of hardware mechanisms.
+
+Gate\-M\-P creates a default system gate whose handle may be obtained using \hyperlink{_gate_m_p_8h_a6c09c820ed3852840f0ce3036a276687}{Gate\-M\-P\-\_\-get\-Default\-Remote()}. Most I\-P\-C modules typically use this gate by default if they require gates and no instance gate is configured by the user.
+
+The Gate\-M\-P header should be included in an application as follows\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{    #include <ti/ipc/GateMP.h>}
+\end{DoxyCode}
+
+
+\begin{DoxyVersion}{Version}
+0.\-00.\-01 
+
+
+\end{DoxyVersion}
+This graph shows which files directly or indirectly include this file\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_gate_m_p_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_gate_m_p___params}{Gate\-M\-P\-\_\-\-Params}
+\begin{DoxyCompactList}\small\item\em Structure defining parameters for the Gate\-M\-P module. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_gate_m_p_8h_a78c50bd892ebded475a145ae7bb71f39}{Gate\-M\-P\-\_\-\-S\-\_\-\-B\-U\-S\-Y}~2
+\begin{DoxyCompactList}\small\item\em The resource is still in use. \end{DoxyCompactList}\item 
+\#define \hyperlink{_gate_m_p_8h_a0f6606bbd36e2e502cbb967cee5bd086}{Gate\-M\-P\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P}~1
+\begin{DoxyCompactList}\small\item\em The module has been already setup. \end{DoxyCompactList}\item 
+\#define \hyperlink{_gate_m_p_8h_a1ffb641b2f80fe24940f930986cc6dee}{Gate\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}~0
+\begin{DoxyCompactList}\small\item\em Operation is successful. \end{DoxyCompactList}\item 
+\#define \hyperlink{_gate_m_p_8h_ac75ff3b36b981b6088d9ec294a36a875}{Gate\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L}~-\/1
+\begin{DoxyCompactList}\small\item\em Generic failure. \end{DoxyCompactList}\item 
+\#define \hyperlink{_gate_m_p_8h_acf51ad78ae70ed3674cd379499d40fb9}{Gate\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G}~-\/2
+\begin{DoxyCompactList}\small\item\em Argument passed to function is invalid. \end{DoxyCompactList}\item 
+\#define \hyperlink{_gate_m_p_8h_a4565a3a4bdab37b2499fa79177297242}{Gate\-M\-P\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y}~-\/3
+\begin{DoxyCompactList}\small\item\em Operation resulted in memory failure. \end{DoxyCompactList}\item 
+\#define \hyperlink{_gate_m_p_8h_a20d3d7bbc6c7a5ef4372384072aad0b1}{Gate\-M\-P\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S}~-\/4
+\begin{DoxyCompactList}\small\item\em The specified entity already exists. \end{DoxyCompactList}\item 
+\#define \hyperlink{_gate_m_p_8h_acdd82a5d634ec934ed7257eea8fb8d2c}{Gate\-M\-P\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}~-\/5
+\begin{DoxyCompactList}\small\item\em Unable to find the specified entity. \end{DoxyCompactList}\item 
+\#define \hyperlink{_gate_m_p_8h_aaf80607f9e9ea4fba411e5693b0e8743}{Gate\-M\-P\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T}~-\/6
+\begin{DoxyCompactList}\small\item\em Operation timed out. \end{DoxyCompactList}\item 
+\#define \hyperlink{_gate_m_p_8h_a075d7c582f213e960e44c25ff138ad85}{Gate\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E}~-\/7
+\begin{DoxyCompactList}\small\item\em Module is not initialized. \end{DoxyCompactList}\item 
+\#define \hyperlink{_gate_m_p_8h_a2eac3b6964fe569e41231fb2fea8b18d}{Gate\-M\-P\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E}~-\/8
+\begin{DoxyCompactList}\small\item\em A failure occurred in an O\-S-\/specific call. \end{DoxyCompactList}\item 
+\#define \hyperlink{_gate_m_p_8h_ad07430b772c1d95c5ef2425b6c280fd9}{Gate\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E}~-\/9
+\begin{DoxyCompactList}\small\item\em Specified resource is not available. \end{DoxyCompactList}\item 
+\#define \hyperlink{_gate_m_p_8h_a77205c8c44ab3edc4557cc4521cb3d04}{Gate\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T}~-\/10
+\begin{DoxyCompactList}\small\item\em Operation was interrupted. Please restart the operation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \hyperlink{_gate_m_p_8h_a3877bd64627d7449d3687e8b06939652}{Gate\-M\-P\-\_\-\-Local\-Protect} \hyperlink{_gate_m_p_8h_accb7b6c936aebe10e31d909310398fe5}{Gate\-M\-P\-\_\-\-Local\-Protect}
+\begin{DoxyCompactList}\small\item\em A set of local context protection levels. \end{DoxyCompactList}\item 
+typedef enum \hyperlink{_gate_m_p_8h_a88716d5706d8fa8c6a3b9a4f023ef1d8}{Gate\-M\-P\-\_\-\-Remote\-Protect} \hyperlink{_gate_m_p_8h_a1400ba94db5b5fefd196649a9c9a4c63}{Gate\-M\-P\-\_\-\-Remote\-Protect}
+\begin{DoxyCompactList}\small\item\em Type of remote Gate. \end{DoxyCompactList}\item 
+typedef struct Gate\-M\-P\-\_\-\-Object $\ast$ \hyperlink{_gate_m_p_8h_ad5bb259f928a14e98d973334bc60ebb3}{Gate\-M\-P\-\_\-\-Handle}
+\begin{DoxyCompactList}\small\item\em Gate\-M\-P\-\_\-\-Handle type. \end{DoxyCompactList}\item 
+typedef struct \hyperlink{struct_gate_m_p___params}{Gate\-M\-P\-\_\-\-Params} \hyperlink{_gate_m_p_8h_aa87249c5e69b88bfaa4ee817cacd3b42}{Gate\-M\-P\-\_\-\-Params}
+\begin{DoxyCompactList}\small\item\em Structure defining parameters for the Gate\-M\-P module. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{_gate_m_p_8h_a3877bd64627d7449d3687e8b06939652}{Gate\-M\-P\-\_\-\-Local\-Protect} \{ \\*
+\hyperlink{_gate_m_p_8h_a3877bd64627d7449d3687e8b06939652a4577e1162c081ed8019a349318ab3afe}{Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-N\-O\-N\-E} =  0, 
+\\*
+\hyperlink{_gate_m_p_8h_a3877bd64627d7449d3687e8b06939652aa4c5dba40613d5436adb6c604bb8514f}{Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T} =  1, 
+\\*
+\hyperlink{_gate_m_p_8h_a3877bd64627d7449d3687e8b06939652aabb3d9eb4b679ceebb537775d388f2b1}{Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-T\-A\-S\-K\-L\-E\-T} =  2, 
+\\*
+\hyperlink{_gate_m_p_8h_a3877bd64627d7449d3687e8b06939652a257bc8d4b8d6d19bdbe96cae37cbd908}{Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-T\-H\-R\-E\-A\-D} =  3, 
+\\*
+\hyperlink{_gate_m_p_8h_a3877bd64627d7449d3687e8b06939652aeec868d37052043812bc4c1829319a6d}{Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-P\-R\-O\-C\-E\-S\-S} =  4
+ \}
+\begin{DoxyCompactList}\small\item\em A set of local context protection levels. \end{DoxyCompactList}\item 
+enum \hyperlink{_gate_m_p_8h_a88716d5706d8fa8c6a3b9a4f023ef1d8}{Gate\-M\-P\-\_\-\-Remote\-Protect} \{ \\*
+\hyperlink{_gate_m_p_8h_a88716d5706d8fa8c6a3b9a4f023ef1d8a29b87b5258dbf5e387fc5a4ada3548ab}{Gate\-M\-P\-\_\-\-Remote\-Protect\-\_\-\-N\-O\-N\-E} =  0, 
+\\*
+\hyperlink{_gate_m_p_8h_a88716d5706d8fa8c6a3b9a4f023ef1d8aba4e153ee33cce1d32dc84254261c557}{Gate\-M\-P\-\_\-\-Remote\-Protect\-\_\-\-S\-Y\-S\-T\-E\-M} =  1, 
+\\*
+\hyperlink{_gate_m_p_8h_a88716d5706d8fa8c6a3b9a4f023ef1d8a2c1243e212dfe1dfce672b2d7556fd1d}{Gate\-M\-P\-\_\-\-Remote\-Protect\-\_\-\-C\-U\-S\-T\-O\-M1} =  2, 
+\\*
+\hyperlink{_gate_m_p_8h_a88716d5706d8fa8c6a3b9a4f023ef1d8a997afc6350b832a6829ee004786aa8db}{Gate\-M\-P\-\_\-\-Remote\-Protect\-\_\-\-C\-U\-S\-T\-O\-M2} =  3
+ \}
+\begin{DoxyCompactList}\small\item\em Type of remote Gate. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Int \hyperlink{_gate_m_p_8h_a0c64bfa32191b16de290787289e46481}{Gate\-M\-P\-\_\-close} (\hyperlink{_gate_m_p_8h_ad5bb259f928a14e98d973334bc60ebb3}{Gate\-M\-P\-\_\-\-Handle} $\ast$handle\-Ptr)
+\begin{DoxyCompactList}\small\item\em Close an opened gate. \end{DoxyCompactList}\item 
+\hyperlink{_gate_m_p_8h_ad5bb259f928a14e98d973334bc60ebb3}{Gate\-M\-P\-\_\-\-Handle} \hyperlink{_gate_m_p_8h_ad83d284487eb5d7996318c7e8d88cf82}{Gate\-M\-P\-\_\-create} (const \hyperlink{struct_gate_m_p___params}{Gate\-M\-P\-\_\-\-Params} $\ast$params)
+\begin{DoxyCompactList}\small\item\em Create a Gate\-M\-P instance. \end{DoxyCompactList}\item 
+Int \hyperlink{_gate_m_p_8h_aed5bd2b4543a937c82aba23f9458983c}{Gate\-M\-P\-\_\-delete} (\hyperlink{_gate_m_p_8h_ad5bb259f928a14e98d973334bc60ebb3}{Gate\-M\-P\-\_\-\-Handle} $\ast$handle\-Ptr)
+\begin{DoxyCompactList}\small\item\em Delete a created Gate\-M\-P instance. \end{DoxyCompactList}\item 
+\hyperlink{_gate_m_p_8h_ad5bb259f928a14e98d973334bc60ebb3}{Gate\-M\-P\-\_\-\-Handle} \hyperlink{_gate_m_p_8h_a6c09c820ed3852840f0ce3036a276687}{Gate\-M\-P\-\_\-get\-Default\-Remote} (Void)
+\begin{DoxyCompactList}\small\item\em Get the default remote gate. \end{DoxyCompactList}\item 
+\hyperlink{_gate_m_p_8h_a3877bd64627d7449d3687e8b06939652}{Gate\-M\-P\-\_\-\-Local\-Protect} \hyperlink{_gate_m_p_8h_ace72dca8b36d6bcb16d931463cdcece1}{Gate\-M\-P\-\_\-get\-Local\-Protect} (\hyperlink{_gate_m_p_8h_ad5bb259f928a14e98d973334bc60ebb3}{Gate\-M\-P\-\_\-\-Handle} handle)
+\begin{DoxyCompactList}\small\item\em Get the local protection level configured in a Gate\-M\-P instance. \end{DoxyCompactList}\item 
+\hyperlink{_gate_m_p_8h_a88716d5706d8fa8c6a3b9a4f023ef1d8}{Gate\-M\-P\-\_\-\-Remote\-Protect} \hyperlink{_gate_m_p_8h_a6b36fa302c1dfa45c85806990c99774a}{Gate\-M\-P\-\_\-get\-Remote\-Protect} (\hyperlink{_gate_m_p_8h_ad5bb259f928a14e98d973334bc60ebb3}{Gate\-M\-P\-\_\-\-Handle} handle)
+\begin{DoxyCompactList}\small\item\em Get the remote protection level configured in a Gate\-M\-P instance. \end{DoxyCompactList}\item 
+Int \hyperlink{_gate_m_p_8h_acefd091d723ca21a0a02e1e1d5600fc8}{Gate\-M\-P\-\_\-open} (String name, \hyperlink{_gate_m_p_8h_ad5bb259f928a14e98d973334bc60ebb3}{Gate\-M\-P\-\_\-\-Handle} $\ast$handle\-Ptr)
+\begin{DoxyCompactList}\small\item\em Open a created Gate\-M\-P by name. \end{DoxyCompactList}\item 
+Void \hyperlink{_gate_m_p_8h_aa9ed943f88964311c2447777c3b330f4}{Gate\-M\-P\-\_\-\-Params\-\_\-init} (\hyperlink{struct_gate_m_p___params}{Gate\-M\-P\-\_\-\-Params} $\ast$params)
+\begin{DoxyCompactList}\small\item\em Initialize a Gate\-M\-P parameters struct. \end{DoxyCompactList}\item 
+I\-Arg \hyperlink{_gate_m_p_8h_a20a6cab18407f07cb1dbcba48de04cd3}{Gate\-M\-P\-\_\-enter} (\hyperlink{_gate_m_p_8h_ad5bb259f928a14e98d973334bc60ebb3}{Gate\-M\-P\-\_\-\-Handle} handle)
+\begin{DoxyCompactList}\small\item\em Enter the Gate\-M\-P. \end{DoxyCompactList}\item 
+Void \hyperlink{_gate_m_p_8h_a622c40958deebda445715cd8e8b3ea34}{Gate\-M\-P\-\_\-leave} (\hyperlink{_gate_m_p_8h_ad5bb259f928a14e98d973334bc60ebb3}{Gate\-M\-P\-\_\-\-Handle} handle, I\-Arg key)
+\begin{DoxyCompactList}\small\item\em Leave the Gate\-M\-P. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Macro Definition Documentation}
+\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-\-S\-\_\-\-B\-U\-S\-Y@{Gate\-M\-P\-\_\-\-S\-\_\-\-B\-U\-S\-Y}}
+\index{Gate\-M\-P\-\_\-\-S\-\_\-\-B\-U\-S\-Y@{Gate\-M\-P\-\_\-\-S\-\_\-\-B\-U\-S\-Y}!GateMP.h@{Gate\-M\-P.\-h}}
+\paragraph[{Gate\-M\-P\-\_\-\-S\-\_\-\-B\-U\-S\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define Gate\-M\-P\-\_\-\-S\-\_\-\-B\-U\-S\-Y~2}\label{_gate_m_p_8h_a78c50bd892ebded475a145ae7bb71f39}
+
+
+The resource is still in use. 
+
+\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P@{Gate\-M\-P\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P}}
+\index{Gate\-M\-P\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P@{Gate\-M\-P\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P}!GateMP.h@{Gate\-M\-P.\-h}}
+\paragraph[{Gate\-M\-P\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define Gate\-M\-P\-\_\-\-S\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-S\-E\-T\-U\-P~1}\label{_gate_m_p_8h_a0f6606bbd36e2e502cbb967cee5bd086}
+
+
+The module has been already setup. 
+
+\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S@{Gate\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}}
+\index{Gate\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S@{Gate\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}!GateMP.h@{Gate\-M\-P.\-h}}
+\paragraph[{Gate\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define Gate\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S~0}\label{_gate_m_p_8h_a1ffb641b2f80fe24940f930986cc6dee}
+
+
+Operation is successful. 
+
+\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L@{Gate\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L}}
+\index{Gate\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L@{Gate\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L}!GateMP.h@{Gate\-M\-P.\-h}}
+\paragraph[{Gate\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define Gate\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L~-\/1}\label{_gate_m_p_8h_ac75ff3b36b981b6088d9ec294a36a875}
+
+
+Generic failure. 
+
+\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G@{Gate\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G}}
+\index{Gate\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G@{Gate\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G}!GateMP.h@{Gate\-M\-P.\-h}}
+\paragraph[{Gate\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define Gate\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-A\-R\-G~-\/2}\label{_gate_m_p_8h_acf51ad78ae70ed3674cd379499d40fb9}
+
+
+Argument passed to function is invalid. 
+
+\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y@{Gate\-M\-P\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y}}
+\index{Gate\-M\-P\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y@{Gate\-M\-P\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y}!GateMP.h@{Gate\-M\-P.\-h}}
+\paragraph[{Gate\-M\-P\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define Gate\-M\-P\-\_\-\-E\-\_\-\-M\-E\-M\-O\-R\-Y~-\/3}\label{_gate_m_p_8h_a4565a3a4bdab37b2499fa79177297242}
+
+
+Operation resulted in memory failure. 
+
+\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S@{Gate\-M\-P\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S}}
+\index{Gate\-M\-P\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S@{Gate\-M\-P\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S}!GateMP.h@{Gate\-M\-P.\-h}}
+\paragraph[{Gate\-M\-P\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define Gate\-M\-P\-\_\-\-E\-\_\-\-A\-L\-R\-E\-A\-D\-Y\-E\-X\-I\-S\-T\-S~-\/4}\label{_gate_m_p_8h_a20d3d7bbc6c7a5ef4372384072aad0b1}
+
+
+The specified entity already exists. 
+
+\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D@{Gate\-M\-P\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}}
+\index{Gate\-M\-P\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D@{Gate\-M\-P\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}!GateMP.h@{Gate\-M\-P.\-h}}
+\paragraph[{Gate\-M\-P\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define Gate\-M\-P\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D~-\/5}\label{_gate_m_p_8h_acdd82a5d634ec934ed7257eea8fb8d2c}
+
+
+Unable to find the specified entity. 
+
+\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T@{Gate\-M\-P\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T}}
+\index{Gate\-M\-P\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T@{Gate\-M\-P\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T}!GateMP.h@{Gate\-M\-P.\-h}}
+\paragraph[{Gate\-M\-P\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define Gate\-M\-P\-\_\-\-E\-\_\-\-T\-I\-M\-E\-O\-U\-T~-\/6}\label{_gate_m_p_8h_aaf80607f9e9ea4fba411e5693b0e8743}
+
+
+Operation timed out. 
+
+\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E@{Gate\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E}}
+\index{Gate\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E@{Gate\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E}!GateMP.h@{Gate\-M\-P.\-h}}
+\paragraph[{Gate\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define Gate\-M\-P\-\_\-\-E\-\_\-\-I\-N\-V\-A\-L\-I\-D\-S\-T\-A\-T\-E~-\/7}\label{_gate_m_p_8h_a075d7c582f213e960e44c25ff138ad85}
+
+
+Module is not initialized. 
+
+\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E@{Gate\-M\-P\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E}}
+\index{Gate\-M\-P\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E@{Gate\-M\-P\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E}!GateMP.h@{Gate\-M\-P.\-h}}
+\paragraph[{Gate\-M\-P\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define Gate\-M\-P\-\_\-\-E\-\_\-\-O\-S\-F\-A\-I\-L\-U\-R\-E~-\/8}\label{_gate_m_p_8h_a2eac3b6964fe569e41231fb2fea8b18d}
+
+
+A failure occurred in an O\-S-\/specific call. 
+
+\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E@{Gate\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E}}
+\index{Gate\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E@{Gate\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E}!GateMP.h@{Gate\-M\-P.\-h}}
+\paragraph[{Gate\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define Gate\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-O\-U\-R\-C\-E~-\/9}\label{_gate_m_p_8h_ad07430b772c1d95c5ef2425b6c280fd9}
+
+
+Specified resource is not available. 
+
+\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T@{Gate\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T}}
+\index{Gate\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T@{Gate\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T}!GateMP.h@{Gate\-M\-P.\-h}}
+\paragraph[{Gate\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define Gate\-M\-P\-\_\-\-E\-\_\-\-R\-E\-S\-T\-A\-R\-T~-\/10}\label{_gate_m_p_8h_a77205c8c44ab3edc4557cc4521cb3d04}
+
+
+Operation was interrupted. Please restart the operation. 
+
+
+
+\subsubsection{Typedef Documentation}
+\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-\-Local\-Protect@{Gate\-M\-P\-\_\-\-Local\-Protect}}
+\index{Gate\-M\-P\-\_\-\-Local\-Protect@{Gate\-M\-P\-\_\-\-Local\-Protect}!GateMP.h@{Gate\-M\-P.\-h}}
+\paragraph[{Gate\-M\-P\-\_\-\-Local\-Protect}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf Gate\-M\-P\-\_\-\-Local\-Protect}  {\bf Gate\-M\-P\-\_\-\-Local\-Protect}}\label{_gate_m_p_8h_accb7b6c936aebe10e31d909310398fe5}
+
+
+A set of local context protection levels. 
+
+Each member corresponds to a specific local processor gates used for local protection.
+
+In Linux user mode, the following are the mapping for the constants
+\begin{DoxyItemize}
+\item I\-N\-T\-E\-R\-R\-U\-P\-T -\/$>$ \mbox{[}N/\-A\mbox{]}
+\item T\-A\-S\-K\-L\-E\-T -\/$>$ \mbox{[}N/\-A\mbox{]}
+\item T\-H\-R\-E\-A\-D -\/$>$ Gate\-Mutex
+\item P\-R\-O\-C\-E\-S\-S -\/$>$ Gate\-Mutex
+\end{DoxyItemize}
+
+In Linux kernel mode, the following are the mapping for the constants
+\begin{DoxyItemize}
+\item I\-N\-T\-E\-R\-R\-U\-P\-T -\/$>$ \mbox{[}Interrupts disabled\mbox{]}
+\item T\-A\-S\-K\-L\-E\-T -\/$>$ Gate\-Mutex
+\item T\-H\-R\-E\-A\-D -\/$>$ Gate\-Mutex
+\item P\-R\-O\-C\-E\-S\-S -\/$>$ Gate\-Mutex
+\end{DoxyItemize}
+
+For S\-Y\-S/\-B\-I\-O\-S users, the following are the mappings for the constants
+\begin{DoxyItemize}
+\item I\-N\-T\-E\-R\-R\-U\-P\-T -\/$>$ Gate\-All\-: disables interrupts, Swis and Tasks
+\item T\-A\-S\-K\-L\-E\-T -\/$>$ Gate\-Swi\-: disables Swis and Tasks
+\item T\-H\-R\-E\-A\-D -\/$>$ Gate\-Mutex\-Pri\-: based on Semaphores
+\item P\-R\-O\-C\-E\-S\-S -\/$>$ Gate\-Mutex\-Pri\-: based on Semaphores 
+\end{DoxyItemize}\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-\-Remote\-Protect@{Gate\-M\-P\-\_\-\-Remote\-Protect}}
+\index{Gate\-M\-P\-\_\-\-Remote\-Protect@{Gate\-M\-P\-\_\-\-Remote\-Protect}!GateMP.h@{Gate\-M\-P.\-h}}
+\paragraph[{Gate\-M\-P\-\_\-\-Remote\-Protect}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf Gate\-M\-P\-\_\-\-Remote\-Protect}  {\bf Gate\-M\-P\-\_\-\-Remote\-Protect}}\label{_gate_m_p_8h_a1400ba94db5b5fefd196649a9c9a4c63}
+
+
+Type of remote Gate. 
+
+Each member corresponds to a specific type of remote gate. Each enum value corresponds to the following remote protection levels\-:
+\begin{DoxyItemize}
+\item N\-O\-N\-E -\/$>$ No remote protection (the Gate\-M\-P instance will exclusively offer local protection configured in \hyperlink{struct_gate_m_p___params_ac080433fff177b3d5b1cd5dcafc9e28c}{Gate\-M\-P\-\_\-\-Params\-::local\-Protect}
+\item S\-Y\-S\-T\-E\-M -\/$>$ Use the S\-Y\-S\-T\-E\-M remote protection level (default for remote protection
+\item C\-U\-S\-T\-O\-M1 -\/$>$ Use the C\-U\-S\-T\-O\-M1 remote protection level
+\item C\-U\-S\-T\-O\-M2 -\/$>$ Use the C\-U\-S\-T\-O\-M2 remote protection level 
+\end{DoxyItemize}\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-\-Handle@{Gate\-M\-P\-\_\-\-Handle}}
+\index{Gate\-M\-P\-\_\-\-Handle@{Gate\-M\-P\-\_\-\-Handle}!GateMP.h@{Gate\-M\-P.\-h}}
+\paragraph[{Gate\-M\-P\-\_\-\-Handle}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct Gate\-M\-P\-\_\-\-Object$\ast$ {\bf Gate\-M\-P\-\_\-\-Handle}}\label{_gate_m_p_8h_ad5bb259f928a14e98d973334bc60ebb3}
+
+
+Gate\-M\-P\-\_\-\-Handle type. 
+
+\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-\-Params@{Gate\-M\-P\-\_\-\-Params}}
+\index{Gate\-M\-P\-\_\-\-Params@{Gate\-M\-P\-\_\-\-Params}!GateMP.h@{Gate\-M\-P.\-h}}
+\paragraph[{Gate\-M\-P\-\_\-\-Params}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Gate\-M\-P\-\_\-\-Params}  {\bf Gate\-M\-P\-\_\-\-Params}}\label{_gate_m_p_8h_aa87249c5e69b88bfaa4ee817cacd3b42}
+
+
+Structure defining parameters for the Gate\-M\-P module. 
+
+
+
+\subsubsection{Enumeration Type Documentation}
+\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-\-Local\-Protect@{Gate\-M\-P\-\_\-\-Local\-Protect}}
+\index{Gate\-M\-P\-\_\-\-Local\-Protect@{Gate\-M\-P\-\_\-\-Local\-Protect}!GateMP.h@{Gate\-M\-P.\-h}}
+\paragraph[{Gate\-M\-P\-\_\-\-Local\-Protect}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Gate\-M\-P\-\_\-\-Local\-Protect}}\label{_gate_m_p_8h_a3877bd64627d7449d3687e8b06939652}
+
+
+A set of local context protection levels. 
+
+Each member corresponds to a specific local processor gates used for local protection.
+
+In Linux user mode, the following are the mapping for the constants
+\begin{DoxyItemize}
+\item I\-N\-T\-E\-R\-R\-U\-P\-T -\/$>$ \mbox{[}N/\-A\mbox{]}
+\item T\-A\-S\-K\-L\-E\-T -\/$>$ \mbox{[}N/\-A\mbox{]}
+\item T\-H\-R\-E\-A\-D -\/$>$ Gate\-Mutex
+\item P\-R\-O\-C\-E\-S\-S -\/$>$ Gate\-Mutex
+\end{DoxyItemize}
+
+In Linux kernel mode, the following are the mapping for the constants
+\begin{DoxyItemize}
+\item I\-N\-T\-E\-R\-R\-U\-P\-T -\/$>$ \mbox{[}Interrupts disabled\mbox{]}
+\item T\-A\-S\-K\-L\-E\-T -\/$>$ Gate\-Mutex
+\item T\-H\-R\-E\-A\-D -\/$>$ Gate\-Mutex
+\item P\-R\-O\-C\-E\-S\-S -\/$>$ Gate\-Mutex
+\end{DoxyItemize}
+
+For S\-Y\-S/\-B\-I\-O\-S users, the following are the mappings for the constants
+\begin{DoxyItemize}
+\item I\-N\-T\-E\-R\-R\-U\-P\-T -\/$>$ Gate\-All\-: disables interrupts, Swis and Tasks
+\item T\-A\-S\-K\-L\-E\-T -\/$>$ Gate\-Swi\-: disables Swis and Tasks
+\item T\-H\-R\-E\-A\-D -\/$>$ Gate\-Mutex\-Pri\-: based on Semaphores
+\item P\-R\-O\-C\-E\-S\-S -\/$>$ Gate\-Mutex\-Pri\-: based on Semaphores 
+\end{DoxyItemize}\begin{Desc}
+\item[Enumerator\-: ]\par
+\begin{description}
+\index{Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-N\-O\-N\-E@{Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-N\-O\-N\-E}!Gate\-M\-P.\-h@{Gate\-M\-P.\-h}}\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-N\-O\-N\-E@{Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-N\-O\-N\-E}}\item[{\em 
+Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-N\-O\-N\-E\label{_gate_m_p_8h_a3877bd64627d7449d3687e8b06939652a4577e1162c081ed8019a349318ab3afe}
+}]Use no local protection \index{Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T@{Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T}!Gate\-M\-P.\-h@{Gate\-M\-P.\-h}}\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T@{Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T}}\item[{\em 
+Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\label{_gate_m_p_8h_a3877bd64627d7449d3687e8b06939652aa4c5dba40613d5436adb6c604bb8514f}
+}]Use the I\-N\-T\-E\-R\-R\-U\-P\-T local protection level \index{Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-T\-A\-S\-K\-L\-E\-T@{Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-T\-A\-S\-K\-L\-E\-T}!Gate\-M\-P.\-h@{Gate\-M\-P.\-h}}\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-T\-A\-S\-K\-L\-E\-T@{Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-T\-A\-S\-K\-L\-E\-T}}\item[{\em 
+Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-T\-A\-S\-K\-L\-E\-T\label{_gate_m_p_8h_a3877bd64627d7449d3687e8b06939652aabb3d9eb4b679ceebb537775d388f2b1}
+}]Use the T\-A\-S\-K\-L\-E\-T local protection level \index{Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-T\-H\-R\-E\-A\-D@{Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-T\-H\-R\-E\-A\-D}!Gate\-M\-P.\-h@{Gate\-M\-P.\-h}}\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-T\-H\-R\-E\-A\-D@{Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-T\-H\-R\-E\-A\-D}}\item[{\em 
+Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-T\-H\-R\-E\-A\-D\label{_gate_m_p_8h_a3877bd64627d7449d3687e8b06939652a257bc8d4b8d6d19bdbe96cae37cbd908}
+}]Use the T\-H\-R\-E\-A\-D local protection level \index{Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-P\-R\-O\-C\-E\-S\-S@{Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-P\-R\-O\-C\-E\-S\-S}!Gate\-M\-P.\-h@{Gate\-M\-P.\-h}}\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-P\-R\-O\-C\-E\-S\-S@{Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-P\-R\-O\-C\-E\-S\-S}}\item[{\em 
+Gate\-M\-P\-\_\-\-Local\-Protect\-\_\-\-P\-R\-O\-C\-E\-S\-S\label{_gate_m_p_8h_a3877bd64627d7449d3687e8b06939652aeec868d37052043812bc4c1829319a6d}
+}]Use the P\-R\-O\-C\-E\-S\-S local protection level \end{description}
+\end{Desc}
+
+\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-\-Remote\-Protect@{Gate\-M\-P\-\_\-\-Remote\-Protect}}
+\index{Gate\-M\-P\-\_\-\-Remote\-Protect@{Gate\-M\-P\-\_\-\-Remote\-Protect}!GateMP.h@{Gate\-M\-P.\-h}}
+\paragraph[{Gate\-M\-P\-\_\-\-Remote\-Protect}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Gate\-M\-P\-\_\-\-Remote\-Protect}}\label{_gate_m_p_8h_a88716d5706d8fa8c6a3b9a4f023ef1d8}
+
+
+Type of remote Gate. 
+
+Each member corresponds to a specific type of remote gate. Each enum value corresponds to the following remote protection levels\-:
+\begin{DoxyItemize}
+\item N\-O\-N\-E -\/$>$ No remote protection (the Gate\-M\-P instance will exclusively offer local protection configured in \hyperlink{struct_gate_m_p___params_ac080433fff177b3d5b1cd5dcafc9e28c}{Gate\-M\-P\-\_\-\-Params\-::local\-Protect}
+\item S\-Y\-S\-T\-E\-M -\/$>$ Use the S\-Y\-S\-T\-E\-M remote protection level (default for remote protection
+\item C\-U\-S\-T\-O\-M1 -\/$>$ Use the C\-U\-S\-T\-O\-M1 remote protection level
+\item C\-U\-S\-T\-O\-M2 -\/$>$ Use the C\-U\-S\-T\-O\-M2 remote protection level 
+\end{DoxyItemize}\begin{Desc}
+\item[Enumerator\-: ]\par
+\begin{description}
+\index{Gate\-M\-P\-\_\-\-Remote\-Protect\-\_\-\-N\-O\-N\-E@{Gate\-M\-P\-\_\-\-Remote\-Protect\-\_\-\-N\-O\-N\-E}!Gate\-M\-P.\-h@{Gate\-M\-P.\-h}}\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-\-Remote\-Protect\-\_\-\-N\-O\-N\-E@{Gate\-M\-P\-\_\-\-Remote\-Protect\-\_\-\-N\-O\-N\-E}}\item[{\em 
+Gate\-M\-P\-\_\-\-Remote\-Protect\-\_\-\-N\-O\-N\-E\label{_gate_m_p_8h_a88716d5706d8fa8c6a3b9a4f023ef1d8a29b87b5258dbf5e387fc5a4ada3548ab}
+}]No remote protection (the Gate\-M\-P instance will exclusively offer local protection configured in \hyperlink{struct_gate_m_p___params_ac080433fff177b3d5b1cd5dcafc9e28c}{Gate\-M\-P\-\_\-\-Params\-::local\-Protect}) \index{Gate\-M\-P\-\_\-\-Remote\-Protect\-\_\-\-S\-Y\-S\-T\-E\-M@{Gate\-M\-P\-\_\-\-Remote\-Protect\-\_\-\-S\-Y\-S\-T\-E\-M}!Gate\-M\-P.\-h@{Gate\-M\-P.\-h}}\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-\-Remote\-Protect\-\_\-\-S\-Y\-S\-T\-E\-M@{Gate\-M\-P\-\_\-\-Remote\-Protect\-\_\-\-S\-Y\-S\-T\-E\-M}}\item[{\em 
+Gate\-M\-P\-\_\-\-Remote\-Protect\-\_\-\-S\-Y\-S\-T\-E\-M\label{_gate_m_p_8h_a88716d5706d8fa8c6a3b9a4f023ef1d8aba4e153ee33cce1d32dc84254261c557}
+}]Use the S\-Y\-S\-T\-E\-M remote protection level (default remote protection) \index{Gate\-M\-P\-\_\-\-Remote\-Protect\-\_\-\-C\-U\-S\-T\-O\-M1@{Gate\-M\-P\-\_\-\-Remote\-Protect\-\_\-\-C\-U\-S\-T\-O\-M1}!Gate\-M\-P.\-h@{Gate\-M\-P.\-h}}\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-\-Remote\-Protect\-\_\-\-C\-U\-S\-T\-O\-M1@{Gate\-M\-P\-\_\-\-Remote\-Protect\-\_\-\-C\-U\-S\-T\-O\-M1}}\item[{\em 
+Gate\-M\-P\-\_\-\-Remote\-Protect\-\_\-\-C\-U\-S\-T\-O\-M1\label{_gate_m_p_8h_a88716d5706d8fa8c6a3b9a4f023ef1d8a2c1243e212dfe1dfce672b2d7556fd1d}
+}]Use the C\-U\-S\-T\-O\-M1 remote protection level \index{Gate\-M\-P\-\_\-\-Remote\-Protect\-\_\-\-C\-U\-S\-T\-O\-M2@{Gate\-M\-P\-\_\-\-Remote\-Protect\-\_\-\-C\-U\-S\-T\-O\-M2}!Gate\-M\-P.\-h@{Gate\-M\-P.\-h}}\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-\-Remote\-Protect\-\_\-\-C\-U\-S\-T\-O\-M2@{Gate\-M\-P\-\_\-\-Remote\-Protect\-\_\-\-C\-U\-S\-T\-O\-M2}}\item[{\em 
+Gate\-M\-P\-\_\-\-Remote\-Protect\-\_\-\-C\-U\-S\-T\-O\-M2\label{_gate_m_p_8h_a88716d5706d8fa8c6a3b9a4f023ef1d8a997afc6350b832a6829ee004786aa8db}
+}]Use the C\-U\-S\-T\-O\-M2 remote protection level \end{description}
+\end{Desc}
+
+
+
+\subsubsection{Function Documentation}
+\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-close@{Gate\-M\-P\-\_\-close}}
+\index{Gate\-M\-P\-\_\-close@{Gate\-M\-P\-\_\-close}!GateMP.h@{Gate\-M\-P.\-h}}
+\paragraph[{Gate\-M\-P\-\_\-close}]{\setlength{\rightskip}{0pt plus 5cm}Int Gate\-M\-P\-\_\-close (
+\begin{DoxyParamCaption}
+\item[{{\bf Gate\-M\-P\-\_\-\-Handle} $\ast$}]{handle\-Ptr}
+\end{DoxyParamCaption}
+)}\label{_gate_m_p_8h_a0c64bfa32191b16de290787289e46481}
+
+
+Close an opened gate. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em handle\-Ptr} & Pointer to handle to opened Gate\-M\-P instance\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Gate\-M\-P status 
+\end{DoxyReturn}
+\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-create@{Gate\-M\-P\-\_\-create}}
+\index{Gate\-M\-P\-\_\-create@{Gate\-M\-P\-\_\-create}!GateMP.h@{Gate\-M\-P.\-h}}
+\paragraph[{Gate\-M\-P\-\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Gate\-M\-P\-\_\-\-Handle} Gate\-M\-P\-\_\-create (
+\begin{DoxyParamCaption}
+\item[{const {\bf Gate\-M\-P\-\_\-\-Params} $\ast$}]{params}
+\end{DoxyParamCaption}
+)}\label{_gate_m_p_8h_ad83d284487eb5d7996318c7e8d88cf82}
+
+
+Create a Gate\-M\-P instance. 
+
+The params structure should be initialized using \hyperlink{_gate_m_p_8h_aa9ed943f88964311c2447777c3b330f4}{Gate\-M\-P\-\_\-\-Params\-\_\-init()}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em params} & Gate\-M\-P parameters\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Gate\-M\-P Handle 
+\end{DoxyReturn}
+\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-delete@{Gate\-M\-P\-\_\-delete}}
+\index{Gate\-M\-P\-\_\-delete@{Gate\-M\-P\-\_\-delete}!GateMP.h@{Gate\-M\-P.\-h}}
+\paragraph[{Gate\-M\-P\-\_\-delete}]{\setlength{\rightskip}{0pt plus 5cm}Int Gate\-M\-P\-\_\-delete (
+\begin{DoxyParamCaption}
+\item[{{\bf Gate\-M\-P\-\_\-\-Handle} $\ast$}]{handle\-Ptr}
+\end{DoxyParamCaption}
+)}\label{_gate_m_p_8h_aed5bd2b4543a937c82aba23f9458983c}
+
+
+Delete a created Gate\-M\-P instance. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em handle\-Ptr} & Pointer to Gate\-M\-P handle\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Gate\-M\-P Status 
+\end{DoxyReturn}
+\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-get\-Default\-Remote@{Gate\-M\-P\-\_\-get\-Default\-Remote}}
+\index{Gate\-M\-P\-\_\-get\-Default\-Remote@{Gate\-M\-P\-\_\-get\-Default\-Remote}!GateMP.h@{Gate\-M\-P.\-h}}
+\paragraph[{Gate\-M\-P\-\_\-get\-Default\-Remote}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Gate\-M\-P\-\_\-\-Handle} Gate\-M\-P\-\_\-get\-Default\-Remote (
+\begin{DoxyParamCaption}
+\item[{Void}]{}
+\end{DoxyParamCaption}
+)}\label{_gate_m_p_8h_a6c09c820ed3852840f0ce3036a276687}
+
+
+Get the default remote gate. 
+
+\begin{DoxyReturn}{Returns}
+Gate\-M\-P handle 
+\end{DoxyReturn}
+\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-get\-Local\-Protect@{Gate\-M\-P\-\_\-get\-Local\-Protect}}
+\index{Gate\-M\-P\-\_\-get\-Local\-Protect@{Gate\-M\-P\-\_\-get\-Local\-Protect}!GateMP.h@{Gate\-M\-P.\-h}}
+\paragraph[{Gate\-M\-P\-\_\-get\-Local\-Protect}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Gate\-M\-P\-\_\-\-Local\-Protect} Gate\-M\-P\-\_\-get\-Local\-Protect (
+\begin{DoxyParamCaption}
+\item[{{\bf Gate\-M\-P\-\_\-\-Handle}}]{handle}
+\end{DoxyParamCaption}
+)}\label{_gate_m_p_8h_ace72dca8b36d6bcb16d931463cdcece1}
+
+
+Get the local protection level configured in a Gate\-M\-P instance. 
+
+\begin{DoxyReturn}{Returns}
+Gate\-M\-P\-\_\-\-Local\-Protect corresponding to local protection level 
+\end{DoxyReturn}
+\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-get\-Remote\-Protect@{Gate\-M\-P\-\_\-get\-Remote\-Protect}}
+\index{Gate\-M\-P\-\_\-get\-Remote\-Protect@{Gate\-M\-P\-\_\-get\-Remote\-Protect}!GateMP.h@{Gate\-M\-P.\-h}}
+\paragraph[{Gate\-M\-P\-\_\-get\-Remote\-Protect}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Gate\-M\-P\-\_\-\-Remote\-Protect} Gate\-M\-P\-\_\-get\-Remote\-Protect (
+\begin{DoxyParamCaption}
+\item[{{\bf Gate\-M\-P\-\_\-\-Handle}}]{handle}
+\end{DoxyParamCaption}
+)}\label{_gate_m_p_8h_a6b36fa302c1dfa45c85806990c99774a}
+
+
+Get the remote protection level configured in a Gate\-M\-P instance. 
+
+\begin{DoxyReturn}{Returns}
+Gate\-M\-P\-\_\-\-Remote\-Protect corresponding to remote protection level 
+\end{DoxyReturn}
+\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-open@{Gate\-M\-P\-\_\-open}}
+\index{Gate\-M\-P\-\_\-open@{Gate\-M\-P\-\_\-open}!GateMP.h@{Gate\-M\-P.\-h}}
+\paragraph[{Gate\-M\-P\-\_\-open}]{\setlength{\rightskip}{0pt plus 5cm}Int Gate\-M\-P\-\_\-open (
+\begin{DoxyParamCaption}
+\item[{String}]{name, }
+\item[{{\bf Gate\-M\-P\-\_\-\-Handle} $\ast$}]{handle\-Ptr}
+\end{DoxyParamCaption}
+)}\label{_gate_m_p_8h_acefd091d723ca21a0a02e1e1d5600fc8}
+
+
+Open a created Gate\-M\-P by name. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & Name of the Gate\-M\-P instance \\
+\hline
+\mbox{\tt out}  & {\em handle\-Ptr} & Pointer to Gate\-M\-P handle to be opened\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Gate\-M\-P status\-:
+\begin{DoxyItemize}
+\item \hyperlink{_gate_m_p_8h_acdd82a5d634ec934ed7257eea8fb8d2c}{Gate\-M\-P\-\_\-\-E\-\_\-\-N\-O\-T\-F\-O\-U\-N\-D}\-: open failed (name not found on any processor)
+\item \hyperlink{_gate_m_p_8h_ac75ff3b36b981b6088d9ec294a36a875}{Gate\-M\-P\-\_\-\-E\-\_\-\-F\-A\-I\-L}\-: open failed (general failure occurred)
+\item \hyperlink{_gate_m_p_8h_a1ffb641b2f80fe24940f930986cc6dee}{Gate\-M\-P\-\_\-\-S\-\_\-\-S\-U\-C\-C\-E\-S\-S}\-: open successful 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-\-Params\-\_\-init@{Gate\-M\-P\-\_\-\-Params\-\_\-init}}
+\index{Gate\-M\-P\-\_\-\-Params\-\_\-init@{Gate\-M\-P\-\_\-\-Params\-\_\-init}!GateMP.h@{Gate\-M\-P.\-h}}
+\paragraph[{Gate\-M\-P\-\_\-\-Params\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}Void Gate\-M\-P\-\_\-\-Params\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{{\bf Gate\-M\-P\-\_\-\-Params} $\ast$}]{params}
+\end{DoxyParamCaption}
+)}\label{_gate_m_p_8h_aa9ed943f88964311c2447777c3b330f4}
+
+
+Initialize a Gate\-M\-P parameters struct. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em params} & Pointer to Gate\-M\-P parameters \\
+\hline
+\end{DoxyParams}
+\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-enter@{Gate\-M\-P\-\_\-enter}}
+\index{Gate\-M\-P\-\_\-enter@{Gate\-M\-P\-\_\-enter}!GateMP.h@{Gate\-M\-P.\-h}}
+\paragraph[{Gate\-M\-P\-\_\-enter}]{\setlength{\rightskip}{0pt plus 5cm}I\-Arg Gate\-M\-P\-\_\-enter (
+\begin{DoxyParamCaption}
+\item[{{\bf Gate\-M\-P\-\_\-\-Handle}}]{handle}
+\end{DoxyParamCaption}
+)}\label{_gate_m_p_8h_a20a6cab18407f07cb1dbcba48de04cd3}
+
+
+Enter the Gate\-M\-P. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em handle} & Gate\-M\-P handle\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+key that must be used to leave the gate 
+\end{DoxyReturn}
+\index{Gate\-M\-P.\-h@{Gate\-M\-P.\-h}!Gate\-M\-P\-\_\-leave@{Gate\-M\-P\-\_\-leave}}
+\index{Gate\-M\-P\-\_\-leave@{Gate\-M\-P\-\_\-leave}!GateMP.h@{Gate\-M\-P.\-h}}
+\paragraph[{Gate\-M\-P\-\_\-leave}]{\setlength{\rightskip}{0pt plus 5cm}Void Gate\-M\-P\-\_\-leave (
+\begin{DoxyParamCaption}
+\item[{{\bf Gate\-M\-P\-\_\-\-Handle}}]{handle, }
+\item[{I\-Arg}]{key}
+\end{DoxyParamCaption}
+)}\label{_gate_m_p_8h_a622c40958deebda445715cd8e8b3ea34}
+
+
+Leave the Gate\-M\-P. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em handle} & Gate\-M\-P handle \\
+\hline
+\mbox{\tt in}  & {\em key} & key returned from Gate\-M\-P\-\_\-enter \\
+\hline
+\end{DoxyParams}

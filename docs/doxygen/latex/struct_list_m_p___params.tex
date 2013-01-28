@@ -1,0 +1,49 @@
+\subsection{List\-M\-P\-\_\-\-Params Struct Reference}
+\label{struct_list_m_p___params}\index{List\-M\-P\-\_\-\-Params@{List\-M\-P\-\_\-\-Params}}
+
+
+Structure defining parameter structure for \hyperlink{_list_m_p_8h_a71fdd7f30d377065fb70dd095a186d3e}{List\-M\-P\-\_\-create()}.  
+
+
+
+
+{\ttfamily \#include $<$List\-M\-P.\-h$>$}
+
+\subsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_gate_m_p_8h_ad5bb259f928a14e98d973334bc60ebb3}{Gate\-M\-P\-\_\-\-Handle} \hyperlink{struct_list_m_p___params_a4808f5c75029b059fa388a33e158c2f4}{gate}
+\item 
+String \hyperlink{struct_list_m_p___params_a4ac70f37c8b5584fa115d6d7f412daba}{name}
+\item 
+U\-Int16 \hyperlink{struct_list_m_p___params_af812a3b0ea4698b841bfbf83eada903a}{region\-Id}
+\end{DoxyCompactItemize}
+
+
+\subsubsection{Detailed Description}
+Structure defining parameter structure for \hyperlink{_list_m_p_8h_a71fdd7f30d377065fb70dd095a186d3e}{List\-M\-P\-\_\-create()}. 
+
+\subsubsection{Field Documentation}
+\index{List\-M\-P\-\_\-\-Params@{List\-M\-P\-\_\-\-Params}!gate@{gate}}
+\index{gate@{gate}!ListMP_Params@{List\-M\-P\-\_\-\-Params}}
+\paragraph[{gate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Gate\-M\-P\-\_\-\-Handle} List\-M\-P\-\_\-\-Params\-::gate}\label{struct_list_m_p___params_a4808f5c75029b059fa388a33e158c2f4}
+Gate\-M\-P instance for critical region management of shared memory \begin{DoxyVerb}   Using the default value of NULL will result in use of the GateMP
+   system gate for context protection.\end{DoxyVerb}
+ \index{List\-M\-P\-\_\-\-Params@{List\-M\-P\-\_\-\-Params}!name@{name}}
+\index{name@{name}!ListMP_Params@{List\-M\-P\-\_\-\-Params}}
+\paragraph[{name}]{\setlength{\rightskip}{0pt plus 5cm}String List\-M\-P\-\_\-\-Params\-::name}\label{struct_list_m_p___params_a4ac70f37c8b5584fa115d6d7f412daba}
+Name of the instance
+
+The name (if not N\-U\-L\-L) must be unique among all List\-M\-P instances in the entire system. When creating a new heap, it is necessary to supply an instance name.
+
+The name does not have to be persistent. The supplied string is copied into persistent memory. \index{List\-M\-P\-\_\-\-Params@{List\-M\-P\-\_\-\-Params}!region\-Id@{region\-Id}}
+\index{region\-Id@{region\-Id}!ListMP_Params@{List\-M\-P\-\_\-\-Params}}
+\paragraph[{region\-Id}]{\setlength{\rightskip}{0pt plus 5cm}U\-Int16 List\-M\-P\-\_\-\-Params\-::region\-Id}\label{struct_list_m_p___params_af812a3b0ea4698b841bfbf83eada903a}
+Shared\-Region I\-D. \begin{DoxyVerb}   The ID corresponding to the index of the shared region in which this
+   shared instance is to be placed.  This is used in create() only when
+   name is not null.\end{DoxyVerb}
+ 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_list_m_p_8h}{List\-M\-P.\-h}\end{DoxyCompactItemize}

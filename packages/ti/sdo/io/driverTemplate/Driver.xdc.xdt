@@ -1,0 +1,226 @@
+%%{ 
+/*
+ * Copyright (c) 2012, Texas Instruments Incorporated
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * *  Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *
+ * *  Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * *  Neither the name of Texas Instruments Incorporated nor the names of
+ *    its contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * 
+*/
+%%}
+% var Mod = this.modName;
+% if (Mod.match(".")) {
+%    Mod = Mod.substring(Mod.lastIndexOf(".") + 1);
+% }
+/*
+ *  ======== `Mod`.xdc ========
+ *
+ */
+
+import xdc.runtime.Error;
+import xdc.runtime.Assert;
+import xdc.runtime.Log;
+import ti.sdo.utils.List;
+import ti.sdo.io.DriverTypes;
+
+/*!
+ *  `Mod`
+ *  Sample module implementing ti.sdo.io.IDriver
+ *
+ *  Module description goes here. Blank line to start new paragraph.
+ * 
+ *  @ModuleStartup is needed to finish initializing static `Mod` instances,
+ *  like powering up peripheral and writing to peripheral registers. Most 
+ *  drivers will require this function.
+ *
+ *  @InstanceInitError is needed if the dynamic creation of a `Mod` instance
+ *  can fail. For example if `Mod`_create() allocates memory and Memory_alloc()
+ *  raises an error.
+ *
+ *  @InstanceFinalize is needed if `Mod` needs to clean up its state during a
+ *  `Mod`_delete() call. Typically this is required if @InstanceInitError is
+ *  enabled.
+ */
+@ModuleStartup
+@InstanceInitError
+@InstanceFinalize
+
+module `Mod` inherits ti.sdo.io.IDriver {  
+
+    /*! 
+     * Declare constants here. e.g. NUMCHANS per instance
+     *
+     * This driver has one Rx and one Tx channel
+     */
+    const Int NUMCHANS = 2;
+
+    /*! declare typedefs here if needed e.g special callback signature */
+    typedef void (* FuncPtr)(UArg);
+    
+    /*! declare enums here e.g operating mode */
+    enum OpMode
+    {
+        OpMode_POLLED,      /*! Polled mode */
+        OpMode_INTERRUPT    /*! Interrupt mode */
+    };
+    
+    /*! declare struct definitions here e.g channel params, stats,  */
+    struct ChanParams
+    {
+        Ptr resource;   /*! channel resource */   
+    };
+    
+    /*! declare `Mod` specific control commands and packet commands here */
+    readonly config DriverTypes.ControlCmd RESET_RX_CHAN;
+    
+    /* declare `Mod` specific errors, asserts and logs here */
+    
+    /*! description of error */
+    config Error.Id E_deviceInUse= {
+        msg: "E_deviceInUse: device is in use"
+    };
+    
+    /*! description of assert */
+    config Assert.Id A_modAssert = {
+        msg: "A_modAssert: assert message"
+    };
+    
+    /*! description of Log event */
+    config Log.Event LM_modLog = {
+        mask: Diags.USER1 | Diags.USER2,
+        msg: "LM_modLog: module log"
+    };
+        
+    /* 
+     * declare `Mod` level config parameters here that are applicable to
+     * all instances - like default chanParams, 
+     */
+
+    /*! Max instances (devices) supported */
+    config UInt numInstances;
+    
+    /*! Default Rx channel parameters */
+    config ChanParams defaultRxChanParams = {resource: null};
+    
+     /*! Default Tx channel parameters */
+    config ChanParams defaultTxChanParams = {resource: null};
+        
+    /* declare ROV View structs here. There all @_nodoc ed currently */
+    /*! @_nodoc */
+    @XmlDtd
+    metaonly struct Module_View 
+    {
+        Bool deviceInUse[];
+    }
+                                                                          
+    /*! @_nodoc */
+    @XmlDtd
+    metaonly struct Instance_View {
+        String label;
+        OpMode opMode;
+        UInt   deviceId;
+    };
+    
+    /*! @_nodoc */
+    @XmlDtd
+    metaonly struct Data_Element_View {
+        String  mode;
+        Bool    inUse;
+        String  callbackFxn[];
+        UArg    callbackArg;
+    }
+    
+    /*! @_nodoc */
+    override metaonly config xdc.runtime.Types.ViewInfo viewNameMap$[string] = [
+        ['Module', {viewType: "module", viewFxn: 'viewInitModule', 
+                    fields: ["inUse"]}],
+        ['Basic',  {viewType: "instance", viewFxn: 'viewInitBasic', 
+                    fields: ["label"]}],
+        ['Data',   {viewType: "data",    viewFxn: 'viewInitData',
+                    fields: ["mode", "inUse", "callbackFxn", "callbackArg"]
+                   }],                   
+    ];
+
+    /*! module level function to check device status */
+    Bool checkDeviceStatus(UInt deviceId);
+       
+instance:
+
+   /*!
+     *  ======== create ========
+     *  Create a `Mod` instance.
+     *
+     *  @param(deviceId)    logical device Id.
+     */
+    create(UInt deviceId);
+    
+    /* instance level config parameters go here */
+    
+    /*! operating mode */
+    config OpMode opMode = OpMode_INTERRUPT;
+    
+    /* instance level functions, ones not inherited from IDriver go here */
+    Void instFunc1(Int val);
+    
+internal:
+    
+    /* internal structures and functions*/
+    Void rxIsr(UArg arg);
+    
+    Void txIsr(UArg arg);
+    
+    /* most drivers will need a channel object type */
+    struct ChanObj 
+    {
+        Bool                    inUse;        /* is channel is use? */ 
+        List.Handle             pendList;     /* queue io packets */
+        DriverTypes.DoneFxn     callbackFxn;  /* callback fxn */
+        UArg                    callbackArg;  /* callback arg */
+    };
+
+    /* instance state fields. name of struct is specified by RTSC */
+    struct Instance_State 
+    {
+        UInt    deviceId;
+        OpMode  opMode;
+        ChanObj chans[NUMCHANS];/* two chans per device */
+    };
+
+    /* module state fields. name of struct is specified by RTSC */
+    struct Module_State
+    {
+        Bool deviceInUse[];
+    };    
+}
+
+%%{
+/*
+ * @(#) ti.sdo.io.driverTemplate; 0, 00, 00,; 11-7-2012 13:08:17; /db/vtree/library/trees/ipc/ipc-i09/src/ xlibrary
+
+ */
+
+%%}

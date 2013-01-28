@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="ti.sdo.io.driverTemplate" version="0, 00, 00" producerId="undefined">
+    <units>
+        <module name="Main"/>
+    </units>
+    <sources>
+    </sources>
+    <configscripts>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="package/rel/ti_sdo_io_driverTemplate.tar.gz.dep" src="package/rel/ti_sdo_io_driverTemplate.xdc.inc"/>
+    </makefiles>
+    <targets>
+    </targets>
+    <libraries>
+    </libraries>
+    <configurations>
+    </configurations>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="ti_sdo_io_driverTemplate"
+        pname="../../../../../exports/ti_sdo_io_driverTemplate.tar.gz"
+        label="default"
+        relScript="tisb/release/filters/copyright.rel">
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="Driver.xdc.xdt"/>
+        <file name="Driver.c.xdt"/>
+        <file name="Driver.xs.xdt"/>
+        <file name="package.xdc.xdt"/>
+        <file name="package.bld"/>
+        <file name="package.bld.xdt"/>
+        <file name="mkpkg.xdt"/>
+        <file name="test.cfg"/>
+        <file name="test.c"/>
+        <file name="package/package.cfg.xdc.inc"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

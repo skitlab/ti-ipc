@@ -1,0 +1,200 @@
+// (c) Copyright 2010-2011 by Texas Instruments Inc.  All rights reserved.
+
+//------------------------------------------------------------------------------
+// arp32.gel
+//
+// GEL script for the ARP32 on the Eden subsystem.
+//
+// Step()            - Execute the requested number of steps.
+// StartUp()         - Intialize the ARP32 memory map on GEL start.
+// OnRestart()       - Make sure ARP32 is reset on program restart.
+// OnPreFileLoaded() - Make sure ARP32 is reset prior to program load.
+// OnReset()         - Make sure VCOP stepping is re-enabled after ARP32 reset.
+// StepEnable()      - User menu option to enable VCOP stepping.  
+// StepDisable()     - User menu option to disable VCOP stepping.  
+// SingleStep()      - User menu option to execute a VCOP single step.
+// StepN()           - User dialog option to do a number of VCOP steps.
+//------------------ ------------------------------------------------------------
+
+// This is a short cut for the Expression window to set the WAY
+// index in one place for looking at multiple vector variables.
+// It is not used in this file, just defined here so it's available.
+unsigned int WAY = 0;
+
+// Flag if stepping is enabled or not
+unsigned int step_enabled = 0;
+
+// Number of steps to execute for Step function
+unsigned int step_count = 0;
+
+//------------------------------------------------------------------------------
+// Step()
+//
+// Execute the requested number of steps.
+//------------------------------------------------------------------------------
+
+Step() 
+{
+    unsigned int status;
+    
+    if (1 == step_enabled)
+    {
+        while (step_count > 0)
+        {
+            status = VCOP_Status_Registers_vcop_status;
+            
+            if (0x01 == (status & 0x01)) 
+            {
+                // Status ready bit is set, VCOP is ready for the next step 
+                VCOP_Status_Registers_vcop_ctrl = 0x03;
+                step_count--;
+            }
+            else if (0x04 == (status & 0x05))
+            {
+                // Status ready is clear and done bit is set, VCOP loop is complete
+                step_enabled = 0;
+                VCOP_Status_Registers_vcop_ctrl = 0x00;
+                step_count = 0;
+                GEL_TextOut("The VCOP task finished; stepping is disabled.\n");
+            }
+            else
+            {
+                // Status bit is clear but the done bit is not set,
+                // the loop is still executing, keep waiting
+                ;                
+            }
+        }
+    }
+    else
+    {
+        GEL_TextOut("VCOP stepping is disabled.\n");
+    }
+}
+
+//------------------------------------------------------------------------------
+// StartUp()
+//
+// Intialize the ARP32 memory map on GEL start.  
+//------------------------------------------------------------------------------
+
+StartUp()
+{
+    GEL_MapReset();
+    GEL_MapOn();
+
+    GEL_MapAdd(0x00000000, 0, 0x10000000, 1, 1);
+    GEL_MapAdd(0x40000000, 0, 0x10000000, 1, 1);
+    GEL_MapAdd(0x80000000, 0, 0x10000000, 1, 1);
+    GEL_MapAdd(0x90000000, 0, 0x10000000, 1, 1);
+    GEL_MapAdd(0x00000000, 1, 0x10000000, 1, 1);
+    GEL_MapAdd(0x40000000, 1, 0x10000000, 1, 1);
+    GEL_MapAdd(0x80000000, 1, 0x10000000, 1, 1);
+    GEL_MapAdd(0x90000000, 1, 0x10000000, 1, 1);
+
+    GEL_MapAdd(0x00000000, 2, 0x00000100, 1, 1);
+    GEL_MapAdd(0x00000000, 3, 0x00000100, 1, 1);
+    GEL_MapAdd(0x00000000, 4, 0x00000100, 1, 1);
+}
+
+//------------------------------------------------------------------------------
+// OnRestart()
+//
+// Make sure ARP32 is reset to the start vector on program restart.  
+//------------------------------------------------------------------------------
+
+OnRestart(int nErrorCode)
+{
+    GEL_Reset();
+}
+
+//------------------------------------------------------------------------------
+// OnPreFileLoaded()
+//
+// Make sure ARP32 is reset to the start vector prior to program load.  
+//------------------------------------------------------------------------------
+
+OnPreFileLoaded()
+{
+    GEL_Reset();
+}
+
+//------------------------------------------------------------------------------
+// OnReset()
+//
+// Make sure VCOP stepping is re-enabled after ARP32 reset.  
+//------------------------------------------------------------------------------
+
+OnReset()
+{
+    if (1 == step_enabled)
+    {
+        // Set VCOP to stepping mode
+        VCOP_Status_Registers_vcop_ctrl = 0x01;
+    }
+}
+
+menuitem "VCOP Step Control";
+
+//------------------------------------------------------------------------------
+// StepEnable()
+//
+// User menu option to enable single step mode on VCOP.  
+//------------------------------------------------------------------------------
+
+hotmenu StepEnable()
+{
+    step_enabled = 1;
+    VCOP_Status_Registers_vcop_ctrl = 0x01;        
+    GEL_TextOut("VCOP stepping is enabled.\n");
+}
+
+//------------------------------------------------------------------------------
+// StepDisable()
+//
+// User menu option to disable single step mode on VCOP.  
+//------------------------------------------------------------------------------
+
+hotmenu StepDisable()
+{
+    if (0 != step_enabled)
+    {
+        // If VCOP is executing a task, tell it to finish
+        while (0 != (VCOP_Status_Registers_vcop_status & 0x01))
+        {
+            VCOP_Status_Registers_vcop_ctrl = 0x02;
+        }
+    }
+    
+    VCOP_Status_Registers_vcop_ctrl = 0x00;
+    step_enabled = 0;    
+    GEL_TextOut("VCOP stepping is disabled.\n");
+}
+
+//------------------------------------------------------------------------------
+// SingleStep()
+//
+// User menu option to execute a single step on VCOP.  
+//------------------------------------------------------------------------------
+
+hotmenu SingleStep()
+{
+    step_count = 1;
+    Step();
+}
+
+//------------------------------------------------------------------------------
+// StepN()
+//
+// User menu option to execute N number of steps on VCOP.  
+//------------------------------------------------------------------------------
+
+dialog StepN(count "Number of steps to execute.")
+{
+    if (count > 0)
+    {
+    	step_count = count;
+        Step();
+    }
+}
+
+// End of File

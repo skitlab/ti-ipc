@@ -1,0 +1,349 @@
+%%{ 
+/*
+ * Copyright (c) 2012, Texas Instruments Incorporated
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * *  Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *
+ * *  Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * *  Neither the name of Texas Instruments Incorporated nor the names of
+ *    its contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * 
+*/
+%%}
+% var Mod = this.modName;
+% if (Mod.match(".")) {
+%    Mod = Mod.substring(Mod.lastIndexOf(".") + 1);
+% }
+/*
+ *      `Mod`.c
+ */
+
+ /* Header files includes */
+
+#include <xdc/std.h>
+#include <xdc/runtime/Startup.h>
+#include <xdc/runtime/Error.h>
+#include <xdc/runtime/Assert.h>
+#include <xdc/runtime/Log.h>
+#include <xdc/runtime/Gate.h>
+
+#include <ti/sdo/utils/List.h>
+#include <ti/sdo/io/DriverTypes.h>
+
+/* include other header files here */
+
+#include "package/internal/`Mod`.xdc.h"
+
+/*
+ *************************************************************************
+ *                      Module functions
+ *************************************************************************
+ */
+ 
+ /*
+ *  ======== `Mod`_checkDeviceStatus ========
+ */
+Bool `Mod`_checkDeviceStatus(UInt deviceId)
+{
+   if (`Mod`_module->deviceInUse[deviceId] == TRUE){
+       return (TRUE);
+   }
+   else {
+       return (FALSE);
+   }
+}
+
+/*
+ *  ======== `Mod`_Module_startup ========
+ */
+Int `Mod`_Module_startup (Int phase)
+{
+    Int i;
+    
+    for (i = 0; i < `Mod`_Object_count(); i++) {
+        /* get handle to each static instance by calling 
+         * Driver_Object_get(NULL, i) in a loop. Finish
+         * initializing each instance if necessary.
+         */
+    }
+
+    return Startup_DONE;
+}
+
+/*
+ *************************************************************************
+ *                      Instance functions
+ *************************************************************************
+ */
+
+ /*
+ *  ======== `Mod`_instFunc1 ========
+ */
+Void `Mod`_instFunc1(`Mod`_Object *obj, Int val)
+{
+    //example of instance function
+}
+
+/*
+ *  ======== `Mod`_control ========
+ */
+
+Void `Mod`_control(`Mod`_Object *obj, Ptr chanp, DriverTypes_ControlCmd cmd, 
+    UArg cmdArg, Error_Block *eb)
+{
+    UInt i = 0;
+    `Mod`_ChanObj *chan = (`Mod`_ChanObj *)chanp;
+    DriverTypes_Packet *packet;
+
+    if (cmd == DriverTypes_CHAN_ABORT) {
+        /* 
+         * If a packet is currently in progress take steps to abort it
+         * and call the callback
+         */        
+        while(!List_empty(chan->pendList)) {
+            i++;
+            packet = List_get(chan->pendList);
+            packet->error = DriverTypes_EABORTED;
+            packet->size = 0;
+            chan->callbackFxn(chan->callbackArg, packet);
+        }
+        if (cmdArg) {
+            *(UInt *)cmdArg = i;
+        }
+    }
+    else if (cmd == `Mod`_RESET_RX_CHAN) {
+        /* do work to reset rx channel */
+    }
+    else {               
+            Error_raise(eb, DriverTypes_ENOTIMPL, 0, 0 );
+    }
+}
+
+/*
+ *  ======== `Mod`_close ========
+ */
+Void `Mod`_close(`Mod`_Object *obj, Ptr chanp, Error_Block *eb)
+{
+    /* 
+     * 1. check if channel can be closed
+     * 2. release channel
+     * 3. disable interrupt if needed
+     */
+    `Mod`_ChanObj *chan;
+    UInt key;
+    
+    chan = (`Mod`_ChanObj *)chanp;
+
+    if (!List_empty(chan->pendList)) {
+        Error_raise (eb, DriverTypes_EINUSE, 0, 0);
+        return;
+    }
+    if (!chan->inUse) {
+        Error_raise (eb, DriverTypes_EBADARGS, 0, 0);
+        return;
+    }
+ 
+    key = Gate_enterSystem();
+    chan->inUse = FALSE;
+    Gate_leaveSystem(key);
+}
+
+/*
+ *  ======== `Mod`_Instance_init ========
+ */
+ 
+/*
+ * If @InstanceInitError is disabled, use following definition
+ * Void `Mod`_Instance_init(`Mod`_Object *obj, UInt deviceId, const `Mod`_Params *params)
+ */
+Int `Mod`_Instance_init(`Mod`_Object *obj, UInt deviceId, const `Mod`_Params *params, 
+    Error_Block *eb)
+{
+   /* 
+    * 1. Mark device inUse
+    * 2. initialize instance Object
+    * 3. intialize peripheral registers
+    * 4. register interrupts
+    */ 
+   
+   Int i;
+   IArg key;
+   `Mod`_ChanObj *chan;
+
+    key = Gate_enterSystem();
+    if (`Mod`_module->deviceInUse[deviceId] == TRUE) 
+    {
+        Gate_leaveSystem(key);
+        Error_raise(eb, `Mod`_E_deviceInUse, deviceId, 0);
+        return (1);
+    }
+    else
+    {
+        `Mod`_module->deviceInUse[deviceId] = TRUE;
+        Gate_leaveSystem(key);
+    }
+        
+    obj->deviceId = deviceId;
+    obj->opMode = params->opMode;
+
+    for (i=0; i<`Mod`_NUMCHANS; i++) {
+        chan = &obj->chans[i];
+               
+        chan->inUse = FALSE;
+        chan->pendList = List_create(NULL, NULL);
+        chan->callbackFxn = NULL;
+        chan->callbackArg = NULL;
+    }
+    
+    return (0);
+}
+
+
+/*
+ *  ======== `Mod`_Instance_finalize ========
+ */
+Void `Mod`_Instance_finalize(`Mod`_Object *obj, Int status)
+{
+    /* fall through in switch below is intentional */
+    switch (status) {
+        /* `Mod`_delete() */
+        case 0:        
+            /* 
+             * 1. release device
+             * 2. reset device
+             * 3. Unregister interrupts
+             */
+            `Mod`_module->deviceInUse[obj->deviceId] = FALSE;
+            
+        /* device in Use error during create */
+        case 1:
+            /* Nothing to do */
+        default:
+            break;
+    };      
+}
+
+
+/*
+ *  ======== `Mod`_open ========
+ *
+ */
+
+Ptr `Mod`_open(`Mod`_Object *obj, String name, UInt mode, UArg chanParams, 
+    DriverTypes_DoneFxn cbFxn, UArg cbArg, Error_Block *eb)
+{
+    /* 
+     * 1. Use name and chanParams if needed.
+     * 2. mark channel in use
+     * 3. initialize channel object
+     * 4. enable interrupt for channel if needed.
+     */
+    
+    `Mod`_ChanObj *chan = NULL;
+    UInt key;
+    
+    key = Gate_enterSystem();
+    if (mode == DriverTypes_INPUT) {
+        if ( !obj->chans[0].inUse) {
+            chan = &(obj->chans[0]);
+            chan->inUse = TRUE;  
+        }
+    }
+
+    if (mode == DriverTypes_OUTPUT) {
+        if (!obj->chans[1].inUse) {
+            chan = &(obj->chans[1]);
+            chan->inUse = TRUE;  
+        }
+    }
+    Gate_leaveSystem(key);
+
+    if (chan == NULL) {
+        Error_raise(eb, DriverTypes_EINUSE, 0, 0);
+        return (NULL);
+    }
+
+    chan->callbackFxn = cbFxn;
+    chan->callbackArg = cbArg;
+        
+    return (chan);
+}
+
+/*
+ *  ======== `Mod`_submit ========
+ *
+ */
+
+UInt `Mod`_submit(`Mod`_Object *obj, Ptr chanp, DriverTypes_Packet *packet,
+    Error_Block *eb)
+{
+    /*
+     * Submit whole or part of buffer to peripheral for processing
+     * return DriverTypes_COMPLETED, DriverTypes_PENDING or
+     * DriverTypes_ERROR. For DriverTypes_ERROR, and Error_raise()
+     * should be called
+     */ 
+    return (DriverTypes_COMPLETED);
+}
+
+
+/*
+ *************************************************************************
+ *                      Internal functions
+ *************************************************************************
+ */
+/*
+ *  ======== `Mod`_rxIsr ========
+ */
+Void `Mod`_rxIsr(UArg arg)
+{
+    /* 
+     *  If current packet is done, then invoke callback
+     *  Give more data from current packet or from next packet to peripheral 
+     *  for processing.
+     */
+}
+
+/*
+ *  ======== `Mod`_txIsr ========
+ */
+Void `Mod`_txIsr(UArg arg)
+{
+    /* 
+     *  If current packet is done, then invoke callback
+     *  Give more data from current packet or from next packet to peripheral 
+     *  for processing.
+     */
+}
+
+
+
+%%{
+/*
+ * @(#) ti.sdo.io.driverTemplate; 0, 00, 00,; 11-7-2012 13:08:17; /db/vtree/library/trees/ipc/ipc-i09/src/ xlibrary
+
+ */
+
+%%}

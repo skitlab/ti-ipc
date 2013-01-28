@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="ti.sdo.ipc.family.c647x" version="1, 0, 0, 0" producerId="undefined">
+    <units>
+        <module name="Interrupt"/>
+        <module name="MultiProcSetup"/>
+        <module name="NotifySetup"/>
+        <module name="NotifyCircSetup"/>
+    </units>
+    <sources>
+        <srcFile name="package/package_ti.sdo.ipc.family.c647x.c"/>
+        <srcFile name="Interrupt.c"/>
+        <srcFile name="MultiProcSetup.c"/>
+        <srcFile name="NotifySetup.c"/>
+        <srcFile name="NotifyCircSetup.c"/>
+    </sources>
+    <configscripts>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.c647x.a64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.c647x/package/package_ti.sdo.ipc.family.c647x.o64P.dep" src="package/package_ti.sdo.ipc.family.c647x.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.c647x/Interrupt.o64P.dep" src="Interrupt.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.c647x/MultiProcSetup.o64P.dep" src="MultiProcSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.c647x/NotifySetup.o64P.dep" src="NotifySetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.c647x/NotifyCircSetup.o64P.dep" src="NotifyCircSetup.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.c647x.a64Pe.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.c647x/package/package_ti.sdo.ipc.family.c647x.o64Pe.dep" src="package/package_ti.sdo.ipc.family.c647x.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.c647x/Interrupt.o64Pe.dep" src="Interrupt.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.c647x/MultiProcSetup.o64Pe.dep" src="MultiProcSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.c647x/NotifySetup.o64Pe.dep" src="NotifySetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.c647x/NotifyCircSetup.o64Pe.dep" src="NotifyCircSetup.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.c647x.ae64P.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.c647x/package/package_ti.sdo.ipc.family.c647x.oe64P.dep" src="package/package_ti.sdo.ipc.family.c647x.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.c647x/Interrupt.oe64P.dep" src="Interrupt.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.c647x/MultiProcSetup.oe64P.dep" src="MultiProcSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.c647x/NotifySetup.oe64P.dep" src="NotifySetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.c647x/NotifyCircSetup.oe64P.dep" src="NotifyCircSetup.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.c647x.ae64Pe.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.c647x/package/package_ti.sdo.ipc.family.c647x.oe64Pe.dep" src="package/package_ti.sdo.ipc.family.c647x.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.c647x/Interrupt.oe64Pe.dep" src="Interrupt.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.c647x/MultiProcSetup.oe64Pe.dep" src="MultiProcSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.c647x/NotifySetup.oe64Pe.dep" src="NotifySetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.c647x/NotifyCircSetup.oe64Pe.dep" src="NotifyCircSetup.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.c647x.ae66.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.c647x/package/package_ti.sdo.ipc.family.c647x.oe66.dep" src="package/package_ti.sdo.ipc.family.c647x.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.c647x/Interrupt.oe66.dep" src="Interrupt.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.c647x/MultiProcSetup.oe66.dep" src="MultiProcSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.c647x/NotifySetup.oe66.dep" src="NotifySetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.c647x/NotifyCircSetup.oe66.dep" src="NotifyCircSetup.c"/>
+        <srcFile name="lib/ipc/debug/ti.sdo.ipc.family.c647x.ae66e.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.c647x/package/package_ti.sdo.ipc.family.c647x.oe66e.dep" src="package/package_ti.sdo.ipc.family.c647x.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.c647x/Interrupt.oe66e.dep" src="Interrupt.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.c647x/MultiProcSetup.oe66e.dep" src="MultiProcSetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.c647x/NotifySetup.oe66e.dep" src="NotifySetup.c"/>
+        <srcFile name="package/lib/lib/ipc/debug/ti.sdo.ipc.family.c647x/NotifyCircSetup.oe66e.dep" src="NotifyCircSetup.c"/>
+        <srcFile name="package/rel/ti_sdo_ipc_family_c647x.tar.gz.dep" src="package/rel/ti_sdo_ipc_family_c647x.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="ti.targets.C64P"
+            version="ti.targets.C64P{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+            isa="64P"
+            suffix="64P"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.C64P_big_endian"
+            version="ti.targets.C64P_big_endian{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+            isa="64P"
+            suffix="64Pe"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64P"
+            version="ti.targets.elf.C64P{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+            isa="64P"
+            suffix="e64P"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C64P_big_endian"
+            version="ti.targets.elf.C64P_big_endian{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6472.core0"
+            isa="64P"
+            suffix="e64Pe"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C66"
+            version="ti.targets.elf.C66{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6678.core0"
+            isa="66"
+            suffix="e66"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+        <target name="ti.targets.elf.C66_big_endian"
+            version="ti.targets.elf.C66_big_endian{1,0,7.2,0"
+            platform="ti.sdo.ipc.examples.platforms.evm6678.core0"
+            isa="66"
+            suffix="e66e"
+            rootDir="/db/toolsrc/library/tools/vendors/ti/c6x/7.2.0/Linux"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="big"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+    </targets>
+    <libraries>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family.c647x"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.c647x.a64P"
+        profile="debug"
+        target="ti.targets.C64P"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family.c647x"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.c647x.a64Pe"
+        profile="debug"
+        target="ti.targets.C64P_big_endian"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family.c647x"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.c647x.ae64P"
+        profile="debug"
+        target="ti.targets.elf.C64P"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family.c647x"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.c647x.ae64Pe"
+        profile="debug"
+        target="ti.targets.elf.C64P_big_endian"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family.c647x"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.c647x.ae66"
+        profile="debug"
+        target="ti.targets.elf.C66"/>
+    <library name="lib/ipc/debug/ti.sdo.ipc.family.c647x"
+        pname="lib/ipc/debug/ti.sdo.ipc.family.c647x.ae66e"
+        profile="debug"
+        target="ti.targets.elf.C66_big_endian"/>
+    </libraries>
+    <configurations>
+    </configurations>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="ti_sdo_ipc_family_c647x"
+        pname="../../../../../../exports/ti_sdo_ipc_family_c647x.tar.gz"
+        label="default"
+        relScript="tisb/release/filters/copyright.rel">
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package.bld"/>
+        <file name="package/package.cfg.xdc.inc"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.c647x.a64P"/>
+        <file name="package/package_ti.sdo.ipc.family.c647x.c"/>
+        <file name="Interrupt.c"/>
+        <file name="MultiProcSetup.c"/>
+        <file name="NotifySetup.c"/>
+        <file name="NotifyCircSetup.c"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.c647x.a64Pe"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.c647x.ae64P"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.c647x.ae64Pe"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.c647x.ae66"/>
+        <file name="lib/ipc/debug/ti.sdo.ipc.family.c647x.ae66e"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>
